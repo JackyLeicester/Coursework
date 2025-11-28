@@ -1,6 +1,6 @@
 from argparse import ArgumentParser
 from lexer import Lexer
-
+from parser import Parser
 
 def read_file_contents(filename: str) -> str | None:
     try:
@@ -25,6 +25,8 @@ def main():
         exit(1)
 
     lexer = Lexer(contents)
+    parser = Parser(lexer)
+    parser.parse_file()
 
 
 if __name__ == "__main__":
