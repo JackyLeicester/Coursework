@@ -26,9 +26,8 @@ def main():
         epilog=textwrap.dedent("""
         Copyright © 2025
         Jacky Liang Xu, Myrza Danike, Syed Fasiuddin, Vatsal Chaudhari."""),
-
     )
-    arg_parser.add_argument("file",help=": program read from script file")
+    arg_parser.add_argument("file", help=": program read from script file")
     args = arg_parser.parse_args()
 
     contents = read_file_contents(args.file)
