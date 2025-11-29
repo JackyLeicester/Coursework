@@ -14,7 +14,6 @@ class Lexer:
             self.ch = "\0"
         else:
             self.ch = self.input[self.read_position]
-
         self.position = self.read_position
         self.read_position += 1
 
@@ -22,21 +21,23 @@ class Lexer:
     def next_token(self) -> tuple:
         splitting_characters: set = {' ', '\n'}
         # these are used to end tokens and also act as tokens on their own
-        single_tokens: set = {';', '\0'}
-        if self.ch in single_tokens:
-            output: Token = self.match_token(self.ch)
-            text: str = self.ch
-            self.read_char()
-            return output, text
+        identifier_enders: set = {';', '\0', "="}
 
         while self.ch in splitting_characters:
             self.read_char()
+        
+        if self.ch in identifier_enders:
+            print('is a single char')
+            output: Token = self.match_token(self.ch)
+            word: str = self.ch
+            self.read_char()
+            return word, output
 
         if self.ch == '\0':
             return Token.EOF
         
         word: str = ""
-        while self.ch not in splitting_characters and self.ch not in single_tokens:
+        while self.ch not in splitting_characters and self.ch not in identifier_enders:
             word += self.ch
             self.read_char()
         return word, self.match_token(word)
@@ -45,12 +46,25 @@ class Lexer:
     def match_token(self, word: str)->Token:
         print(f"trying to process word: {word} into token")
         match(word):
-            case '\0':
+            case "let":
+                return Token.LET
+            case "=":
+                return Token.ASSIGN
+            case ";":
+                return Token.SEMICOLON
+            case "\0":
                 return Token.EOF
             # assuming this is the default case in python
-            case '':
-                return Token.IDENTIFIER
-        pass
+        if self._is_literal(word):
+            return Token.LITERAL
+        else:
+            return Token.IDENTIFIER
+
+    def _is_literal(self, word: str) -> bool:
+        if len(word) >= 2:
+            if word[0] == '"' and word[-1] == '"':
+                return True
+        return word.isnumeric()
          
     def __repr__(self):
         return f"{type(self).__name__}()"

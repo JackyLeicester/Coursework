@@ -11,7 +11,6 @@ def read_file_contents(filename: str) -> str | None:
         print(f"error: file `{filename}` doesn't exist")
         return None
 
-
 def main():
     arg_parser = ArgumentParser(
         prog="smqa-interpreter",
@@ -27,7 +26,6 @@ def main():
     lexer = Lexer(contents)
     parser = Parser(lexer)
     parser.parse_file()
-
 
 if __name__ == "__main__":
     main()
