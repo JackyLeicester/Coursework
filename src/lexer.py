@@ -1,5 +1,5 @@
 from token import Token
-
+import sys
 
 class Lexer:
     def __init__(self, input: str):
@@ -23,3 +23,7 @@ class Lexer:
 
     def __repr__(self):
         return f"{type(self).__name__}()"
+
+    def call_error(self, word: str, line_number: int)->None:
+        message: str = f"token {word} does not match any word in the language at line: {line_number}"
+        sys.exit(message)
