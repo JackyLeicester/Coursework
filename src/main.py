@@ -1,5 +1,6 @@
 from argparse import ArgumentParser
 from lexer import Lexer
+from token import Token
 
 
 def read_file_contents(filename: str) -> str | None:
@@ -25,7 +26,6 @@ def main():
         exit(1)
 
     lexer = Lexer(contents)
-
 
 if __name__ == "__main__":
     main()
