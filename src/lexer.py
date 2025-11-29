@@ -6,6 +6,7 @@ class Lexer:
         self.input = input
         self.position: int = 0
         self.read_position: int = 0
+        self.line_number: int = 1
         self.ch = "\0"
         self.read_char()
 
@@ -24,10 +25,11 @@ class Lexer:
         identifier_enders: set = {';', '\0', "="}
 
         while self.ch in splitting_characters:
+            if self.ch == '\n':
+                self.line_number += 1
             self.read_char()
         
         if self.ch in identifier_enders:
-            print('is a single char')
             output: Token = self.match_token(self.ch)
             word: str = self.ch
             self.read_char()
@@ -44,7 +46,6 @@ class Lexer:
 
     # takes in a word and should return a matching token, new tokens will be added over time
     def match_token(self, word: str)->Token:
-        print(f"trying to process word: {word} into token")
         match(word):
             case "let":
                 return Token.LET

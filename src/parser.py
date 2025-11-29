@@ -26,7 +26,7 @@ class Parser:
 
     def _accept_token(self, token: Token):
         if self.current_token != token:
-            self.call_syntax_error([], self.current_token, -1)
+            self.call_syntax_error([], self.current_token)
         self._next_token()
     
     def _next_token(self):
@@ -34,14 +34,14 @@ class Parser:
         self.current_token_string = next_token[0]
         self.current_token = next_token[1]
 
-    def call_syntax_error(self, expected_tokens: list[str], actual_token: str, line_number: int)->None:
+    def call_syntax_error(self, expected_tokens: list[str], actual_token: str)->None:
         message: str = f"SYNTAX ERROR: expected tokens: "
         message += "".join([token + " " for token in expected_tokens])
-        message += "\n" + f"actual_token: {actual_token} at line: {line_number}"
+        message += "\n" + f"actual_token: {actual_token} at line: {self.lex.line_number}"
         sys.exit(message)
 
-    def call_runtime_error(self, message: str, line_number: int):
-        message: str = f"RUNTIME ERROR: {message} at line: {line_number}"
+    def call_runtime_error(self, message: str):
+        message: str = f"RUNTIME ERROR: {message} at line: {self.lex.line_number}"
         sys.exit(message)
     
     def _program(self) -> None:
@@ -49,16 +49,14 @@ class Parser:
             self._statement()
     
     def _statement(self) -> None:
-        print('current token', self.current_token)
         # python does not do enum matching so we need ifs
         if self.current_token == Token.LET:
             self._intialization()
         else:
-            self.call_syntax_error([';'], self.current_token, -1)    
+            self.call_syntax_error([';'], self.current_token)    
         self._accept_token(Token.SEMICOLON)
 
     def _intialization(self) -> None:
-        print('initializing')
         self._variable_decl()
 
     def _variable_decl(self) -> None:
@@ -90,7 +88,7 @@ class Parser:
             self._accept_token(Token.IDENTIFIER)
             return partial_function
         else:
-            self.call_syntax_error(["identifier"], self.current_token_string, -1)
+            self.call_syntax_error(["identifier"], self.current_token_string)
 
     def _set_variable(self, variable_name: str, value) -> None:
         self.variables[variable_name] = value

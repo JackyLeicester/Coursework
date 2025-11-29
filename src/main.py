@@ -26,6 +26,7 @@ def main():
     lexer = Lexer(contents)
     parser = Parser(lexer)
     parser.parse_file()
+    print(parser)
 
 if __name__ == "__main__":
     main()
