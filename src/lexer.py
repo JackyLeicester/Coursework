@@ -1,5 +1,5 @@
 from token import Token
-
+import sys
 
 class Lexer:
     def __init__(self, input: str):
@@ -18,8 +18,17 @@ class Lexer:
         self.position = self.read_position
         self.read_position += 1
 
-    def next_token(self) -> Token:
+    # returns first the type of the token followed by the string version
+    def next_token(self) -> tuple:
         splitting_characters: set = {' ', '\n'}
+        # these are used to end tokens and also act as tokens on their own
+        single_tokens: set = {';', '\0'}
+        if self.ch in single_tokens:
+            output: Token = self.match_token(self.ch)
+            text: str = self.ch
+            self.read_char()
+            return output, text
+
         while self.ch in splitting_characters:
             self.read_char()
 
@@ -27,15 +36,25 @@ class Lexer:
             return Token.EOF
         
         word: str = ""
-        while self.ch not in splitting_characters and self.ch != '\0':
+        while self.ch not in splitting_characters and self.ch not in single_tokens:
             word += self.ch
             self.read_char()
-        return self.match_token(word)
+        return word, self.match_token(word)
 
     # takes in a word and should return a matching token, new tokens will be added over time
     def match_token(self, word: str)->Token:
         print(f"trying to process word: {word} into token")
+        match(word):
+            case '\0':
+                return Token.EOF
+            # assuming this is the default case in python
+            case '':
+                return Token.IDENTIFIER
         pass
          
     def __repr__(self):
         return f"{type(self).__name__}()"
+
+    def call_error(self, word: str, line_number: int)->None:
+        message: str = f"token {word} does not match any word in the language at line: {line_number}"
+        sys.exit(message)
