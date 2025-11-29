@@ -19,8 +19,24 @@ class Lexer:
         self.read_position += 1
 
     def next_token(self) -> Token:
-        return Token.Eof
+        splitting_characters: set = {' ', '\n'}
+        while self.ch in splitting_characters:
+            self.read_char()
 
+        if self.ch == '\0':
+            return Token.EOF
+        
+        word: str = ""
+        while self.ch not in splitting_characters and self.ch != '\0':
+            word += self.ch
+            self.read_char()
+        return self.match_token(word)
+
+    # takes in a word and should return a matching token, new tokens will be added over time
+    def match_token(self, word: str)->Token:
+        print(f"trying to process word: {word} into token")
+        pass
+         
     def __repr__(self):
         return f"{type(self).__name__}()"
 
