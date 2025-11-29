@@ -36,5 +36,6 @@ def main():
 
     lexer = Lexer(contents)
 
+
 if __name__ == "__main__":
     main()

@@ -48,9 +48,8 @@ class Lexer:
                     self.skip_singleline_comment()
                     return self.next_token()
                 else:
-                    tok = Token.Slash
                     self.read_char()
-                    return tok
+                    return self.next_token()
 
             case _:
                 self.read_char()
