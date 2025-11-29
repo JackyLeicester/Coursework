@@ -23,31 +23,38 @@ class Lexer:
             return "\0"
         return self.input[self.read_position]
 
-    def skip_whiteSpace(self):
+    def skip_whitespace(self):
         while self.ch in ("\n", "\t", "\r", " "):
             self.read_char()
 
-    def skip_singleLine_comment(self):
+    def skip_singleline_comment(self):
         while self.ch not in ("\0", "\n"):
             self.read_char()
 
     def next_token(self) -> Token:
-        self.skip_whiteSpace()
-
-        if self.ch == "#":
-            self.skip_singleLine_comment()
-            return self.next_token()
-
-        if self.ch == "/" and self.peek() == "/":
-            self.read_char()
-            self.skip_singleLine_comment()
-            return self.next_token()
+        self.skip_whitespace()
 
         if self.ch == "\0":
-            return Token.Eof
+            return Token.EoF
 
-        self.read_char()
-        return self.next_token()
+        match self.ch:
+            case "#":
+                self.skip_singleline_comment()
+                return self.next_token()
+
+            case "/":
+                if self.peek() == "/":
+                    self.read_char()
+                    self.skip_singleline_comment()
+                    return self.next_token()
+                else:
+                    tok = Token.Slash
+                    self.read_char()
+                    return tok
+
+            case _:
+                self.read_char()
+                return self.next_token()
 
     def __repr__(self):
         return f"{type(self).__name__}()"
