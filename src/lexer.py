@@ -18,19 +18,42 @@ class Lexer:
         self.position = self.read_position
         self.read_position += 1
 
-    def next_token(self) -> Token:
-        splitting_characters: set = {' ', '\n'}
-        while self.ch in splitting_characters:
+    def peek(self):
+        if self.read_position >= len(self.input):
+            return "\0"
+        return self.input[self.read_position]
+
+    def skip_whitespace(self):
+        while self.ch in ("\n", "\t", "\r", " "):
             self.read_char()
 
-        if self.ch == '\0':
-            return Token.EOF
-        
-        word: str = ""
-        while self.ch not in splitting_characters and self.ch != '\0':
-            word += self.ch
+    def skip_singleline_comment(self):
+        while self.ch not in ("\0", "\n"):
             self.read_char()
-        return self.match_token(word)
+
+    def next_token(self) -> Token:
+        self.skip_whitespace()
+
+        if self.ch == "\0":
+            return Token.EoF
+
+        match self.ch:
+            case "#":
+                self.skip_singleline_comment()
+                return self.next_token()
+
+            case "/":
+                if self.peek() == "/":
+                    self.read_char()
+                    self.skip_singleline_comment()
+                    return self.next_token()
+                else:
+                    self.read_char()
+                    return self.next_token()
+
+            case _:
+                self.read_char()
+                return self.next_token()
 
     # takes in a word and should return a matching token, new tokens will be added over time
     def match_token(self, word: str)->Token:
