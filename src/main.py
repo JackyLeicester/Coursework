@@ -1,5 +1,6 @@
 from argparse import ArgumentParser, RawDescriptionHelpFormatter
 from lexer import Lexer
+from parser import Parser
 import textwrap
 
 
@@ -35,6 +36,8 @@ def main():
         exit(1)
 
     lexer = Lexer(contents)
+    parser = Parser(lexer)
+    parser.run()
 
 
 if __name__ == "__main__":
