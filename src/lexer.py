@@ -82,7 +82,7 @@ class Lexer:
             case word if len(word) >= 2 and word.startswith('"') and word.endswith('"'):
                 return Token.STRING, word[1:-1]
             case _:
-                return Token.LITERAL, word
+                return Token.IDENTIFIER, word
 
     def __repr__(self):
         return f"{type(self).__name__}()"
