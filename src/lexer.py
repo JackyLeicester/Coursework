@@ -47,6 +47,11 @@ class Lexer:
                 case _:
                     return
 
+    def read_number(self):
+        start = self.position
+        while self.ch.isdigit():
+            self.read_char()
+
     def next_token(self) -> Tuple[Token, str]:
         self.skip_non_tokens()
         splitting_characters: set = {" ", "\n"}
