@@ -54,7 +54,7 @@ class Lexer:
 
         if self.ch == "\0":
             return Token.EOF, "\0"
-        
+
         if self.ch in identifier_enders:
             output: Token = self._match_token(self.ch)
             word: str = self.ch
