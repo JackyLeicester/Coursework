@@ -1,5 +1,6 @@
 from lexer import Lexer
 from token import Token
+from typing import Dict
 import sys
 
 
@@ -9,7 +10,7 @@ class Parser:
         self.curr_token, self.curr_str = self.lexer.next_token()
         self.next_token, self.next_str = self.lexer.next_token()
         self.errors = []
-        self.variables = dict()
+        self.variables: Dict[str, Variable]
 
     def __repr__(self):
         return f"{type(self).__name__}()"
@@ -31,3 +32,18 @@ class Parser:
             "\n" + f"actual_token: {actual_token} at line: {self.lex.line_number}"
         )
         sys.exit(message)
+
+class Variable:
+    def __init__(self, value, parser: Parser, read_only=False):
+        self.read_only = read_only
+        self.parser = parser
+        self.value = value
+
+    def get(self):
+        return self.value
+
+    def set(self, value):
+        if self.read_only:
+            # call logical errors once that is complete
+            return
+        self.value = value
