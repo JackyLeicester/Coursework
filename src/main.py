@@ -13,6 +13,7 @@ def read_file_contents(filename: str) -> str | None:
         print(f"error: file `{filename}` doesn't exist")
         return None
 
+
 def main():
     arg_parser = ArgumentParser(
         prog="interpret",

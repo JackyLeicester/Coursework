@@ -2,6 +2,7 @@ from lexer import Lexer
 from token import Token
 import sys
 
+
 class Parser:
     def __init__(self, lexer: Lexer):
         self.lexer = lexer
@@ -23,8 +24,10 @@ class Parser:
             print(self.curr_token, self.curr_str)
             self._next_token()
 
-    def call_syntax_error(self, expected_tokens: list[str], actual_token: str)->None:
+    def _call_syntax_error(self, expected_tokens: list[str], actual_token: str) -> None:
         message: str = f"SYNTAX ERROR: expected tokens: "
         message += "".join([token + " " for token in expected_tokens])
-        message += "\n" + f"actual_token: {actual_token} at line: {self.lex.line_number}"
+        message += (
+            "\n" + f"actual_token: {actual_token} at line: {self.lex.line_number}"
+        )
         sys.exit(message)

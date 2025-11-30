@@ -1,6 +1,6 @@
 from token import Token
 from typing import Tuple
-import sys
+
 
 class Lexer:
     def __init__(self, input: str):
@@ -24,7 +24,7 @@ class Lexer:
             return "\0"
         return self.input[self.read_position]
 
-    def skip_whitespace(self):
+    def skip_whitespace(self) -> bool:
         while self.ch in ("\n", "\t", "\r", " "):
             self.read_char()
 
@@ -38,39 +38,39 @@ class Lexer:
             match self.ch:
                 case "#":
                     self.skip_singleline_comment()
-                    return self.next_token()
+                    self.skip_whitespace()
                 case "/":
                     if self.peek() == "/":
                         self.read_char()
                         self.skip_singleline_comment()
-                    else:
-                        self.read_char()
+                        self.skip_whitespace()
                 case _:
                     return
 
     def next_token(self) -> Tuple[Token, str]:
         self.skip_non_tokens()
-        splitting_characters: set = {' ', '\n'}
-        identifier_enders: set = {';', '\0', "="}
+        splitting_characters: set = {" ", "\n"}
+        identifier_enders: set = {";", "\0", "="}
 
         if self.ch == "\0":
-            return Token.EOF, '\0'
-
+            return Token.EOF, "\0"
+        
         if self.ch in identifier_enders:
-            output: Token = self.match_token(self.ch)
+            output: Token = self._match_token(self.ch)
             word: str = self.ch
             self.read_char()
             return output, word
-        
+
         word: str = ""
         while self.ch not in splitting_characters and self.ch not in identifier_enders:
             word += self.ch
             self.read_char()
-        return self.match_token(word), word
+        token: Token = self._match_token(word)
+        return token, word
 
     # takes in a word and should return a matching token, new tokens will be added over time
-    def match_token(self, word: str)->Token:
-        match(word):
+    def _match_token(self, word: str) -> Token:
+        match word:
             case "let":
                 return Token.LET
             case "=":
@@ -90,10 +90,6 @@ class Lexer:
             if word[0] == '"' and word[-1] == '"':
                 return True
         return word.isnumeric()
-         
+
     def __repr__(self):
         return f"{type(self).__name__}()"
-
-    def call_error(self, word: str, line_number: int)->None:
-        message: str = f"token {word} does not match any word in the language at line: {line_number}"
-        sys.exit(message)
