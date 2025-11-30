@@ -19,11 +19,6 @@ class Lexer:
         self.position = self.read_position
         self.read_position += 1
 
-    # returns first the type of the token followed by the string version
-    def next_token(self) -> tuple:
-        splitting_characters: set = {' ', '\n'}
-        # these are used to end tokens and also act as tokens on their own
-        identifier_enders: set = {';', '\0', "="}
     def peek(self):
         if self.read_position >= len(self.input):
             return "\0"
