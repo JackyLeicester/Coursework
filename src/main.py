@@ -1,6 +1,8 @@
-from argparse import ArgumentParser
+from argparse import ArgumentParser, RawDescriptionHelpFormatter
 from lexer import Lexer
 from parser import Parser
+import textwrap
+
 
 def read_file_contents(filename: str) -> str | None:
     try:
@@ -13,20 +15,29 @@ def read_file_contents(filename: str) -> str | None:
 
 def main():
     arg_parser = ArgumentParser(
-        prog="smqa-interpreter",
-        description="The interpreter for a toy language developed as a coursework for SMQA",
+        prog="interpret",
+        description=textwrap.dedent("""
+        An interpreter for simple programming language developed for Software Measurement and
+        Quality Assurance coursework.
+        
+        Checkout https://github.com/JackyLeicester/Coursework for the syntax of the language.
+        """),
+        formatter_class=RawDescriptionHelpFormatter,
+        epilog=textwrap.dedent("""
+        Copyright © 2025
+        Jacky Liang Xu, Myrza Danike, Syed Fasiuddin, Vatsal Chaudhari."""),
     )
-    arg_parser.add_argument("filename")
+    arg_parser.add_argument("file", help=": program read from script file")
     args = arg_parser.parse_args()
 
-    contents = read_file_contents(args.filename)
+    contents = read_file_contents(args.file)
     if not contents:
         exit(1)
 
     lexer = Lexer(contents)
     parser = Parser(lexer)
-    parser.parse_file()
-    print(parser)
+    parser.run()
+
 
 if __name__ == "__main__":
     main()

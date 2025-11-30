@@ -1,4 +1,5 @@
 from token import Token
+from typing import Tuple
 import sys
 
 class Lexer:
@@ -23,26 +24,54 @@ class Lexer:
         splitting_characters: set = {' ', '\n'}
         # these are used to end tokens and also act as tokens on their own
         identifier_enders: set = {';', '\0', "="}
+    def peek(self):
+        if self.read_position >= len(self.input):
+            return "\0"
+        return self.input[self.read_position]
 
-        while self.ch in splitting_characters:
-            if self.ch == '\n':
-                self.line_number += 1
+    def skip_whitespace(self):
+        while self.ch in ("\n", "\t", "\r", " "):
             self.read_char()
-        
+
+    def skip_singleline_comment(self):
+        while self.ch not in ("\0", "\n"):
+            self.read_char()
+
+    def skip_non_tokens(self):
+        while True:
+            self.skip_whitespace()
+            match self.ch:
+                case "#":
+                    self.skip_singleline_comment()
+                    return self.next_token()
+                case "/":
+                    if self.peek() == "/":
+                        self.read_char()
+                        self.skip_singleline_comment()
+                    else:
+                        self.read_char()
+                case _:
+                    return
+
+    def next_token(self) -> Tuple[Token, str]:
+        self.skip_non_tokens()
+        splitting_characters: set = {' ', '\n'}
+        identifier_enders: set = {';', '\0', "="}
+
+        if self.ch == "\0":
+            return Token.EOF, '\0'
+
         if self.ch in identifier_enders:
             output: Token = self.match_token(self.ch)
             word: str = self.ch
             self.read_char()
-            return word, output
-
-        if self.ch == '\0':
-            return Token.EOF
+            return output, word
         
         word: str = ""
         while self.ch not in splitting_characters and self.ch not in identifier_enders:
             word += self.ch
             self.read_char()
-        return word, self.match_token(word)
+        return self.match_token(word), word
 
     # takes in a word and should return a matching token, new tokens will be added over time
     def match_token(self, word: str)->Token:
