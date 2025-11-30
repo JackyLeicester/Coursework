@@ -1,4 +1,5 @@
 from token import Token
+from typing import Tuple
 
 
 class Lexer:
@@ -6,6 +7,7 @@ class Lexer:
         self.input = input
         self.position: int = 0
         self.read_position: int = 0
+        self.line_number: int = 1
         self.ch = "\0"
         self.read_char()
 
@@ -14,7 +16,6 @@ class Lexer:
             self.ch = "\0"
         else:
             self.ch = self.input[self.read_position]
-
         self.position = self.read_position
         self.read_position += 1
 
@@ -31,29 +32,64 @@ class Lexer:
         while self.ch not in ("\0", "\n"):
             self.read_char()
 
-    def next_token(self) -> Token:
-        self.skip_whitespace()
+    def skip_non_tokens(self):
+        while True:
+            self.skip_whitespace()
+            match self.ch:
+                case "#":
+                    self.skip_singleline_comment()
+                    self.skip_whitespace()
+                case "/":
+                    if self.peek() == "/":
+                        self.read_char()
+                        self.skip_singleline_comment()
+                        self.skip_whitespace()
+                case _:
+                    return
+
+    def next_token(self) -> Tuple[Token, str]:
+        self.skip_non_tokens()
+        splitting_characters: set = {" ", "\n"}
+        identifier_enders: set = {";", "\0", "="}
 
         if self.ch == "\0":
-            return Token.EoF
+            return Token.EOF, "\0"
 
-        match self.ch:
-            case "#":
-                self.skip_singleline_comment()
-                return self.next_token()
+        if self.ch in identifier_enders:
+            output: Token = self._match_token(self.ch)
+            word: str = self.ch
+            self.read_char()
+            return output, word
 
-            case "/":
-                if self.peek() == "/":
-                    self.read_char()
-                    self.skip_singleline_comment()
-                    return self.next_token()
-                else:
-                    self.read_char()
-                    return self.next_token()
+        word: str = ""
+        while self.ch not in splitting_characters and self.ch not in identifier_enders:
+            word += self.ch
+            self.read_char()
+        token: Token = self._match_token(word)
+        return token, word
 
-            case _:
-                self.read_char()
-                return self.next_token()
+    # takes in a word and should return a matching token, new tokens will be added over time
+    def _match_token(self, word: str) -> Token:
+        match word:
+            case "let":
+                return Token.LET
+            case "=":
+                return Token.ASSIGN
+            case ";":
+                return Token.SEMICOLON
+            case "\0":
+                return Token.EOF
+            # assuming this is the default case in python
+        if self._is_literal(word):
+            return Token.LITERAL
+        else:
+            return Token.IDENTIFIER
+
+    def _is_literal(self, word: str) -> bool:
+        if len(word) >= 2:
+            if word[0] == '"' and word[-1] == '"':
+                return True
+        return word.isnumeric()
 
     def __repr__(self):
         return f"{type(self).__name__}()"

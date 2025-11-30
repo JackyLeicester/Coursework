@@ -2,4 +2,9 @@ from enum import Enum, auto
 
 
 class Token(Enum):
-    Eof = auto()
+    EOF = auto()
+    LET = auto()
+    IDENTIFIER = auto()
+    LITERAL = auto()
+    SEMICOLON = auto()
+    ASSIGN = auto()
