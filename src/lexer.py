@@ -47,10 +47,18 @@ class Lexer:
                 case _:
                     return
 
-    def read_number(self):
+    def read_number(self) -> str:
         start = self.position
+
+        # поддержка отрицательных чисел: опциональный '-'
+        if self.ch == "-":
+            self.read_char()
+
         while self.ch.isdigit():
             self.read_char()
+
+        # предполагаю, что исходный код лежит в self.input
+        return self.input[start:self.position]
 
     def next_token(self) -> Tuple[Token, str]:
         self.skip_non_tokens()
@@ -59,6 +67,11 @@ class Lexer:
 
         if self.ch == "\0":
             return Token.EOF, "\0"
+
+        # integer literal (включая отрицательные)
+        if self.ch.isdigit() or (self.ch == "-" and self.peek().isdigit()):
+            lexeme = self.read_number()
+            return Token.INT, lexeme
 
         if self.ch in identifier_enders:
             output: Token = self._match_token(self.ch)
@@ -72,6 +85,7 @@ class Lexer:
             self.read_char()
         token: Token = self._match_token(word)
         return token, word
+
 
     # takes in a word and should return a matching token, new tokens will be added over time
     def _match_token(self, word: str) -> Token:
