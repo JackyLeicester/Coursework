@@ -48,6 +48,7 @@ class Parser:
         self.errors = []
         self.variables = dict()
         self.prefix_parse_fns: dict[Token, Callable[[], [Expression]]] = dict()
+        self.infix_parse_fns: dict[Token, Callable[[Expression], [Expression]]] = dict()
 
         self._register_prefix_fn(Token.IDENTIFIER, self.parse_identifier)
 
@@ -56,6 +57,9 @@ class Parser:
 
     def _register_prefix_fn(self, token: Token, fn: Callable[[], [Expression]]) -> None:
         self.prefix_parse_fn[token] = fn
+
+    def _register_infix_fn(self, token: Token, fn: Callable[[Expression], [Expression]]) -> None:
+        self.infix_parse_fn[token] = fn
 
     def _next_token(self) -> None:
         self.curr_token = self.next_token
