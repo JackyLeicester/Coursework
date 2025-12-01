@@ -8,6 +8,12 @@ class Expression:
     pass
 
 
+class ExpressionStatement(Expression):
+    def __init__(self, token: Token, expression: Expression):
+        self.token = token
+        self.expression = expression
+
+
 class Identifier(Expression):
     def __init__(self, token: Token, value: str):
         self.token = token
@@ -56,14 +62,31 @@ class Parser:
         self.curr_str = self.next_str
         self.next_token, self.next_str = self.lexer.next_token()
 
+    def _peek_token_is(self, token: Token) -> bool:
+        return self.next_token == token
+
     def run(self) -> None:
         while self.curr_token != Token.EOF:
             match self.curr_token:
                 case Token.IF:
                     print(self.parse_if_expression())
                 case _:
-                    print(self.curr_token, self.curr_str)
+                    self.parse_expression_statement()
             self._next_token()
+
+    def parse_expression_statement(self) -> ExpressionStatement:
+        token, str_repr = self.curr_token, self.curr_str
+        expression = self.parse_expression()
+        if self._peek_token_is(Token.SEMICOLON):
+            self.next_token()
+        return ExpressionStatement(token, expression)
+
+    def parse_expression(self) -> Expression:
+        prefix_parse_fn = self.prefix_parse_fns[self.curr_token]
+        if prefix_parse_fn is None:
+            return None
+        left_exp: Expression = prefix_parse_fn()
+        return left_exp
 
     def parse_identifier(self) -> Identifier:
         return Identifier(self.curr_token, self.curr_str)
