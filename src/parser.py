@@ -51,15 +51,18 @@ class Parser:
         self.infix_parse_fns: dict[Token, Callable[[Expression], [Expression]]] = dict()
 
         self._register_prefix_fn(Token.IDENTIFIER, self.parse_identifier)
+        self._register_prefix_fn(Token.IF, self.parse_if_expression)
 
     def __repr__(self):
         return f"{type(self).__name__}()"
 
     def _register_prefix_fn(self, token: Token, fn: Callable[[], [Expression]]) -> None:
-        self.prefix_parse_fn[token] = fn
+        self.prefix_parse_fns[token] = fn
 
-    def _register_infix_fn(self, token: Token, fn: Callable[[Expression], [Expression]]) -> None:
-        self.infix_parse_fn[token] = fn
+    def _register_infix_fn(
+        self, token: Token, fn: Callable[[Expression], [Expression]]
+    ) -> None:
+        self.infix_parse_fns[token] = fn
 
     def _next_token(self) -> None:
         self.curr_token = self.next_token
@@ -97,14 +100,13 @@ class Parser:
 
     def parse_if_expression(self) -> IfExpression | None:
         self._next_token()
-        expression = self.parse_expression()
+        condition = self.parse_expression()
         if self.next_token != Token.LPAREN:
             return None
         consequence = self.parse_block_statement()
         if self.next_token == Token.ELSE:
             alternative = self.parse_block_statement()
-        if_expr = IfExpression(expression, consequence, alternative)
-        return if_expr
+        return IfExpression(condition, consequence, alternative)
 
     def parse_expression(self) -> Expression | None:
         pass
