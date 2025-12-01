@@ -122,6 +122,18 @@ class Lexer:
         match word:
             case "let":
                 return Token.LET, word
+            case "if":
+                return Token.IF, word
+            case "else":
+                return Token.ELSE, word
+            case "{":
+                return Token.LPAREN, word
+            case "}":
+                return Token.RPAREN, word
+            case "true":
+                return Token.TRUE, word
+            case "false":
+                return Token.FALSE, word
             case word if len(word) >= 2 and word.startswith("'") and word.endswith("'"):
                 return Token.CHAR, word[1:-1]
             case word if len(word) >= 2 and word.startswith('"') and word.endswith('"'):

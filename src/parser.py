@@ -3,6 +3,30 @@ from token import Token
 import sys
 
 
+class Expression:
+    pass
+
+
+class BlockStatement:
+    pass
+
+
+class IfExpression:
+    def __init__(
+        self,
+        condition: Expression,
+        consequence: BlockStatement,
+        alternative: BlockStatement,
+    ) -> None:
+        self.token = Token.IF
+        self.condition = condition
+        self.consequence = consequence
+        self.alternative = alternative
+
+    def __repr__(self):
+        return f"{type(self).__name__} {self.__dict__}"
+
+
 class Parser:
     def __init__(self, lexer: Lexer):
         self.lexer = lexer
@@ -21,8 +45,29 @@ class Parser:
 
     def run(self) -> None:
         while self.curr_token != Token.EOF:
-            print(self.curr_token, self.curr_str)
+            match self.curr_token:
+                case Token.IF:
+                    print(self.parse_if_expression())
+                case _:
+                    print(self.curr_token, self.curr_str)
             self._next_token()
+
+    def parse_if_expression(self) -> IfExpression | None:
+        self._next_token()
+        expression = self.parse_expression()
+        if self.next_token != Token.LPAREN:
+            return None
+        consequence = self.parse_block_statement()
+        if self.next_token == Token.ELSE:
+            alternative = self.parse_block_statement()
+        if_expr = IfExpression(expression, consequence, alternative)
+        return if_expr
+
+    def parse_expression(self) -> Expression | None:
+        pass
+
+    def parse_block_statement(self) -> BlockStatement | None:
+        pass
 
     def _call_syntax_error(self, expected_tokens: list[str], actual_token: str) -> None:
         message: str = f"SYNTAX ERROR: expected tokens: "
