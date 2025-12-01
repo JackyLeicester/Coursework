@@ -56,40 +56,33 @@ class Lexer:
             return Token.EOF, "\0"
 
         if self.ch in identifier_enders:
-            output: Token = self._match_token(self.ch)
-            word: str = self.ch
+            token, word = self._match_token(self.ch)
             self.read_char()
-            return output, word
+            return token, word
 
         word: str = ""
         while self.ch not in splitting_characters and self.ch not in identifier_enders:
             word += self.ch
             self.read_char()
-        token: Token = self._match_token(word)
-        return token, word
+        return self._match_token(word)
 
     # takes in a word and should return a matching token, new tokens will be added over time
-    def _match_token(self, word: str) -> Token:
+    def _match_token(self, word: str) -> Tuple[Token, str]:
         match word:
             case "let":
-                return Token.LET
+                return Token.LET, word
             case "=":
-                return Token.ASSIGN
+                return Token.ASSIGN, word
             case ";":
-                return Token.SEMICOLON
+                return Token.SEMICOLON, word
             case "\0":
-                return Token.EOF
-            # assuming this is the default case in python
-        if self._is_literal(word):
-            return Token.LITERAL
-        else:
-            return Token.IDENTIFIER
-
-    def _is_literal(self, word: str) -> bool:
-        if len(word) >= 2:
-            if word[0] == '"' and word[-1] == '"':
-                return True
-        return word.isnumeric()
+                return Token.EOF, word
+            case word if len(word) >= 2 and word.startswith("'") and word.endswith("'"):
+                return Token.CHAR, word[1:-1]
+            case word if len(word) >= 2 and word.startswith('"') and word.endswith('"'):
+                return Token.STRING, word[1:-1]
+            case _:
+                return Token.IDENTIFIER, word
 
     def __repr__(self):
         return f"{type(self).__name__}()"

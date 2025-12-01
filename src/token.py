@@ -8,3 +8,5 @@ class Token(Enum):
     LITERAL = auto()
     SEMICOLON = auto()
     ASSIGN = auto()
+    CHAR = auto()
+    STRING = auto()
