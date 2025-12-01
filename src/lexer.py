@@ -47,6 +47,16 @@ class Lexer:
                 case _:
                     return
 
+    def read_number(self) -> str:
+        start = self.position
+        if self.ch == "-":
+            self.read_char()
+
+        while self.ch.isdigit():
+            self.read_char()
+
+        return self.input[start : self.position]
+
     def next_token(self) -> Tuple[Token, str]:
         self.skip_non_tokens()
         splitting_characters: set = {" ", "\n"}
@@ -54,6 +64,11 @@ class Lexer:
 
         if self.ch == "\0":
             return Token.EOF, "\0"
+
+        # integer literal
+        if self.ch.isdigit() or (self.ch == "-" and self.peek().isdigit()):
+            lexeme = self.read_number()
+            return Token.INT, lexeme
 
         if self.ch in identifier_enders:
             token, word = self._match_token(self.ch)
