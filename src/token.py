@@ -15,3 +15,5 @@ class Token(Enum):
     ELSE = auto()
     LPAREN = auto()
     RPAREN = auto()
+    TRUE = auto()
+    FALSE = auto()
