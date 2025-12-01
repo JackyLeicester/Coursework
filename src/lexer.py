@@ -47,7 +47,9 @@ class Lexer:
                 case _:
                     return
 
-    def read_number(self) -> str:
+    def read_number(self) -> Tuple[Token, str]:
+        is_float = False
+
         start = self.position
         if self.ch == "-":
             self.read_char()
@@ -55,7 +57,17 @@ class Lexer:
         while self.ch.isdigit():
             self.read_char()
 
-        return self.input[start : self.position]
+        if self.ch == ".":
+            if self.peek().isdigit():
+                is_float = True
+                self.read_char()
+            else:
+                raise Exception("Wrong declaration of float")
+
+        while self.ch.isdigit():
+            self.read_char()
+
+        return Token.FLOAT if is_float else Token.INT, self.input[start : self.position]
 
     def next_token(self) -> Tuple[Token, str]:
         self.skip_non_tokens()
@@ -65,10 +77,9 @@ class Lexer:
         if self.ch == "\0":
             return Token.EOF, "\0"
 
-        # integer literal
+        # integer and float literals
         if self.ch.isdigit() or (self.ch == "-" and self.peek().isdigit()):
-            lexeme = self.read_number()
-            return Token.INT, lexeme
+            return self.read_number()
 
         if self.ch in identifier_enders:
             token, word = self._match_token(self.ch)
