@@ -7,6 +7,12 @@ class Expression:
     pass
 
 
+class Identifier(Expression):
+    def __init__(self, token: Token, value: str):
+        self.token = token
+        self.value = value
+
+
 class BlockStatement:
     pass
 
@@ -48,9 +54,14 @@ class Parser:
             match self.curr_token:
                 case Token.IF:
                     print(self.parse_if_expression())
+                case Token.IDENTIFIER:
+                    self.parse_identifier()
                 case _:
                     print(self.curr_token, self.curr_str)
             self._next_token()
+
+    def parse_identifier(self) -> Identifier:
+        return Identifier(self.curr_token, self.curr_str)
 
     def parse_if_expression(self) -> IfExpression | None:
         self._next_token()
