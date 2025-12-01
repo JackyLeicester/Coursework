@@ -99,6 +99,18 @@ class Lexer:
                 return Token.LET, word
             case "=":
                 return Token.ASSIGN, word
+            case "==":
+                return Token.EQUAL, word
+            case "!=":
+                return Token.NOTEQUAL, word
+            case ">":
+                return Token.GREATER, word
+            case ">=":
+                return Token.GREATEREQUAL, word
+            case "<":
+                return Token.LESS, word
+            case "<=":
+                return Token.LESSEQUAL, word
             case ";":
                 return Token.SEMICOLON, word
             case "\0":
