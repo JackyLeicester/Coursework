@@ -1,5 +1,6 @@
 from lexer import Lexer
 from token import Token
+from collections.abc import Callable
 import sys
 
 
@@ -40,9 +41,15 @@ class Parser:
         self.next_token, self.next_str = self.lexer.next_token()
         self.errors = []
         self.variables = dict()
+        self.prefix_parse_fns: dict[Token, Callable[[], [Expression]]] = dict()
+
+        self._register_prefix_fn(Token.IDENTIFIER, self.parse_identifier)
 
     def __repr__(self):
         return f"{type(self).__name__}()"
+
+    def _register_prefix_fn(self, token: Token, fn: Callable[[], [Expression]]) -> None:
+        self.prefix_parse_fn[token] = fn
 
     def _next_token(self) -> None:
         self.curr_token = self.next_token
@@ -54,8 +61,6 @@ class Parser:
             match self.curr_token:
                 case Token.IF:
                     print(self.parse_if_expression())
-                case Token.IDENTIFIER:
-                    self.parse_identifier()
                 case _:
                     print(self.curr_token, self.curr_str)
             self._next_token()
