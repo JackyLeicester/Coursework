@@ -13,3 +13,5 @@ class Token(Enum):
     STRING = auto()
     IF = auto()
     ELSE = auto()
+    LPAREN = auto()
+    RPAREN = auto()

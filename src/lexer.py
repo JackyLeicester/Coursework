@@ -94,6 +94,10 @@ class Lexer:
                 return Token.IF, word
             case "else":
                 return Token.ELSE, word
+            case "{":
+                return Token.LPAREN, word
+            case "}":
+                return Token.RPAREN, word
             case "\0":
                 return Token.EOF, word
             case word if len(word) >= 2 and word.startswith("'") and word.endswith("'"):
