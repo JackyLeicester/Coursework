@@ -9,5 +9,7 @@ class Token(Enum):
     LITERAL = auto()
     SEMICOLON = auto()
     ASSIGN = auto()
+    INT = auto()
+    FLOAT = auto()
     CHAR = auto()
     STRING = auto()
