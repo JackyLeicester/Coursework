@@ -90,6 +90,10 @@ class Lexer:
                 return Token.ASSIGN, word
             case ";":
                 return Token.SEMICOLON, word
+            case "if":
+                return Token.IF, word
+            case "else":
+                return Token.ELSE, word
             case "\0":
                 return Token.EOF, word
             case word if len(word) >= 2 and word.startswith("'") and word.endswith("'"):

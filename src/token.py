@@ -11,3 +11,5 @@ class Token(Enum):
     INT = auto()
     CHAR = auto()
     STRING = auto()
+    IF = auto()
+    ELSE = auto()
