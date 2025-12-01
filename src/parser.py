@@ -33,6 +33,7 @@ class Parser:
         )
         sys.exit(message)
 
+
 class Variable:
     def __init__(self, value, parser: Parser, read_only=False):
         self.read_only = read_only
