@@ -23,5 +23,8 @@ class Token(Enum):
     ELSE = auto()
     LPAREN = auto()
     RPAREN = auto()
+    LBRACKETS = auto()
+    RBRACKETS = auto()
     TRUE = auto()
     FALSE = auto()
+    FUNCTION = auto()
