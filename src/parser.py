@@ -23,8 +23,19 @@ class InfixExpression(Expression):
 
 
 class Identifier(Expression):
-    def __init__(self, token: Token, value: str):
+    def __init__(self, token: Token, value: str, parser: Parser, read_only: bool=False):
         self.token = token
+        self.value = value
+        self.parser = parser
+        self.read_only = read_only
+    
+    def get(self):
+        return self.value
+
+    def set(self, value):
+        if self.read_only:
+            # call logical errors once that is complete
+            return
         self.value = value
 
 
@@ -142,18 +153,3 @@ class Parser:
         )
         sys.exit(message)
 
-
-class Variable:
-    def __init__(self, value, parser: Parser, read_only=False):
-        self.read_only = read_only
-        self.parser = parser
-        self.value = value
-
-    def get(self):
-        return self.value
-
-    def set(self, value):
-        if self.read_only:
-            # call logical errors once that is complete
-            return
-        self.value = value
