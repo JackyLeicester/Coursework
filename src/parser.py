@@ -14,6 +14,13 @@ class ExpressionStatement(Expression):
         self.expression = expression
 
 
+class InfixExpression(Expression):
+    def __init__(self, lhs: Expression, operation: Token, rhs: Expression):
+        self.lhs = lhs
+        self.operation = operation
+        self.rhs = rhs
+
+
 class Identifier(Expression):
     def __init__(self, token: Token, value: str):
         self.token = token
@@ -53,6 +60,13 @@ class Parser:
         self._register_prefix_fn(Token.IDENTIFIER, self.parse_identifier)
         self._register_prefix_fn(Token.IF, self.parse_if_expression)
 
+        self._register_infix_fn(Token.EQUAL, self.parse_infix_expression)
+        self._register_infix_fn(Token.NOTEQUAL, self.parse_infix_expression)
+        self._register_infix_fn(Token.GREATER, self.parse_infix_expression)
+        self._register_infix_fn(Token.GREATEREQUAL, self.parse_infix_expression)
+        self._register_infix_fn(Token.LESS, self.parse_infix_expression)
+        self._register_infix_fn(Token.LESSEQUAL, self.parse_infix_expression)
+
     def __repr__(self):
         return f"{type(self).__name__}()"
 
@@ -88,12 +102,20 @@ class Parser:
             self.next_token()
         return ExpressionStatement(token, expression)
 
-    def parse_expression(self) -> Expression:
+    def parse_expression(self) -> Expression | None:
         prefix_parse_fn = self.prefix_parse_fns[self.curr_token]
         if prefix_parse_fn is None:
             return None
         left_exp: Expression = prefix_parse_fn()
         return left_exp
+
+    def parse_infix_expression(self, lhs: Expression) -> InfixExpression | None:
+        token, str_repr = self.curr_token, self.curr_str
+        self._next_token()
+        rhs = self.parse_expression()
+        if rhs is None:
+            return None
+        return InfixExpression(lhs, token, rhs)
 
     def parse_identifier(self) -> Identifier:
         return Identifier(self.curr_token, self.curr_str)
@@ -107,9 +129,6 @@ class Parser:
         if self.next_token == Token.ELSE:
             alternative = self.parse_block_statement()
         return IfExpression(condition, consequence, alternative)
-
-    def parse_expression(self) -> Expression | None:
-        pass
 
     def parse_block_statement(self) -> BlockStatement | None:
         pass
