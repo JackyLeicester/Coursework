@@ -103,6 +103,15 @@ class Lexer:
                 else:
                     token, str_repr = Token.LESS, "<"
 
+            case "(":
+                return Token.LPAREN, "("
+            case ")":
+                return Token.RPAREN, ")"
+            case "{":
+                return Token.LBRACE, "{"
+            case "}":
+                return Token.RBRACE, "}"
+
             # arithmetic operators
             case "+":
                 token, str_repr = Token.PLUS, "+"
@@ -142,10 +151,8 @@ class Lexer:
                 return Token.IF, word
             case "else":
                 return Token.ELSE, word
-            case "{":
-                return Token.LPAREN, word
-            case "}":
-                return Token.RPAREN, word
+            case "for":
+                return Token.FOR, word
             case "true":
                 return Token.TRUE, word
             case "false":

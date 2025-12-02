@@ -87,6 +87,8 @@ class Parser:
         self._register_infix_fn(Token.ASTERISK, self.parse_infix_expression)
         self._register_infix_fn(Token.SLASH, self.parse_infix_expression)
 
+        self._register_prefix_fn(Token.FOR, self.parse_for_statement)
+
     def __repr__(self):
         return f"{type(self).__name__}()"
 
@@ -155,6 +157,9 @@ class Parser:
         if self.next_token == Token.ELSE:
             alternative = self.parse_block_statement()
         return IfExpression(condition, consequence, alternative)
+
+    def parse_for_statement(self) -> None:
+        pass
 
     def parse_block_statement(self) -> BlockStatement | None:
         pass
