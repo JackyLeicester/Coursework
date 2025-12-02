@@ -10,7 +10,7 @@ class Parser:
         self.curr_token, self.curr_str = self.lexer.next_token()
         self.next_token, self.next_str = self.lexer.next_token()
         self.errors = []
-        self.variables: Dict[str, Variable]
+        self.symbols: Dict[str, object]
 
     def __repr__(self):
         return f"{type(self).__name__}()"
