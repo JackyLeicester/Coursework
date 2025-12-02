@@ -61,6 +61,24 @@ class IfExpression:
         return f"{type(self).__name__} {self.__dict__}"
 
 
+class ForStatement:
+    def __init__(
+        self,
+        initialization: Expression,
+        condition: Expression,
+        increment: Expression,
+        block: BlockStatement,
+    ):
+        self.token = Token.FOR
+        self.initialization = initialization
+        self.condition = condition
+        self.increment = increment
+        self.block = block
+
+    def __repr__(self):
+        return f"{type(self).__name__} {self.__dict__}"
+
+
 class Parser:
     def __init__(self, lexer: Lexer):
         self.lexer = lexer
@@ -158,8 +176,21 @@ class Parser:
             alternative = self.parse_block_statement()
         return IfExpression(condition, consequence, alternative)
 
-    def parse_for_statement(self) -> None:
-        pass
+    def parse_for_statement(self) -> ForStatement | None:
+        self._next_token()
+        if not self._peek_token_is(Token.LPAREN):
+            return None
+        initialization = self.parse_expression()
+        if not self._peek_token_is(Token.SEMICOLON):
+            return None
+        condition = self.parse_expression()
+        if not self._peek_token_is(Token.SEMICOLON):
+            return None
+        increment = self.parse_expression()
+        if not self._peek_token_is(Token.RPAREN):
+            return None
+        block = self.parse_block_statement()
+        return ForStatement(initialization, condition, increment, block)
 
     def parse_block_statement(self) -> BlockStatement | None:
         pass
