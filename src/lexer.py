@@ -1,5 +1,5 @@
 import string
-from token import Token
+from tokens import Token
 from typing import Tuple
 
 
@@ -86,6 +86,20 @@ class Lexer:
             case ch if ch == "!" and self.peek() == "=":
                 self.read_char()
                 token, str_repr = Token.NOTEQUAL, "!="
+            case "!":
+                token, str_repr = Token.NOT, "!"
+            case "&":
+                if self.peek() == "&":
+                    self.read_char()
+                    token, str_repr = Token.AND, "&&"
+                else:
+                    token, str_repr = Token.EOF, "Unknown"
+            case "|":
+                if self.peek() == "|":
+                    self.read_char()
+                    token, str_repr = Token.OR, "||"
+                else:
+                    token, str_repr = Token.EOF, "Unknown"
             case ";":
                 token, str_repr = Token.SEMICOLON, ";"
             case "\0":
