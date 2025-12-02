@@ -102,6 +102,29 @@ class Lexer:
                     token, str_repr = Token.LESSEQUAL, "<="
                 else:
                     token, str_repr = Token.LESS, "<"
+
+            case "(":
+                return Token.LPAREN, "("
+            case ")":
+                return Token.RPAREN, ")"
+            case "{":
+                return Token.LBRACE, "{"
+            case "}":
+                return Token.RBRACE, "}"
+
+            # arithmetic operators
+            case "+":
+                token, str_repr = Token.PLUS, "+"
+            case "-":
+                if self.peek().isdigit():
+                    token, str_repr = self.read_number()
+                else:
+                    token, str_repr = Token.MINUS, "-"
+            case "*":
+                token, str_repr = Token.ASTERISK, "*"
+            case "/":
+                token, str_repr = Token.SLASH, "/"
+
             case ch if ch.isdigit() or (ch == "-" and self.peek().isdigit()):
                 # integer and float literals
                 token, str_repr = self.read_number()
@@ -124,20 +147,12 @@ class Lexer:
                 return Token.LET, word
             case "const":
                 return Token.CONST, word
-            case "=":
-                return Token.ASSIGN, word
-            case ";":
-                return Token.SEMICOLON, word
-            case "\0":
-                return Token.EOF, word
             case "if":
                 return Token.IF, word
             case "else":
                 return Token.ELSE, word
-            case "{":
-                return Token.LPAREN, word
-            case "}":
-                return Token.RPAREN, word
+            case "for":
+                return Token.FOR, word
             case "true":
                 return Token.TRUE, word
             case "false":

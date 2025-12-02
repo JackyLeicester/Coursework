@@ -73,6 +73,24 @@ class FunctionStatement:
         self.return_value = return_value
         self.block = block
 
+class ForStatement:
+    def __init__(
+        self,
+        initialization: Expression,
+        condition: Expression,
+        increment: Expression,
+        block: BlockStatement,
+    ):
+        self.token = Token.FOR
+        self.initialization = initialization
+        self.condition = condition
+        self.increment = increment
+        self.block = block
+
+    def __repr__(self):
+        return f"{type(self).__name__} {self.__dict__}"
+
+
 class Parser:
     def __init__(self, lexer: Lexer):
         self.lexer = lexer
@@ -95,6 +113,15 @@ class Parser:
         self._register_infix_fn(Token.GREATEREQUAL, self.parse_infix_expression)
         self._register_infix_fn(Token.LESS, self.parse_infix_expression)
         self._register_infix_fn(Token.LESSEQUAL, self.parse_infix_expression)
+
+        # arithmetic operator
+        self._register_infix_fn(Token.PLUS, self.parse_infix_expression)
+        self._register_infix_fn(Token.MINUS, self.parse_infix_expression)
+        self._register_infix_fn(Token.ASTERISK, self.parse_infix_expression)
+        self._register_infix_fn(Token.SLASH, self.parse_infix_expression)
+
+        self._register_prefix_fn(Token.FOR, self.parse_for_statement)
+        self._register_prefix_fn(Token.LPAREN, self.parse_paren)
 
     def __repr__(self):
         return f"{type(self).__name__}()"
@@ -120,6 +147,8 @@ class Parser:
             match self.curr_token:
                 case Token.IF:
                     print(self.parse_if_expression())
+                case Token.FOR:
+                    print(self.parse_for_statement())
                 case _:
                     self.parse_expression_statement()
             self._next_token()
@@ -158,6 +187,12 @@ class Parser:
         if prefix_parse_fn is None:
             return None
         left_exp: Expression = prefix_parse_fn()
+
+        while self.next_token in self.infix_parse_fns:
+            infix_fn = self.infix_parse_fns[self.next_token]
+            self.next_token()
+            left_exp = infix_fn(left_exp)
+
         return left_exp
 
     def parse_infix_expression(self, lhs: Expression) -> InfixExpression | None:
@@ -180,6 +215,25 @@ class Parser:
         if self.next_token == Token.ELSE:
             alternative = self.parse_block_statement()
         return IfExpression(condition, consequence, alternative)
+
+    def parse_for_statement(self) -> ForStatement | None:
+        self._next_token()
+        if not self._peek_token_is(Token.LPAREN):
+            return None
+        initialization = self.parse_expression()
+        if not self._peek_token_is(Token.SEMICOLON):
+            return None
+        condition = self.parse_expression()
+        if not self._peek_token_is(Token.SEMICOLON):
+            return None
+        increment = self.parse_expression()
+        if not self._peek_token_is(Token.RPAREN):
+            return None
+        block = self.parse_block_statement()
+        return ForStatement(initialization, condition, increment, block)
+
+    def parse_paren(self) -> None:
+        self._next_token()
 
     def parse_block_statement(self) -> BlockStatement | None:
         self._accept_token(Token.LBRACKETS)
