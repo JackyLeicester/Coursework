@@ -1,3 +1,4 @@
+import string
 from token import Token
 from typing import Tuple
 
@@ -71,29 +72,53 @@ class Lexer:
 
     def next_token(self) -> Tuple[Token, str]:
         self.skip_non_tokens()
-        splitting_characters: set = {" ", "\n"}
-        identifier_enders: set = {";", "\0", "="}
 
-        if self.ch == "\0":
-            return Token.EOF, "\0"
+        token: Token = Token.EOF
+        str_repr: str = ""
 
-        # integer and float literals
-        if self.ch.isdigit() or (self.ch == "-" and self.peek().isdigit()):
-            return self.read_number()
-
-        if self.ch in identifier_enders:
-            token, word = self._match_token(self.ch)
-            self.read_char()
-            return token, word
-
-        word: str = ""
-        while self.ch not in splitting_characters and self.ch not in identifier_enders:
-            word += self.ch
-            self.read_char()
-        return self._match_token(word)
+        match self.ch:
+            case "=":
+                if self.peek() == "=":
+                    self.read_char()
+                    token, str_repr = Token.EQUAL, "=="
+                else:
+                    token, str_repr = Token.ASSIGN, "="
+            case ch if ch == "!" and self.peek() == "=":
+                self.read_char()
+                token, str_repr = Token.NOTEQUAL, "!="
+            case ";":
+                token, str_repr = Token.SEMICOLON, ";"
+            case "\0":
+                token, str_repr = Token.EOF, "\0"
+            case ">":
+                if self.peek() == "=":
+                    self.read_char()
+                    token, str_repr = Token.GREATEREQUAL, ">="
+                else:
+                    token, str_repr = Token.GREATER, ">"
+            case "<":
+                if self.peek() == "=":
+                    self.read_char()
+                    token, str_repr = Token.LESSEQUAL, "<="
+                else:
+                    token, str_repr = Token.LESS, "<"
+            case ch if ch.isdigit() or (ch == "-" and self.peek().isdigit()):
+                # integer and float literals
+                token, str_repr = self.read_number()
+            case ch if ch in string.ascii_letters:
+                token, str_repr = self._read_identifier()
+            case _:
+                token, str_repr = Token.EOF, "\0"
+        self.read_char()
+        return token, str_repr
 
     # takes in a word and should return a matching token, new tokens will be added over time
-    def _match_token(self, word: str) -> Tuple[Token, str]:
+    def _read_identifier(self) -> Tuple[Token, str]:
+        word: str = ""
+        while self.ch in string.ascii_letters or self.ch in string.digits:
+            word += self.ch
+            self.read_char()
+
         match word:
             case "let":
                 return Token.LET, word
@@ -105,6 +130,18 @@ class Lexer:
                 return Token.SEMICOLON, word
             case "\0":
                 return Token.EOF, word
+            case "if":
+                return Token.IF, word
+            case "else":
+                return Token.ELSE, word
+            case "{":
+                return Token.LPAREN, word
+            case "}":
+                return Token.RPAREN, word
+            case "true":
+                return Token.TRUE, word
+            case "false":
+                return Token.FALSE, word
             case word if len(word) >= 2 and word.startswith("'") and word.endswith("'"):
                 return Token.CHAR, word[1:-1]
             case word if len(word) >= 2 and word.startswith('"') and word.endswith('"'):
