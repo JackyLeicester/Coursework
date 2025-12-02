@@ -102,6 +102,20 @@ class Lexer:
                     token, str_repr = Token.LESSEQUAL, "<="
                 else:
                     token, str_repr = Token.LESS, "<"
+
+            # arithmetic operators
+            case "+":
+                token, str_repr = Token.PLUS, "+"
+            case "-":
+                if self.peek().isdigit():
+                    token, str_repr = self.read_number()
+                else:
+                    token, str_repr = Token.MINUS, "-"
+            case "*":
+                token, str_repr = Token.ASTERISK, "*"
+            case "/":
+                token, str_repr = Token.SLASH, "/"
+
             case ch if ch.isdigit() or (ch == "-" and self.peek().isdigit()):
                 # integer and float literals
                 token, str_repr = self.read_number()

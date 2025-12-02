@@ -67,6 +67,12 @@ class Parser:
         self._register_infix_fn(Token.LESS, self.parse_infix_expression)
         self._register_infix_fn(Token.LESSEQUAL, self.parse_infix_expression)
 
+        # arithmetic operator
+        self._register_infix_fn(Token.PLUS, self.parse_infix_expression)
+        self._register_infix_fn(Token.MINUS, self.parse_infix_expression)
+        self._register_infix_fn(Token.ASTERISK, self.parse_infix_expression)
+        self._register_infix_fn(Token.SLASH, self.parse_infix_expression)
+
     def __repr__(self):
         return f"{type(self).__name__}()"
 
@@ -107,6 +113,12 @@ class Parser:
         if prefix_parse_fn is None:
             return None
         left_exp: Expression = prefix_parse_fn()
+
+        while self.next_token in self.infix_parse_fns:
+            infix_fn = self.infix_parse_fns[self.next_token]
+            self.next_token()
+            left_exp = infix_fn(left_exp)
+
         return left_exp
 
     def parse_infix_expression(self, lhs: Expression) -> InfixExpression | None:

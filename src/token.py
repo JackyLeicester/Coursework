@@ -24,3 +24,7 @@ class Token(Enum):
     RPAREN = auto()
     TRUE = auto()
     FALSE = auto()
+    PLUS = auto()
+    MINUS = auto()
+    ASTERISK = auto()
+    SLASH = auto()
