@@ -4,18 +4,6 @@ from typing import Dict
 from collections.abc import Callable
 import sys
 
-PRECEDENCES = {
-    Token.OR: 1,
-    Token.AND: 2,
-    Token.EQUAL: 3,
-    Token.NOTEQUAL: 3,
-    Token.LESS: 4,
-    Token.LESSEQUAL: 4,
-    Token.GREATER: 4,
-    Token.GREATEREQUAL: 4,
-}
-LOWEST_PRECEDENCE = 0
-
 
 class Expression:
     pass
@@ -181,7 +169,7 @@ class Parser:
         return ExpressionStatement(token, expression)
 
     def parse_expression(
-        self, precedence: int = LOWEST_PRECEDENCE
+        self, precedence: int = Token.LOWEST_PRECEDENCE
     ) -> Expression | None:
         prefix_fn = self.prefix_parse_fns.get(self.curr_token)
         if prefix_fn is None:
@@ -217,10 +205,10 @@ class Parser:
         return InfixExpression(lhs, token, rhs)
 
     def _peek_precedence(self) -> int:
-        return PRECEDENCES.get(self.next_token, LOWEST_PRECEDENCE)
+        return self.next_token or Token.LOWEST_PRECEDENCE
 
     def _curr_precedence(self) -> int:
-        return PRECEDENCES.get(self.curr_token, LOWEST_PRECEDENCE)
+        return self.curr_token or Token.LOWEST_PRECEDENCE
 
     def parse_prefix_expression(self) -> PrefixExpression:
         token, operator = self.curr_token, self.curr_str
