@@ -23,12 +23,14 @@ class InfixExpression(Expression):
 
 
 class Identifier(Expression):
-    def __init__(self, token: Token, value: str, parser: Parser, read_only: bool=False):
+    def __init__(
+        self, token: Token, value: str, parser: Parser, read_only: bool = False
+    ):
         self.token = token
         self.value = value
         self.parser = parser
         self.read_only = read_only
-    
+
     def get(self):
         return self.value
 
@@ -152,4 +154,3 @@ class Parser:
             "\n" + f"actual_token: {actual_token} at line: {self.lex.line_number}"
         )
         sys.exit(message)
-
