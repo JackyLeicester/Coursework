@@ -37,7 +37,7 @@ def main():
         exit(1)
 
     lexer = Lexer(contents)
-    
+
     # Debug: Will execute if run with "--debug" argument
     if args.debug:
         print("=== TOKENS ===")
@@ -47,7 +47,7 @@ def main():
             token, token_str = lexer.next_token()
         print(f"{token.name:15} {token_str}")
         print()
-    
+
     # Reset lexer for parsing
     lexer = Lexer(contents)
     parser = Parser(lexer)

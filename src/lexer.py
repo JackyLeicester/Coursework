@@ -89,17 +89,17 @@ class Lexer:
             case "!":
                 token, str_repr = Token.NOT, "!"
             case "&":
-                if self.peek()=="&":
+                if self.peek() == "&":
                     self.read_char()
                     token, str_repr = Token.AND, "&&"
                 else:
-                    token,str_repr=Token.EOF,"Unknown"
+                    token, str_repr = Token.EOF, "Unknown"
             case "|":
-                if self.peek()=="|":
+                if self.peek() == "|":
                     self.read_char()
                     token, str_repr = Token.OR, "||"
                 else:
-                    token,str_repr=Token.EOF,"Unknown"
+                    token, str_repr = Token.EOF, "Unknown"
             case ";":
                 token, str_repr = Token.SEMICOLON, ";"
             case "\0":

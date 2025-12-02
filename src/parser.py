@@ -3,6 +3,18 @@ from tokens import Token
 from collections.abc import Callable
 import sys
 
+PRECEDENCES = {
+    Token.OR: 1,
+    Token.AND: 2,
+    Token.EQUAL: 3,
+    Token.NOTEQUAL: 3,
+    Token.LESS: 4,
+    Token.LESSEQUAL: 4,
+    Token.GREATER: 4,
+    Token.GREATEREQUAL: 4,
+}
+LOWEST_PRECEDENCE = 0
+
 
 class Expression:
     pass
@@ -19,6 +31,16 @@ class InfixExpression(Expression):
         self.lhs = lhs
         self.operation = operation
         self.rhs = rhs
+
+
+class PrefixExpression(Expression):
+    def __init__(self, token: Token, operator: str, right: Expression | None):
+        self.token = token
+        self.operator = operator
+        self.right = right
+
+    def __repr__(self):
+        return f"({self.operator}{self.right})"
 
 
 class Identifier(Expression):
@@ -55,22 +77,34 @@ class Parser:
         self.errors = []
         self.variables = dict()
         self.prefix_parse_fns: dict[Token, Callable[[], Expression | None]] = dict()
-        self.infix_parse_fns: dict[Token, Callable[[Expression], Expression | None]] = dict()
+        self.infix_parse_fns: dict[Token, Callable[[Expression], Expression | None]] = (
+            dict()
+        )
 
         self._register_prefix_fn(Token.IDENTIFIER, self.parse_identifier)
         self._register_prefix_fn(Token.IF, self.parse_if_expression)
+        self._register_prefix_fn(Token.NOT, self.parse_prefix_expression)
+        self._register_prefix_fn(Token.TRUE, self.parse_boolean)
+        self._register_prefix_fn(Token.FALSE, self.parse_boolean)
 
-        self._register_infix_fn(Token.EQUAL, self.parse_infix_expression)
-        self._register_infix_fn(Token.NOTEQUAL, self.parse_infix_expression)
-        self._register_infix_fn(Token.GREATER, self.parse_infix_expression)
-        self._register_infix_fn(Token.GREATEREQUAL, self.parse_infix_expression)
-        self._register_infix_fn(Token.LESS, self.parse_infix_expression)
-        self._register_infix_fn(Token.LESSEQUAL, self.parse_infix_expression)
+        for token in [
+            Token.EQUAL,
+            Token.NOTEQUAL,
+            Token.LESS,
+            Token.LESSEQUAL,
+            Token.GREATER,
+            Token.GREATEREQUAL,
+            Token.AND,
+            Token.OR,
+        ]:
+            self._register_infix_fn(token, self.parse_infix_expression)
 
     def __repr__(self):
         return f"{type(self).__name__}()"
 
-    def _register_prefix_fn(self, token: Token, fn: Callable[[], Expression | None]) -> None:
+    def _register_prefix_fn(
+        self, token: Token, fn: Callable[[], Expression | None]
+    ) -> None:
         self.prefix_parse_fns[token] = fn
 
     def _register_infix_fn(
@@ -102,20 +136,57 @@ class Parser:
             self._next_token()
         return ExpressionStatement(token, expression)
 
-    def parse_expression(self) -> Expression | None:
-        prefix_parse_fn = self.prefix_parse_fns.get(self.curr_token)
-        if prefix_parse_fn is None:
+    def parse_expression(
+        self, precedence: int = LOWEST_PRECEDENCE
+    ) -> Expression | None:
+        prefix_fn = self.prefix_parse_fns.get(self.curr_token)
+        if prefix_fn is None:
             return None
-        left_exp: Expression | None = prefix_parse_fn()
-        return left_exp
+
+        left_exp = prefix_fn()
+        if left_exp is None:
+            return None
+
+        left_expr: Expression = left_exp
+
+        while (
+            self.next_token != Token.SEMICOLON and precedence < self._peek_precedence()
+        ):
+            infix_fn = self.infix_parse_fns.get(self.next_token)
+            if infix_fn is None:
+                return left_expr
+
+            self._next_token()
+            left_expr = infix_fn(left_expr)  # type: ignore[arg-type]
+
+        return left_expr
 
     def parse_infix_expression(self, lhs: Expression) -> InfixExpression | None:
         token, str_repr = self.curr_token, self.curr_str
+        precedence = self._curr_precedence()
         self._next_token()
-        rhs = self.parse_expression()
+
+        rhs = self.parse_expression(precedence)
+
         if rhs is None:
             return None
         return InfixExpression(lhs, token, rhs)
+
+    def _peek_precedence(self) -> int:
+        return PRECEDENCES.get(self.next_token, LOWEST_PRECEDENCE)
+
+    def _curr_precedence(self) -> int:
+        return PRECEDENCES.get(self.curr_token, LOWEST_PRECEDENCE)
+
+    def parse_prefix_expression(self) -> PrefixExpression:
+        token, operator = self.curr_token, self.curr_str
+        self._next_token()
+
+        right = self.parse_expression(7)
+        return PrefixExpression(token, operator, right)
+
+    def parse_boolean(self) -> Identifier:
+        return Identifier(self.curr_token, self.curr_str)
 
     def parse_identifier(self) -> Identifier:
         return Identifier(self.curr_token, self.curr_str)
