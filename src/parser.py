@@ -1,5 +1,5 @@
 from lexer import Lexer
-from token import Token
+from tokens import Token
 from collections.abc import Callable
 import sys
 
@@ -9,7 +9,7 @@ class Expression:
 
 
 class ExpressionStatement(Expression):
-    def __init__(self, token: Token, expression: Expression):
+    def __init__(self, token: Token, expression: Expression | None):
         self.token = token
         self.expression = expression
 
@@ -31,12 +31,12 @@ class BlockStatement:
     pass
 
 
-class IfExpression:
+class IfExpression(Expression):
     def __init__(
         self,
-        condition: Expression,
-        consequence: BlockStatement,
-        alternative: BlockStatement,
+        condition: Expression | None,
+        consequence: BlockStatement | None,
+        alternative: BlockStatement | None,
     ) -> None:
         self.token = Token.IF
         self.condition = condition
@@ -54,8 +54,8 @@ class Parser:
         self.next_token, self.next_str = self.lexer.next_token()
         self.errors = []
         self.variables = dict()
-        self.prefix_parse_fns: dict[Token, Callable[[], [Expression]]] = dict()
-        self.infix_parse_fns: dict[Token, Callable[[Expression], [Expression]]] = dict()
+        self.prefix_parse_fns: dict[Token, Callable[[], Expression | None]] = dict()
+        self.infix_parse_fns: dict[Token, Callable[[Expression], Expression | None]] = dict()
 
         self._register_prefix_fn(Token.IDENTIFIER, self.parse_identifier)
         self._register_prefix_fn(Token.IF, self.parse_if_expression)
@@ -70,11 +70,11 @@ class Parser:
     def __repr__(self):
         return f"{type(self).__name__}()"
 
-    def _register_prefix_fn(self, token: Token, fn: Callable[[], [Expression]]) -> None:
+    def _register_prefix_fn(self, token: Token, fn: Callable[[], Expression | None]) -> None:
         self.prefix_parse_fns[token] = fn
 
     def _register_infix_fn(
-        self, token: Token, fn: Callable[[Expression], [Expression]]
+        self, token: Token, fn: Callable[[Expression], Expression | None]
     ) -> None:
         self.infix_parse_fns[token] = fn
 
@@ -99,14 +99,14 @@ class Parser:
         token, str_repr = self.curr_token, self.curr_str
         expression = self.parse_expression()
         if self._peek_token_is(Token.SEMICOLON):
-            self.next_token()
+            self._next_token()
         return ExpressionStatement(token, expression)
 
     def parse_expression(self) -> Expression | None:
-        prefix_parse_fn = self.prefix_parse_fns[self.curr_token]
+        prefix_parse_fn = self.prefix_parse_fns.get(self.curr_token)
         if prefix_parse_fn is None:
             return None
-        left_exp: Expression = prefix_parse_fn()
+        left_exp: Expression | None = prefix_parse_fn()
         return left_exp
 
     def parse_infix_expression(self, lhs: Expression) -> InfixExpression | None:
@@ -126,6 +126,7 @@ class Parser:
         if self.next_token != Token.LPAREN:
             return None
         consequence = self.parse_block_statement()
+        alternative = None
         if self.next_token == Token.ELSE:
             alternative = self.parse_block_statement()
         return IfExpression(condition, consequence, alternative)
@@ -137,6 +138,6 @@ class Parser:
         message: str = f"SYNTAX ERROR: expected tokens: "
         message += "".join([token + " " for token in expected_tokens])
         message += (
-            "\n" + f"actual_token: {actual_token} at line: {self.lex.line_number}"
+            "\n" + f"actual_token: {actual_token} at line: {self.lexer.line_number}"
         )
         sys.exit(message)

@@ -11,3 +11,6 @@ wheels/
 
 # Pycharm
 .idea/
+
+# Ignore local test file
+/test
