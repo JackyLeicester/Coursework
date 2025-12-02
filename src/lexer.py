@@ -124,12 +124,6 @@ class Lexer:
                 return Token.LET, word
             case "const":
                 return Token.CONST, word
-            case "=":
-                return Token.ASSIGN, word
-            case ";":
-                return Token.SEMICOLON, word
-            case "\0":
-                return Token.EOF, word
             case "if":
                 return Token.IF, word
             case "else":
