@@ -1,5 +1,6 @@
 from lexer import Lexer
 from token import Token
+from typing import Dict
 from collections.abc import Callable
 import sys
 
@@ -22,8 +23,21 @@ class InfixExpression(Expression):
 
 
 class Identifier(Expression):
-    def __init__(self, token: Token, value: str):
+    def __init__(
+        self, token: Token, value: str, parser: Parser, read_only: bool = False
+    ):
         self.token = token
+        self.value = value
+        self.parser = parser
+        self.read_only = read_only
+
+    def get(self):
+        return self.value
+
+    def set(self, value):
+        if self.read_only:
+            # call logical errors once that is complete
+            return
         self.value = value
 
 
@@ -53,7 +67,7 @@ class Parser:
         self.curr_token, self.curr_str = self.lexer.next_token()
         self.next_token, self.next_str = self.lexer.next_token()
         self.errors = []
-        self.variables = dict()
+        self.symbols: Dict[str, object]
         self.prefix_parse_fns: dict[Token, Callable[[], [Expression]]] = dict()
         self.infix_parse_fns: dict[Token, Callable[[Expression], [Expression]]] = dict()
 
