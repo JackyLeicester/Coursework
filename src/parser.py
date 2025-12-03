@@ -19,11 +19,11 @@ class InfixExpression(Expression):
         self.operation = operation
         self.rhs = rhs
 
-
 class Identifier(Expression):
-    def __init__(self, token: Token, value: str, parser: Parser, read_only: bool=False):
+    def __init__(self, token: Token, name: str, parser: Parser, read_only: bool=False):
         self.token = token
-        self.value = value
+        self.name = name
+        self.value = "null"
         self.parser = parser
         self.read_only = read_only
     
@@ -37,16 +37,14 @@ class Identifier(Expression):
         self.value = value
 
 class LetStatement(Expression):
-    def __init__(self, identifier: Identifier, value: str, type: Token):
+    def __init__(self, identifier: Identifier, infix: InfixExpression):
         self.identifier = identifier
-        self.value = value
-        self.type = type
+        self.infix = infix
 
 class ConstStatement(Expression):
-    def __init__(self, identifier: Identifier, value: str, type: Token):
+    def __init__(self, identifier: Identifier, infix: InfixExpression):
         self.identifier = identifier
-        self.value = value
-        self.type = type
+        self.infix = infix
 
 class BlockStatement(Expression):
     def __init__(self, statements: Expression):
@@ -68,9 +66,8 @@ class IfExpression:
         return f"{type(self).__name__} {self.__dict__}"    
 
 class FunctionStatement:
-    def __init__(self, variables: List[Tuple[str, Token]], return_value: Variable, block: BlockStatement):
+    def __init__(self, variables: List[Tuple[str, Token]], block: BlockStatement):
         self.variables = variables
-        self.return_value = return_value
         self.block = block
 
 class ForStatement:
@@ -89,7 +86,6 @@ class ForStatement:
 
     def __repr__(self):
         return f"{type(self).__name__} {self.__dict__}"
-
 
 class Parser:
     def __init__(self, lexer: Lexer):
@@ -154,7 +150,7 @@ class Parser:
             self._next_token()
 
     def parse_function_statement(self) -> FunctionStatement:
-        self._next_token()
+        self._accept_token(Token.FUNCTION)
         identifier: Identifier = self.parse_identifier()
         self._accept_token(Token.LParen)
         identifiers: List[Identifier] = []
@@ -163,17 +159,24 @@ class Parser:
             identifiers.append(identifier)
         self._accept_token(Token.RParen)
         block = self.parse_block_statement()
-        fn: FunctionStatement = FunctionStatement(identifiers, None,block)
+        fn: FunctionStatement = FunctionStatement(identifiers, block)
         return fn
 
     def parse_let_statement(self) -> LetStatement:
         self._accept_token(Token.LET)
         identifier: Identifier = self.parse_identifier()
         self._accept_token(Token.ASSIGN)
-        self.parse_infix_expression()
+        infix: InfixExpression = self.parse_infix_expression()
+        statement: LetStatement = LetStatement(identifier, infix)
+        return statement
     
     def parse_const_statement(self) -> ConstStatement:
-        pass
+        self._accept_token(Token.CONST)
+        identifier: Identifier = self.parse_identifier()
+        self._accept_token(Token.ASSIGN)
+        infix: InfixExpression = self.parse_infix_expression()
+        statement: ConstStatement = ConstStatement(identifier, infix)
+        return statement
 
     def parse_expression_statement(self) -> ExpressionStatement:
         token, str_repr = self.curr_token, self.curr_str
@@ -204,7 +207,7 @@ class Parser:
         return InfixExpression(lhs, token, rhs)
 
     def parse_identifier(self) -> Identifier:
-        return Identifier(self.curr_token, self.curr_str)
+        return Identifier(self.curr_token, self.curr_str, self)
 
     def parse_if_expression(self) -> IfExpression | None:
         self._next_token()
