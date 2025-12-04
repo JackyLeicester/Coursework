@@ -20,11 +20,10 @@ class InfixExpression(Expression):
         self.rhs = rhs
 
 class Identifier(Expression):
-    def __init__(self, token: Token, name: str, parser: Parser, read_only: bool=False):
+    def __init__(self, token: Token, name: str, read_only: bool=False):
         self.token = token
         self.name = name
         self.value = "null"
-        self.parser = parser
         self.read_only = read_only
     
     def get(self):
@@ -33,7 +32,7 @@ class Identifier(Expression):
     def set(self, value):
         if self.read_only:
             # call logical errors once that is complete
-            return
+            raise ZeroDivisionError
         self.value = value
 
 class LetStatement(Expression):
@@ -47,7 +46,7 @@ class ConstStatement(Expression):
         self.infix = infix
 
 class BlockStatement(Expression):
-    def __init__(self, statements: Expression):
+    def __init__(self, statements: List[Expression]):
         self.statements: List[Expression] = statements
 
 class IfExpression:
@@ -66,7 +65,7 @@ class IfExpression:
         return f"{type(self).__name__} {self.__dict__}"    
 
 class FunctionStatement:
-    def __init__(self, variables: List[Tuple[str, Token]], block: BlockStatement):
+    def __init__(self, variables: List[Identifier], block: BlockStatement):
         self.variables = variables
         self.block = block
 
@@ -99,7 +98,7 @@ class Parser:
 
         self._register_prefix_fn(Token.IDENTIFIER, self.parse_identifier)
         self._register_prefix_fn(Token.IF, self.parse_if_expression)
-        self._register_prefix_fn(Token.FN, self.parse_function_statement)
+        self._register_prefix_fn(Token.FUNCTION, self.parse_function_statement)
         self._register_prefix_fn(Token.LET, self.parse_let_statement)
         self._register_prefix_fn(Token.CONST, self.parse_const_statement)
 
@@ -152,12 +151,12 @@ class Parser:
     def parse_function_statement(self) -> FunctionStatement:
         self._accept_token(Token.FUNCTION)
         identifier: Identifier = self.parse_identifier()
-        self._accept_token(Token.LParen)
+        self._accept_token(Token.LPAREN)
         identifiers: List[Identifier] = []
         while self.next_token == Token.IDENTIFIER:
-            identifier: Identifier = self.parse_identifier
+            identifier: Identifier = self.parse_identifier()
             identifiers.append(identifier)
-        self._accept_token(Token.RParen)
+        self._accept_token(Token.RPAREN)
         block = self.parse_block_statement()
         fn: FunctionStatement = FunctionStatement(identifiers, block)
         return fn
@@ -257,6 +256,6 @@ class Parser:
         sys.exit(message)
 
     def _accept_token(self, token: Token):
-        if self.current_token != token:
-            self.call_syntax_error([], self.current_token)
+        if self.curr_token != token:
+            self._call_syntax_error([], self.curr_token)
         self._next_token()
