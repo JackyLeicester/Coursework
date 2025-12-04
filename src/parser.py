@@ -46,12 +46,12 @@ class Identifier(Expression):
             raise ZeroDivisionError
         self.value = value
 
-class LetStatement(Expression):
+class LetStatement:
     def __init__(self, identifier: Identifier, infix: InfixExpression):
         self.identifier = identifier
         self.infix = infix
 
-class ConstStatement(Expression):
+class ConstStatement:
     def __init__(self, identifier: Identifier, infix: InfixExpression):
         self.identifier = identifier
         self.infix = infix
@@ -115,9 +115,9 @@ class Parser:
         self._register_prefix_fn(Token.NOT, self.parse_prefix_expression)
         self._register_prefix_fn(Token.TRUE, self.parse_boolean)
         self._register_prefix_fn(Token.FALSE, self.parse_boolean)
-        self._register_prefix_fn(Token.FUNCTION, self.parse_function_statement)
-        self._register_prefix_fn(Token.LET, self.parse_let_statement)
-        self._register_prefix_fn(Token.CONST, self.parse_const_statement)
+        # self._register_prefix_fn(Token.FUNCTION, self.parse_function_statement)
+        # self._register_prefix_fn(Token.LET, self.parse_let_statement)
+        # self._register_prefix_fn(Token.CONST, self.parse_const_statement)
 
         for token in [
             Token.EQUAL,
@@ -303,15 +303,21 @@ class Parser:
         block: BlockStatement = BlockStatement(statements)
         return block
 
-    def _call_syntax_error(self, expected_tokens: list[str], actual_token: Token) -> None:
+    def _get_token_name(self, token: Token) -> str:
+        for name, value in Token.__dict__.items():
+            if value == token:
+                return name
+        return 'NOT A TOKEN'
+
+    def _call_syntax_error(self, expected_tokens: list[Token], actual_token: Token) -> None:
         message: str = f"SYNTAX ERROR: expected tokens: "
-        message += "".join([token + " " for token in expected_tokens])
+        message += "".join([self._get_token_name(token) + " " for token in expected_tokens])
         message += (
-            "\n" + f"actual_token: {actual_token} at line: {self.lexer.line_number}"
+            "\n" + f"actual_token: {self._get_token_name(actual_token)} at line: {self.lexer.line_number}"
         )
         raise Exception(message)
 
     def _accept_token(self, token: Token):
         if self.curr_token != token:
-            self._call_syntax_error([], self.curr_token)
+            self._call_syntax_error([token], self.curr_token)
         self._next_token()
