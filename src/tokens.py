@@ -1,7 +1,10 @@
-from enum import Enum, auto
+from enum import IntEnum, auto
+from functools import total_ordering
 
 
-class Token(Enum):
+@total_ordering
+class Token(IntEnum):
+    LOWEST_PRECEDENCE = auto()
     EOF = auto()
     LET = auto()
     CONST = auto()
@@ -13,12 +16,6 @@ class Token(Enum):
     FLOAT = auto()
     CHAR = auto()
     STRING = auto()
-    EQUAL = auto()
-    NOTEQUAL = auto()
-    GREATER = auto()
-    GREATEREQUAL = auto()
-    LESS = auto()
-    LESSEQUAL = auto()
     IF = auto()
     ELSE = auto()
     LPAREN = auto()
@@ -27,7 +24,21 @@ class Token(Enum):
     RBRACKETS = auto()
     TRUE = auto()
     FALSE = auto()
+<<<<<<<< HEAD:src/mytoken.py
     FUNCTION = auto()
+========
+
+    OR = auto()
+    AND = auto()
+    EQUAL = auto()
+    NOTEQUAL = auto()
+    LESS = auto()
+    LESSEQUAL = auto()
+    GREATER = auto()
+    GREATEREQUAL = auto()
+
+    NOT = auto()
+>>>>>>>> 7741bc9bbd96a1521ce16386c95e96b95af07ff3:src/tokens.py
     PLUS = auto()
     MINUS = auto()
     ASTERISK = auto()
