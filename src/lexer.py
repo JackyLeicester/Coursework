@@ -118,13 +118,13 @@ class Lexer:
                     token, str_repr = Token.LESS, "<"
 
             case "(":
-                return Token.LPAREN, "("
+                token, str_repr = Token.LPAREN, "("
             case ")":
-                return Token.RPAREN, ")"
+                token, str_repr = Token.RPAREN, ")"
             case "{":
-                return Token.LBRACE, "{"
+                token, str_repr = Token.LBRACE, "{"
             case "}":
-                return Token.RBRACE, "}"
+                token, str_repr = Token.RBRACE, "}"
 
             # arithmetic operators
             case "+":

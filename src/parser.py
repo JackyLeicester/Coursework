@@ -51,6 +51,14 @@ class Identifier(Expression):
         self.value = value
 
 
+class NumberLiteral(Expression):
+    def __init__(self, token: Token, value: str):
+        self.token = token
+        self.value = value
+    def __repr__(self):
+        return f"{self.value}"
+
+
 class BlockStatement:
     pass
 
@@ -107,6 +115,9 @@ class Parser:
         self._register_prefix_fn(Token.NOT, self.parse_prefix_expression)
         self._register_prefix_fn(Token.TRUE, self.parse_boolean)
         self._register_prefix_fn(Token.FALSE, self.parse_boolean)
+
+        self._register_prefix_fn(Token.INT, self.parse_for_statement)
+        self._register_prefix_fn(Token.FLOAT, self.parse_for_statement)
 
         for token in [
             Token.EQUAL,
@@ -223,6 +234,9 @@ class Parser:
     def parse_identifier(self) -> Identifier:
         return Identifier(self.curr_token, self.curr_str)
 
+    def parce_number_literal(self) -> NumberLiteral | None:
+        return NumberLiteral(self.curr_token, self.curr_str)
+
     def parse_if_expression(self) -> IfExpression | None:
         self._next_token()
         condition = self.parse_expression()
@@ -250,8 +264,18 @@ class Parser:
         block = self.parse_block_statement()
         return ForStatement(initialization, condition, increment, block)
 
-    def parse_paren(self) -> None:
+    def parse_paren(self) -> Expression | None:
         self._next_token()
+
+        expr = self.parse_expression(Token.LOWEST_PRECEDENCE)
+        if expr is None:
+            return None
+
+        if not self._peek_token_is(Token.RPAREN):
+            return None
+
+        self._next_token()
+        return expr
 
     def parse_block_statement(self) -> BlockStatement | None:
         pass
