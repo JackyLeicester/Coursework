@@ -24,10 +24,7 @@ class Token(IntEnum):
     RBRACKETS = auto()
     TRUE = auto()
     FALSE = auto()
-<<<<<<<< HEAD:src/mytoken.py
     FUNCTION = auto()
-========
-
     OR = auto()
     AND = auto()
     EQUAL = auto()
@@ -38,7 +35,6 @@ class Token(IntEnum):
     GREATEREQUAL = auto()
 
     NOT = auto()
->>>>>>>> 7741bc9bbd96a1521ce16386c95e96b95af07ff3:src/tokens.py
     PLUS = auto()
     MINUS = auto()
     ASTERISK = auto()
