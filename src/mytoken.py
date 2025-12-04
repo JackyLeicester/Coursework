@@ -28,8 +28,6 @@ class Token(Enum):
     TRUE = auto()
     FALSE = auto()
     FUNCTION = auto()
-    TRUE = auto()
-    FALSE = auto()
     PLUS = auto()
     MINUS = auto()
     ASTERISK = auto()

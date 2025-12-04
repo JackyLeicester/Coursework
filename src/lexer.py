@@ -1,5 +1,5 @@
 import string
-from token import Token
+from src.mytoken import Token
 from typing import Tuple
 
 

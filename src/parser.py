@@ -1,5 +1,5 @@
-from lexer import Lexer
-from token import Token
+from src.lexer import Lexer
+from src.mytoken import Token
 from typing import Dict, List, Tuple
 from collections.abc import Callable
 from enum import Enum, auto
@@ -247,13 +247,13 @@ class Parser:
         block: BlockStatement = BlockStatement(statements)
         return block
 
-    def _call_syntax_error(self, expected_tokens: list[str], actual_token: str) -> None:
+    def _call_syntax_error(self, expected_tokens: list[str], actual_token: Token) -> None:
         message: str = f"SYNTAX ERROR: expected tokens: "
         message += "".join([token + " " for token in expected_tokens])
         message += (
-            "\n" + f"actual_token: {actual_token} at line: {self.lex.line_number}"
+            "\n" + f"actual_token: {actual_token} at line: {self.lexer.line_number}"
         )
-        sys.exit(message)
+        raise Exception(message)
 
     def _accept_token(self, token: Token):
         if self.curr_token != token:

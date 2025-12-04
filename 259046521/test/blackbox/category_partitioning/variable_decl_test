@@ -1,0 +1,12 @@
+IDENTIFIER:
+    real_name.
+    true.[error]
+    false.[error]
+ASSIGN:
+    =.
+    ?.[error]
+    HAM.[error]
+EXPRESSION:
+    5.
+    =.[error]
+    ==.[error]
