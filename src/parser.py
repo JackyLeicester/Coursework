@@ -200,12 +200,11 @@ class Parser:
     def parse_let_statement(self) -> LetStatement:
         self._accept_token(Token.LET)
         identifier: Identifier = self.parse_identifier()
-        # there is a better option here
         self._accept_token(Token.ASSIGN)
         expression: Expression = self.parse_expression()
-        # self._accept_token(Token.LITERAL)
-        self.parse_expression()
         statement: LetStatement = LetStatement(identifier, expression)
+        # workaround for expressions not moving forwards
+        self._next_token()
         return statement
 
     def parse_const_statement(self) -> ConstStatement:
@@ -214,12 +213,13 @@ class Parser:
         self._accept_token(Token.ASSIGN)
         expression: Expression = self.parse_expression()
         statement: ConstStatement = ConstStatement(identifier, expression)
+        self._next_token()
+        # workaround for expressions not moving forwards
         return statement
 
     def parse_expression_statement(self) -> ExpressionStatement:
         token, str_repr = self.curr_token, self.curr_str
         expression = self.parse_expression()
-        self._accept_token(Token.SEMICOLON)
         return ExpressionStatement(token, expression)
 
     def parse_expression(
