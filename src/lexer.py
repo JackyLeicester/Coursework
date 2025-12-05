@@ -1,5 +1,5 @@
 import string
-from src.tokens import Token
+from .tokens import Token
 from typing import Tuple
 
 
@@ -122,9 +122,9 @@ class Lexer:
             case ")":
                 return Token.RPAREN, ")"
             case "{":
-                return Token.LBRACE, "{"
+                return Token.LBRACKETS, "{"
             case "}":
-                return Token.RBRACE, "}"
+                return Token.RBRACKETS, "}"
 
             # arithmetic operators
             case "+":
@@ -171,8 +171,6 @@ class Lexer:
                 return Token.TRUE, word
             case "false":
                 return Token.FALSE, word
-            case "fn":
-                return Token.FUNCTION, word
             case word if len(word) >= 2 and word.startswith("'") and word.endswith("'"):
                 return Token.CHAR, word[1:-1]
             case word if len(word) >= 2 and word.startswith('"') and word.endswith('"'):
