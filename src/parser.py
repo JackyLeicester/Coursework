@@ -5,13 +5,16 @@ from collections.abc import Callable
 from enum import Enum, auto
 import sys
 
+
 class Expression:
     pass
+
 
 class ExpressionStatement(Expression):
     def __init__(self, token: Token, expression: Expression | None):
         self.token = token
         self.expression = expression
+
 
 class InfixExpression(Expression):
     def __init__(self, lhs: Expression, operation: Token, rhs: Expression):
@@ -31,12 +34,12 @@ class PrefixExpression(Expression):
 
 
 class Identifier(Expression):
-    def __init__(self, token: Token, name: str, read_only: bool=False):
+    def __init__(self, token: Token, name: str, read_only: bool = False):
         self.token = token
         self.name = name
         self.value = "null"
         self.read_only = read_only
-    
+
     def get(self):
         return self.value
 
@@ -46,19 +49,23 @@ class Identifier(Expression):
             raise ZeroDivisionError
         self.value = value
 
+
 class LetStatement(Expression):
     def __init__(self, identifier: Identifier, expression: Expression):
         self.identifier = identifier
         self.expression = expression
+
 
 class ConstStatement(Expression):
     def __init__(self, identifier: Identifier, expression: Expression):
         self.identifier = identifier
         self.expression = expression
 
+
 class BlockStatement(Expression):
     def __init__(self, statements: List[Expression]):
         self.statements: List[Expression] = statements
+
 
 class IfExpression(Expression):
     def __init__(
@@ -73,12 +80,14 @@ class IfExpression(Expression):
         self.alternative = alternative
 
     def __repr__(self):
-        return f"{type(self).__name__} {self.__dict__}"    
+        return f"{type(self).__name__} {self.__dict__}"
+
 
 class FunctionStatement(Expression):
     def __init__(self, variables: List[Identifier], block: BlockStatement):
         self.variables = variables
         self.block = block
+
 
 class ForStatement:
     def __init__(
@@ -96,6 +105,7 @@ class ForStatement:
 
     def __repr__(self):
         return f"{type(self).__name__} {self.__dict__}"
+
 
 class Parser:
     def __init__(self, lexer: Lexer):
@@ -195,7 +205,7 @@ class Parser:
         self._accept_token(Token.LITERAL)
         statement: LetStatement = LetStatement(identifier, expression)
         return statement
-    
+
     def parse_const_statement(self) -> ConstStatement:
         self._accept_token(Token.CONST)
         identifier: Identifier = self.parse_identifier()
@@ -310,13 +320,18 @@ class Parser:
         for name, value in Token.__dict__.items():
             if value == token:
                 return name
-        return 'NOT A TOKEN'
+        return "NOT A TOKEN"
 
-    def _call_syntax_error(self, expected_tokens: list[Token], actual_token: Token, token_text: str) -> None:
+    def _call_syntax_error(
+        self, expected_tokens: list[Token], actual_token: Token, token_text: str
+    ) -> None:
         message: str = f"SYNTAX ERROR: expected tokens: "
-        message += "".join([self._get_token_name(token) + " " for token in expected_tokens])
+        message += "".join(
+            [self._get_token_name(token) + " " for token in expected_tokens]
+        )
         message += (
-            "\n" + f"actual_token: {self._get_token_name(actual_token)} {token_text} at line: {self.lexer.line_number}"
+            "\n"
+            + f"actual_token: {self._get_token_name(actual_token)} {token_text} at line: {self.lexer.line_number}"
         )
         raise Exception(message)
 

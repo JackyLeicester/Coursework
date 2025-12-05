@@ -4,29 +4,34 @@ from src.parser import Parser
 import unittest
 import sys
 
+
 def capture_output():
     captured_output = StringIO()
     sys.stdout = captured_output
 
-def stop_capture()->str:
+
+def stop_capture() -> str:
     if not hasattr(sys.stdout, "getvalue"):
         return ""
     output: str = sys.stdout.getvalue()
     sys.stdout = sys.__stdout__
     return output
 
-def run_test(test_input: str)->str:
+
+def run_test(test_input: str) -> str:
     capture_output()
     lexer: Lexer = Lexer(test_input)
     parser: Parser = Parser(lexer)
     parser.run()
     return stop_capture()
 
+
 def expect_exception(tester: unittest.TestCase, test_input: str):
     with tester.assertRaises(Exception):
         lexer: Lexer = Lexer(test_input)
         parser: Parser = Parser(lexer)
         parser.run()
+
 
 class VariableDeclarationTest(unittest.TestCase):
     def test1(self):
@@ -51,5 +56,6 @@ class VariableDeclarationTest(unittest.TestCase):
         output: str = run_test("let realname = 5")
         self.assertEqual(output, "")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()
