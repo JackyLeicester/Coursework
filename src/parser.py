@@ -47,14 +47,14 @@ class Identifier(Expression):
         self.value = value
 
 class LetStatement(Expression):
-    def __init__(self, identifier: Identifier, infix: InfixExpression):
+    def __init__(self, identifier: Identifier, expression: Expression):
         self.identifier = identifier
-        self.infix = infix
+        self.expression = expression
 
 class ConstStatement(Expression):
-    def __init__(self, identifier: Identifier, infix: InfixExpression):
+    def __init__(self, identifier: Identifier, expression: Expression):
         self.identifier = identifier
-        self.infix = infix
+        self.expression = expression
 
 class BlockStatement(Expression):
     def __init__(self, statements: List[Expression]):
@@ -191,17 +191,17 @@ class Parser:
         # there is a better option here
         self._accept_token(Token.IDENTIFIER)
         self._accept_token(Token.ASSIGN)
-        infix: Expression = self.parse_expression()
+        expression: Expression = self.parse_expression()
         self._accept_token(Token.LITERAL)
-        statement: LetStatement = LetStatement(identifier, infix)
+        statement: LetStatement = LetStatement(identifier, expression)
         return statement
     
     def parse_const_statement(self) -> ConstStatement:
         self._accept_token(Token.CONST)
         identifier: Identifier = self.parse_identifier()
         self._accept_token(Token.ASSIGN)
-        infix: InfixExpression = self.parse_infix_expression()
-        statement: ConstStatement = ConstStatement(identifier, infix)
+        expression: Expression = self.parse_expression()
+        statement: ConstStatement = ConstStatement(identifier, expression)
         return statement
 
     def parse_expression_statement(self) -> ExpressionStatement:
