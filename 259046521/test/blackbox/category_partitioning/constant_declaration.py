@@ -28,28 +28,29 @@ def expect_exception(tester: unittest.TestCase, test_input: str):
         parser: Parser = Parser(lexer)
         parser.run()
 
-class VariableDeclarationTest(unittest.TestCase):
+class ConstantDeclarationTest(unittest.TestCase):
     def test1(self):
-        expect_exception(self, "let true")
+        expect_exception(self, "const true")
 
     def test2(self):
-        expect_exception(self, "let false")
+        expect_exception(self, "const false")
 
     def test3(self):
-        expect_exception(self, "let true")
+        expect_exception(self, "const true")
 
     def test4(self):
-        expect_exception(self, "let real_name ?")
+        expect_exception(self, "const real_name ?")
 
     def test5(self):
-        expect_exception(self, "let real_name ==")
+        expect_exception(self, "const real_name ==")
 
     def test6(self):
-        expect_exception(self, "let real_name HAM")
+        expect_exception(self, "const real_name HAM")
 
     def test7(self):
-        output: str = run_test("let realname = 5")
+        output: str = run_test("const realname = 5")
         self.assertEqual(output, "")
+
 
 if __name__ == '__main__':
     unittest.main()
