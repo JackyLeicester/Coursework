@@ -46,12 +46,12 @@ class Identifier(Expression):
             raise ZeroDivisionError
         self.value = value
 
-class LetStatement:
+class LetStatement(Expression):
     def __init__(self, identifier: Identifier, infix: InfixExpression):
         self.identifier = identifier
         self.infix = infix
 
-class ConstStatement:
+class ConstStatement(Expression):
     def __init__(self, identifier: Identifier, infix: InfixExpression):
         self.identifier = identifier
         self.infix = infix
@@ -75,7 +75,7 @@ class IfExpression(Expression):
     def __repr__(self):
         return f"{type(self).__name__} {self.__dict__}"    
 
-class FunctionStatement:
+class FunctionStatement(Expression):
     def __init__(self, variables: List[Identifier], block: BlockStatement):
         self.variables = variables
         self.block = block
@@ -115,9 +115,9 @@ class Parser:
         self._register_prefix_fn(Token.NOT, self.parse_prefix_expression)
         self._register_prefix_fn(Token.TRUE, self.parse_boolean)
         self._register_prefix_fn(Token.FALSE, self.parse_boolean)
-        # self._register_prefix_fn(Token.FUNCTION, self.parse_function_statement)
-        # self._register_prefix_fn(Token.LET, self.parse_let_statement)
-        # self._register_prefix_fn(Token.CONST, self.parse_const_statement)
+        self._register_prefix_fn(Token.FUNCTION, self.parse_function_statement)
+        self._register_prefix_fn(Token.LET, self.parse_let_statement)
+        self._register_prefix_fn(Token.CONST, self.parse_const_statement)
 
         for token in [
             Token.EQUAL,
@@ -188,8 +188,11 @@ class Parser:
     def parse_let_statement(self) -> LetStatement:
         self._accept_token(Token.LET)
         identifier: Identifier = self.parse_identifier()
+        # there is a better option here
+        self._accept_token(Token.IDENTIFIER)
         self._accept_token(Token.ASSIGN)
-        infix: InfixExpression = self.parse_infix_expression()
+        infix: Expression = self.parse_expression()
+        self._accept_token(Token.LITERAL)
         statement: LetStatement = LetStatement(identifier, infix)
         return statement
     
@@ -309,15 +312,15 @@ class Parser:
                 return name
         return 'NOT A TOKEN'
 
-    def _call_syntax_error(self, expected_tokens: list[Token], actual_token: Token) -> None:
+    def _call_syntax_error(self, expected_tokens: list[Token], actual_token: Token, token_text: str) -> None:
         message: str = f"SYNTAX ERROR: expected tokens: "
         message += "".join([self._get_token_name(token) + " " for token in expected_tokens])
         message += (
-            "\n" + f"actual_token: {self._get_token_name(actual_token)} at line: {self.lexer.line_number}"
+            "\n" + f"actual_token: {self._get_token_name(actual_token)} {token_text} at line: {self.lexer.line_number}"
         )
         raise Exception(message)
 
     def _accept_token(self, token: Token):
         if self.curr_token != token:
-            self._call_syntax_error([token], self.curr_token)
+            self._call_syntax_error([token], self.curr_token, self.curr_str)
         self._next_token()
