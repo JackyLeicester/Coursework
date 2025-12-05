@@ -189,7 +189,7 @@ class Parser:
         identifier: Identifier = self.parse_identifier()
         self._accept_token(Token.LPAREN)
         identifiers: List[Identifier] = []
-        while self.next_token == Token.IDENTIFIER:
+        while self.curr_token == Token.IDENTIFIER:
             identifier: Identifier = self.parse_identifier()
             identifiers.append(identifier)
         self._accept_token(Token.RPAREN)
@@ -201,10 +201,10 @@ class Parser:
         self._accept_token(Token.LET)
         identifier: Identifier = self.parse_identifier()
         # there is a better option here
-        self._accept_token(Token.IDENTIFIER)
         self._accept_token(Token.ASSIGN)
         expression: Expression = self.parse_expression()
-        self._accept_token(Token.LITERAL)
+        # self._accept_token(Token.LITERAL)
+        self.parse_expression()
         statement: LetStatement = LetStatement(identifier, expression)
         return statement
 
@@ -219,8 +219,7 @@ class Parser:
     def parse_expression_statement(self) -> ExpressionStatement:
         token, str_repr = self.curr_token, self.curr_str
         expression = self.parse_expression()
-        if self._peek_token_is(Token.SEMICOLON):
-            self._next_token()
+        self._accept_token(Token.SEMICOLON)
         return ExpressionStatement(token, expression)
 
     def parse_expression(
