@@ -73,7 +73,6 @@ class Lexer:
     def next_token(self) -> Tuple[Token, str]:
         self.skip_non_tokens()
 
-
         token: Token = Token.EOF
         str_repr: str = ""
 

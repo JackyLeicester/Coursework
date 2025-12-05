@@ -84,11 +84,13 @@ class IfExpression(Expression):
 
 
 class FunctionStatement(Expression):
-    def __init__(self, identifier: Identifier, variables: List[Identifier], block: BlockStatement):
+    def __init__(
+        self, identifier: Identifier, variables: List[Identifier], block: BlockStatement
+    ):
         self.identifier = identifier
         self.variables = variables
         self.block = block
-        print('created function')
+        print("created function")
 
 
 class ForStatement:
