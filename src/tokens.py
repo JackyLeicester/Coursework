@@ -20,8 +20,8 @@ class Token(IntEnum):
     ELSE = auto()
     LPAREN = auto()
     RPAREN = auto()
-    LBRACKETS = auto()
-    RBRACKETS = auto()
+    LBRACE = auto()
+    RBRACE = auto()
     TRUE = auto()
     FALSE = auto()
     FUNCTION = auto()
@@ -33,7 +33,6 @@ class Token(IntEnum):
     LESSEQUAL = auto()
     GREATER = auto()
     GREATEREQUAL = auto()
-
     NOT = auto()
     PLUS = auto()
     MINUS = auto()

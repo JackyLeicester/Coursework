@@ -1,5 +1,5 @@
-from src.lexer import Lexer
-from src.tokens import Token
+from .lexer import Lexer
+from .tokens import Token
 from typing import Dict, List, Tuple
 from collections.abc import Callable
 from enum import Enum, auto
@@ -84,9 +84,11 @@ class IfExpression(Expression):
 
 
 class FunctionStatement(Expression):
-    def __init__(self, variables: List[Identifier], block: BlockStatement):
+    def __init__(self, identifier: Identifier, variables: List[Identifier], block: BlockStatement):
+        self.identifier = identifier
         self.variables = variables
         self.block = block
+        print('created function')
 
 
 class ForStatement:
@@ -192,7 +194,7 @@ class Parser:
             identifiers.append(identifier)
         self._accept_token(Token.RPAREN)
         block = self.parse_block_statement()
-        fn: FunctionStatement = FunctionStatement(identifiers, block)
+        fn: FunctionStatement = FunctionStatement(identifier, identifiers, block)
         return fn
 
     def parse_let_statement(self) -> LetStatement:
@@ -274,7 +276,9 @@ class Parser:
         return Identifier(self.curr_token, self.curr_str)
 
     def parse_identifier(self) -> Identifier:
-        return Identifier(self.curr_token, self.curr_str, self)
+        identifier: Identifier = Identifier(self.curr_token, self.curr_str)
+        self._accept_token(Token.IDENTIFIER)
+        return identifier
 
     def parse_if_expression(self) -> IfExpression | None:
         self._next_token()
@@ -307,12 +311,12 @@ class Parser:
         self._next_token()
 
     def parse_block_statement(self) -> BlockStatement | None:
-        self._accept_token(Token.LBRACKETS)
+        self._accept_token(Token.LBRACE)
         statements: List[Expression] = []
-        while self.curr_token != Token.RBRACKETS:
+        while self.curr_token != Token.RBRACE:
             statement: Expression = self.parse_expression_statement()
             statements.append(statement)
-        self._accept_token(Token.RBRACKETS)
+        self._accept_token(Token.RBRACE)
         block: BlockStatement = BlockStatement(statements)
         return block
 
