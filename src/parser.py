@@ -51,7 +51,7 @@ class Identifier(Expression):
         self.value = value
 
 
-class NumberLiteral(Expression):
+class IntegerLiteral(Expression):
     def __init__(self, token: Token, value: str):
         self.token = token
         self.value = value
@@ -116,8 +116,8 @@ class Parser:
         self._register_prefix_fn(Token.TRUE, self.parse_boolean)
         self._register_prefix_fn(Token.FALSE, self.parse_boolean)
 
-        self._register_prefix_fn(Token.INT, self.parse_for_statement)
-        self._register_prefix_fn(Token.FLOAT, self.parse_for_statement)
+        self._register_prefix_fn(Token.INT, self.parce_number_literal)
+        self._register_prefix_fn(Token.FLOAT, self.parce_number_literal)
 
         for token in [
             Token.EQUAL,
@@ -234,8 +234,8 @@ class Parser:
     def parse_identifier(self) -> Identifier:
         return Identifier(self.curr_token, self.curr_str)
 
-    def parce_number_literal(self) -> NumberLiteral | None:
-        return NumberLiteral(self.curr_token, self.curr_str)
+    def parce_number_literal(self) -> IntegerLiteral | None:
+        return IntegerLiteral(self.curr_token, self.curr_str)
 
     def parse_if_expression(self) -> IfExpression | None:
         self._next_token()
