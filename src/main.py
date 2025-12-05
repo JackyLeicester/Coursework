@@ -1,6 +1,6 @@
 from argparse import ArgumentParser, RawDescriptionHelpFormatter
-from lexer import Lexer
-from parser import Parser
+from src.lexer import Lexer
+from src.parser import Parser
 import textwrap
 
 
