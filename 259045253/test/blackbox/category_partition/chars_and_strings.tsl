@@ -1,0 +1,28 @@
+
+Test Case 1  		(Key = 1.)
+   String :  Empty string
+
+
+Test Case 2  		(Key = 2.)
+   String :  Some string
+
+
+Test Case 3  		(Key = 3.)
+   String :  Open double quote only
+
+
+Test Case 4  		(Key = 4.)
+   String :  Empty character
+
+
+Test Case 5  		(Key = 5.)
+   String :  Some character
+
+
+Test Case 6  		(Key = 6.)
+   String :  Open single quote only
+
+
+Test Case 7  		(Key = 7.)
+   String :  More than one character in single quote
+
