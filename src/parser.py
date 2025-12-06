@@ -54,6 +54,7 @@ class IntegerLiteral(Expression):
     def __init__(self, token: Token, value: str):
         self.token = token
         self.value = value
+
     def __repr__(self):
         return f"{self.value}"
 
