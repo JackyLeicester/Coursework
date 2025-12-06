@@ -173,8 +173,6 @@ class Lexer:
                 return Token.TRUE, word
             case "false":
                 return Token.FALSE, word
-            case "fn":
-                return Token.FUNCTION, word
             case word if len(word) >= 2 and word.startswith("'") and word.endswith("'"):
                 return Token.CHAR, word[1:-1]
             case word if len(word) >= 2 and word.startswith('"') and word.endswith('"'):
