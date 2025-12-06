@@ -1,7 +1,8 @@
-from lexer import Lexer
-from tokens import Token
-from typing import Dict
+from src.lexer import Lexer
+from src.tokens import Token
+from typing import Dict, List, Tuple
 from collections.abc import Callable
+from enum import Enum, auto
 import sys
 
 
@@ -33,12 +34,10 @@ class PrefixExpression(Expression):
 
 
 class Identifier(Expression):
-    def __init__(
-        self, token: Token, value: str, parser: Parser, read_only: bool = False
-    ):
+    def __init__(self, token: Token, name: str, read_only: bool = False):
         self.token = token
-        self.value = value
-        self.parser = parser
+        self.name = name
+        self.value = "null"
         self.read_only = read_only
 
     def get(self):
@@ -47,7 +46,7 @@ class Identifier(Expression):
     def set(self, value):
         if self.read_only:
             # call logical errors once that is complete
-            return
+            raise ZeroDivisionError
         self.value = value
 
 
@@ -59,8 +58,21 @@ class IntegerLiteral(Expression):
         return f"{self.value}"
 
 
-class BlockStatement:
-    pass
+class LetStatement(Expression):
+    def __init__(self, identifier: Identifier, expression: Expression):
+        self.identifier = identifier
+        self.expression = expression
+
+
+class ConstStatement(Expression):
+    def __init__(self, identifier: Identifier, expression: Expression):
+        self.identifier = identifier
+        self.expression = expression
+
+
+class BlockStatement(Expression):
+    def __init__(self, statements: List[Expression]):
+        self.statements: List[Expression] = statements
 
 
 class IfExpression(Expression):
@@ -77,6 +89,12 @@ class IfExpression(Expression):
 
     def __repr__(self):
         return f"{type(self).__name__} {self.__dict__}"
+
+
+class FunctionStatement(Expression):
+    def __init__(self, variables: List[Identifier], block: BlockStatement):
+        self.variables = variables
+        self.block = block
 
 
 class ForStatement:
@@ -104,7 +122,7 @@ class Parser:
         self.next_token, self.next_str = self.lexer.next_token()
         self.errors = []
 
-        self.symbols: Dict[str, object]
+        self.symbols: Dict[str, object] = dict()
         self.prefix_parse_fns: dict[Token, Callable[[], Expression | None]] = dict()
         self.infix_parse_fns: dict[Token, Callable[[Expression], Expression | None]] = (
             dict()
@@ -115,6 +133,9 @@ class Parser:
         self._register_prefix_fn(Token.NOT, self.parse_prefix_expression)
         self._register_prefix_fn(Token.TRUE, self.parse_boolean)
         self._register_prefix_fn(Token.FALSE, self.parse_boolean)
+        self._register_prefix_fn(Token.FUNCTION, self.parse_function_statement)
+        self._register_prefix_fn(Token.LET, self.parse_let_statement)
+        self._register_prefix_fn(Token.CONST, self.parse_const_statement)
 
         self._register_prefix_fn(Token.INT, self.parce_number_literal)
         self._register_prefix_fn(Token.FLOAT, self.parce_number_literal)
@@ -171,6 +192,38 @@ class Parser:
                 case _:
                     self.parse_expression_statement()
             self._next_token()
+
+    def parse_function_statement(self) -> FunctionStatement:
+        self._accept_token(Token.FUNCTION)
+        identifier: Identifier = self.parse_identifier()
+        self._accept_token(Token.LPAREN)
+        identifiers: List[Identifier] = []
+        while self.next_token == Token.IDENTIFIER:
+            identifier: Identifier = self.parse_identifier()
+            identifiers.append(identifier)
+        self._accept_token(Token.RPAREN)
+        block = self.parse_block_statement()
+        fn: FunctionStatement = FunctionStatement(identifiers, block)
+        return fn
+
+    def parse_let_statement(self) -> LetStatement:
+        self._accept_token(Token.LET)
+        identifier: Identifier = self.parse_identifier()
+        # there is a better option here
+        self._accept_token(Token.IDENTIFIER)
+        self._accept_token(Token.ASSIGN)
+        expression: Expression = self.parse_expression()
+        self._accept_token(Token.LITERAL)
+        statement: LetStatement = LetStatement(identifier, expression)
+        return statement
+
+    def parse_const_statement(self) -> ConstStatement:
+        self._accept_token(Token.CONST)
+        identifier: Identifier = self.parse_identifier()
+        self._accept_token(Token.ASSIGN)
+        expression: Expression = self.parse_expression()
+        statement: ConstStatement = ConstStatement(identifier, expression)
+        return statement
 
     def parse_expression_statement(self) -> ExpressionStatement:
         token, str_repr = self.curr_token, self.curr_str
@@ -232,7 +285,7 @@ class Parser:
         return Identifier(self.curr_token, self.curr_str)
 
     def parse_identifier(self) -> Identifier:
-        return Identifier(self.curr_token, self.curr_str)
+        return Identifier(self.curr_token, self.curr_str, self)
 
     def parce_number_literal(self) -> IntegerLiteral | None:
         return IntegerLiteral(self.curr_token, self.curr_str)
@@ -278,12 +331,35 @@ class Parser:
         return expr
 
     def parse_block_statement(self) -> BlockStatement | None:
-        pass
+        self._accept_token(Token.LBRACKETS)
+        statements: List[Expression] = []
+        while self.curr_token != Token.RBRACKETS:
+            statement: Expression = self.parse_expression_statement()
+            statements.append(statement)
+        self._accept_token(Token.RBRACKETS)
+        block: BlockStatement = BlockStatement(statements)
+        return block
 
-    def _call_syntax_error(self, expected_tokens: list[str], actual_token: str) -> None:
+    def _get_token_name(self, token: Token) -> str:
+        for name, value in Token.__dict__.items():
+            if value == token:
+                return name
+        return "NOT A TOKEN"
+
+    def _call_syntax_error(
+        self, expected_tokens: list[Token], actual_token: Token, token_text: str
+    ) -> None:
         message: str = f"SYNTAX ERROR: expected tokens: "
-        message += "".join([token + " " for token in expected_tokens])
-        message += (
-            "\n" + f"actual_token: {actual_token} at line: {self.lexer.line_number}"
+        message += "".join(
+            [self._get_token_name(token) + " " for token in expected_tokens]
         )
-        sys.exit(message)
+        message += (
+            "\n"
+            + f"actual_token: {self._get_token_name(actual_token)} {token_text} at line: {self.lexer.line_number}"
+        )
+        raise Exception(message)
+
+    def _accept_token(self, token: Token):
+        if self.curr_token != token:
+            self._call_syntax_error([token], self.curr_token, self.curr_str)
+        self._next_token()

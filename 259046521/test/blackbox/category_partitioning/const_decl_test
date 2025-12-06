@@ -1,0 +1,15 @@
+CONST:
+    CONST.
+    GERM.[error]
+    GUM.[error]
+IDENTIFIER:
+    real_name.
+    true.[error]
+    false.[error]
+ASSIGN:
+    =.
+    ?.[error]
+    ABLADA.[error]
+EXPRESSION:
+    VALID_EXPRESSION.
+    INVALID_EXPRESSION.[error]
