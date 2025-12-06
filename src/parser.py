@@ -288,9 +288,11 @@ class Parser:
             return Identifier(Token.FUNCTION, name)
         self._accept_token(Token.LPAREN)
         parameters: List[Expression] = []
-        while self.curr_token != Token.RPAREN:
+        if self.curr_token != Token.RPAREN:
             parameters.append(self.parse_expression())
-            self._accept_token(Token.COMMA)
+            while self.curr_token != Token.RPAREN:
+                self._accept_token(Token.COMMA)
+                parameters.append(self.parse_expression())
         self._accept_token(Token.RPAREN)
         return CallExpression(name, parameters)
 

@@ -1,0 +1,3 @@
+fn love(seek){
+};
+love(seek);
