@@ -125,6 +125,8 @@ class Lexer:
                 token, str_repr = Token.LBRACE, "{"
             case "}":
                 token, str_repr = Token.RBRACE, "}"
+            case ",":
+                token, str_repr = Token.COMMA, ","
 
             # arithmetic operators
             case "+":

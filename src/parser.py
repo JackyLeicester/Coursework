@@ -90,7 +90,12 @@ class FunctionStatement(Expression):
         self.identifier = identifier
         self.variables = variables
         self.block = block
-        print("created function")
+
+
+class CallExpression(Expression):
+    def __init__(self, identifier_name: str, parameters: List[Expression]):
+        self.identifier_name = identifier_name
+        self.parameters = parameters
 
 
 class ForStatement:
@@ -276,10 +281,18 @@ class Parser:
     def parse_boolean(self) -> Identifier:
         return Identifier(self.curr_token, self.curr_str)
 
-    def parse_identifier(self) -> Identifier:
-        identifier: Identifier = Identifier(self.curr_token, self.curr_str)
+    def parse_identifier(self) -> Identifier | CallExpression:
+        name: str = self.curr_str
         self._accept_token(Token.IDENTIFIER)
-        return identifier
+        if self.curr_token != Token.LPAREN:
+            return Identifier(Token.FUNCTION, name)
+        self._accept_token(Token.LPAREN)
+        parameters: List[Expression] = []
+        while self.curr_token != Token.RPAREN:
+            parameters.append(self.parse_expression())
+            self._accept_token(Token.COMMA)
+        self._accept_token(Token.RPAREN)
+        return CallExpression(name, parameters)
 
     def parse_if_expression(self) -> IfExpression | None:
         self._next_token()
