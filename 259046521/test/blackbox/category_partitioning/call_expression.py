@@ -1,15 +1,29 @@
+from io import StringIO
 from src.lexer import Lexer
 from src.parser import Parser
 import unittest
 import sys
 
 
+def capture_output():
+    captured_output = StringIO()
+    sys.stdout = captured_output
+
+
+def stop_capture() -> str:
+    if not hasattr(sys.stdout, "getvalue"):
+        return ""
+    output: str = sys.stdout.getvalue()
+    sys.stdout = sys.__stdout__
+    return output
+
+
 def run_test(test_input: str) -> str:
-    # buffer: StringIO = capture_output()
+    capture_output()
     lexer: Lexer = Lexer(test_input)
     parser: Parser = Parser(lexer)
     parser.run()
-    return ""
+    return stop_capture()
 
 
 def expect_exception(tester: unittest.TestCase, test_input: str):

@@ -5,6 +5,22 @@ IDENTIFIER:
     true.[error]
     false.[error]
 LPAR:
-    (
-    )
-    A
+    (.
+    ).[error]
+    A.[error]
+RPAR:
+    ).
+    (.[error]
+    A.[error]
+LBRAC:
+    {.
+    ).[error]
+    }.[error]
+RBRAC:
+    }.
+    {.[error]
+    ).[error]
+SEMICOLON:
+    ;.
+    ".[error]
+    AA.[error]
