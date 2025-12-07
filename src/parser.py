@@ -138,7 +138,9 @@ class Parser:
             dict()
         )
 
-        self._register_prefix_fn(Token.IDENTIFIER, self.parse_identifier)
+        self._register_prefix_fn(
+            Token.IDENTIFIER, self.parse_identifier_or_callexpression
+        )
         self._register_prefix_fn(Token.IF, self.parse_if_expression)
         self._register_prefix_fn(Token.NOT, self.parse_prefix_expression)
         self._register_prefix_fn(Token.TRUE, self.parse_boolean)
@@ -209,7 +211,7 @@ class Parser:
         self._accept_token(Token.LPAREN)
         identifiers: List[Identifier] = []
         while self.curr_token == Token.IDENTIFIER:
-            identifier: Identifier = self.parse_identifier()
+            identifier: Identifier = self.parse_identifier_or_callexpression()
             identifiers.append(identifier)
         self._accept_token(Token.RPAREN)
         block = self.parse_block_statement()
@@ -293,11 +295,15 @@ class Parser:
     def parse_boolean(self) -> Identifier:
         return Identifier(self.curr_token, self.curr_str)
 
-    def parse_identifier(self) -> Identifier | CallExpression:
+    def parse_identifier_or_callexpression(self) -> Identifier:
+        if self.next_token == Token.LPAREN:
+            return self.parse_callexpression(self)
+        else:
+            return self.parse_identifier(self)
+
+    def parse_callexpression(self) -> CallExpression:
         name: str = self.curr_str
         self._accept_token(Token.IDENTIFIER)
-        if self.curr_token != Token.LPAREN:
-            return Identifier(Token.FUNCTION, name)
         self._accept_token(Token.LPAREN)
         parameters: List[Expression] = []
         if self.curr_token != Token.RPAREN:
@@ -307,6 +313,11 @@ class Parser:
                 parameters.append(self.parse_expression())
         self._accept_token(Token.RPAREN)
         return CallExpression(name, parameters)
+
+    def parse_identifier(self) -> Identifier:
+        identifier: Identifier = Identifier(self.curr_token, self.curr_str)
+        self._accept_token(Token.IDENTIFIER)
+        return identifier
 
     def parce_number_literal(self) -> IntegerLiteral | None:
         return IntegerLiteral(self.curr_token, self.curr_str)
