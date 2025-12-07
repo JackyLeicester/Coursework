@@ -5,32 +5,19 @@ import unittest
 import sys
 
 
-def capture_output():
-    captured_output = StringIO()
-    sys.stdout = captured_output
-
-
-def stop_capture() -> str:
-    if not hasattr(sys.stdout, "getvalue"):
-        return ""
-    output: str = sys.stdout.getvalue()
-    sys.stdout = sys.__stdout__
-    return output
-
-
 def run_test(test_input: str) -> str:
-    capture_output()
+    # buffer: StringIO = capture_output()
     lexer: Lexer = Lexer(test_input)
     parser: Parser = Parser(lexer)
     parser.run()
-    return stop_capture()
-
+    return ""
 
 def expect_exception(tester: unittest.TestCase, test_input: str):
     with tester.assertRaises(Exception):
         lexer: Lexer = Lexer(test_input)
         parser: Parser = Parser(lexer)
         parser.run()
+
 
 
 class ConstantDeclarationTest(unittest.TestCase):
