@@ -1,3 +1,5 @@
+from dataclasses import dataclass
+
 from src.lexer import Lexer
 from src.tokens import Token
 from typing import Dict, List, Tuple
@@ -57,6 +59,11 @@ class IntegerLiteral(Expression):
 
     def __repr__(self):
         return f"{self.value}"
+
+
+@dataclass
+class BooleanLiteral(Expression):
+    literal: bool
 
 
 class LetStatement(Expression):
@@ -291,8 +298,10 @@ class Parser:
         right = self.parse_expression(7)
         return PrefixExpression(token, operator, right)
 
-    def parse_boolean(self) -> Identifier:
-        return Identifier(self.curr_token, self.curr_str)
+    def parse_boolean(self) -> BooleanLiteral:
+        literal = BooleanLiteral(self.curr_str == "true")
+        self._next_token()
+        return literal
 
     def parse_identifier(self) -> Identifier:
         identifier = Identifier(self.curr_token, self.curr_str)
