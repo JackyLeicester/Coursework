@@ -42,7 +42,7 @@ def main():
     if args.debug:
         print("=== TOKENS ===")
         token, token_str = lexer.next_token()
-        while token.name != "EOF" and i < 10:
+        while token.name != "EOF":
             print(f"{token.name:15} {token_str}")
             token, token_str = lexer.next_token()
         print(f"{token.name:15} {token_str}")
