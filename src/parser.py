@@ -316,11 +316,10 @@ class Parser:
     def parse_if_expression(self) -> IfExpression | None:
         self._next_token()
         condition = self.parse_expression()
-        if self.next_token != Token.LPAREN:
-            return None
         consequence = self.parse_block_statement()
         alternative = None
-        if self.next_token == Token.ELSE:
+        if self.curr_token == Token.ELSE:
+            self._accept_token(Token.ELSE)
             alternative = self.parse_block_statement()
         return IfExpression(condition, consequence, alternative)
 
