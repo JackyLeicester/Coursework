@@ -283,7 +283,9 @@ class Parser:
         return Identifier(self.curr_token, self.curr_str)
 
     def parse_identifier(self) -> Identifier:
-        return Identifier(self.curr_token, self.curr_str, self)
+        identifier: Identifier = Identifier(self.curr_token, self.curr_str)
+        self._accept_token(Token.IDENTIFIER)
+        return identifier
 
     def parce_number_literal(self) -> IntegerLiteral | None:
         return IntegerLiteral(self.curr_token, self.curr_str)
