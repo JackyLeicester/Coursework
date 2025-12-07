@@ -71,6 +71,13 @@ class ConstStatement(Expression):
         self.expression = expression
 
 
+class AssignExpression(Expression):
+    def __init__(self, lhs: Expression, rhs: Expression):
+        self.lhs = lhs
+        self.token = Token.ASSIGN
+        self.rhs = rhs
+
+
 class BlockStatement(Expression):
     def __init__(self, statements: List[Expression]):
         self.statements: List[Expression] = statements
@@ -138,8 +145,8 @@ class Parser:
         self._register_prefix_fn(Token.LET, self.parse_let_statement)
         self._register_prefix_fn(Token.CONST, self.parse_const_statement)
 
-        self._register_prefix_fn(Token.INT, self.parce_number_literal)
-        self._register_prefix_fn(Token.FLOAT, self.parce_number_literal)
+        self._register_prefix_fn(Token.INT, self.parse_number_literal)
+        self._register_prefix_fn(Token.FLOAT, self.parse_number_literal)
 
         for token in [
             Token.EQUAL,
@@ -161,6 +168,8 @@ class Parser:
 
         self._register_prefix_fn(Token.FOR, self.parse_for_statement)
         self._register_prefix_fn(Token.LPAREN, self.parse_paren)
+
+        self._register_infix_fn(Token.ASSIGN, self.parse_assignment_expression)
 
     def __repr__(self):
         return f"{type(self).__name__}()"
@@ -223,6 +232,11 @@ class Parser:
         statement: ConstStatement = ConstStatement(identifier, expression)
         return statement
 
+    def parse_assignment_expression(self, lhs: Expression) -> AssignExpression:
+        self._accept_token(Token.ASSIGN)
+        rhs = self.parse_expression()
+        return AssignExpression(lhs, rhs)
+
     def parse_expression_statement(self) -> ExpressionStatement:
         token, str_repr = self.curr_token, self.curr_str
         expression = self.parse_expression()
@@ -244,14 +258,12 @@ class Parser:
         left_expr: Expression = left_exp
 
         while (
-            self.next_token != Token.SEMICOLON and precedence < self._peek_precedence()
+            self.next_token != Token.SEMICOLON and precedence < self._curr_precedence()
         ):
-            infix_fn = self.infix_parse_fns.get(self.next_token)
+            infix_fn = self.infix_parse_fns.get(self.curr_token)
             if infix_fn is None:
                 return left_expr
-
-            self._next_token()
-            left_expr = infix_fn(left_expr)  # type: ignore[arg-type]
+            left_expr = infix_fn(left_expr)
 
         return left_expr
 
@@ -283,12 +295,14 @@ class Parser:
         return Identifier(self.curr_token, self.curr_str)
 
     def parse_identifier(self) -> Identifier:
-        identifier: Identifier = Identifier(self.curr_token, self.curr_str)
+        identifier = Identifier(self.curr_token, self.curr_str)
         self._accept_token(Token.IDENTIFIER)
         return identifier
 
-    def parce_number_literal(self) -> IntegerLiteral | None:
-        return IntegerLiteral(self.curr_token, self.curr_str)
+    def parse_number_literal(self) -> IntegerLiteral | None:
+        int_literal = IntegerLiteral(self.curr_token, self.curr_str)
+        self._next_token()
+        return int_literal
 
     def parse_if_expression(self) -> IfExpression | None:
         self._next_token()
@@ -302,18 +316,18 @@ class Parser:
         return IfExpression(condition, consequence, alternative)
 
     def parse_for_statement(self) -> ForStatement | None:
-        self._next_token()
-        if not self._peek_token_is(Token.LPAREN):
-            return None
+        self._accept_token(Token.FOR)
+        self._accept_token(Token.LPAREN)
+
         initialization = self.parse_expression()
-        if not self._peek_token_is(Token.SEMICOLON):
-            return None
+        self._accept_token(Token.SEMICOLON)
+
         condition = self.parse_expression()
-        if not self._peek_token_is(Token.SEMICOLON):
-            return None
+        self._accept_token(Token.SEMICOLON)
+
         increment = self.parse_expression()
-        if not self._peek_token_is(Token.RPAREN):
-            return None
+        self._accept_token(Token.RPAREN)
+
         block = self.parse_block_statement()
         return ForStatement(initialization, condition, increment, block)
 
@@ -331,12 +345,12 @@ class Parser:
         return expr
 
     def parse_block_statement(self) -> BlockStatement | None:
-        self._accept_token(Token.LBRACKETS)
+        self._accept_token(Token.LBRACE)
         statements: List[Expression] = []
-        while self.curr_token != Token.RBRACKETS:
+        while self.curr_token != Token.RBRACE:
             statement: Expression = self.parse_expression_statement()
             statements.append(statement)
-        self._accept_token(Token.RBRACKETS)
+        self._accept_token(Token.RBRACE)
         block: BlockStatement = BlockStatement(statements)
         return block
 
