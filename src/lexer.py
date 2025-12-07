@@ -142,12 +142,42 @@ class Lexer:
             case ch if ch.isdigit() or (ch == "-" and self.peek().isdigit()):
                 # integer and float literals
                 token, str_repr = self.read_number()
+            case ch if ch in ["'", '"']:
+                token, str_repr = self._read_char_string()
             case ch if ch in string.ascii_letters:
                 token, str_repr = self._read_identifier()
             case _:
                 token, str_repr = Token.EOF, "\0"
         self.read_char()
         return token, str_repr
+
+    def _read_char_string(self) -> Tuple[Token, str]:
+        start_quote = self.ch
+        start_pos = self.position
+        self.read_char()
+
+        word: str = start_quote
+        while self.ch != start_quote and self.ch != "\0":
+            word += self.ch
+            self.read_char()
+        word += self.ch
+
+        if self.ch == "\0":
+            return Token.EOF, "\0"
+
+        if word.startswith("'") and word.endswith("'"):
+            if len(word) == 2 or len(word) == 3:
+                return Token.CHAR, word[1:-1]
+            else:
+                # This has to be error.
+                return Token.EOF, "\0"
+
+        if len(word) >= 2 and word.startswith('"') and word.endswith('"'):
+            return Token.STRING, word[1:-1]
+
+        assert False, (
+            "Something went wrong in parsing `STRING` and `CHAR` token in the `Lexer`"
+        )
 
     # takes in a word and should return a matching token, new tokens will be added over time
     def _read_identifier(self) -> Tuple[Token, str]:
@@ -171,10 +201,6 @@ class Lexer:
                 return Token.TRUE, word
             case "false":
                 return Token.FALSE, word
-            case word if len(word) >= 2 and word.startswith("'") and word.endswith("'"):
-                return Token.CHAR, word[1:-1]
-            case word if len(word) >= 2 and word.startswith('"') and word.endswith('"'):
-                return Token.STRING, word[1:-1]
             case _:
                 return Token.IDENTIFIER, word
 
