@@ -307,7 +307,7 @@ class Parser:
                 parameters.append(self.parse_expression())
         self._accept_token(Token.RPAREN)
         return CallExpression(name, parameters)
-    
+
     def parce_number_literal(self) -> IntegerLiteral | None:
         return IntegerLiteral(self.curr_token, self.curr_str)
 
