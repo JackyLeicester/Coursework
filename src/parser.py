@@ -318,9 +318,9 @@ class Parser:
 
     def parse_identifier_or_callexpression(self) -> Identifier:
         if self.next_token == Token.LPAREN:
-            return self.parse_callexpression(self)
+            return self.parse_callexpression()
         else:
-            return self.parse_identifier(self)
+            return self.parse_identifier()
 
     def parse_callexpression(self) -> CallExpression:
         name: str = self.curr_str
