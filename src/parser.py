@@ -4,9 +4,6 @@ from lexer import Lexer
 from tokens import Token
 from typing import Dict, List, Tuple
 from collections.abc import Callable
-from enum import Enum, auto
-import sys
-
 
 class Expression:
     pass
