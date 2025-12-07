@@ -1,5 +1,5 @@
 import string
-from .tokens import Token
+from tokens import Token
 from typing import Tuple
 
 
@@ -125,6 +125,8 @@ class Lexer:
                 token, str_repr = Token.LBRACE, "{"
             case "}":
                 token, str_repr = Token.RBRACE, "}"
+            case ",":
+                token, str_repr = Token.COMMA, ","
 
             # arithmetic operators
             case "+":
@@ -182,10 +184,10 @@ class Lexer:
     # takes in a word and should return a matching token, new tokens will be added over time
     def _read_identifier(self) -> Tuple[Token, str]:
         word: str = ""
-        while self.ch in string.ascii_letters or self.ch in string.digits:
+        while self.peek() in string.ascii_letters or self.peek() in string.digits:
             word += self.ch
             self.read_char()
-
+        word += self.ch
         match word:
             case "let":
                 return Token.LET, word

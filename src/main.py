@@ -1,6 +1,6 @@
 from argparse import ArgumentParser, RawDescriptionHelpFormatter
-from src.lexer import Lexer
-from src.parser import Parser
+from lexer import Lexer
+from parser import Parser
 import textwrap
 
 
@@ -48,7 +48,6 @@ def main():
             print(f"{token.name:15} {token_str}")
             token, token_str = lexer.next_token()
         print(f"{token.name:15} {token_str}")
-        print()
 
     # Reset lexer for parsing
     lexer = Lexer(contents)

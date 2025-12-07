@@ -33,10 +33,10 @@ class Token(IntEnum):
     LESSEQUAL = auto()
     GREATER = auto()
     GREATEREQUAL = auto()
-
     NOT = auto()
     PLUS = auto()
     MINUS = auto()
     ASTERISK = auto()
     SLASH = auto()
     FOR = auto()
+    COMMA = auto()

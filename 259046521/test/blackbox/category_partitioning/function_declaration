@@ -1,0 +1,10 @@
+FUNCTION:
+    fn
+IDENTIFIER:
+    real_name.
+    true.[error]
+    false.[error]
+LPAR:
+    (
+    )
+    A
