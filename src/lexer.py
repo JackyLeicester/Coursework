@@ -131,7 +131,7 @@ class Lexer:
                 token, str_repr = Token.PLUS, "+"
             case "-":
                 if self.peek().isdigit():
-                    token, str_repr = self.read_number()
+                    return self.read_number()
                 else:
                     token, str_repr = Token.MINUS, "-"
             case "*":
@@ -141,7 +141,7 @@ class Lexer:
 
             case ch if ch.isdigit() or (ch == "-" and self.peek().isdigit()):
                 # integer and float literals
-                token, str_repr = self.read_number()
+                return self.read_number()
             case ch if ch in ["'", '"']:
                 token, str_repr = self._read_char_string()
             case ch if ch in string.ascii_letters:
