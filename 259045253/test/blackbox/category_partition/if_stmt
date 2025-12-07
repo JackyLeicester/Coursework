@@ -1,0 +1,11 @@
+Input:
+    Correct syntax of if statement.
+    Missing block statments.[error]
+
+Else:
+    Missing else block.[error]
+    Correct keyword and block.
+
+Condition:
+    Literal.[single]
+    Expression.[single]

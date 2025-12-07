@@ -1,0 +1,22 @@
+
+Test Case 1  		<error>
+   Input :  Missing block statments
+
+
+Test Case 2  		<error>
+   Else :  Missing else block
+
+
+Test Case 3  		<single>
+   Condition :  Literal
+
+
+Test Case 4  		<single>
+   Condition :  Expression
+
+
+Test Case 5  		(Key = 1.2.0.)
+   Input     :  Correct syntax of if statement
+   Else      :  Correct keyword and block
+   Condition :  <n/a>
+
