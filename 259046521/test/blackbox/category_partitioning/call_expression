@@ -1,11 +1,7 @@
 IDENTIFIER:
     AAA.
-    {.[error]
-    }.[error]
  LPAR:
     (.
-    ).[error]
-    {.[error]
  RPAR:
     ).
     {.[error]

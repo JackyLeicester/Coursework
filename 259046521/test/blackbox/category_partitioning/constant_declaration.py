@@ -1,7 +1,6 @@
 from src.lexer import Lexer
 from src.parser import Parser
 import unittest
-import sys
 
 
 def run_test(test_input: str) -> str:
