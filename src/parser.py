@@ -50,6 +50,15 @@ class Identifier(Expression):
         self.value = value
 
 
+class IntegerLiteral(Expression):
+    def __init__(self, token: Token, value: str):
+        self.token = token
+        self.value = value
+
+    def __repr__(self):
+        return f"{self.value}"
+
+
 class LetStatement(Expression):
     def __init__(self, identifier: Identifier, expression: Expression):
         self.identifier = identifier
@@ -137,6 +146,9 @@ class Parser:
         self._register_prefix_fn(Token.FUNCTION, self.parse_function_statement)
         self._register_prefix_fn(Token.LET, self.parse_let_statement)
         self._register_prefix_fn(Token.CONST, self.parse_const_statement)
+
+        self._register_prefix_fn(Token.INT, self.parce_number_literal)
+        self._register_prefix_fn(Token.FLOAT, self.parce_number_literal)
 
         for token in [
             Token.EQUAL,
@@ -281,20 +293,13 @@ class Parser:
     def parse_boolean(self) -> Identifier:
         return Identifier(self.curr_token, self.curr_str)
 
-    def parse_identifier(self) -> Identifier | CallExpression:
-        name: str = self.curr_str
+    def parse_identifier(self) -> Identifier:
+        identifier: Identifier = Identifier(self.curr_token, self.curr_str)
         self._accept_token(Token.IDENTIFIER)
-        if self.curr_token != Token.LPAREN:
-            return Identifier(Token.FUNCTION, name)
-        self._accept_token(Token.LPAREN)
-        parameters: List[Expression] = []
-        if self.curr_token != Token.RPAREN:
-            parameters.append(self.parse_expression())
-            while self.curr_token != Token.RPAREN:
-                self._accept_token(Token.COMMA)
-                parameters.append(self.parse_expression())
-        self._accept_token(Token.RPAREN)
-        return CallExpression(name, parameters)
+        return identifier
+
+    def parce_number_literal(self) -> IntegerLiteral | None:
+        return IntegerLiteral(self.curr_token, self.curr_str)
 
     def parse_if_expression(self) -> IfExpression | None:
         self._next_token()
@@ -323,8 +328,18 @@ class Parser:
         block = self.parse_block_statement()
         return ForStatement(initialization, condition, increment, block)
 
-    def parse_paren(self) -> None:
+    def parse_paren(self) -> Expression | None:
         self._next_token()
+
+        expr = self.parse_expression(Token.LOWEST_PRECEDENCE)
+        if expr is None:
+            return None
+
+        if not self._peek_token_is(Token.RPAREN):
+            return None
+
+        self._next_token()
+        return expr
 
     def parse_block_statement(self) -> BlockStatement | None:
         self._accept_token(Token.LBRACE)
