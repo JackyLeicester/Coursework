@@ -1,0 +1,35 @@
+
+Test Case 1  		<error>
+   CONST :  GERM
+
+
+Test Case 2  		<error>
+   CONST :  GUM
+
+
+Test Case 3  		<error>
+   IDENTIFIER :  true
+
+
+Test Case 4  		<error>
+   IDENTIFIER :  false
+
+
+Test Case 5  		<error>
+   ASSIGN :  ?
+
+
+Test Case 6  		<error>
+   ASSIGN :  ABLADA
+
+
+Test Case 7  		<error>
+   EXPRESSION :  INVALID_EXPRESSION
+
+
+Test Case 8  		(Key = 1.1.1.1.)
+   CONST      :  CONST
+   IDENTIFIER :  real_name
+   ASSIGN     :  =
+   EXPRESSION :  VALID_EXPRESSION
+

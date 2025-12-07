@@ -1,3 +1,4 @@
+from io import StringIO
 from src.lexer import Lexer
 from src.parser import Parser
 import unittest
