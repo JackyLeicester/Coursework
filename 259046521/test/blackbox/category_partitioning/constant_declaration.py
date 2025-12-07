@@ -12,12 +12,12 @@ def run_test(test_input: str) -> str:
     parser.run()
     return ""
 
+
 def expect_exception(tester: unittest.TestCase, test_input: str):
     with tester.assertRaises(Exception):
         lexer: Lexer = Lexer(test_input)
         parser: Parser = Parser(lexer)
         parser.run()
-
 
 
 class ConstantDeclarationTest(unittest.TestCase):

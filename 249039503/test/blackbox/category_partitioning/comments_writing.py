@@ -5,9 +5,7 @@ from src.tokens import Token
 
 
 class TestComments(unittest.TestCase):
-
     def _collect_tokens(self, source: str):
-
         lexer = Lexer(source)
         tokens = []
 
@@ -40,7 +38,9 @@ class TestComments(unittest.TestCase):
         src = "// just a comment"
         tokens = self._collect_tokens(src)
 
-        self.assertEqual(tokens, [], "'//' Comment-only at EOF should produce no tokens")
+        self.assertEqual(
+            tokens, [], "'//' Comment-only at EOF should produce no tokens"
+        )
 
     def test_leading_comment_lines_before_code(self):
         src = "# first comment line\n# second comment line\nlet x = 1;"

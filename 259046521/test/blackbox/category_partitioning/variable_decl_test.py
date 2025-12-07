@@ -4,12 +4,14 @@ from src.parser import Parser
 import unittest
 import sys
 
+
 def run_test(test_input: str) -> str:
     # buffer: StringIO = capture_output()
     lexer: Lexer = Lexer(test_input)
     parser: Parser = Parser(lexer)
     parser.run()
     return ""
+
 
 def expect_exception(tester: unittest.TestCase, test_input: str):
     with tester.assertRaises(Exception):
@@ -40,6 +42,7 @@ class VariableDeclarationTest(unittest.TestCase):
     def test7(self):
         output: str = run_test("let realname = 5")
         self.assertEqual(output, "")
+
 
 if __name__ == "__main__":
     unittest.main()
