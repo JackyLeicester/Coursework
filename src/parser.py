@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
-from lexer import Lexer
-from tokens import Token
+from src.lexer import Lexer
+from src.tokens import Token
 from typing import Dict, List, Tuple
 from collections.abc import Callable
 
