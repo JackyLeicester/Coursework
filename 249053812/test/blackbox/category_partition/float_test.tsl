@@ -1,0 +1,66 @@
+Test Case 1             <error>
+   DeclarationStructure :  Missing Let Keyword
+
+
+Test Case 2             <error>
+   DeclarationStructure :  Missing Variable Name
+
+
+Test Case 3             <error>
+   DeclarationStructure :  Missing Equals Sign
+
+
+Test Case 4             <error>
+   FloatFormat :  Trailing Dot
+
+
+Test Case 5             <error>
+   FloatFormat :  Non Numeric
+
+
+Test Case 6             (Key = 1.1.1.)
+   DeclarationStructure :  Valid Let Assignment
+   FloatFormat          :  Positive Decimal
+   Terminator           :  Semicolon Present
+
+
+Test Case 7             (Key = 1.1.2.)
+   DeclarationStructure :  Valid Let Assignment
+   FloatFormat          :  Positive Decimal
+   Terminator           :  Semicolon Missing
+
+
+Test Case 8             (Key = 1.2.1.)
+   DeclarationStructure :  Valid Let Assignment
+   FloatFormat          :  Negative Decimal
+   Terminator           :  Semicolon Present
+
+
+Test Case 9             (Key = 1.2.2.)
+   DeclarationStructure :  Valid Let Assignment
+   FloatFormat          :  Negative Decimal
+   Terminator           :  Semicolon Missing
+
+
+Test Case 10            (Key = 1.3.1.)
+   DeclarationStructure :  Valid Let Assignment
+   FloatFormat          :  Zero Value
+   Terminator           :  Semicolon Present
+
+
+Test Case 11            (Key = 1.3.2.)
+   DeclarationStructure :  Valid Let Assignment
+   FloatFormat          :  Zero Value
+   Terminator           :  Semicolon Missing
+
+
+Test Case 12            (Key = 1.4.1.)
+   DeclarationStructure :  Valid Let Assignment
+   FloatFormat          :  Integer Value
+   Terminator           :  Semicolon Present
+
+
+Test Case 13            (Key = 1.4.2.)
+   DeclarationStructure :  Valid Let Assignment
+   FloatFormat          :  Integer Value
+   Terminator           :  Semicolon Missing
