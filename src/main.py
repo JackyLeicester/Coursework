@@ -38,15 +38,13 @@ def main():
 
     lexer = Lexer(contents)
 
-    i = 0
     # Debug: Will execute if run with "--debug" argument
     if args.debug:
         print("=== TOKENS ===")
         token, token_str = lexer.next_token()
         while token.name != "EOF" and i < 10:
-            print(f"{token.name:15} {token_str} {i}")
+            print(f"{token.name:15} {token_str}")
             token, token_str = lexer.next_token()
-            i = i + 1
         print(f"{token.name:15} {token_str}")
 
     # Reset lexer for parsing
