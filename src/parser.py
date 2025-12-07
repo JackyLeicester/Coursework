@@ -210,11 +210,8 @@ class Parser:
     def parse_let_statement(self) -> LetStatement:
         self._accept_token(Token.LET)
         identifier: Identifier = self.parse_identifier()
-        # there is a better option here
-        self._accept_token(Token.IDENTIFIER)
         self._accept_token(Token.ASSIGN)
         expression: Expression = self.parse_expression()
-        self._accept_token(Token.LITERAL)
         statement: LetStatement = LetStatement(identifier, expression)
         return statement
 
