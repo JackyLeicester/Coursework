@@ -5,7 +5,6 @@ from src.tokens import Token
 
 
 class TestArithmeticOperations(unittest.TestCase):
-
     def _tokens(self, text: str):
         lexer = Lexer(text)
         result = []

@@ -5,7 +5,6 @@ from src.tokens import Token
 
 
 class TestIntegers(unittest.TestCase):
-
     def _collect_tokens(self, source: str):
         lexer = Lexer(source)
         tokens = []
