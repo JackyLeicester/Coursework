@@ -1,0 +1,20 @@
+COMMENT_MARKER:
+    HASH.[single]
+    SLASHSLASH.[single]
+
+POSITION:
+    ONLY_COMMENT_LINE.
+    LEADING_COMMENT_LINES.
+    TRAILING_COMMENT.
+
+TERMINATION:
+    NEWLINE.[single]
+    EOF.[single]
+
+CONTENT:
+    EMPTY.[single]
+    NON_EMPTY.[single]
+
+WHITESPACE_BEFORE:
+    NONE.[single]
+    SPACES.[single]

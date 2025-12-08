@@ -5,6 +5,8 @@ import textwrap
 
 
 def read_file_contents(filename: str) -> str | None:
+    if filename is None:
+        raise ValueError("filename cannot be None")
     try:
         with open(filename, "r") as file:
             contents = file.read()
