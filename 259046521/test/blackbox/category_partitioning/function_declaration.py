@@ -43,10 +43,9 @@ class ConstantDeclarationTest(unittest.TestCase):
     def test8(self):
         expect_exception(self, "fn realname()A")
 
-    
     def test9(self):
         expect_exception(self, "fn realname(){{")
-    
+
     def test10(self):
         expect_exception(self, "fn realname(){{)")
 
