@@ -21,10 +21,10 @@ def expect_exception(tester: unittest.TestCase, test_input: str):
 class ConstantDeclarationTest(unittest.TestCase):
     def test1(self):
         expect_exception(self, "fn true")
-                
+
     def test2(self):
         expect_exception(self, "fn false")
-                
+
     def test3(self):
         expect_exception(self, "fn realname)")
 
@@ -43,19 +43,19 @@ class ConstantDeclarationTest(unittest.TestCase):
     def test8(self):
         expect_exception(self, "fn realname()A")
 
-    #
-    # def test9(self):
-    #     expect_exception(self, "fn realname(){{")
-    #
-    # def test10(self):
-    #     expect_exception(self, "fn realname(){{)")
+    
+    def test9(self):
+        expect_exception(self, "fn realname(){{")
+    
+    def test10(self):
+        expect_exception(self, "fn realname(){{)")
 
     def test11(self):
         expect_exception(self, "fn realname(){}")
 
     def test12(self):
         expect_exception(self, "fn realname(){}AA")
-                
+
     def test13(self):
         output: str = run_test("fn realname(){};")
         self.assertEqual(output, "")
