@@ -14,7 +14,6 @@ class TestArithmeticOperations(unittest.TestCase):
             tok, val = lexer.next_token()
         return result
 
-    #  INT & INT
 
     def test_int_addition(self):
         tokens = self._tokens("1+2")
@@ -52,7 +51,6 @@ class TestArithmeticOperations(unittest.TestCase):
         ]
         self.assertEqual(tokens, expected)
 
-    # FLOAT & FLOAT
 
     def test_float_addition(self):
         tokens = self._tokens("1.5+2.5")
@@ -90,7 +88,6 @@ class TestArithmeticOperations(unittest.TestCase):
         ]
         self.assertEqual(tokens, expected)
 
-    # Mixed int / float & integers
 
     def test_int_plus_float(self):
         tokens = self._tokens("1+2.5")
