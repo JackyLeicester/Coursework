@@ -21,19 +21,20 @@ def expect_exception(tester: unittest.TestCase, test_input: str):
 class ConstantDeclarationTest(unittest.TestCase):
     def test1(self):
         expect_exception(self, "AAA({")
-                
+
     def test2(self):
         expect_exception(self, "AAA(}")
-                
+
     def test3(self):
         expect_exception(self, "AAA(),")
-                
+
     def test4(self):
         expect_exception(self, "AAA()AAA")
-                
+
     def test4(self):
         output: str = run_test("AAA();")
         self.assertEqual(output, "")
+
 
 if __name__ == "__main__":
     unittest.main()

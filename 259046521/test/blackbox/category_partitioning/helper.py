@@ -1,11 +1,11 @@
-def i_am_lazy(errors: list, passes: list)->str:
+def i_am_lazy(errors: list, passes: list) -> str:
     output: str = ""
     for index, file in enumerate(errors, 1):
         output += f"""
     def test{index}(self):
         expect_exception(self, "{file}")
                 """
-    
+
     for index, file in enumerate(passes, len(errors)):
         output += f"""
     def test{index}(self):
@@ -14,6 +14,7 @@ def i_am_lazy(errors: list, passes: list)->str:
                 """
     return output
 
+
 if __name__ == "__main__":
     errors: list = [
         "AAA({",
@@ -21,7 +22,5 @@ if __name__ == "__main__":
         "AAA(),",
         "AAA()AAA",
     ]
-    passes: list = [
-        "AAA();"
-    ]
+    passes: list = ["AAA();"]
     print(i_am_lazy(errors, passes))

@@ -5,6 +5,7 @@ from src.tokens import Token
 from typing import Dict, List, Tuple
 from collections.abc import Callable
 
+
 class Expression:
     pass
 
