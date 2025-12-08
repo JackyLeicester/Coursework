@@ -5,16 +5,8 @@ from src.tokens import Token
 
 
 class TestArithmeticOperations(unittest.TestCase):
-    """
-    Category-partition tests for basic arithmetic operators
-    (+, -, *, /) on integer and float literals.
-
-    We test that the LEXER correctly produces the expected
-    sequence of tokens; we do not evaluate expressions here.
-    """
 
     def _tokens(self, text: str):
-        """Return list of (Token, value) pairs for the given source."""
         lexer = Lexer(text)
         result = []
         tok, val = lexer.next_token()
@@ -23,7 +15,7 @@ class TestArithmeticOperations(unittest.TestCase):
             tok, val = lexer.next_token()
         return result
 
-    # ---------- INT op INT ----------
+    #  INT & INT
 
     def test_int_addition(self):
         tokens = self._tokens("1+2")
@@ -61,7 +53,7 @@ class TestArithmeticOperations(unittest.TestCase):
         ]
         self.assertEqual(tokens, expected)
 
-    # ---------- FLOAT op FLOAT ----------
+    # FLOAT & FLOAT
 
     def test_float_addition(self):
         tokens = self._tokens("1.5+2.5")
@@ -99,7 +91,7 @@ class TestArithmeticOperations(unittest.TestCase):
         ]
         self.assertEqual(tokens, expected)
 
-    # ---------- Mixed int / float & negatives ----------
+    # Mixed int / float & integers
 
     def test_int_plus_float(self):
         tokens = self._tokens("1+2.5")
