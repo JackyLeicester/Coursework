@@ -38,7 +38,7 @@ class ConstantDeclarationTest(unittest.TestCase):
         expect_exception(self, "const real_name HAM")
 
     def test7(self):
-        output: str = run_test("const realname = 5")
+        output: str = run_test("const realname = 5;")
         self.assertEqual(output, "")
 
 

@@ -229,6 +229,8 @@ class Parser:
         self._accept_token(Token.RPAREN)
         block = self.parse_block_statement()
         fn: FunctionStatement = FunctionStatement(identifier, identifiers, block)
+        # ideally this should be for every statement but idk where that is
+        self._accept_token(Token.SEMICOLON)
         return fn
 
     def parse_let_statement(self) -> LetStatement:
@@ -238,7 +240,7 @@ class Parser:
         expression: Expression = self.parse_expression()
         statement: LetStatement = LetStatement(identifier, expression)
         # workaround for expressions not moving forwards
-        self._next_token()
+        self._accept_token(Token.SEMICOLON)
         return statement
 
     def parse_const_statement(self) -> ConstStatement:
@@ -247,8 +249,8 @@ class Parser:
         self._accept_token(Token.ASSIGN)
         expression: Expression = self.parse_expression()
         statement: ConstStatement = ConstStatement(identifier, expression)
-        self._next_token()
         # workaround for expressions not moving forwards
+        self._accept_token(Token.SEMICOLON)
         return statement
 
     def parse_assignment_expression(self, lhs: Expression) -> AssignExpression:
@@ -313,7 +315,7 @@ class Parser:
         self._next_token()
         return literal
 
-    def parse_identifier_or_callexpression(self) -> Identifier:
+    def parse_identifier_or_callexpression(self) -> Identifier | CallExpression:
         if self.next_token == Token.LPAREN:
             return self.parse_callexpression()
         else:
@@ -330,25 +332,7 @@ class Parser:
                 self._accept_token(Token.COMMA)
                 parameters.append(self.parse_expression())
         self._accept_token(Token.RPAREN)
-        return CallExpression(name, parameters)
-
-    def parse_identifier_or_callexpression(self) -> Identifier:
-        if self.next_token == Token.LPAREN:
-            return self.parse_callexpression()
-        else:
-            return self.parse_identifier()
-
-    def parse_callexpression(self) -> CallExpression:
-        name: str = self.curr_str
-        self._accept_token(Token.IDENTIFIER)
-        self._accept_token(Token.LPAREN)
-        parameters: List[Expression] = []
-        if self.curr_token != Token.RPAREN:
-            parameters.append(self.parse_expression())
-            while self.curr_token != Token.RPAREN:
-                self._accept_token(Token.COMMA)
-                parameters.append(self.parse_expression())
-        self._accept_token(Token.RPAREN)
+        self._accept_token(Token.SEMICOLON)
         return CallExpression(name, parameters)
 
     def parse_identifier(self) -> Identifier:

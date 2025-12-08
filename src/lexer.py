@@ -203,6 +203,8 @@ class Lexer:
                 return Token.TRUE, word
             case "false":
                 return Token.FALSE, word
+            case "fn":
+                return Token.FUNCTION, word
             case _:
                 return Token.IDENTIFIER, word
 
