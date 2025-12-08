@@ -45,6 +45,8 @@ class Lexer:
                         self.read_char()
                         self.skip_singleline_comment()
                         self.skip_whitespace()
+                    else:
+                        return
                 case _:
                     return
 
@@ -69,6 +71,21 @@ class Lexer:
             self.read_char()
 
         return Token.FLOAT if is_float else Token.INT, self.input[start : self.position]
+
+    def _can_start_negative_number(self) -> bool:
+        if self.position == 0:
+            return True
+        prev_char = self.input[self.position - 1]
+        i = self.position - 1
+        while i >= 0 and self.input[i] in ("\n", "\t", "\r", " "):
+            i -= 1
+        if i >= 0:
+            prev_char = self.input[i]
+        else:
+            return True
+        if prev_char.isdigit() or prev_char == ")" or prev_char.isalpha():
+            return False
+        return True
 
     def next_token(self) -> Tuple[Token, str]:
         self.skip_non_tokens()
@@ -132,7 +149,7 @@ class Lexer:
             case "+":
                 token, str_repr = Token.PLUS, "+"
             case "-":
-                if self.peek().isdigit():
+                if self.peek().isdigit() and self._can_start_negative_number():
                     return self.read_number()
                 else:
                     token, str_repr = Token.MINUS, "-"
@@ -141,7 +158,7 @@ class Lexer:
             case "/":
                 token, str_repr = Token.SLASH, "/"
 
-            case ch if ch.isdigit() or (ch == "-" and self.peek().isdigit()):
+            case ch if ch.isdigit():
                 # integer and float literals
                 return self.read_number()
             case ch if ch in ["'", '"']:
