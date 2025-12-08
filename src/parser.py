@@ -112,6 +112,11 @@ class FunctionStatement(Expression):
         self.variables = variables
         self.block = block
 
+class ReturnStatement(Expression):
+    def __init__(self, expression: Expression):
+        self.expression = expression
+        print('created a return')
+
 
 class CallExpression(Expression):
     def __init__(self, identifier_name: str, parameters: List[Expression]):
@@ -160,6 +165,7 @@ class Parser:
         self._register_prefix_fn(Token.FUNCTION, self.parse_function_statement)
         self._register_prefix_fn(Token.LET, self.parse_let_statement)
         self._register_prefix_fn(Token.CONST, self.parse_const_statement)
+        self._register_prefix_fn(Token.RETURN, self.parse_return_statement)
 
         self._register_prefix_fn(Token.INT, self.parse_number_literal)
         self._register_prefix_fn(Token.FLOAT, self.parse_number_literal)
@@ -230,9 +236,14 @@ class Parser:
         self._accept_token(Token.RPAREN)
         block = self.parse_block_statement()
         fn: FunctionStatement = FunctionStatement(identifier, identifiers, block)
-        # ideally this should be for every statement but idk where that is
         self._accept_token(Token.SEMICOLON)
         return fn
+
+    def parse_return_statement(self) -> ReturnStatement:
+        self._accept_token(Token.RETURN)
+        expression: Expression = self.parse_expression()
+        self._accept_token(Token.SEMICOLON)
+        return ReturnStatement(expression)
 
     def parse_let_statement(self) -> LetStatement:
         self._accept_token(Token.LET)
@@ -240,7 +251,6 @@ class Parser:
         self._accept_token(Token.ASSIGN)
         expression: Expression = self.parse_expression()
         statement: LetStatement = LetStatement(identifier, expression)
-        # workaround for expressions not moving forwards
         self._accept_token(Token.SEMICOLON)
         return statement
 
