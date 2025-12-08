@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 
-from src.lexer import Lexer
-from src.tokens import Token
-from typing import Dict, List, Tuple
+from .lexer import Lexer
+from .tokens import Token
+from typing import Dict, List
 from collections.abc import Callable
 
 
@@ -191,6 +191,7 @@ class Parser:
 
         self._register_prefix_fn(Token.FOR, self.parse_for_statement)
         self._register_prefix_fn(Token.LPAREN, self.parse_paren)
+        self._register_prefix_fn(Token.LBRACE, self.parse_block_statement)
 
         self._register_infix_fn(Token.ASSIGN, self.parse_assignment_expression)
 
@@ -399,7 +400,7 @@ class Parser:
     def parse_block_statement(self) -> BlockStatement | None:
         self._accept_token(Token.LBRACE)
         statements: List[Expression] = []
-        while self.curr_token != Token.RBRACE:
+        while self.curr_token != Token.RBRACE and self.curr_token != Token.EOF:
             statement: Expression = self.parse_expression_statement()
             statements.append(statement)
         self._accept_token(Token.RBRACE)

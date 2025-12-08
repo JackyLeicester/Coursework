@@ -1,0 +1,29 @@
+# Specification for User Story: Declare Float Variables
+
+# Syntax: let <id> = <float>;
+
+Parameters:
+
+# Category 1: The structural validity of the statement
+
+DeclarationStructure:
+Valid Let Assignment.
+Missing Let Keyword. [error]
+Missing Variable Name. [error]
+Missing Equals Sign. [error]
+
+# Category 2: The format of the value being assigned
+
+FloatFormat:
+Positive Decimal.
+Negative Decimal.
+Zero Value.
+Integer Value.
+Trailing Dot. [error]
+Non Numeric. [error]
+
+# Category 3: How the statement ends
+
+Terminator:
+Semicolon Present.
+Semicolon Missing.

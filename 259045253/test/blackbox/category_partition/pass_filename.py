@@ -1,7 +1,7 @@
 import unittest
 import os
 
-from src.main import read_file_contents
+from src import read_file_contents
 
 
 class TestReadFileContents(unittest.TestCase):
