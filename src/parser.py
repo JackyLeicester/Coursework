@@ -112,10 +112,11 @@ class FunctionStatement(Expression):
         self.variables = variables
         self.block = block
 
+
 class ReturnStatement(Expression):
     def __init__(self, expression: Expression):
         self.expression = expression
-        print('created a return')
+        print("created a return")
 
 
 class CallExpression(Expression):

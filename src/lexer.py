@@ -204,7 +204,7 @@ class Lexer:
             case "false":
                 return Token.FALSE, word
             case "fn":
-                return Token.FUNCTION, word 
+                return Token.FUNCTION, word
             case "return":
                 return Token.RETURN, word
             case _:
