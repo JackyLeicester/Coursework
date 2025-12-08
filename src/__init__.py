@@ -1,6 +1,6 @@
 from argparse import ArgumentParser, RawDescriptionHelpFormatter
-from src.lexer import Lexer
-from src.parser import Parser
+from .lexer import Lexer
+from .parser import Parser
 import textwrap
 
 
@@ -22,7 +22,7 @@ def main():
         description=textwrap.dedent("""
         An interpreter for simple programming language developed for Software Measurement and
         Quality Assurance coursework.
-        
+
         Checkout https://github.com/JackyLeicester/Coursework for the syntax of the language.
         """),
         formatter_class=RawDescriptionHelpFormatter,
@@ -56,7 +56,3 @@ def main():
     if args.debug:
         print("=== PARSING ===")
     parser.run()
-
-
-if __name__ == "__main__":
-    main()
