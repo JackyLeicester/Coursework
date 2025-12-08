@@ -105,9 +105,18 @@ class IfExpression(Expression):
 
 
 class FunctionStatement(Expression):
-    def __init__(self, variables: List[Identifier], block: BlockStatement):
+    def __init__(
+        self, identifier: Identifier, variables: List[Identifier], block: BlockStatement
+    ):
+        self.identifier = identifier
         self.variables = variables
         self.block = block
+
+
+class CallExpression(Expression):
+    def __init__(self, identifier_name: str, parameters: List[Expression]):
+        self.identifier_name = identifier_name
+        self.parameters = parameters
 
 
 class ForStatement:
@@ -141,7 +150,9 @@ class Parser:
             dict()
         )
 
-        self._register_prefix_fn(Token.IDENTIFIER, self.parse_identifier)
+        self._register_prefix_fn(
+            Token.IDENTIFIER, self.parse_identifier_or_callexpression
+        )
         self._register_prefix_fn(Token.IF, self.parse_if_expression)
         self._register_prefix_fn(Token.NOT, self.parse_prefix_expression)
         self._register_prefix_fn(Token.TRUE, self.parse_boolean)
@@ -173,6 +184,7 @@ class Parser:
 
         self._register_prefix_fn(Token.FOR, self.parse_for_statement)
         self._register_prefix_fn(Token.LPAREN, self.parse_paren)
+        self._register_prefix_fn(Token.LBRACE, self.parse_block_statement)
 
         self._register_infix_fn(Token.ASSIGN, self.parse_assignment_expression)
 
@@ -213,12 +225,14 @@ class Parser:
         identifier: Identifier = self.parse_identifier()
         self._accept_token(Token.LPAREN)
         identifiers: List[Identifier] = []
-        while self.next_token == Token.IDENTIFIER:
-            identifier: Identifier = self.parse_identifier()
+        while self.curr_token == Token.IDENTIFIER:
+            identifier: Identifier = self.parse_identifier_or_callexpression()
             identifiers.append(identifier)
         self._accept_token(Token.RPAREN)
         block = self.parse_block_statement()
-        fn: FunctionStatement = FunctionStatement(identifiers, block)
+        fn: FunctionStatement = FunctionStatement(identifier, identifiers, block)
+        # ideally this should be for every statement but idk where that is
+        self._accept_token(Token.SEMICOLON)
         return fn
 
     def parse_let_statement(self) -> LetStatement:
@@ -227,6 +241,8 @@ class Parser:
         self._accept_token(Token.ASSIGN)
         expression: Expression = self.parse_expression()
         statement: LetStatement = LetStatement(identifier, expression)
+        # workaround for expressions not moving forwards
+        self._accept_token(Token.SEMICOLON)
         return statement
 
     def parse_const_statement(self) -> ConstStatement:
@@ -235,6 +251,8 @@ class Parser:
         self._accept_token(Token.ASSIGN)
         expression: Expression = self.parse_expression()
         statement: ConstStatement = ConstStatement(identifier, expression)
+        # workaround for expressions not moving forwards
+        self._accept_token(Token.SEMICOLON)
         return statement
 
     def parse_assignment_expression(self, lhs: Expression) -> AssignExpression:
@@ -245,8 +263,6 @@ class Parser:
     def parse_expression_statement(self) -> ExpressionStatement:
         token, str_repr = self.curr_token, self.curr_str
         expression = self.parse_expression()
-        if self._peek_token_is(Token.SEMICOLON):
-            self._next_token()
         return ExpressionStatement(token, expression)
 
     def parse_expression(
@@ -301,6 +317,26 @@ class Parser:
         self._next_token()
         return literal
 
+    def parse_identifier_or_callexpression(self) -> Identifier | CallExpression:
+        if self.next_token == Token.LPAREN:
+            return self.parse_callexpression()
+        else:
+            return self.parse_identifier()
+
+    def parse_callexpression(self) -> CallExpression:
+        name: str = self.curr_str
+        self._accept_token(Token.IDENTIFIER)
+        self._accept_token(Token.LPAREN)
+        parameters: List[Expression] = []
+        if self.curr_token != Token.RPAREN:
+            parameters.append(self.parse_expression())
+            while self.curr_token != Token.RPAREN:
+                self._accept_token(Token.COMMA)
+                parameters.append(self.parse_expression())
+        self._accept_token(Token.RPAREN)
+        self._accept_token(Token.SEMICOLON)
+        return CallExpression(name, parameters)
+
     def parse_identifier(self) -> Identifier:
         identifier = Identifier(self.curr_token, self.curr_str)
         self._accept_token(Token.IDENTIFIER)
@@ -353,7 +389,7 @@ class Parser:
     def parse_block_statement(self) -> BlockStatement | None:
         self._accept_token(Token.LBRACE)
         statements: List[Expression] = []
-        while self.curr_token != Token.RBRACE:
+        while self.curr_token != Token.RBRACE and self.curr_token != Token.EOF:
             statement: Expression = self.parse_expression_statement()
             statements.append(statement)
         self._accept_token(Token.RBRACE)

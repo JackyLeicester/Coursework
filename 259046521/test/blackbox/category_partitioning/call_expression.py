@@ -20,25 +20,19 @@ def expect_exception(tester: unittest.TestCase, test_input: str):
 
 class ConstantDeclarationTest(unittest.TestCase):
     def test1(self):
-        expect_exception(self, "const true")
+        expect_exception(self, "AAA({")
 
     def test2(self):
-        expect_exception(self, "const false")
+        expect_exception(self, "AAA(}")
 
     def test3(self):
-        expect_exception(self, "const true")
+        expect_exception(self, "AAA(),")
 
     def test4(self):
-        expect_exception(self, "const real_name ?")
+        expect_exception(self, "AAA()AAA")
 
-    def test5(self):
-        expect_exception(self, "const real_name ==")
-
-    def test6(self):
-        expect_exception(self, "const real_name HAM")
-
-    def test7(self):
-        output: str = run_test("const realname = 5;")
+    def test4(self):
+        output: str = run_test("AAA();")
         self.assertEqual(output, "")
 
 

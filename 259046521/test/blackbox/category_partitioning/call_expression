@@ -1,0 +1,12 @@
+IDENTIFIER:
+    AAA.
+ LPAR:
+    (.
+ RPAR:
+    ).
+    {.[error]
+    }.[error]
+ SEMICOLON:
+    ;.
+    ,.[error]
+    AAA.[error]

@@ -1,0 +1,26 @@
+FUNCTION:
+    fn
+IDENTIFIER:
+    real_name.
+    true.[error]
+    false.[error]
+LPAR:
+    (.
+    ).[error]
+    A.[error]
+RPAR:
+    ).
+    (.[error]
+    A.[error]
+LBRAC:
+    {.
+    ).[error]
+    }.[error]
+RBRAC:
+    }.
+    {.[error]
+    ).[error]
+SEMICOLON:
+    ;.
+    ".[error]
+    AA.[error]

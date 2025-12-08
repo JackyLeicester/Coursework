@@ -1,0 +1,23 @@
+
+Test Case 1  		<error>
+   RPAR :  {
+
+
+Test Case 2  		<error>
+   RPAR :  }
+
+
+Test Case 3  		<error>
+   SEMICOLON :  ,
+
+
+Test Case 4  		<error>
+   SEMICOLON :  AAA
+
+
+Test Case 5  		(Key = 1.1.1.1.)
+   IDENTIFIER :  AAA
+   LPAR       :  (
+   RPAR       :  )
+   SEMICOLON  :  ;
+
