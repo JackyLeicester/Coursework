@@ -1,21 +1,27 @@
 OPERATOR:
-    PLUS.
-    MINUS.
-    MULTIPLY.
-    DIVIDE.
+    ADDITION.[single]
+    SUBTRACTION.[single]
+    MULTIPLICATION.[single]
+    DIVISION.[single]
 
-OPERAND_TYPE_LEFT:
-    INT.
-    FLOAT.
+OPERAND_VALUES:
+    POSITIVE_ONLY.[single]
+    INCLUDE_ZERO.[single]
+    INCLUDE_NEGATIVE.[single]
 
-OPERAND_TYPE_RIGHT:
-    INT.
-    FLOAT.
+RESULT_TYPE:
+    INTEGER_RESULT.[single]
+    FLOAT_RESULT.[single]
 
-OPERAND_SIGN:
-    POSITIVE.
-    NEGATIVE.
+WHITESPACE_FORMAT:
+    NO_SPACES.[single]
+    STANDARD_SPACES.[single]
+    IRREGULAR_SPACES.[single]
 
-SPECIAL_CASES:
-    NORMAL.
-    DIVIDE_BY_ZERO.[error]
+DIVISION_CASE:
+    NORMAL_DIVISION.[single]
+    DIVISION_BY_ZERO.[single]
+
+EXPRESSION_VALIDITY:
+    VALID.[single]
+    INVALID_SYNTAX.[single]

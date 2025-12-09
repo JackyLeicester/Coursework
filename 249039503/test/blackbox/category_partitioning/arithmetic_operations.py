@@ -1,130 +1,53 @@
 import unittest
+from src.parser import evaluate_expr
 
-from src.lexer import Lexer
-from src.tokens import Token
+class ArithmeticOperationsTest(unittest.TestCase):
+    def _eval(self, expr:str):
+        return evaluate_expr(expr)
 
+    # Tests for +
+    def test1(self):
+        self.assertEqual(self._eval('1+2'), 3)
+    def test2(self):
+        self.assertEqual(self._eval('-7+3'), -4)
+    def test3(self):
+        self.assertEqual(self._eval('5+0'), 5)
+    def test4(self):
+        self.assertAlmostEqual(self._eval('5.2*3'), 15.6, places=6)
 
-class TestArithmeticOperations(unittest.TestCase):
-    def _tokens(self, text: str):
-        lexer = Lexer(text)
-        result = []
-        tok, val = lexer.next_token()
-        while tok is not Token.EOF:
-            result.append((tok, val))
-            tok, val = lexer.next_token()
-        return result
+    # Test for -
+    def test5(self):
+        self.assertEqual(self._eval('10-5'), 5)
+    def test6(self):
+        self.assertEqual(self._eval('2-5'), -3)
+    def test7(self):
+        self.assertEqual(self._eval('9-0'), 9)
+    def test8(self):
+        self.assertEqual(self._eval('9/2'), 4.5)
 
+    # Test for *
+    def test9(self):
+        self.assertEqual(self._eval('9*9'), 81)
+    def test10(self):
+        self.assertEqual(self._eval('-9*1'), -9)
+    def test11(self):
+        self.assertEqual(self._eval('9*0'), 0)
+    def test12(self):
+        self.assertEqual(self._eval('2*3.5'), 7)
 
-    def test_int_addition(self):
-        tokens = self._tokens("1+2")
-        expected = [
-            (Token.INT, "1"),
-            (Token.PLUS, "+"),
-            (Token.INT, "2"),
-        ]
-        self.assertEqual(tokens, expected)
+    # Test for /
+    def test13(self):
+        self.assertEqual(self._eval('9/3'), 3)
+    def test14(self):
+        self.assertEqual(self._eval('-9/3'), -3)
+    def test15(self):
+        self.assertEqual(self._eval('10/4'), 2.5)
+    def test16(self):
+        with self.assertRaises(Exception):
+            self._eval('6/0')
 
-    def test_int_subtraction(self):
-        tokens = self._tokens("2-1")
-        expected = [
-            (Token.INT, "2"),
-            (Token.MINUS, "-"),
-            (Token.INT, "1"),
-        ]
-        self.assertEqual(tokens, expected)
-
-    def test_int_multiplication(self):
-        tokens = self._tokens("3*4")
-        expected = [
-            (Token.INT, "3"),
-            (Token.ASTERISK, "*"),
-            (Token.INT, "4"),
-        ]
-        self.assertEqual(tokens, expected)
-
-    def test_int_division(self):
-        tokens = self._tokens("8/2")
-        expected = [
-            (Token.INT, "8"),
-            (Token.SLASH, "/"),
-            (Token.INT, "2"),
-        ]
-        self.assertEqual(tokens, expected)
-
-
-    def test_float_addition(self):
-        tokens = self._tokens("1.5+2.5")
-        expected = [
-            (Token.FLOAT, "1.5"),
-            (Token.PLUS, "+"),
-            (Token.FLOAT, "2.5"),
-        ]
-        self.assertEqual(tokens, expected)
-
-    def test_float_subtraction(self):
-        tokens = self._tokens("4.5-2.0")
-        expected = [
-            (Token.FLOAT, "4.5"),
-            (Token.MINUS, "-"),
-            (Token.FLOAT, "2.0"),
-        ]
-        self.assertEqual(tokens, expected)
-
-    def test_float_multiplication(self):
-        tokens = self._tokens("1.5*2.0")
-        expected = [
-            (Token.FLOAT, "1.5"),
-            (Token.ASTERISK, "*"),
-            (Token.FLOAT, "2.0"),
-        ]
-        self.assertEqual(tokens, expected)
-
-    def test_float_division(self):
-        tokens = self._tokens("5.0/2.0")
-        expected = [
-            (Token.FLOAT, "5.0"),
-            (Token.SLASH, "/"),
-            (Token.FLOAT, "2.0"),
-        ]
-        self.assertEqual(tokens, expected)
-
-
-    def test_int_plus_float(self):
-        tokens = self._tokens("1+2.5")
-        expected = [
-            (Token.INT, "1"),
-            (Token.PLUS, "+"),
-            (Token.FLOAT, "2.5"),
-        ]
-        self.assertEqual(tokens, expected)
-
-    def test_float_plus_int(self):
-        tokens = self._tokens("2.5+2")
-        expected = [
-            (Token.FLOAT, "2.5"),
-            (Token.PLUS, "+"),
-            (Token.INT, "2"),
-        ]
-        self.assertEqual(tokens, expected)
-
-    def test_negative_int_and_plus(self):
-        tokens = self._tokens("-1+2")
-        expected = [
-            (Token.INT, "-1"),
-            (Token.PLUS, "+"),
-            (Token.INT, "2"),
-        ]
-        self.assertEqual(tokens, expected)
-
-    def test_negative_float_multiplication(self):
-        tokens = self._tokens("-1.5*2")
-        expected = [
-            (Token.FLOAT, "-1.5"),
-            (Token.ASTERISK, "*"),
-            (Token.INT, "2"),
-        ]
-        self.assertEqual(tokens, expected)
-
-
-if __name__ == "__main__":
-    unittest.main()
+    # Combined different situations
+    def test17(self):
+        self.assertEqual(self._eval("3+4-2"),5)
+    def test18(self):
+        self.assertEqual(self._eval(" 5 * 2/1"), 10)

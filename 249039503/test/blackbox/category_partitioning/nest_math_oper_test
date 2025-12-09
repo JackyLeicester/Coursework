@@ -1,0 +1,24 @@
+NESTING_DEPTH:
+    NONE.[single]           // without brackets
+    SINGLE_LEVEL.[single]   // one brackets
+    TWO_LEVEL.[single]      // two layers of brackets
+    DEEP.[single]           // three and more layers
+
+OPERATORS:
+    ADD_SUB_ONLY.[single]      // + and -
+    MUL_DIV_ONLY.[single]      // * and /
+    MIXED.[single]             // combination of + - * /
+
+OPERAND_VALUES:
+    POSITIVE_ONLY.[single]
+    INCLUDE_ZERO.[single]
+    INCLUDE_NEGATIVE.[single]
+    MIXED_SIGNS.[single]
+
+WHITESPACE:
+    NONE.[single]              // example 1+(2*(3+4))
+    STANDARD.[single]          // example 1 + (2 * 3)
+    IRREGULAR.[single]         //  example 1+ ( 2*  (3+4 ) )
+
+PARENTHESES_VALIDITY:
+    MISSING_CLOSING.[single]   // example 1 + (2 * (3 + 4)

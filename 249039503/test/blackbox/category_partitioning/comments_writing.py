@@ -4,7 +4,7 @@ from src.lexer import Lexer
 from src.tokens import Token
 
 
-class TestComments(unittest.TestCase):
+class CommentsTest(unittest.TestCase):
     def _collect_tokens(self, source: str):
         lexer = Lexer(source)
         tokens = []
@@ -16,33 +16,33 @@ class TestComments(unittest.TestCase):
 
         return tokens
 
-    def test_hash_comment_only_line_newline(self):
+    def test1(self):
         src = "# just a comment\n"
         tokens = self._collect_tokens(src)
 
-        self.assertEqual(tokens, [], "Comment-only line should produce no tokens")
+        self.assertEqual(tokens, [], "Comment only line should produce no tokens")
 
-    def test_hash_comment_only_line_eof(self):
+    def test2(self):
         src = "# just a comment"
         tokens = self._collect_tokens(src)
 
-        self.assertEqual(tokens, [], "Comment-only at EOF should produce no tokens")
+        self.assertEqual(tokens, [], "Comment only at EOF should produce no tokens")
 
-    def test_slashslash_comment_only_line_newline(self):
+    def test3(self):
         src = "// just a comment\n"
         tokens = self._collect_tokens(src)
 
-        self.assertEqual(tokens, [], "'//' Comment-only line should produce no tokens")
+        self.assertEqual(tokens, [], "'//' Comment only line should produce no tokens")
 
-    def test_slashslash_comment_only_line_eof(self):
+    def test4(self):
         src = "// just a comment"
         tokens = self._collect_tokens(src)
 
         self.assertEqual(
-            tokens, [], "'//' Comment-only at EOF should produce no tokens"
+            tokens, [], "'//' Comment only at EOF should produce no tokens"
         )
 
-    def test_leading_comment_lines_before_code(self):
+    def test5(self):
         src = "# first comment line\n# second comment line\nlet x = 1;"
         tokens = self._collect_tokens(src)
 
@@ -54,7 +54,7 @@ class TestComments(unittest.TestCase):
         ]
         self.assertEqual(tokens, expected_tokens)
 
-    def test_end_of_line_hash_comment_after_code(self):
+    def test6(self):
         src = "let x = 1; # trailing comment\n"
         tokens = self._collect_tokens(src)
 
@@ -66,7 +66,7 @@ class TestComments(unittest.TestCase):
         ]
         self.assertEqual(tokens, expected_tokens)
 
-    def test_end_of_line_slashslash_comment_after_code(self):
+    def test7(self):
         src = "let x = 1; // trailing comment\n"
         tokens = self._collect_tokens(src)
 
@@ -78,7 +78,7 @@ class TestComments(unittest.TestCase):
         ]
         self.assertEqual(tokens, expected_tokens)
 
-    def test_empty_hash_comment_line(self):
+    def test8(self):
         src = "#\nlet x = 1"
         tokens = self._collect_tokens(src)
 
@@ -90,7 +90,7 @@ class TestComments(unittest.TestCase):
         ]
         self.assertEqual(tokens, expected_tokens)
 
-    def test_hash_comment_with_leading_spaces(self):
+    def test9(self):
         src = "   # spaced comment\nlet x = 1"
         tokens = self._collect_tokens(src)
 

@@ -396,7 +396,7 @@ class Parser:
         if expr is None:
             return None
 
-        if not self._peek_token_is(Token.RPAREN):
+        if self.curr_token != Token.RPAREN:
             return None
 
         self._next_token()
@@ -435,3 +435,44 @@ class Parser:
         if self.curr_token != token:
             self._call_syntax_error([token], self.curr_token, self.curr_str)
         self._next_token()
+
+def _eval(node):
+    if isinstance(node, IntegerLiteral):
+        return float(node.value) if "." in node.value else int(node.value)
+
+    if isinstance(node, PrefixExpression):
+        right_val = _eval(node.right)
+        if node.operator == "+":
+            return +right_val
+        if node.operator == "-":
+            return -right_val
+        raise Exception(f"Unsupported operator: {node.operator}")
+    if isinstance(node, InfixExpression):
+        left_val = _eval(node.lhs)
+        right_val = _eval(node.rhs)
+
+        if node.operation == Token.PLUS:
+            return left_val + right_val
+        if node.operation == Token.MINUS:
+            return left_val - right_val
+        if node.operation == Token.ASTERISK:
+            return left_val * right_val
+        if node.operation == Token.SLASH:
+            if right_val == 0:
+                raise Exception(f"Unsupported operation: {node.operation}")
+            return left_val / right_val
+
+        raise Exception(f"Unsupported operation: {node.operation}")
+
+    raise Exception(f"Unknown: {type(node)}")
+
+def evaluate_expr(source: str):
+
+    lexer = Lexer(source)
+    parser = Parser(lexer)
+
+    expr = parser.parse_expression()
+    if expr is None:
+        raise Exception("Parse failed")
+
+    return _eval(expr)
