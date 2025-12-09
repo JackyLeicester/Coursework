@@ -1,0 +1,22 @@
+
+Test Case 1  		<single>
+   Operator :  And
+
+
+Test Case 2  		<single>
+   Operator :  Not
+
+
+Test Case 3  		<single>
+   Operator :  Or
+
+
+Test Case 4  		(Key = 0.1.)
+   Operator :  <n/a>
+   Operands :  True
+
+
+Test Case 5  		(Key = 0.2.)
+   Operator :  <n/a>
+   Operands :  False
+

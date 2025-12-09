@@ -1,0 +1,8 @@
+Operator:
+    And.[single]
+    Not.[single]
+    Or.[single]
+
+Operands:
+    True.
+    False.
