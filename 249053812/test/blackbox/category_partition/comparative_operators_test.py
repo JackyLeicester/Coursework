@@ -40,6 +40,20 @@ class ComparativeOperatorsTest(unittest.TestCase):
         self.assertEqual(infix_expr.operation, Token.GREATEREQUAL)
         self.assertIsInstance(infix_expr.rhs, IntegerLiteral)
 
+    def test_equal_to(self):
+        infix_expr = self.parse_expression("1 == 1")
+        self.assertIsInstance(infix_expr, InfixExpression)
+        self.assertIsInstance(infix_expr.lhs, IntegerLiteral)
+        self.assertEqual(infix_expr.operation, Token.EQUAL)
+        self.assertIsInstance(infix_expr.rhs, IntegerLiteral)
+
+    def test_not_equal_to(self):
+        infix_expr = self.parse_expression("1 != 2")
+        self.assertIsInstance(infix_expr, InfixExpression)
+        self.assertIsInstance(infix_expr.lhs, IntegerLiteral)
+        self.assertEqual(infix_expr.operation, Token.NOTEQUAL)
+        self.assertIsInstance(infix_expr.rhs, IntegerLiteral)
+
     def test_error_type_mismatch(self):
         lexer = Lexer("1 > 2.1")
         parser = Parser(lexer)

@@ -3,6 +3,8 @@ Operator:
     Less Than Equal To.[single]
     Greater Than.[single]
     Greater Than Equal To.[single]
+    Equal To.[single]
+    Not Equal To.[single]
 
 Operands:
     Both are Integers.
