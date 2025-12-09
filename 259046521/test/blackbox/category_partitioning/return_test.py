@@ -20,10 +20,10 @@ def expect_exception(tester: unittest.TestCase, test_input: str):
 
 class ConstantDeclarationTest(unittest.TestCase):
     def test1(self):
-        expect_exception(self, "fn")
+        expect_exception(self, "return fn")
 
     def test2(self):
-        expect_exception(self, "let")
+        expect_exception(self, "return let")
 
     def test3(self):
         output: str = run_test("return 5;")
