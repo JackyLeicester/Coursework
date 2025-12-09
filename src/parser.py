@@ -294,7 +294,7 @@ class Parser:
         return left_expr
 
     def parse_infix_expression(self, lhs: Expression) -> InfixExpression | None:
-        token, str_repr = self.curr_token, self.curr_str
+        operator, str_repr = self.curr_token, self.curr_str
         precedence = self._curr_precedence()
         self._next_token()
 
@@ -302,7 +302,14 @@ class Parser:
 
         if rhs is None:
             return None
-        return InfixExpression(lhs, token, rhs)
+
+        if isinstance(lhs, IntegerLiteral) and not isinstance(rhs, IntegerLiteral):
+            raise Exception("Infix expression must have same type of operands.")
+
+        if isinstance(lhs, FloatLiteral) and not isinstance(rhs, FloatLiteral):
+            raise Exception("Infix expression must have same type of operands.")
+
+        return InfixExpression(lhs, operator, rhs)
 
     def _peek_precedence(self) -> int:
         return self.next_token or Token.LOWEST_PRECEDENCE
