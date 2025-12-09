@@ -319,9 +319,9 @@ class Parser:
 
     def parse_prefix_expression(self) -> PrefixExpression:
         token, operator = self.curr_token, self.curr_str
+        precedence = self._curr_precedence()
         self._next_token()
-
-        right = self.parse_expression(7)
+        right = self.parse_expression(precedence)
         return PrefixExpression(token, operator, right)
 
     def parse_boolean(self) -> BooleanLiteral:
