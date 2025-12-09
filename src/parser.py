@@ -303,11 +303,11 @@ class Parser:
         if rhs is None:
             return None
 
-        if isinstance(lhs, IntegerLiteral) and not isinstance(rhs, IntegerLiteral):
-            raise Exception("Infix expression must have same type of operands.")
-
-        if isinstance(lhs, FloatLiteral) and not isinstance(rhs, FloatLiteral):
-            raise Exception("Infix expression must have same type of operands.")
+        # if isinstance(lhs, IntegerLiteral) and not isinstance(rhs, IntegerLiteral):
+        #     raise Exception("Infix expression must have same type of operands.")
+        #
+        # if isinstance(lhs, FloatLiteral) and not isinstance(rhs, FloatLiteral):
+        #     raise Exception("Infix expression must have same type of operands.")
 
         return InfixExpression(lhs, operator, rhs)
 
@@ -437,8 +437,10 @@ class Parser:
         self._next_token()
 
 def _eval(node):
-    if isinstance(node, IntegerLiteral):
-        return float(node.value) if "." in node.value else int(node.value)
+
+    if isinstance(node, (IntegerLiteral, FloatLiteral)):
+        text = str(node.value)
+        return float(text) if "." in text else int(text)
 
     if isinstance(node, PrefixExpression):
         right_val = _eval(node.right)
@@ -447,6 +449,7 @@ def _eval(node):
         if node.operator == "-":
             return -right_val
         raise Exception(f"Unsupported operator: {node.operator}")
+
     if isinstance(node, InfixExpression):
         left_val = _eval(node.lhs)
         right_val = _eval(node.rhs)
