@@ -60,6 +60,11 @@ class IntegerLiteral(Expression):
 
 
 @dataclass
+class FloatLiteral(Expression):
+    value: float
+
+
+@dataclass
 class BooleanLiteral(Expression):
     literal: bool
 
@@ -342,10 +347,14 @@ class Parser:
         self._accept_token(Token.IDENTIFIER)
         return identifier
 
-    def parse_number_literal(self) -> IntegerLiteral | None:
-        int_literal = IntegerLiteral(self.curr_token, self.curr_str)
+    def parse_number_literal(self) -> IntegerLiteral | FloatLiteral:
+        literal = (
+            IntegerLiteral(self.curr_token, self.curr_str)
+            if self.curr_token == Token.INT
+            else FloatLiteral(float(self.curr_str))
+        )
         self._next_token()
-        return int_literal
+        return literal
 
     def parse_if_expression(self) -> IfExpression | None:
         self._next_token()
