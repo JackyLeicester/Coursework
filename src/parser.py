@@ -272,7 +272,7 @@ class Parser:
         return AssignExpression(lhs, rhs)
 
     def parse_expression_statement(self) -> ExpressionStatement:
-        token, str_repr = self.curr_token, self.curr_str
+        token, _ = self.curr_token, self.curr_str
         expression = self.parse_expression()
         return ExpressionStatement(token, expression)
 
@@ -416,7 +416,7 @@ class Parser:
     def _call_syntax_error(
         self, expected_tokens: list[Token], actual_token: Token, token_text: str
     ) -> None:
-        message: str = f"SYNTAX ERROR: expected tokens: "
+        message: str = "SYNTAX ERROR: expected tokens: "
         message += "".join(
             [self._get_token_name(token) + " " for token in expected_tokens]
         )

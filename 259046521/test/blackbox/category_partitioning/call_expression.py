@@ -31,7 +31,7 @@ class ConstantDeclarationTest(unittest.TestCase):
     def test4(self):
         expect_exception(self, "AAA()AAA")
 
-    def test4(self):
+    def test5(self):
         output: str = run_test("AAA();")
         self.assertEqual(output, "")
 
