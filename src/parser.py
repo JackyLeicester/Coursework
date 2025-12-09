@@ -436,8 +436,8 @@ class Parser:
             self._call_syntax_error([token], self.curr_token, self.curr_str)
         self._next_token()
 
-def _eval(node):
 
+def _eval(node):
     if isinstance(node, (IntegerLiteral, FloatLiteral)):
         text = str(node.value)
         return float(text) if "." in text else int(text)
@@ -469,8 +469,8 @@ def _eval(node):
 
     raise Exception(f"Unknown: {type(node)}")
 
-def evaluate_expr(source: str):
 
+def evaluate_expr(source: str):
     lexer = Lexer(source)
     parser = Parser(lexer)
 

@@ -26,7 +26,7 @@ class Lexer:
         return self.input[self.read_position]
 
     def skip_whitespace(self) -> bool:
-        while self.ch in ("\n", "\t", "\r", " ",";"):
+        while self.ch in ("\n", "\t", "\r", " ", ";"):
             self.read_char()
 
     def skip_singleline_comment(self):
