@@ -300,7 +300,7 @@ class Parser:
         return left_expr
 
     def parse_infix_expression(self, lhs: Expression) -> InfixExpression | None:
-        token, str_repr = self.curr_token, self.curr_str
+        token, _ = self.curr_token, self.curr_str
         precedence = self._curr_precedence()
         self._next_token()
 
