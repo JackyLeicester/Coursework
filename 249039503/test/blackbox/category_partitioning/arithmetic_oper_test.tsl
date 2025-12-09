@@ -1,0 +1,260 @@
+
+Test Case 1  		<error>
+   SPECIAL_CASES :  DIVIDE_BY_ZERO
+
+
+Test Case 2  		(Key = 1.1.1.1.1.)
+   OPERATOR           :  PLUS
+   OPERAND_TYPE_LEFT  :  INT
+   OPERAND_TYPE_RIGHT :  INT
+   OPERAND_SIGN       :  POSITIVE
+   SPECIAL_CASES      :  NORMAL
+
+
+Test Case 3  		(Key = 1.1.1.2.1.)
+   OPERATOR           :  PLUS
+   OPERAND_TYPE_LEFT  :  INT
+   OPERAND_TYPE_RIGHT :  INT
+   OPERAND_SIGN       :  NEGATIVE
+   SPECIAL_CASES      :  NORMAL
+
+
+Test Case 4  		(Key = 1.1.2.1.1.)
+   OPERATOR           :  PLUS
+   OPERAND_TYPE_LEFT  :  INT
+   OPERAND_TYPE_RIGHT :  FLOAT
+   OPERAND_SIGN       :  POSITIVE
+   SPECIAL_CASES      :  NORMAL
+
+
+Test Case 5  		(Key = 1.1.2.2.1.)
+   OPERATOR           :  PLUS
+   OPERAND_TYPE_LEFT  :  INT
+   OPERAND_TYPE_RIGHT :  FLOAT
+   OPERAND_SIGN       :  NEGATIVE
+   SPECIAL_CASES      :  NORMAL
+
+
+Test Case 6  		(Key = 1.2.1.1.1.)
+   OPERATOR           :  PLUS
+   OPERAND_TYPE_LEFT  :  FLOAT
+   OPERAND_TYPE_RIGHT :  INT
+   OPERAND_SIGN       :  POSITIVE
+   SPECIAL_CASES      :  NORMAL
+
+
+Test Case 7  		(Key = 1.2.1.2.1.)
+   OPERATOR           :  PLUS
+   OPERAND_TYPE_LEFT  :  FLOAT
+   OPERAND_TYPE_RIGHT :  INT
+   OPERAND_SIGN       :  NEGATIVE
+   SPECIAL_CASES      :  NORMAL
+
+
+Test Case 8  		(Key = 1.2.2.1.1.)
+   OPERATOR           :  PLUS
+   OPERAND_TYPE_LEFT  :  FLOAT
+   OPERAND_TYPE_RIGHT :  FLOAT
+   OPERAND_SIGN       :  POSITIVE
+   SPECIAL_CASES      :  NORMAL
+
+
+Test Case 9  		(Key = 1.2.2.2.1.)
+   OPERATOR           :  PLUS
+   OPERAND_TYPE_LEFT  :  FLOAT
+   OPERAND_TYPE_RIGHT :  FLOAT
+   OPERAND_SIGN       :  NEGATIVE
+   SPECIAL_CASES      :  NORMAL
+
+
+Test Case 10 		(Key = 2.1.1.1.1.)
+   OPERATOR           :  MINUS
+   OPERAND_TYPE_LEFT  :  INT
+   OPERAND_TYPE_RIGHT :  INT
+   OPERAND_SIGN       :  POSITIVE
+   SPECIAL_CASES      :  NORMAL
+
+
+Test Case 11 		(Key = 2.1.1.2.1.)
+   OPERATOR           :  MINUS
+   OPERAND_TYPE_LEFT  :  INT
+   OPERAND_TYPE_RIGHT :  INT
+   OPERAND_SIGN       :  NEGATIVE
+   SPECIAL_CASES      :  NORMAL
+
+
+Test Case 12 		(Key = 2.1.2.1.1.)
+   OPERATOR           :  MINUS
+   OPERAND_TYPE_LEFT  :  INT
+   OPERAND_TYPE_RIGHT :  FLOAT
+   OPERAND_SIGN       :  POSITIVE
+   SPECIAL_CASES      :  NORMAL
+
+
+Test Case 13 		(Key = 2.1.2.2.1.)
+   OPERATOR           :  MINUS
+   OPERAND_TYPE_LEFT  :  INT
+   OPERAND_TYPE_RIGHT :  FLOAT
+   OPERAND_SIGN       :  NEGATIVE
+   SPECIAL_CASES      :  NORMAL
+
+
+Test Case 14 		(Key = 2.2.1.1.1.)
+   OPERATOR           :  MINUS
+   OPERAND_TYPE_LEFT  :  FLOAT
+   OPERAND_TYPE_RIGHT :  INT
+   OPERAND_SIGN       :  POSITIVE
+   SPECIAL_CASES      :  NORMAL
+
+
+Test Case 15 		(Key = 2.2.1.2.1.)
+   OPERATOR           :  MINUS
+   OPERAND_TYPE_LEFT  :  FLOAT
+   OPERAND_TYPE_RIGHT :  INT
+   OPERAND_SIGN       :  NEGATIVE
+   SPECIAL_CASES      :  NORMAL
+
+
+Test Case 16 		(Key = 2.2.2.1.1.)
+   OPERATOR           :  MINUS
+   OPERAND_TYPE_LEFT  :  FLOAT
+   OPERAND_TYPE_RIGHT :  FLOAT
+   OPERAND_SIGN       :  POSITIVE
+   SPECIAL_CASES      :  NORMAL
+
+
+Test Case 17 		(Key = 2.2.2.2.1.)
+   OPERATOR           :  MINUS
+   OPERAND_TYPE_LEFT  :  FLOAT
+   OPERAND_TYPE_RIGHT :  FLOAT
+   OPERAND_SIGN       :  NEGATIVE
+   SPECIAL_CASES      :  NORMAL
+
+
+Test Case 18 		(Key = 3.1.1.1.1.)
+   OPERATOR           :  MULTIPLY
+   OPERAND_TYPE_LEFT  :  INT
+   OPERAND_TYPE_RIGHT :  INT
+   OPERAND_SIGN       :  POSITIVE
+   SPECIAL_CASES      :  NORMAL
+
+
+Test Case 19 		(Key = 3.1.1.2.1.)
+   OPERATOR           :  MULTIPLY
+   OPERAND_TYPE_LEFT  :  INT
+   OPERAND_TYPE_RIGHT :  INT
+   OPERAND_SIGN       :  NEGATIVE
+   SPECIAL_CASES      :  NORMAL
+
+
+Test Case 20 		(Key = 3.1.2.1.1.)
+   OPERATOR           :  MULTIPLY
+   OPERAND_TYPE_LEFT  :  INT
+   OPERAND_TYPE_RIGHT :  FLOAT
+   OPERAND_SIGN       :  POSITIVE
+   SPECIAL_CASES      :  NORMAL
+
+
+Test Case 21 		(Key = 3.1.2.2.1.)
+   OPERATOR           :  MULTIPLY
+   OPERAND_TYPE_LEFT  :  INT
+   OPERAND_TYPE_RIGHT :  FLOAT
+   OPERAND_SIGN       :  NEGATIVE
+   SPECIAL_CASES      :  NORMAL
+
+
+Test Case 22 		(Key = 3.2.1.1.1.)
+   OPERATOR           :  MULTIPLY
+   OPERAND_TYPE_LEFT  :  FLOAT
+   OPERAND_TYPE_RIGHT :  INT
+   OPERAND_SIGN       :  POSITIVE
+   SPECIAL_CASES      :  NORMAL
+
+
+Test Case 23 		(Key = 3.2.1.2.1.)
+   OPERATOR           :  MULTIPLY
+   OPERAND_TYPE_LEFT  :  FLOAT
+   OPERAND_TYPE_RIGHT :  INT
+   OPERAND_SIGN       :  NEGATIVE
+   SPECIAL_CASES      :  NORMAL
+
+
+Test Case 24 		(Key = 3.2.2.1.1.)
+   OPERATOR           :  MULTIPLY
+   OPERAND_TYPE_LEFT  :  FLOAT
+   OPERAND_TYPE_RIGHT :  FLOAT
+   OPERAND_SIGN       :  POSITIVE
+   SPECIAL_CASES      :  NORMAL
+
+
+Test Case 25 		(Key = 3.2.2.2.1.)
+   OPERATOR           :  MULTIPLY
+   OPERAND_TYPE_LEFT  :  FLOAT
+   OPERAND_TYPE_RIGHT :  FLOAT
+   OPERAND_SIGN       :  NEGATIVE
+   SPECIAL_CASES      :  NORMAL
+
+
+Test Case 26 		(Key = 4.1.1.1.1.)
+   OPERATOR           :  DIVIDE
+   OPERAND_TYPE_LEFT  :  INT
+   OPERAND_TYPE_RIGHT :  INT
+   OPERAND_SIGN       :  POSITIVE
+   SPECIAL_CASES      :  NORMAL
+
+
+Test Case 27 		(Key = 4.1.1.2.1.)
+   OPERATOR           :  DIVIDE
+   OPERAND_TYPE_LEFT  :  INT
+   OPERAND_TYPE_RIGHT :  INT
+   OPERAND_SIGN       :  NEGATIVE
+   SPECIAL_CASES      :  NORMAL
+
+
+Test Case 28 		(Key = 4.1.2.1.1.)
+   OPERATOR           :  DIVIDE
+   OPERAND_TYPE_LEFT  :  INT
+   OPERAND_TYPE_RIGHT :  FLOAT
+   OPERAND_SIGN       :  POSITIVE
+   SPECIAL_CASES      :  NORMAL
+
+
+Test Case 29 		(Key = 4.1.2.2.1.)
+   OPERATOR           :  DIVIDE
+   OPERAND_TYPE_LEFT  :  INT
+   OPERAND_TYPE_RIGHT :  FLOAT
+   OPERAND_SIGN       :  NEGATIVE
+   SPECIAL_CASES      :  NORMAL
+
+
+Test Case 30 		(Key = 4.2.1.1.1.)
+   OPERATOR           :  DIVIDE
+   OPERAND_TYPE_LEFT  :  FLOAT
+   OPERAND_TYPE_RIGHT :  INT
+   OPERAND_SIGN       :  POSITIVE
+   SPECIAL_CASES      :  NORMAL
+
+
+Test Case 31 		(Key = 4.2.1.2.1.)
+   OPERATOR           :  DIVIDE
+   OPERAND_TYPE_LEFT  :  FLOAT
+   OPERAND_TYPE_RIGHT :  INT
+   OPERAND_SIGN       :  NEGATIVE
+   SPECIAL_CASES      :  NORMAL
+
+
+Test Case 32 		(Key = 4.2.2.1.1.)
+   OPERATOR           :  DIVIDE
+   OPERAND_TYPE_LEFT  :  FLOAT
+   OPERAND_TYPE_RIGHT :  FLOAT
+   OPERAND_SIGN       :  POSITIVE
+   SPECIAL_CASES      :  NORMAL
+
+
+Test Case 33 		(Key = 4.2.2.2.1.)
+   OPERATOR           :  DIVIDE
+   OPERAND_TYPE_LEFT  :  FLOAT
+   OPERAND_TYPE_RIGHT :  FLOAT
+   OPERAND_SIGN       :  NEGATIVE
+   SPECIAL_CASES      :  NORMAL
+
