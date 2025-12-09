@@ -116,7 +116,6 @@ class FunctionStatement(Expression):
 class ReturnStatement(Expression):
     def __init__(self, expression: Expression):
         self.expression = expression
-        print("created a return")
 
 
 class CallExpression(Expression):
