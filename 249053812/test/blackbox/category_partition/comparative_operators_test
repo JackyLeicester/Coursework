@@ -1,0 +1,10 @@
+Operator:
+    Less Than.[single]
+    Less Than Equal To.[single]
+    Greater Than.[single]
+    Greater Than Equal To.[single]
+
+Operands:
+    Both are Integers.
+    Both are Floats.
+    Different Types.[error]
