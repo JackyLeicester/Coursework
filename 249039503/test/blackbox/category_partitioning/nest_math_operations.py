@@ -47,7 +47,7 @@ class NestingMathOperationsTest(unittest.TestCase):
 
     def test14(self):
         with self.assertRaises(Exception):
-            self._eval("1+(2*(3+4)")  # bracket missing
+            self._eval("1+(2*(3+4)")
 
 
 if __name__ == "__main__":
