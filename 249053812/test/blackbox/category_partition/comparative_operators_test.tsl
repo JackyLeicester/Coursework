@@ -1,0 +1,38 @@
+
+Test Case 1  		<single>
+   Operator :  Less Than
+
+
+Test Case 2  		<single>
+   Operator :  Less Than Equal To
+
+
+Test Case 3  		<single>
+   Operator :  Greater Than
+
+
+Test Case 4  		<single>
+   Operator :  Greater Than Equal To
+
+
+Test Case 5  		<single>
+   Operator :  Equal To
+
+
+Test Case 6  		<single>
+   Operator :  Not Equal To
+
+
+Test Case 7  		<error>
+   Operands :  Different Types
+
+
+Test Case 8  		(Key = 0.1.)
+   Operator :  <n/a>
+   Operands :  Both are Integers
+
+
+Test Case 9  		(Key = 0.2.)
+   Operator :  <n/a>
+   Operands :  Both are Floats
+

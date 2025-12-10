@@ -1,0 +1,14 @@
+FIRST:
+    A.
+    B.
+    C.
+
+DIVIDER:
+    " ".
+    "\n".
+    "    ".
+
+SECOND:
+    D.
+    E.
+    F.
