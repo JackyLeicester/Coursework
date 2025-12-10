@@ -11,6 +11,7 @@ from src.parser import (
 from src.parser import IntegerLiteral, FloatLiteral, PrefixExpression
 from src.tokens import Token
 
+
 def _eval(node):
     if isinstance(node, (IntegerLiteral, FloatLiteral)):
         text = str(node.value)
@@ -28,8 +29,11 @@ def _eval(node):
         left_val = _eval(node.lhs)
         right_val = _eval(node.rhs)
 
-        def _is_int(value): return isinstance(value, int) and not isinstance(value, bool)
-        def _is_float(value): return isinstance(value, float)
+        def _is_int(value):
+            return isinstance(value, int) and not isinstance(value, bool)
+
+        def _is_float(value):
+            return isinstance(value, float)
 
         if node.operation in {
             Token.LESS,
@@ -38,7 +42,8 @@ def _eval(node):
             Token.GREATEREQUAL,
         }:
             if not (
-                (_is_int(left_val) and _is_int(right_val)) or (_is_float(left_val) and _is_float(right_val))
+                (_is_int(left_val) and _is_int(right_val))
+                or (_is_float(left_val) and _is_float(right_val))
             ):
                 raise Exception("Infix expression must have same type of operator")
 
@@ -63,6 +68,7 @@ def _eval(node):
             return left_val / right_val
 
         raise Exception("Unsupported operator: {node.operation}")
+
 
 def evaluate_expr(source: str):
     lexer = Lexer(source)

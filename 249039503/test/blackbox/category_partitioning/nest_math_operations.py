@@ -1,6 +1,7 @@
 import unittest
 from src.evaluator import evaluate_expr
 
+
 class NestingMathOperationsTest(unittest.TestCase):
     def _eval(self, expr: str):
         return evaluate_expr(expr)
@@ -47,6 +48,7 @@ class NestingMathOperationsTest(unittest.TestCase):
     def test14(self):
         with self.assertRaises(Exception):
             self._eval("1+(2*(3+4)")  # bracket missing
+
 
 if __name__ == "__main__":
     unittest.main()

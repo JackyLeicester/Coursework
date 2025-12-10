@@ -103,7 +103,7 @@ class CommentsTest(unittest.TestCase):
             (Token.IDENTIFIER, "x"),
             (Token.ASSIGN, "="),
             (Token.INT, "1"),
-            (Token.SEMICOLON, ";")
+            (Token.SEMICOLON, ";"),
         ]
         self.assertEqual(tokens, expected_tokens)
 
