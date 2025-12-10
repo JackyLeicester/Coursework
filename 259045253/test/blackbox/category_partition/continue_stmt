@@ -1,0 +1,7 @@
+Semicolon:
+    Present.
+    Absent.[error]
+
+Keyword:
+    Correct keyword.
+    Wrong keyword.[error]

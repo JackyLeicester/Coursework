@@ -215,6 +215,8 @@ class Lexer:
                 return Token.ELSE, word
             case "for":
                 return Token.FOR, word
+            case "continue":
+                return Token.CONTINUE, word
             case "true":
                 return Token.TRUE, word
             case "false":

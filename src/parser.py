@@ -147,6 +147,11 @@ class ForStatement:
         return f"{type(self).__name__} {self.__dict__}"
 
 
+@dataclass
+class ContinueStatement(Expression):
+    pass
+
+
 class Parser:
     def __init__(self, lexer: Lexer):
         self.lexer = lexer
@@ -194,6 +199,7 @@ class Parser:
         self._register_infix_fn(Token.SLASH, self.parse_infix_expression)
 
         self._register_prefix_fn(Token.FOR, self.parse_for_statement)
+        self._register_prefix_fn(Token.CONTINUE, self.parse_continue_statement)
         self._register_prefix_fn(Token.LPAREN, self.parse_paren)
         self._register_prefix_fn(Token.LBRACE, self.parse_block_statement)
 
@@ -392,6 +398,11 @@ class Parser:
 
         block = self.parse_block_statement()
         return ForStatement(initialization, condition, increment, block)
+
+    def parse_continue_statement(self) -> ContinueStatement:
+        self._accept_token(Token.CONTINUE)
+        self._accept_token(Token.SEMICOLON)
+        return ContinueStatement()
 
     def parse_paren(self) -> Expression | None:
         self._next_token()

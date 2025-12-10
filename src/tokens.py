@@ -39,5 +39,6 @@ class Token(IntEnum):
     ASTERISK = auto()
     SLASH = auto()
     FOR = auto()
+    CONTINUE = auto()
     COMMA = auto()
     RETURN = auto()
