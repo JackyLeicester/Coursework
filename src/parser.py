@@ -313,12 +313,6 @@ class Parser:
         if rhs is None:
             return None
 
-        if isinstance(lhs, IntegerLiteral) and not isinstance(rhs, IntegerLiteral):
-            raise Exception("Infix expression must have same type of operands.")
-
-        if isinstance(lhs, FloatLiteral) and not isinstance(rhs, FloatLiteral):
-            raise Exception("Infix expression must have same type of operands.")
-
         return InfixExpression(lhs, operator, rhs)
 
     def _peek_precedence(self) -> int:
@@ -406,7 +400,7 @@ class Parser:
         if expr is None:
             return None
 
-        if not self._peek_token_is(Token.RPAREN):
+        if self.curr_token != Token.RPAREN:
             return None
 
         self._next_token()
