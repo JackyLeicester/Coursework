@@ -1,0 +1,162 @@
+
+Test Case 1  		(Key = 1.1.1.)
+   FIRST   :  A
+   DIVIDER :  " "
+   SECOND  :  D
+
+
+Test Case 2  		(Key = 1.1.2.)
+   FIRST   :  A
+   DIVIDER :  " "
+   SECOND  :  E
+
+
+Test Case 3  		(Key = 1.1.3.)
+   FIRST   :  A
+   DIVIDER :  " "
+   SECOND  :  F
+
+
+Test Case 4  		(Key = 1.2.1.)
+   FIRST   :  A
+   DIVIDER :  "\n"
+   SECOND  :  D
+
+
+Test Case 5  		(Key = 1.2.2.)
+   FIRST   :  A
+   DIVIDER :  "\n"
+   SECOND  :  E
+
+
+Test Case 6  		(Key = 1.2.3.)
+   FIRST   :  A
+   DIVIDER :  "\n"
+   SECOND  :  F
+
+
+Test Case 7  		(Key = 1.3.1.)
+   FIRST   :  A
+   DIVIDER :  "    "
+   SECOND  :  D
+
+
+Test Case 8  		(Key = 1.3.2.)
+   FIRST   :  A
+   DIVIDER :  "    "
+   SECOND  :  E
+
+
+Test Case 9  		(Key = 1.3.3.)
+   FIRST   :  A
+   DIVIDER :  "    "
+   SECOND  :  F
+
+
+Test Case 10 		(Key = 2.1.1.)
+   FIRST   :  B
+   DIVIDER :  " "
+   SECOND  :  D
+
+
+Test Case 11 		(Key = 2.1.2.)
+   FIRST   :  B
+   DIVIDER :  " "
+   SECOND  :  E
+
+
+Test Case 12 		(Key = 2.1.3.)
+   FIRST   :  B
+   DIVIDER :  " "
+   SECOND  :  F
+
+
+Test Case 13 		(Key = 2.2.1.)
+   FIRST   :  B
+   DIVIDER :  "\n"
+   SECOND  :  D
+
+
+Test Case 14 		(Key = 2.2.2.)
+   FIRST   :  B
+   DIVIDER :  "\n"
+   SECOND  :  E
+
+
+Test Case 15 		(Key = 2.2.3.)
+   FIRST   :  B
+   DIVIDER :  "\n"
+   SECOND  :  F
+
+
+Test Case 16 		(Key = 2.3.1.)
+   FIRST   :  B
+   DIVIDER :  "    "
+   SECOND  :  D
+
+
+Test Case 17 		(Key = 2.3.2.)
+   FIRST   :  B
+   DIVIDER :  "    "
+   SECOND  :  E
+
+
+Test Case 18 		(Key = 2.3.3.)
+   FIRST   :  B
+   DIVIDER :  "    "
+   SECOND  :  F
+
+
+Test Case 19 		(Key = 3.1.1.)
+   FIRST   :  C
+   DIVIDER :  " "
+   SECOND  :  D
+
+
+Test Case 20 		(Key = 3.1.2.)
+   FIRST   :  C
+   DIVIDER :  " "
+   SECOND  :  E
+
+
+Test Case 21 		(Key = 3.1.3.)
+   FIRST   :  C
+   DIVIDER :  " "
+   SECOND  :  F
+
+
+Test Case 22 		(Key = 3.2.1.)
+   FIRST   :  C
+   DIVIDER :  "\n"
+   SECOND  :  D
+
+
+Test Case 23 		(Key = 3.2.2.)
+   FIRST   :  C
+   DIVIDER :  "\n"
+   SECOND  :  E
+
+
+Test Case 24 		(Key = 3.2.3.)
+   FIRST   :  C
+   DIVIDER :  "\n"
+   SECOND  :  F
+
+
+Test Case 25 		(Key = 3.3.1.)
+   FIRST   :  C
+   DIVIDER :  "    "
+   SECOND  :  D
+
+
+Test Case 26 		(Key = 3.3.2.)
+   FIRST   :  C
+   DIVIDER :  "    "
+   SECOND  :  E
+
+
+Test Case 27 		(Key = 3.3.3.)
+   FIRST   :  C
+   DIVIDER :  "    "
+   SECOND  :  F
+
