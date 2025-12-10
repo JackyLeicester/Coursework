@@ -1,18 +1,16 @@
-from torch._C._jit_tree_views import StringLiteral
-
-from src.lexer import Lexer
-from src.parser import (
+from .lexer import Lexer
+from .parser import (
     Parser,
     IntegerLiteral,
     FloatLiteral,
     PrefixExpression,
     InfixExpression,
+    Expression,
 )
-from src.parser import IntegerLiteral, FloatLiteral, PrefixExpression
-from src.tokens import Token
+from .tokens import Token
 
 
-def _eval(node):
+def _eval(node: Expression):
     if isinstance(node, (IntegerLiteral, FloatLiteral)):
         text = str(node.value)
         return float(text) if "." in text else int(text)
