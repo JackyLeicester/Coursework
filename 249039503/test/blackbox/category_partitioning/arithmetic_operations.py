@@ -65,3 +65,7 @@ class ArithmeticOperationsTest(unittest.TestCase):
 
     def test18(self):
         self.assertEqual(self._eval(" 5.0 * 2.0/1.0"), 10)
+
+
+if __name__ == "__main__":
+    unittest.main()
