@@ -51,6 +51,7 @@ class CommentsTest(unittest.TestCase):
             (Token.IDENTIFIER, "x"),
             (Token.ASSIGN, "="),
             (Token.INT, "1"),
+            (Token.SEMICOLON, ";"),
         ]
         self.assertEqual(tokens, expected_tokens)
 
@@ -63,6 +64,7 @@ class CommentsTest(unittest.TestCase):
             (Token.IDENTIFIER, "x"),
             (Token.ASSIGN, "="),
             (Token.INT, "1"),
+            (Token.SEMICOLON, ";"),
         ]
         self.assertEqual(tokens, expected_tokens)
 
@@ -75,11 +77,12 @@ class CommentsTest(unittest.TestCase):
             (Token.IDENTIFIER, "x"),
             (Token.ASSIGN, "="),
             (Token.INT, "1"),
+            (Token.SEMICOLON, ";"),
         ]
         self.assertEqual(tokens, expected_tokens)
 
     def test8(self):
-        src = "#\nlet x = 1"
+        src = "#\nlet x = 1;"
         tokens = self._collect_tokens(src)
 
         expected_tokens = [
@@ -87,11 +90,12 @@ class CommentsTest(unittest.TestCase):
             (Token.IDENTIFIER, "x"),
             (Token.ASSIGN, "="),
             (Token.INT, "1"),
+            (Token.SEMICOLON, ";"),
         ]
         self.assertEqual(tokens, expected_tokens)
 
     def test9(self):
-        src = "   # spaced comment\nlet x = 1"
+        src = "   # spaced comment\nlet x = 1;"
         tokens = self._collect_tokens(src)
 
         expected_tokens = [
@@ -99,6 +103,7 @@ class CommentsTest(unittest.TestCase):
             (Token.IDENTIFIER, "x"),
             (Token.ASSIGN, "="),
             (Token.INT, "1"),
+            (Token.SEMICOLON, ";"),
         ]
         self.assertEqual(tokens, expected_tokens)
 

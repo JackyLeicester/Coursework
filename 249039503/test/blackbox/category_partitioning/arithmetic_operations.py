@@ -1,5 +1,5 @@
 import unittest
-from src.parser import evaluate_expr
+from src.evaluator import evaluate_expr
 
 
 class ArithmeticOperationsTest(unittest.TestCase):
