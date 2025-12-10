@@ -1,5 +1,5 @@
 import unittest
-from src.parser import evaluate_expr
+from src.evaluator import evaluate_expr
 
 
 class ArithmeticOperationsTest(unittest.TestCase):
@@ -65,3 +65,6 @@ class ArithmeticOperationsTest(unittest.TestCase):
 
     def test18(self):
         self.assertEqual(self._eval(" 5.0 * 2.0/1.0"), 10)
+
+if __name__ == "__main__":
+    unittest.main()
