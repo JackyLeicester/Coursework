@@ -7,6 +7,7 @@ from src.parser import (
     BooleanLiteral,
     BlockStatement,
     InfixExpression,
+    IncorrectSyntax,
 )
 
 
@@ -21,7 +22,7 @@ class TestIfStatement(unittest.TestCase):
         if x < 1
         """
         parser = self.setup_parser(src)
-        self.assertRaises(Exception, parser.parse_if_expression)
+        self.assertRaises(IncorrectSyntax, parser.parse_if_expression)
 
     def test_correct_if_syntax_literal(self):
         src = """
@@ -43,7 +44,7 @@ class TestIfStatement(unittest.TestCase):
         } else
         """
         parser = self.setup_parser(src)
-        self.assertRaises(Exception, parser.parse_if_expression)
+        self.assertRaises(IncorrectSyntax, parser.parse_if_expression)
 
     def test_correct_if_syntax_expression(self):
         src = """
