@@ -6,6 +6,17 @@ from typing import Dict, List
 from collections.abc import Callable
 
 
+class IncorrectSyntax(Exception):
+    """
+    This should be named 'SyntaxError' but it clashes with the built-in
+    exception of python. Hence, 'IncorrectSyntax' is chosen as an
+    alternative name.
+    """
+
+    def __init__(self, message: str):
+        self.message = message
+
+
 class Expression:
     pass
 
@@ -427,26 +438,18 @@ class Parser:
         block: BlockStatement = BlockStatement(statements)
         return block
 
-    def _get_token_name(self, token: Token) -> str:
-        for name, value in Token.__dict__.items():
-            if value == token:
-                return name
-        return "NOT A TOKEN"
-
-    def _call_syntax_error(
+    def _syntax_error(
         self, expected_tokens: list[Token], actual_token: Token, token_text: str
     ) -> None:
         message: str = "SYNTAX ERROR: expected tokens: "
-        message += "".join(
-            [self._get_token_name(token) + " " for token in expected_tokens]
-        )
+        message += "".join([str(token) + " " for token in expected_tokens])
         message += (
             "\n"
-            + f"actual_token: {self._get_token_name(actual_token)} {token_text} at line: {self.lexer.line_number}"
+            + f"actual tokens: {str(actual_token)} {token_text} at line: {self.lexer.line_number}"
         )
-        raise Exception(message)
+        raise SyntaxError(message)
 
     def _accept_token(self, token: Token):
         if self.curr_token != token:
-            self._call_syntax_error([token], self.curr_token, self.curr_str)
+            self._syntax_error([token], self.curr_token, self.curr_str)
         self._next_token()
