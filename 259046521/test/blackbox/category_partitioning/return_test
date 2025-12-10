@@ -1,0 +1,6 @@
+RETURN:
+    RETURN.
+Expression:
+    5
+    fn.[error]
+    let.[error]

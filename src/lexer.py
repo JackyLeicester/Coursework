@@ -172,7 +172,6 @@ class Lexer:
 
     def _read_char_string(self) -> Tuple[Token, str]:
         start_quote = self.ch
-        start_pos = self.position
         self.read_char()
 
         word: str = start_quote
@@ -222,6 +221,8 @@ class Lexer:
                 return Token.FALSE, word
             case "fn":
                 return Token.FUNCTION, word
+            case "return":
+                return Token.RETURN, word
             case _:
                 return Token.IDENTIFIER, word
 

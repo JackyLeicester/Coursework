@@ -118,6 +118,11 @@ class FunctionStatement(Expression):
         self.block = block
 
 
+class ReturnStatement(Expression):
+    def __init__(self, expression: Expression):
+        self.expression = expression
+
+
 class CallExpression(Expression):
     def __init__(self, identifier_name: str, parameters: List[Expression]):
         self.identifier_name = identifier_name
@@ -165,6 +170,7 @@ class Parser:
         self._register_prefix_fn(Token.FUNCTION, self.parse_function_statement)
         self._register_prefix_fn(Token.LET, self.parse_let_statement)
         self._register_prefix_fn(Token.CONST, self.parse_const_statement)
+        self._register_prefix_fn(Token.RETURN, self.parse_return_statement)
 
         self._register_prefix_fn(Token.INT, self.parse_number_literal)
         self._register_prefix_fn(Token.FLOAT, self.parse_number_literal)
@@ -236,9 +242,14 @@ class Parser:
         self._accept_token(Token.RPAREN)
         block = self.parse_block_statement()
         fn: FunctionStatement = FunctionStatement(identifier, identifiers, block)
-        # ideally this should be for every statement but idk where that is
         self._accept_token(Token.SEMICOLON)
         return fn
+
+    def parse_return_statement(self) -> ReturnStatement:
+        self._accept_token(Token.RETURN)
+        expression: Expression = self.parse_expression()
+        self._accept_token(Token.SEMICOLON)
+        return ReturnStatement(expression)
 
     def parse_let_statement(self) -> LetStatement:
         self._accept_token(Token.LET)
@@ -246,7 +257,6 @@ class Parser:
         self._accept_token(Token.ASSIGN)
         expression: Expression = self.parse_expression()
         statement: LetStatement = LetStatement(identifier, expression)
-        # workaround for expressions not moving forwards
         self._accept_token(Token.SEMICOLON)
         return statement
 
@@ -266,7 +276,7 @@ class Parser:
         return AssignExpression(lhs, rhs)
 
     def parse_expression_statement(self) -> ExpressionStatement:
-        token, str_repr = self.curr_token, self.curr_str
+        token, _ = self.curr_token, self.curr_str
         expression = self.parse_expression()
         return ExpressionStatement(token, expression)
 
@@ -294,7 +304,7 @@ class Parser:
         return left_expr
 
     def parse_infix_expression(self, lhs: Expression) -> InfixExpression | None:
-        operator, str_repr = self.curr_token, self.curr_str
+        operator = self.curr_token
         precedence = self._curr_precedence()
         self._next_token()
 
@@ -421,7 +431,7 @@ class Parser:
     def _call_syntax_error(
         self, expected_tokens: list[Token], actual_token: Token, token_text: str
     ) -> None:
-        message: str = f"SYNTAX ERROR: expected tokens: "
+        message: str = "SYNTAX ERROR: expected tokens: "
         message += "".join(
             [self._get_token_name(token) + " " for token in expected_tokens]
         )
