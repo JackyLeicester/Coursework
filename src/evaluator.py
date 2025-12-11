@@ -2,15 +2,27 @@ from typing import Any, Dict
 
 from .lexer import Lexer
 from .parser import (
-    Parser,Expression,IntegerLiteral,FloatLiteral,BooleanLiteral,
-    PrefixExpression,InfixExpression,Identifier,LetStatement,
-    ConstStatement,AssignExpression,BlockStatement,IfExpression,ExpressionStatement,
+    Parser,
+    Expression,
+    IntegerLiteral,
+    FloatLiteral,
+    BooleanLiteral,
+    PrefixExpression,
+    InfixExpression,
+    Identifier,
+    LetStatement,
+    ConstStatement,
+    AssignExpression,
+    BlockStatement,
+    IfExpression,
+    ExpressionStatement,
 )
 from .tokens import Token
 
 
 class RuntimeEvaluationError(Exception):
     pass
+
 
 Env = Dict[str, tuple[Any, bool]]
 
@@ -158,4 +170,3 @@ def evaluate_expr(source: str, env: Env | None = None) -> Any:
 
     program = BlockStatement(statements)
     return _eval(program, env)
-

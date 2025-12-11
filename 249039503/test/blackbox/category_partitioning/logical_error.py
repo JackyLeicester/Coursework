@@ -1,14 +1,17 @@
 import unittest
 from src.evaluator import evaluate_expr, RuntimeEvaluationError
 
+
 class LogicalErrorTest(unittest.TestCase):
     def _eval(self, expr: str):
         return evaluate_expr(expr)
 
     def test1(self):
         self.assertEqual(self._eval("10/2"), 5)
+
     def test2(self):
         self.assertEqual(self._eval("10/2.0"), 5.0)
+
     def test3(self):
         self.assertEqual(self._eval("10/(2+3)"), 2)
 
@@ -49,5 +52,6 @@ class LogicalErrorTest(unittest.TestCase):
         result = self._eval("let x = 1; x = 2; x;")
         self.assertEqual(result, 2)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()
