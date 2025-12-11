@@ -1,79 +1,172 @@
+from typing import Any, Dict
+
 from .lexer import Lexer
 from .parser import (
     Parser,
+    Expression,
     IntegerLiteral,
     FloatLiteral,
+    BooleanLiteral,
     PrefixExpression,
     InfixExpression,
-    Expression,
+    Identifier,
+    LetStatement,
+    ConstStatement,
+    AssignExpression,
+    BlockStatement,
+    IfExpression,
+    ExpressionStatement,
 )
 from .tokens import Token
 
 
-def _eval(node: Expression):
-    if isinstance(node, (IntegerLiteral, FloatLiteral)):
-        text = str(node.value)
-        return float(text) if "." in text else int(text)
+class RuntimeEvaluationError(Exception):
+    pass
+
+
+Env = Dict[str, tuple[Any, bool]]
+
+
+def _get_var(env: Env, name: str) -> Any:
+    if name not in env:
+        raise RuntimeEvaluationError(f"Undefined variable '{name}'")
+    return env[name][0]
+
+
+def _declare_var(env: Env, name: str, value: Any, is_const: bool) -> Any:
+    if name in env and env[name][1]:
+        raise RuntimeEvaluationError(f"Cannot redeclare constant '{name}'")
+    env[name] = (value, is_const)
+    return value
+
+
+def _assign_var(env: Env, name: str, value: Any) -> Any:
+    if name not in env:
+        raise RuntimeEvaluationError(f"Undefined variable '{name}'")
+    old_value, is_const = env[name]
+    if is_const:
+        raise RuntimeEvaluationError(f"Cannot assign to constant '{name}'")
+    env[name] = (value, False)
+    return value
+
+
+def _eval(node: Expression, env: Env) -> Any:
+    if isinstance(node, IntegerLiteral):
+        return int(node.value)
+
+    if isinstance(node, FloatLiteral):
+        return float(node.value)
+
+    if isinstance(node, BooleanLiteral):
+        return bool(node.literal)
+
+    if isinstance(node, Identifier):
+        return _get_var(env, node.name)
 
     if isinstance(node, PrefixExpression):
-        right_val = _eval(node.right)
-        if node.operator == "+":
-            return +right_val
-        if node.operator == "-":
-            return -right_val
-        raise Exception("Unsupported operator: {node.operator}")
+        right = _eval(node.right, env) if node.right is not None else None
+        op = node.operator
+        if op == "-":
+            return -right
+        if op == "+":
+            return +right
+        if op in ("!", "not"):
+            return not bool(right)
+        raise RuntimeEvaluationError(f"Unsupported prefix operator '{op}'")
 
     if isinstance(node, InfixExpression):
-        left_val = _eval(node.lhs)
-        right_val = _eval(node.rhs)
+        left = _eval(node.lhs, env)
+        right = _eval(node.rhs, env)
+        t = node.operation
 
-        def _is_int(value):
-            return isinstance(value, int) and not isinstance(value, bool)
+        # arithmetic
+        if t == Token.PLUS:
+            return left + right
+        if t == Token.MINUS:
+            return left - right
+        if t == Token.ASTERISK:
+            return left * right
+        if t == Token.SLASH:
+            if right == 0:
+                raise RuntimeEvaluationError("Division by zero")
+            return left / right
 
-        def _is_float(value):
-            return isinstance(value, float)
+        # comparisons
+        if t == Token.EQUAL:
+            return left == right
+        if t == Token.NOTEQUAL:
+            return left != right
+        if t == Token.LESS:
+            return left < right
+        if t == Token.LESSEQUAL:
+            return left <= right
+        if t == Token.GREATER:
+            return left > right
+        if t == Token.GREATEREQUAL:
+            return left >= right
 
-        if node.operation in {
-            Token.LESS,
-            Token.GREATER,
-            Token.LESSEQUAL,
-            Token.GREATEREQUAL,
-        }:
-            if not (
-                (_is_int(left_val) and _is_int(right_val))
-                or (_is_float(left_val) and _is_float(right_val))
-            ):
-                raise Exception("Infix expression must have same type of operator")
+        # logical
+        if t == Token.AND:
+            return bool(left) and bool(right)
+        if t == Token.OR:
+            return bool(left) or bool(right)
 
-            if node.operation == Token.LESS:
-                return left_val < right_val
-            if node.operation == Token.GREATER:
-                return left_val > right_val
-            if node.operation == Token.LESSEQUAL:
-                return left_val <= right_val
-            if node.operation == Token.GREATEREQUAL:
-                return left_val >= right_val
+        raise RuntimeEvaluationError(f"Unsupported infix operator '{t}'")
 
-        if node.operation == Token.PLUS:
-            return left_val + right_val
-        if node.operation == Token.MINUS:
-            return left_val - right_val
-        if node.operation == Token.ASTERISK:
-            return left_val * right_val
-        if node.operation == Token.SLASH:
-            if right_val == 0:
-                raise Exception("Can't divide by zero")
-            return left_val / right_val
+    if isinstance(node, LetStatement):
+        value = _eval(node.expression, env)
+        return _declare_var(env, node.identifier.name, value, is_const=False)
 
-        raise Exception("Unsupported operator: {node.operation}")
+    if isinstance(node, ConstStatement):
+        value = _eval(node.expression, env)
+        return _declare_var(env, node.identifier.name, value, is_const=True)
+
+    if isinstance(node, AssignExpression):
+        if not isinstance(node.lhs, Identifier):
+            raise RuntimeEvaluationError(
+                "Left-hand side of assignment must be a variable"
+            )
+        value = _eval(node.rhs, env)
+        return _assign_var(env, node.lhs.name, value)
+
+    if isinstance(node, ExpressionStatement):
+        if node.expression is None:
+            return None
+        return _eval(node.expression, env)
+
+    if isinstance(node, BlockStatement):
+        result = None
+        for stmt in node.statements:
+            result = _eval(stmt, env)
+        return result
+
+    if isinstance(node, IfExpression):
+        cond = _eval(node.condition, env)
+        if cond:
+            return _eval(node.consequence, env) if node.consequence else None
+        return _eval(node.alternative, env) if node.alternative else None
+
+    raise RuntimeEvaluationError(
+        f"Evaluation not implemented for node type {type(node).__name__}"
+    )
 
 
-def evaluate_expr(source: str):
+def evaluate_expr(source: str, env: Env | None = None) -> Any:
+    if env is None:
+        env = {}
+
     lexer = Lexer(source)
     parser = Parser(lexer)
 
-    expression = parser.parse_expression()
-    if expression is None:
-        raise Exception("Parse failed")
+    statements: list[ExpressionStatement] = []
 
-    return _eval(expression)
+    while parser.curr_token != Token.EOF:
+        if parser.curr_token == Token.SEMICOLON:
+            parser._next_token()
+            continue
+
+        stmt = parser.parse_expression_statement()
+        statements.append(stmt)
+
+    program = BlockStatement(statements)
+    return _eval(program, env)
