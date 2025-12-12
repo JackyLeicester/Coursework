@@ -40,23 +40,9 @@ class PrefixExpression(Expression):
     right: Expression
 
 
+@dataclass
 class Identifier(Expression):
-    def __init__(self, token: Token, name: str, read_only: bool = False):
-        self.token = token
-        self.name = name
-        self.read_only = read_only
-
-    def __repr__(self):
-        return f"Identifier({self.name}, read_only={self.read_only})"
-
-    def get(self):
-        return self.value
-
-    def set(self, value):
-        if self.read_only:
-            # call logical errors once that is complete
-            raise ZeroDivisionError
-        self.value = value
+    name: str
 
 
 @dataclass
@@ -361,7 +347,7 @@ class Parser:
         return CallExpression(name, parameters)
 
     def parse_identifier(self) -> Identifier:
-        identifier = Identifier(self.curr_token, self.curr_str)
+        identifier = Identifier(self.curr_str)
         self._accept_token(Token.IDENTIFIER)
         return identifier
 
