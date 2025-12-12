@@ -7,11 +7,13 @@ import code
 
 
 class Repl(code.InteractiveConsole):
+    env = {}
+
     def runsource(self, source: str, filename="<input>", symbol="single"):
         lexer = Lexer(source)
         parser = Parser(lexer)
         expressions = parser.run()
-        evaluate(expressions)
+        evaluate(expressions, self.env)
 
 
 def read_file_contents(filename: str) -> str | None:
