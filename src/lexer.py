@@ -25,7 +25,7 @@ class Lexer:
             return "\0"
         return self.input[self.read_position]
 
-    def skip_whitespace(self) -> bool:
+    def skip_whitespace(self):
         while self.ch in ("\n", "\t", "\r", " "):
             self.read_char()
 

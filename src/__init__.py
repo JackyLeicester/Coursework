@@ -2,6 +2,7 @@ from argparse import ArgumentParser, RawDescriptionHelpFormatter
 from .lexer import Lexer
 from .parser import Parser
 import textwrap
+from pprint import pprint
 
 
 def read_file_contents(filename: str) -> str | None:
@@ -54,4 +55,5 @@ def main():
     parser = Parser(lexer)
     if args.debug:
         print("=== PARSING ===")
-    parser.run()
+    expressions = parser.run()
+    pprint(expressions)
