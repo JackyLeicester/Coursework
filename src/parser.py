@@ -21,53 +21,33 @@ class Expression:
     pass
 
 
+@dataclass
 class ExpressionStatement(Expression):
-    def __init__(self, token: Token, expression: Expression | None):
-        self.token = token
-        self.expression = expression
+    token: Token
+    expression: Expression
 
 
+@dataclass
 class InfixExpression(Expression):
-    def __init__(self, lhs: Expression, operation: Token, rhs: Expression):
-        self.lhs = lhs
-        self.operation = operation
-        self.rhs = rhs
+    lhs: Expression
+    operation: Token
+    rhs: Expression
 
 
+@dataclass
 class PrefixExpression(Expression):
-    def __init__(self, token: Token, operator: str, right: Expression | None):
-        self.token = token
-        self.operator = operator
-        self.right = right
-
-    def __repr__(self):
-        return f"({self.operator}{self.right})"
+    token: Token
+    right: Expression
 
 
+@dataclass
 class Identifier(Expression):
-    def __init__(self, token: Token, name: str, read_only: bool = False):
-        self.token = token
-        self.name = name
-        self.value = "null"
-        self.read_only = read_only
-
-    def get(self):
-        return self.value
-
-    def set(self, value):
-        if self.read_only:
-            # call logical errors once that is complete
-            raise ZeroDivisionError
-        self.value = value
+    name: str
 
 
+@dataclass
 class IntegerLiteral(Expression):
-    def __init__(self, token: Token, value: str):
-        self.token = token
-        self.value = value
-
-    def __repr__(self):
-        return f"{self.value}"
+    value: int
 
 
 @dataclass
@@ -80,10 +60,10 @@ class BooleanLiteral(Expression):
     literal: bool
 
 
+@dataclass
 class LetStatement(Expression):
-    def __init__(self, identifier: Identifier, expression: Expression):
-        self.identifier = identifier
-        self.expression = expression
+    identifier: Identifier
+    expression: Expression
 
 
 class ConstStatement(Expression):
@@ -140,7 +120,7 @@ class CallExpression(Expression):
         self.parameters = parameters
 
 
-class ForStatement:
+class ForStatement(Expression):
     def __init__(
         self,
         initialization: Expression,
@@ -237,16 +217,12 @@ class Parser:
     def _peek_token_is(self, token: Token) -> bool:
         return self.next_token == token
 
-    def run(self) -> None:
+    def run(self) -> [Expression]:
+        expressions = []
         while self.curr_token != Token.EOF:
-            match self.curr_token:
-                case Token.IF:
-                    print(self.parse_if_expression())
-                case Token.FOR:
-                    print(self.parse_for_statement())
-                case _:
-                    self.parse_expression_statement()
+            expressions.append(self.parse_expression())
             self._next_token()
+        return expressions
 
     def parse_function_statement(self) -> FunctionStatement:
         self._accept_token(Token.FUNCTION)
@@ -339,11 +315,11 @@ class Parser:
         return self.curr_token or Token.LOWEST_PRECEDENCE
 
     def parse_prefix_expression(self) -> PrefixExpression:
-        token, operator = self.curr_token, self.curr_str
+        token = self.curr_token
         precedence = self._curr_precedence()
         self._next_token()
         right = self.parse_expression(precedence)
-        return PrefixExpression(token, operator, right)
+        return PrefixExpression(token, right)
 
     def parse_boolean(self) -> BooleanLiteral:
         literal = BooleanLiteral(self.curr_str == "true")
@@ -371,13 +347,13 @@ class Parser:
         return CallExpression(name, parameters)
 
     def parse_identifier(self) -> Identifier:
-        identifier = Identifier(self.curr_token, self.curr_str)
+        identifier = Identifier(self.curr_str)
         self._accept_token(Token.IDENTIFIER)
         return identifier
 
     def parse_number_literal(self) -> IntegerLiteral | FloatLiteral:
         literal = (
-            IntegerLiteral(self.curr_token, self.curr_str)
+            IntegerLiteral(int(self.curr_str))
             if self.curr_token == Token.INT
             else FloatLiteral(float(self.curr_str))
         )

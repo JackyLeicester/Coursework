@@ -1,7 +1,19 @@
 from argparse import ArgumentParser, RawDescriptionHelpFormatter
 from .lexer import Lexer
 from .parser import Parser
+from .evaluator import evaluate
 import textwrap
+import code
+
+
+class Repl(code.InteractiveConsole):
+    env = {}
+
+    def runsource(self, source: str, filename="<input>", symbol="single"):
+        lexer = Lexer(source)
+        parser = Parser(lexer)
+        expressions = parser.run()
+        evaluate(expressions, self.env)
 
 
 def read_file_contents(filename: str) -> str | None:
@@ -30,9 +42,15 @@ def main():
         Copyright © 2025
         Jacky Liang Xu, Myrza Danike, Syed Fasiuddin, Vatsal Chaudhari."""),
     )
-    arg_parser.add_argument("file", help=": program read from script file")
+    arg_parser.add_argument("file", nargs="?", help=": program read from script file")
     arg_parser.add_argument("--debug", action="store_true", help="enable debug output")
+
     args = arg_parser.parse_args()
+
+    if not args.file:
+        repl = Repl()
+        repl.interact(banner="", exitmsg="")
+        exit(0)
 
     contents = read_file_contents(args.file)
     if not contents:
@@ -49,9 +67,7 @@ def main():
             token, token_str = lexer.next_token()
         print(f"{token.name:15} {token_str}")
 
-    # Reset lexer for parsing
     lexer = Lexer(contents)
     parser = Parser(lexer)
-    if args.debug:
-        print("=== PARSING ===")
-    parser.run()
+    expressions = parser.run()
+    evaluate(expressions)

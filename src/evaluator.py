@@ -1,8 +1,6 @@
 from typing import Any, Dict
 
-from .lexer import Lexer
 from .parser import (
-    Parser,
     Expression,
     IntegerLiteral,
     FloatLiteral,
@@ -65,12 +63,12 @@ def _eval(node: Expression, env: Env) -> Any:
 
     if isinstance(node, PrefixExpression):
         right = _eval(node.right, env) if node.right is not None else None
-        op = node.operator
-        if op == "-":
+        op = node.token
+        if op == Token.MINUS:
             return -right
-        if op == "+":
+        if op == Token.PLUS:
             return +right
-        if op in ("!", "not"):
+        if op == Token.NOT:
             return not bool(right)
         raise RuntimeEvaluationError(f"Unsupported prefix operator '{op}'")
 
@@ -151,22 +149,7 @@ def _eval(node: Expression, env: Env) -> Any:
     )
 
 
-def evaluate_expr(source: str, env: Env | None = None) -> Any:
-    if env is None:
-        env = {}
-
-    lexer = Lexer(source)
-    parser = Parser(lexer)
-
-    statements: list[ExpressionStatement] = []
-
-    while parser.curr_token != Token.EOF:
-        if parser.curr_token == Token.SEMICOLON:
-            parser._next_token()
-            continue
-
-        stmt = parser.parse_expression_statement()
-        statements.append(stmt)
-
-    program = BlockStatement(statements)
-    return _eval(program, env)
+def evaluate(expressions: [Expression], env: Env = {}) -> Any:
+    for expression in expressions:
+        print(expression)
+        print(_eval(expression, env))
