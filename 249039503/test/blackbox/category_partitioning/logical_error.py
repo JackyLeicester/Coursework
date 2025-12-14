@@ -4,7 +4,6 @@ from src.lexer import Lexer
 from src.parser import Parser
 
 
-
 class LogicalErrorTest(unittest.TestCase):
     def evaluate_expr(self, expr: str):
         lexer = Lexer(expr)

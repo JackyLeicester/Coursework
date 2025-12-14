@@ -16,6 +16,7 @@ class IncorrectSyntax(Exception):
     def __init__(self, message: str):
         self.message = message
 
+
 class Expression:
     pass
 
@@ -301,7 +302,9 @@ class Parser:
         expression = self.parse_expression()
         return ExpressionStatement(token, expression)
 
-    def parse_expression(self, precedence: int = 0) -> Expression | None:
+    def parse_expression(
+        self, precedence: int = LOWEST_PRECEDENCE
+    ) -> Expression | None:
         prefix_fn = self.prefix_parse_fns.get(self.curr_token)
         if prefix_fn is None:
             return None
@@ -310,7 +313,9 @@ class Parser:
         if left_expr is None:
             return None
 
-        while self.curr_token != Token.SEMICOLON and precedence < self._curr_precedence():
+        while (
+            self.curr_token != Token.SEMICOLON and precedence < self._curr_precedence()
+        ):
             infix_fn = self.infix_parse_fns.get(self.curr_token)
             if infix_fn is None:
                 break
@@ -420,7 +425,7 @@ class Parser:
 
         expr = self.parse_expression(Parser.LOWEST_PRECEDENCE)
         if expr is None:
-            raise SyntaxError(
+            raise IncorrectSyntax(
                 f"SYNTAX ERROR: expected expression after '(' at line: {self.lexer.line_number}"
             )
         if self.curr_token != Token.RPAREN:
@@ -442,12 +447,12 @@ class Parser:
         self, expected_tokens: list[Token], actual_token: Token, token_text: str
     ) -> None:
         message: str = "SYNTAX ERROR: expected tokens: "
-        message += "".join([str(token) + " " for token in expected_tokens])
+        message += "".join([repr(token) + " " for token in expected_tokens])
         message += (
             "\n"
-            + f"actual tokens: {str(actual_token)} {token_text} at line: {self.lexer.line_number}"
+            + f"actual tokens: {repr(actual_token)} `{token_text}` at line: {self.lexer.line_number}"
         )
-        raise SyntaxError(message)
+        raise IncorrectSyntax(message)
 
     def _accept_token(self, token: Token):
         if self.curr_token != token:
