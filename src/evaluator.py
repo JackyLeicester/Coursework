@@ -149,7 +149,10 @@ def _eval(node: Expression, env: Env) -> Any:
     )
 
 
-def evaluate(expressions: [Expression], env: Env = {}) -> Any:
+def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+    if env is None:
+        env = {}
+    result = None
     for expression in expressions:
-        print(expression)
-        print(_eval(expression, env))
+        result = _eval(expression, env)
+    return result

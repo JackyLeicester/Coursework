@@ -1,10 +1,19 @@
 import unittest
-from src.evaluator import evaluate_expr
+from src.lexer import Lexer
+from src.parser import Parser
+from src.evaluator import _eval
 
 
 class ArithmeticOperationsTest(unittest.TestCase):
     def _eval(self, expr: str):
-        return evaluate_expr(expr)
+        lexer = Lexer(expr)
+        parser = Parser(lexer)
+        expressions = parser.run()
+        env = {}
+        result = None
+        for e in expressions:
+            result = _eval(e, env)
+        return result
 
     # Tests for +
     def test1(self):
