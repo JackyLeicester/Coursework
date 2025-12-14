@@ -2,6 +2,7 @@ import unittest
 from src.lexer import Lexer
 from src.parser import Parser
 from src.evaluator import _eval
+from src.parser import IncorrectSyntax
 
 
 class NestingMathOperationsTest(unittest.TestCase):
@@ -12,6 +13,8 @@ class NestingMathOperationsTest(unittest.TestCase):
         env = {}
         result = None
         for e in expressions:
+            if e is None:
+                continue
             result = _eval(e, env)
         return result
 
@@ -55,7 +58,7 @@ class NestingMathOperationsTest(unittest.TestCase):
         self.assertEqual(self._eval_expr(" 1+ ( 2*  (3+4 ) ) "), 15)
 
     def test14(self):
-        with self.assertRaises(Exception):
+        with self.assertRaises(IncorrectSyntax):
             self._eval_expr("1+(2*(3+4)")
 
 

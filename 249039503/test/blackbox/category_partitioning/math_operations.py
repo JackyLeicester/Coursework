@@ -12,6 +12,8 @@ class MathOperationsTest(unittest.TestCase):
         env = {}
         result = None
         for e in expressions:
+            if e is None:
+                continue
             result = _eval(e, env)
         return result
 
@@ -52,8 +54,7 @@ class MathOperationsTest(unittest.TestCase):
         self.assertEqual(self._eval("1 + 2 * 3 + 4"), 11)
 
     def test13(self):
-        self.assertEqual(self._eval("1 + 2 * 3 + 4"), 11)
-
+        self.assertEqual(self._eval("(1 + 2) * 3 + 4"), 13)
 
 if __name__ == "__main__":
     unittest.main()

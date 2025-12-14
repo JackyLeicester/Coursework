@@ -14,6 +14,7 @@ from .parser import (
     BlockStatement,
     IfExpression,
     ExpressionStatement,
+    CallExpression,
 )
 from .tokens import Token
 
@@ -60,6 +61,29 @@ def _eval(node: Expression, env: Env) -> Any:
 
     if isinstance(node, Identifier):
         return _get_var(env, node.name)
+
+    if isinstance(node, CallExpression):
+        name = node.identifier_name
+        args = [ _eval(p,env) for p in node.parameters]
+        if name in ("plus", "add"):
+            if len(args) != 2:
+                raise RuntimeEvaluationError(f"{name} expects 2 arguments")
+            return args[0] + args[1]
+        if name in ("minus", "sub"):
+            if len(args) != 2:
+                raise RuntimeEvaluationError(f"{name} expects 2 arguments")
+            return args[0] - args[1]
+        if name in ("multiply", "mur"):
+            if len(args) != 2:
+                raise RuntimeEvaluationError(f"{name} expects 2 arguments")
+            return args[0] * args[1]
+        if name in ("divide", "div"):
+            if len(args) != 2:
+                raise RuntimeEvaluationError(f"{name} expects 2 arguments")
+            if args[1] == 0:
+                raise RuntimeEvaluationError("Division by zero")
+            return args[0] / args[1]
+        raise RuntimeEvaluationError(f"Unsupported function '{name}'")
 
     if isinstance(node, PrefixExpression):
         right = _eval(node.right, env) if node.right is not None else None
