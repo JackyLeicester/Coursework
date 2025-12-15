@@ -64,7 +64,7 @@ def _eval(node: Expression, env: Env) -> Any:
 
     if isinstance(node, CallExpression):
         name = node.identifier_name
-        args = [ _eval(arg,env) for arg in node.parameters]
+        args = [_eval(arg, env) for arg in node.parameters]
         if name == "sqrt":
             if len(args) != 1:
                 raise RuntimeEvaluationError("sqrt expects 1 arguments")
