@@ -144,6 +144,23 @@ class ContinueStatement(Expression):
 
 
 class Parser:
+    PRECEDENCES = {
+        Token.OR: 1,
+        Token.AND: 2,
+        Token.EQUAL: 3,
+        Token.NOTEQUAL: 3,
+        Token.LESS: 4,
+        Token.LESSEQUAL: 4,
+        Token.GREATER: 4,
+        Token.GREATEREQUAL: 4,
+        Token.PLUS: 5,
+        Token.MINUS: 5,
+        Token.ASTERISK: 6,
+        Token.SLASH: 6,
+        Token.ASSIGN: 1,
+    }
+    LOWEST_PRECEDENCE = 0
+
     def __init__(self, lexer: Lexer):
         self.lexer = lexer
         self.curr_token, self.curr_str = self.lexer.next_token()
@@ -217,11 +234,22 @@ class Parser:
     def _peek_token_is(self, token: Token) -> bool:
         return self.next_token == token
 
-    def run(self) -> [Expression]:
-        expressions = []
+    def run(self) -> list[Expression]:
+        expressions: list[Expression] = []
+
         while self.curr_token != Token.EOF:
-            expressions.append(self.parse_expression())
-            self._next_token()
+            start_token = self.curr_token
+
+            expr = self.parse_expression()
+            if expr is not None:
+                expressions.append(expr)
+
+            while self.curr_token == Token.SEMICOLON:
+                self._next_token()
+
+            if self.curr_token == start_token:
+                self._next_token()
+
         return expressions
 
     def parse_function_statement(self) -> FunctionStatement:
@@ -264,8 +292,9 @@ class Parser:
         return statement
 
     def parse_assignment_expression(self, lhs: Expression) -> AssignExpression:
+        precedence = self._curr_precedence()
         self._accept_token(Token.ASSIGN)
-        rhs = self.parse_expression()
+        rhs = self.parse_expression(precedence - 1)
         return AssignExpression(lhs, rhs)
 
     def parse_expression_statement(self) -> ExpressionStatement:
@@ -274,25 +303,25 @@ class Parser:
         return ExpressionStatement(token, expression)
 
     def parse_expression(
-        self, precedence: int = Token.LOWEST_PRECEDENCE
+        self, precedence: int = LOWEST_PRECEDENCE
     ) -> Expression | None:
         prefix_fn = self.prefix_parse_fns.get(self.curr_token)
         if prefix_fn is None:
             return None
 
-        left_exp = prefix_fn()
-        if left_exp is None:
+        left_expr = prefix_fn()
+        if left_expr is None:
             return None
 
-        left_expr: Expression = left_exp
-
         while (
-            self.next_token != Token.SEMICOLON and precedence < self._curr_precedence()
+            self.curr_token != Token.SEMICOLON and precedence < self._curr_precedence()
         ):
             infix_fn = self.infix_parse_fns.get(self.curr_token)
             if infix_fn is None:
-                return left_expr
+                break
             left_expr = infix_fn(left_expr)
+            if left_expr is None:
+                return None
 
         return left_expr
 
@@ -309,10 +338,10 @@ class Parser:
         return InfixExpression(lhs, operator, rhs)
 
     def _peek_precedence(self) -> int:
-        return self.next_token or Token.LOWEST_PRECEDENCE
+        return self.PRECEDENCES.get(self.next_token, 0)
 
     def _curr_precedence(self) -> int:
-        return self.curr_token or Token.LOWEST_PRECEDENCE
+        return Parser.PRECEDENCES.get(self.curr_token, Parser.LOWEST_PRECEDENCE)
 
     def parse_prefix_expression(self) -> PrefixExpression:
         token = self.curr_token
@@ -391,16 +420,16 @@ class Parser:
         self._accept_token(Token.SEMICOLON)
         return ContinueStatement()
 
-    def parse_paren(self) -> Expression | None:
+    def parse_paren(self) -> Expression:
         self._next_token()
 
-        expr = self.parse_expression(Token.LOWEST_PRECEDENCE)
+        expr = self.parse_expression(Parser.LOWEST_PRECEDENCE)
         if expr is None:
-            return None
-
+            raise IncorrectSyntax(
+                f"SYNTAX ERROR: expected expression after '(' at line: {self.lexer.line_number}"
+            )
         if self.curr_token != Token.RPAREN:
-            return None
-
+            self._syntax_error([Token.RPAREN], self.curr_token, self.curr_str)
         self._next_token()
         return expr
 
@@ -418,12 +447,12 @@ class Parser:
         self, expected_tokens: list[Token], actual_token: Token, token_text: str
     ) -> None:
         message: str = "SYNTAX ERROR: expected tokens: "
-        message += "".join([str(token) + " " for token in expected_tokens])
+        message += "".join([repr(token) + " " for token in expected_tokens])
         message += (
             "\n"
-            + f"actual tokens: {str(actual_token)} {token_text} at line: {self.lexer.line_number}"
+            + f"actual tokens: {repr(actual_token)} `{token_text}` at line: {self.lexer.line_number}"
         )
-        raise SyntaxError(message)
+        raise IncorrectSyntax(message)
 
     def _accept_token(self, token: Token):
         if self.curr_token != token:

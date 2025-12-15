@@ -1,5 +1,5 @@
+import math
 from typing import Any, Dict
-
 from .parser import (
     Expression,
     IntegerLiteral,
@@ -14,6 +14,7 @@ from .parser import (
     BlockStatement,
     IfExpression,
     ExpressionStatement,
+    CallExpression,
 )
 from .tokens import Token
 
@@ -60,6 +61,32 @@ def _eval(node: Expression, env: Env) -> Any:
 
     if isinstance(node, Identifier):
         return _get_var(env, node.name)
+
+    if isinstance(node, CallExpression):
+        name = node.identifier_name
+        args = [_eval(arg, env) for arg in node.parameters]
+        if name == "sqrt":
+            if len(args) != 1:
+                raise RuntimeEvaluationError("sqrt expects 1 arguments")
+            return float(math.sqrt(args[0]))
+        if name == "pow":
+            if len(args) != 2:
+                raise RuntimeEvaluationError("pow expects 2 arguments")
+            return float(math.pow(args[0], args[1]))
+        if name == "ceil":
+            if len(args) != 1:
+                raise RuntimeEvaluationError("ceil expects 1 arguments")
+            return int(math.ceil(args[0]))
+        if name == "floor":
+            if len(args) != 1:
+                raise RuntimeEvaluationError("floor expects 1 arguments")
+            return int(math.floor(args[0]))
+        if name == "abs":
+            if len(args) != 1:
+                raise RuntimeEvaluationError("abs expects 1 arguments")
+            return abs(args[0])
+
+        raise RuntimeEvaluationError(f"Unsupported function '{name}'")
 
     if isinstance(node, PrefixExpression):
         right = _eval(node.right, env) if node.right is not None else None
@@ -149,7 +176,10 @@ def _eval(node: Expression, env: Env) -> Any:
     )
 
 
-def evaluate(expressions: [Expression], env: Env = {}) -> Any:
+def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+    if env is None:
+        env = {}
+    result = None
     for expression in expressions:
-        print(expression)
-        print(_eval(expression, env))
+        result = _eval(expression, env)
+    return result
