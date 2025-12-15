@@ -1,5 +1,5 @@
+import math
 from typing import Any, Dict
-
 from .parser import (
     Expression,
     IntegerLiteral,
@@ -64,25 +64,28 @@ def _eval(node: Expression, env: Env) -> Any:
 
     if isinstance(node, CallExpression):
         name = node.identifier_name
-        args = [ _eval(p,env) for p in node.parameters]
-        if name in ("plus", "add"):
+        args = [ _eval(arg,env) for arg in node.parameters]
+        if name == "sqrt":
+            if len(args) != 1:
+                raise RuntimeEvaluationError("sqrt expects 1 arguments")
+            return float(math.sqrt(args[0]))
+        if name == "pow":
             if len(args) != 2:
-                raise RuntimeEvaluationError(f"{name} expects 2 arguments")
-            return args[0] + args[1]
-        if name in ("minus", "sub"):
-            if len(args) != 2:
-                raise RuntimeEvaluationError(f"{name} expects 2 arguments")
-            return args[0] - args[1]
-        if name in ("multiply", "mur"):
-            if len(args) != 2:
-                raise RuntimeEvaluationError(f"{name} expects 2 arguments")
-            return args[0] * args[1]
-        if name in ("divide", "div"):
-            if len(args) != 2:
-                raise RuntimeEvaluationError(f"{name} expects 2 arguments")
-            if args[1] == 0:
-                raise RuntimeEvaluationError("Division by zero")
-            return args[0] / args[1]
+                raise RuntimeEvaluationError("pow expects 2 arguments")
+            return float(math.pow(args[0], args[1]))
+        if name == "ceil":
+            if len(args) != 1:
+                raise RuntimeEvaluationError("ceil expects 1 arguments")
+            return int(math.ceil(args[0]))
+        if name == "floor":
+            if len(args) != 1:
+                raise RuntimeEvaluationError("floor expects 1 arguments")
+            return int(math.floor(args[0]))
+        if name == "abs":
+            if len(args) != 1:
+                raise RuntimeEvaluationError("abs expects 1 arguments")
+            return abs(args[0])
+
         raise RuntimeEvaluationError(f"Unsupported function '{name}'")
 
     if isinstance(node, PrefixExpression):

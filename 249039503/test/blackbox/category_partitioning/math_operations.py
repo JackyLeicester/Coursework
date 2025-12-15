@@ -56,5 +56,22 @@ class MathOperationsTest(unittest.TestCase):
     def test13(self):
         self.assertEqual(self._eval("(1 + 2) * 3 + 4"), 13)
 
+    def test_sqrt(self):
+        self.assertEqual(self._eval("sqrt(9);"), 3.0)
+
+    def test_pow(self):
+        self.assertEqual(self._eval("pow(2,3);"), 8.0)
+
+    def test_ceil(self):
+        self.assertEqual(self._eval("ceil(2.3);"), 3)
+
+    def test_floor(self):
+        self.assertEqual(self._eval("floor(2.9);"), 2)
+
+    def test_abs_positive(self):
+        self.assertEqual(self._eval("abs(5);"), 5)
+
+    def test_abs_negative(self):
+        self.assertEqual(self._eval("abs(-5);"), 5)
 if __name__ == "__main__":
     unittest.main()
