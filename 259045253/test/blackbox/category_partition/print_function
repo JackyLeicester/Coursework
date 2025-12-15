@@ -1,0 +1,12 @@
+print:
+    zero arguments.
+    single argument.
+    multiple arguments.
+
+function:
+    print.[single]
+    println.[single]
+
+syntax:
+    missing trailing semicolon.[error]
+    missing comma.[error]
