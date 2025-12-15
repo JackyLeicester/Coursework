@@ -94,6 +94,13 @@ def _eval(node: Expression, env: Env) -> Any:
                 raise RuntimeEvaluationError("abs expects 1 arguments")
             return abs(args[0])
 
+        if name == "println":
+            print(*args)
+            return None
+        if name == "print":
+            print(*args, end="")
+            return None
+
         raise RuntimeEvaluationError(f"Unsupported function '{name}'")
 
     if isinstance(node, PrefixExpression):
