@@ -1,13 +1,14 @@
 # This tries to test the lexer and check if it is able to parse string and
-# char values. So the possible states for the lexer to be in are more that
-# what this test aims to test. In particular this test tries to only test the
-# `_read_char_string` method of the lexer
+# char values. So the possible states for the lexer to be in are more than
+# what this test aims to test. In particular this test tries to test the
+# `_read_char_string` method of the `Lexer` and the `parse_char` and
+# `parse_string` methods of the `Parser`
 
 String:
     Empty string.
     Some string.
-    Open double quote only.
+    Open double quote only.[error]
     Empty character.
     Some character.
-    Open single quote only.
-    More than one character in single quote.
+    Open single quote only.[error]
+    More than one character in single quote.[error]
