@@ -1,4 +1,4 @@
-from typing import Any, Dict
+from typing import Any, Dict, List
 
 from .parser import (
     Expression,
@@ -14,6 +14,8 @@ from .parser import (
     BlockStatement,
     IfExpression,
     ExpressionStatement,
+    CallExpression,
+    FunctionStatement
 )
 from .tokens import Token
 
@@ -22,31 +24,36 @@ class RuntimeEvaluationError(Exception):
     pass
 
 
-Env = Dict[str, tuple[Any, bool]]
+Env = List[Dict[str, tuple[Any, bool]]]
+Context = Dict[str, tuple[Any, bool]]
 
 
 def _get_var(env: Env, name: str) -> Any:
-    if name not in env:
-        raise RuntimeEvaluationError(f"Undefined variable '{name}'")
-    return env[name][0]
+    for context in env[::-1]:
+        if name in context:
+            return context[0]
+    raise RuntimeEvaluationError(f"Undefined variable '{name}'")
 
 
 def _declare_var(env: Env, name: str, value: Any, is_const: bool) -> Any:
-    if name in env and env[name][1]:
+    if name in env[-1] and env[-1][name][1]:
         raise RuntimeEvaluationError(f"Cannot redeclare constant '{name}'")
-    env[name] = (value, is_const)
+    env[-1][name] = (value, is_const)
     return value
 
-
 def _assign_var(env: Env, name: str, value: Any) -> Any:
-    if name not in env:
-        raise RuntimeEvaluationError(f"Undefined variable '{name}'")
-    old_value, is_const = env[name]
+    context: Context = _get_declaration_context(env, name)
+    _, is_const = context[name]
     if is_const:
         raise RuntimeEvaluationError(f"Cannot assign to constant '{name}'")
     env[name] = (value, False)
     return value
 
+def _get_declaration_context(env: Env, name: str) -> Context:
+    for context in env[::-1]:
+        if name in context:
+            return context
+    raise RuntimeEvaluationError(f"Undefined variable '{name}'")
 
 def _eval(node: Expression, env: Env) -> Any:
     if isinstance(node, IntegerLiteral):
@@ -113,6 +120,7 @@ def _eval(node: Expression, env: Env) -> Any:
 
     if isinstance(node, LetStatement):
         value = _eval(node.expression, env)
+        print(f'assigned let value of name: {node.identifier}')
         return _declare_var(env, node.identifier.name, value, is_const=False)
 
     if isinstance(node, ConstStatement):
@@ -144,12 +152,29 @@ def _eval(node: Expression, env: Env) -> Any:
             return _eval(node.consequence, env) if node.consequence else None
         return _eval(node.alternative, env) if node.alternative else None
 
+    if isinstance(node, CallExpression):
+        env.append(dict())
+        function = _get_var(env, node.identifier_name)
+        if not isinstance(function, FunctionStatement):
+            raise RuntimeError(
+                "Looked for function but found another identifier instead"
+            )
+        result = _eval(node.block)
+        env.pop()
+        return result
+
+    if isinstance(node, FunctionStatement):
+        _assign_var(env, node.identifier, node)
+        print(f'assinged function with name: {node.identifier}')
+        return None
+
     raise RuntimeEvaluationError(
         f"Evaluation not implemented for node type {type(node).__name__}"
     )
 
-
-def evaluate(expressions: [Expression], env: Env = {}) -> Any:
+def evaluate(expressions: List[Expression], env: Env = [dict()]) -> Any:
+    print(f'expressions length: {len(expressions)}')
     for expression in expressions:
-        print(expression)
+        print("type", expression, type(expression))
+    for expression in expressions:
         print(_eval(expression, env))

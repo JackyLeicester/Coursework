@@ -1,0 +1,5 @@
+let a = 3;
+fn thing(){
+    let a = 2;
+}
+thing();

@@ -221,6 +221,7 @@ class Parser:
         expressions = []
         while self.curr_token != Token.EOF:
             expressions.append(self.parse_expression())
+            self._next_token()
         return expressions
 
     def parse_function_statement(self) -> FunctionStatement:
@@ -235,9 +236,7 @@ class Parser:
         block = self.parse_block_statement()
         fn: FunctionStatement = FunctionStatement(identifier, identifiers, block)
         self._accept_token(Token.SEMICOLON)
-        print('but a function was parsed')
         return fn
-    
 
     def parse_return_statement(self) -> ReturnStatement:
         self._accept_token(Token.RETURN)
@@ -246,16 +245,12 @@ class Parser:
         return ReturnStatement(expression)
 
     def parse_let_statement(self) -> LetStatement:
-        statement: LetStatement = self.parse_let_expression()
-        self._accept_token(Token.SEMICOLON)
-        return statement
-    
-    def parse_let_expression(self) -> LetStatement:
         self._accept_token(Token.LET)
         identifier: Identifier = self.parse_identifier()
         self._accept_token(Token.ASSIGN)
         expression: Expression = self.parse_expression()
         statement: LetStatement = LetStatement(identifier, expression)
+        self._accept_token(Token.SEMICOLON)
         return statement
 
     def parse_const_statement(self) -> ConstStatement:
@@ -264,6 +259,7 @@ class Parser:
         self._accept_token(Token.ASSIGN)
         expression: Expression = self.parse_expression()
         statement: ConstStatement = ConstStatement(identifier, expression)
+        # workaround for expressions not moving forwards
         self._accept_token(Token.SEMICOLON)
         return statement
 
@@ -283,7 +279,7 @@ class Parser:
         prefix_fn = self.prefix_parse_fns.get(self.curr_token)
         if prefix_fn is None:
             raise IncorrectSyntax(
-                f"Illegal token start {self.curr_str} {self.next_str} at line: {self.lexer.line_number}"
+                "Illegal token start"
             )
 
         left_exp = prefix_fn()
@@ -349,6 +345,7 @@ class Parser:
                 self._accept_token(Token.COMMA)
                 parameters.append(self.parse_expression())
         self._accept_token(Token.RPAREN)
+        self._accept_token(Token.SEMICOLON)
         return CallExpression(name, parameters)
 
     def parse_identifier(self) -> Identifier:
