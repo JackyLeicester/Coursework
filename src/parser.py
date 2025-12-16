@@ -76,6 +76,11 @@ class LetStatement(Expression):
     expression: Expression
 
 
+@dataclass
+class BreakStatement(Expression):
+    pass
+
+
 class ConstStatement(Expression):
     def __init__(self, identifier: Identifier, expression: Expression):
         self.identifier = identifier
@@ -196,6 +201,7 @@ class Parser:
         self._register_prefix_fn(Token.LET, self.parse_let_statement)
         self._register_prefix_fn(Token.CONST, self.parse_const_statement)
         self._register_prefix_fn(Token.RETURN, self.parse_return_statement)
+        self._register_prefix_fn(Token.BREAK, self.parse_break_statement)
 
         self._register_prefix_fn(Token.INT, self.parse_number_literal)
         self._register_prefix_fn(Token.FLOAT, self.parse_number_literal)
@@ -442,6 +448,11 @@ class Parser:
         self._accept_token(Token.SEMICOLON)
         return ContinueStatement()
 
+    def parse_break_statement(self) -> BreakStatement:
+        self._accept_token(Token.BREAK)
+        self._accept_token(Token.SEMICOLON)
+        return BreakStatement()
+
     def parse_paren(self) -> Expression:
         self._next_token()
 
@@ -458,12 +469,20 @@ class Parser:
     def parse_block_statement(self) -> BlockStatement | None:
         self._accept_token(Token.LBRACE)
         statements: List[Expression] = []
-        while self.curr_token != Token.RBRACE and self.curr_token != Token.EOF:
-            statement: Expression = self.parse_expression_statement()
-            statements.append(statement)
+
+        while self.curr_token not in (Token.RBRACE, Token.EOF):
+            if self.curr_token == Token.SEMICOLON:
+                self._next_token()
+                continue
+
+            stmt = self.parse_expression_statement()
+            statements.append(stmt)
+
+            if self.curr_token == Token.SEMICOLON:
+                self._next_token()
+
         self._accept_token(Token.RBRACE)
-        block: BlockStatement = BlockStatement(statements)
-        return block
+        return BlockStatement(statements)
 
     def _syntax_error(
         self, expected_tokens: list[Token], actual_token: Token, token_text: str

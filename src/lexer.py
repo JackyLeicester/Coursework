@@ -225,6 +225,8 @@ class Lexer:
                 return Token.FUNCTION, word
             case "return":
                 return Token.RETURN, word
+            case "break":
+                return Token.BREAK, word
             case _:
                 return Token.IDENTIFIER, word
 

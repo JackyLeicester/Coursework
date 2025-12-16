@@ -17,8 +17,19 @@ from .parser import (
     IfExpression,
     ExpressionStatement,
     CallExpression,
+    ForStatement,
+    ContinueStatement,
+    BreakStatement,
 )
 from .tokens import Token
+
+
+class _BreakSignal(Exception):
+    pass
+
+
+class _ContinueSignal(Exception):
+    pass
 
 
 class RuntimeEvaluationError(Exception):
@@ -186,6 +197,28 @@ def _eval(node: Expression, env: Env) -> Any:
             return _eval(node.consequence, env) if node.consequence else None
         return _eval(node.alternative, env) if node.alternative else None
 
+    if isinstance(node, ContinueStatement):
+        raise _ContinueSignal()
+    if isinstance(node, BreakStatement):
+        raise _BreakSignal()
+
+    if isinstance(node, ForStatement):
+        _eval(node.initialization, env)
+
+        result = None
+        while bool(_eval(node.condition, env)):
+            try:
+                result = _eval(node.block, env)
+            except _ContinueSignal:
+                _eval(node.increment, env)
+                continue
+            except _BreakSignal:
+                break
+
+            _eval(node.increment, env)
+
+        return result
+
     raise RuntimeEvaluationError(
         f"Evaluation not implemented for node type {type(node).__name__}"
     )
@@ -195,6 +228,11 @@ def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
     if env is None:
         env = {}
     result = None
-    for expression in expressions:
-        result = _eval(expression, env)
+    try:
+        for expression in expressions:
+            result = _eval(expression, env)
+    except _ContinueSignal:
+        raise RuntimeEvaluationError("continue used outside loop")
+    except _BreakSignal:
+        raise RuntimeEvaluationError("break used outside loop")
     return result
