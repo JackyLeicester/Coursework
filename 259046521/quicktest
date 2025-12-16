@@ -1,0 +1,7 @@
+fn thing(){
+    return 5;
+};
+
+let a = thing();
+// print(a);
+return a;

@@ -1,4 +1,5 @@
 import math
+import sys
 from typing import Any, Dict, List
 from .parser import (
     Expression,
@@ -21,6 +22,7 @@ from .parser import (
     ContinueStatement,
     BreakStatement,
     FunctionStatement,
+    ReturnStatement
 )
 from .tokens import Token
 
@@ -32,14 +34,17 @@ class _BreakSignal(Exception):
 class _ContinueSignal(Exception):
     pass
 
+class _ReturnSignal(Exception):
+    def __init__(self, value):
+        self.value = value
 
 class RuntimeEvaluationError(Exception):
     pass
 
 
+
 Env = List[Dict[str, tuple[Any, bool]]]
 Context = Dict[str, tuple[Any, bool]]
-
 
 def _get_var(env: Env, name: str) -> Any:
     for context in env[::-1]:
@@ -139,10 +144,14 @@ def _eval(node: Expression, env: Env) -> Any:
                 )
             for identifier, expression in zip(function.variables, node.parameters):
                 _declare_var(env, identifier.name, _eval(expression, env), False)
-            result = _eval(function.block, env)
-
-            env.pop()
-            return result
+            try:
+                result = _eval(function.block, env)
+                env.pop()
+                return result
+            except _ReturnSignal:
+                _, value, _ = sys.exc_info()
+                env.pop()
+                return value.value
 
     if isinstance(node, PrefixExpression):
         right = _eval(node.right, env) if node.right is not None else None
@@ -252,6 +261,9 @@ def _eval(node: Expression, env: Env) -> Any:
         _declare_var(env, node.identifier.name, node, True)
         return None
 
+    if isinstance(node, ReturnStatement):
+        raise _ReturnSignal(_eval(node.expression, env))
+    
     raise RuntimeEvaluationError(
         f"Evaluation not implemented for node type {type(node).__name__}"
     )
@@ -264,6 +276,9 @@ def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
     try:
         for expression in expressions:
             result = _eval(expression, env)
+    except _ReturnSignal:
+        _, value, _ = sys.exc_info()
+        return "User error code: " + str(value.value[0])
     except _ContinueSignal:
         raise RuntimeEvaluationError("continue used outside loop")
     except _BreakSignal:
