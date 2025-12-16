@@ -22,7 +22,7 @@ from .parser import (
     ContinueStatement,
     BreakStatement,
     FunctionStatement,
-    ReturnStatement
+    ReturnStatement,
 )
 from .tokens import Token
 
@@ -34,17 +34,19 @@ class _BreakSignal(Exception):
 class _ContinueSignal(Exception):
     pass
 
+
 class _ReturnSignal(Exception):
     def __init__(self, value):
         self.value = value
+
 
 class RuntimeEvaluationError(Exception):
     pass
 
 
-
 Env = List[Dict[str, tuple[Any, bool]]]
 Context = Dict[str, tuple[Any, bool]]
+
 
 def _get_var(env: Env, name: str) -> Any:
     for context in env[::-1]:
@@ -262,8 +264,12 @@ def _eval(node: Expression, env: Env) -> Any:
         return None
 
     if isinstance(node, ReturnStatement):
-        raise _ReturnSignal(_eval(node.expression, env))
-    
+        evaluation = _eval(node.expression, env)
+        if type(evaluation) == tuple:
+            raise _ReturnSignal(evaluation[0])
+        else:
+            raise _ReturnSignal(evaluation)
+
     raise RuntimeEvaluationError(
         f"Evaluation not implemented for node type {type(node).__name__}"
     )
@@ -278,7 +284,7 @@ def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
             result = _eval(expression, env)
     except _ReturnSignal:
         _, value, _ = sys.exc_info()
-        return "User error code: " + str(value.value[0])
+        return "User error code: " + str(value)
     except _ContinueSignal:
         raise RuntimeEvaluationError("continue used outside loop")
     except _BreakSignal:

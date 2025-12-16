@@ -1,7 +1,2 @@
-fn thing(){
-    return 5;
-};
-
-let a = thing();
-// print(a);
+let a = 2;
 return a;
