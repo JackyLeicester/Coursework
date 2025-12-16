@@ -1,5 +1,5 @@
 import math
-from typing import Any, Dict
+from typing import Any, Dict, List
 from .parser import (
     Expression,
     IntegerLiteral,
@@ -20,6 +20,7 @@ from .parser import (
     ForStatement,
     ContinueStatement,
     BreakStatement,
+    FunctionStatement
 )
 from .tokens import Token
 
@@ -36,30 +37,36 @@ class RuntimeEvaluationError(Exception):
     pass
 
 
-Env = Dict[str, tuple[Any, bool]]
+Env = List[Dict[str, tuple[Any, bool]]]
+Context = Dict[str, tuple[Any, bool]]
 
 
 def _get_var(env: Env, name: str) -> Any:
-    if name not in env:
-        raise RuntimeEvaluationError(f"Undefined variable '{name}'")
-    return env[name][0]
+    for context in env[::-1]:
+        if name in context:
+            return context[name]
+    raise RuntimeEvaluationError(f"Undefined variable '{name}'")
 
 
 def _declare_var(env: Env, name: str, value: Any, is_const: bool) -> Any:
-    if name in env and env[name][1]:
+    if name in env[-1] and env[-1][name][1]:
         raise RuntimeEvaluationError(f"Cannot redeclare constant '{name}'")
-    env[name] = (value, is_const)
+    env[-1][name] = (value, is_const)
     return value
 
-
 def _assign_var(env: Env, name: str, value: Any) -> Any:
-    if name not in env:
-        raise RuntimeEvaluationError(f"Undefined variable '{name}'")
-    old_value, is_const = env[name]
+    context: Context = _get_declaration_context(env, name)
+    _, is_const = context[name]
     if is_const:
         raise RuntimeEvaluationError(f"Cannot assign to constant '{name}'")
     env[name] = (value, False)
     return value
+
+def _get_declaration_context(env: Env, name: str) -> Context:
+    for context in env[::-1]:
+        if name in context:
+            return context
+    raise RuntimeEvaluationError(f"Undefined variable '{name}'")
 
 
 def _eval(node: Expression, env: Env) -> Any:
@@ -88,31 +95,48 @@ def _eval(node: Expression, env: Env) -> Any:
             if len(args) != 1:
                 raise RuntimeEvaluationError("sqrt expects 1 arguments")
             return float(math.sqrt(args[0]))
-        if name == "pow":
+        elif name == "pow":
             if len(args) != 2:
                 raise RuntimeEvaluationError("pow expects 2 arguments")
             return float(math.pow(args[0], args[1]))
-        if name == "ceil":
+        elif name == "ceil":
             if len(args) != 1:
                 raise RuntimeEvaluationError("ceil expects 1 arguments")
             return int(math.ceil(args[0]))
-        if name == "floor":
+        elif name == "floor":
             if len(args) != 1:
                 raise RuntimeEvaluationError("floor expects 1 arguments")
             return int(math.floor(args[0]))
-        if name == "abs":
+        elif name == "abs":
             if len(args) != 1:
                 raise RuntimeEvaluationError("abs expects 1 arguments")
             return abs(args[0])
-
-        if name == "println":
+        elif name == "println":
             print(*args)
             return None
-        if name == "print":
+        elif name == "print":
             print(*args, end="")
             return None
+        else:
+            env.append(dict())
+            function = _get_var(env, node.identifier_name)[0]
+            print('function retrieved was of type: ', function.__class__.__name__)
+            if not isinstance(function, FunctionStatement):
+                print(f"env looks like: {env}")
+                raise RuntimeError(
+                    "Looked for function but found another identifier instead"
+                )
+            if len(node.parameters) != len(function.variables):
+                raise RuntimeError(
+                    "Number of parameters passed is not equal to number of function parameters"
+                )
+            for identifier, expression in zip(function.variables, node.parameters):
+                _declare_var(env, identifier.name, _eval(expression, env), False)
+            print(f"called function with name {function.identifier.name}")
+            result = _eval(function.block, env)
 
-        raise RuntimeEvaluationError(f"Unsupported function '{name}'")
+            env.pop()
+            return result
 
     if isinstance(node, PrefixExpression):
         right = _eval(node.right, env) if node.right is not None else None
@@ -218,6 +242,10 @@ def _eval(node: Expression, env: Env) -> Any:
             _eval(node.increment, env)
 
         return result
+    if isinstance(node, FunctionStatement):
+        _declare_var(env, node.identifier.name, node, True)
+        print(f'assinged function with name: {node.identifier} {node}')
+        return None
 
     raise RuntimeEvaluationError(
         f"Evaluation not implemented for node type {type(node).__name__}"
@@ -226,10 +254,11 @@ def _eval(node: Expression, env: Env) -> Any:
 
 def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
     if env is None:
-        env = {}
+        env = [{}]
     result = None
     try:
         for expression in expressions:
+            print(expression.__class__.__name__)
             result = _eval(expression, env)
     except _ContinueSignal:
         raise RuntimeEvaluationError("continue used outside loop")
