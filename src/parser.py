@@ -343,7 +343,6 @@ class Parser:
                 self._accept_token(Token.COMMA)
                 parameters.append(self.parse_expression())
         self._accept_token(Token.RPAREN)
-        self._accept_token(Token.SEMICOLON)
         return CallExpression(name, parameters)
 
     def parse_identifier(self) -> Identifier:
