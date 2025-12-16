@@ -120,9 +120,9 @@ def _eval(node: Expression, env: Env) -> Any:
             print(*args, end="")
             return None
         elif name == "input":
-            if(len(args) > 0):
+            if len(args) > 0:
                 raise RuntimeEvaluationError("abs expects 0 or 1 arguments")
-            elif(len(args) == 0):
+            elif len(args) == 0:
                 return input()
             else:
                 return input(args[0])

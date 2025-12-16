@@ -1,0 +1,14 @@
+
+Test Case 1  		<error>
+   PARAMETER :  "Enough", "Too much"
+
+
+Test Case 2  		<error>
+   PARAMETER :  let b = 4;
+
+
+Test Case 3  		(Key = 1.1.1.)
+   INPUT     :  input(
+   PARAMETER :  "This is a thing"
+   ENDING    :  );
+
