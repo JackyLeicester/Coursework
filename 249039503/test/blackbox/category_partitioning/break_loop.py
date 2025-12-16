@@ -12,7 +12,6 @@ def evaluate_expr(program: str):
 
 
 class BreakStatementCategoryPartitioningTests(unittest.TestCase):
-
     def test_break_never_triggers(self):
         program = """
         let i = 0;

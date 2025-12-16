@@ -65,9 +65,11 @@ class LetStatement(Expression):
     identifier: Identifier
     expression: Expression
 
+
 @dataclass
 class BreakStatement(Expression):
     pass
+
 
 class ConstStatement(Expression):
     def __init__(self, identifier: Identifier, expression: Expression):
