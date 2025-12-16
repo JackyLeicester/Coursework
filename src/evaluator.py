@@ -20,7 +20,7 @@ from .parser import (
     ForStatement,
     ContinueStatement,
     BreakStatement,
-    FunctionStatement
+    FunctionStatement,
 )
 from .tokens import Token
 
@@ -54,6 +54,7 @@ def _declare_var(env: Env, name: str, value: Any, is_const: bool) -> Any:
     env[-1][name] = (value, is_const)
     return value
 
+
 def _assign_var(env: Env, name: str, value: Any) -> Any:
     context: Context = _get_declaration_context(env, name)
     _, is_const = context[name]
@@ -61,6 +62,7 @@ def _assign_var(env: Env, name: str, value: Any) -> Any:
         raise RuntimeEvaluationError(f"Cannot assign to constant '{name}'")
     env[name] = (value, False)
     return value
+
 
 def _get_declaration_context(env: Env, name: str) -> Context:
     for context in env[::-1]:
@@ -120,9 +122,7 @@ def _eval(node: Expression, env: Env) -> Any:
         else:
             env.append(dict())
             function = _get_var(env, node.identifier_name)[0]
-            print('function retrieved was of type: ', function.__class__.__name__)
             if not isinstance(function, FunctionStatement):
-                print(f"env looks like: {env}")
                 raise RuntimeError(
                     "Looked for function but found another identifier instead"
                 )
@@ -132,7 +132,6 @@ def _eval(node: Expression, env: Env) -> Any:
                 )
             for identifier, expression in zip(function.variables, node.parameters):
                 _declare_var(env, identifier.name, _eval(expression, env), False)
-            print(f"called function with name {function.identifier.name}")
             result = _eval(function.block, env)
 
             env.pop()
@@ -244,7 +243,6 @@ def _eval(node: Expression, env: Env) -> Any:
         return result
     if isinstance(node, FunctionStatement):
         _declare_var(env, node.identifier.name, node, True)
-        print(f'assinged function with name: {node.identifier} {node}')
         return None
 
     raise RuntimeEvaluationError(
@@ -258,7 +256,6 @@ def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
     result = None
     try:
         for expression in expressions:
-            print(expression.__class__.__name__)
             result = _eval(expression, env)
     except _ContinueSignal:
         raise RuntimeEvaluationError("continue used outside loop")
