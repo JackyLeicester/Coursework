@@ -25,8 +25,10 @@ from .tokens import Token
 class _BreakSignal(Exception):
     pass
 
+
 class _ContinueSignal(Exception):
     pass
+
 
 class RuntimeEvaluationError(Exception):
     pass
@@ -180,8 +182,10 @@ def _eval(node: Expression, env: Env) -> Any:
             return _eval(node.consequence, env) if node.consequence else None
         return _eval(node.alternative, env) if node.alternative else None
 
-    if isinstance(node, ContinueStatement): raise _ContinueSignal()
-    if isinstance(node, BreakStatement): raise _BreakSignal()
+    if isinstance(node, ContinueStatement):
+        raise _ContinueSignal()
+    if isinstance(node, BreakStatement):
+        raise _BreakSignal()
 
     if isinstance(node, ForStatement):
         _eval(node.initialization, env)
