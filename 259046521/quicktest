@@ -1,6 +1,2 @@
-let a = 2;
-fn thing(a){
-    let b = a;
-    let a = 3;
-};
-thing(a);
+let a = input();
+print(a);
