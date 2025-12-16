@@ -1,6 +1,8 @@
 import unittest
-from src.lexer import Lexer
+
+from src import Parser, Lexer
 from src.tokens import Token
+from src.parser import StringLiteral, CharLiteral
 
 
 class TestStringProcessing(unittest.TestCase):
@@ -8,18 +10,24 @@ class TestStringProcessing(unittest.TestCase):
     def setup_lexer(src: str) -> Lexer:
         return Lexer(src)
 
+    @staticmethod
+    def setup_parser(src: str) -> Parser:
+        lexer = Lexer(src)
+        parser = Parser(lexer)
+        return parser
+
     def test_empty_string(self):
-        lexer = self.setup_lexer('""')
-        token, str_repr = lexer._read_char_string()
-        self.assertEqual(token, Token.STRING)
-        self.assertEqual(str_repr, "")
+        parser = self.setup_parser('""')
+        string = parser.parse_expression()
+        self.assertIsInstance(string, StringLiteral)
+        self.assertEqual(string.literal, "")
 
     def test_some_string(self):
         some_string = "this is some string"
-        lexer = self.setup_lexer(f'"{some_string}"')
-        token, str_repr = lexer._read_char_string()
-        self.assertEqual(token, Token.STRING)
-        self.assertEqual(str_repr, some_string)
+        parser = self.setup_parser(f'"{some_string}"')
+        string = parser.parse_expression()
+        self.assertIsInstance(string, StringLiteral)
+        self.assertEqual(string.literal, some_string)
 
     def test_open_double_quote_only(self):
         lexer = self.setup_lexer('"')
@@ -27,16 +35,16 @@ class TestStringProcessing(unittest.TestCase):
         self.assertEqual(token, Token.EOF)
 
     def test_empty_character(self):
-        lexer = self.setup_lexer("''")
-        token, str_repr = lexer._read_char_string()
-        self.assertEqual(token, Token.CHAR)
-        self.assertEqual(str_repr, "")
+        parser = self.setup_parser("''")
+        char = parser.parse_expression()
+        self.assertIsInstance(char, CharLiteral)
+        self.assertEqual(char.literal, "")
 
     def test_some_character(self):
-        lexer = self.setup_lexer("'A'")
-        token, str_repr = lexer._read_char_string()
-        self.assertEqual(token, Token.CHAR)
-        self.assertEqual(str_repr, "A")
+        parser = self.setup_parser("'A'")
+        char = parser.parse_expression()
+        self.assertIsInstance(char, CharLiteral)
+        self.assertEqual(char.literal, "A")
 
     def test_open_single_quote_only(self):
         lexer = self.setup_lexer("'")

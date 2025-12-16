@@ -1,10 +1,12 @@
+import math
 from typing import Any, Dict
-
 from .parser import (
     Expression,
     IntegerLiteral,
     FloatLiteral,
     BooleanLiteral,
+    CharLiteral,
+    StringLiteral,
     PrefixExpression,
     InfixExpression,
     Identifier,
@@ -14,8 +16,20 @@ from .parser import (
     BlockStatement,
     IfExpression,
     ExpressionStatement,
+    CallExpression,
+    ForStatement,
+    ContinueStatement,
+    BreakStatement,
 )
 from .tokens import Token
+
+
+class _BreakSignal(Exception):
+    pass
+
+
+class _ContinueSignal(Exception):
+    pass
 
 
 class RuntimeEvaluationError(Exception):
@@ -58,8 +72,47 @@ def _eval(node: Expression, env: Env) -> Any:
     if isinstance(node, BooleanLiteral):
         return bool(node.literal)
 
+    if isinstance(node, CharLiteral):
+        return str(node.literal)
+
+    if isinstance(node, StringLiteral):
+        return str(node.literal)
+
     if isinstance(node, Identifier):
         return _get_var(env, node.name)
+
+    if isinstance(node, CallExpression):
+        name = node.identifier_name
+        args = [_eval(arg, env) for arg in node.parameters]
+        if name == "sqrt":
+            if len(args) != 1:
+                raise RuntimeEvaluationError("sqrt expects 1 arguments")
+            return float(math.sqrt(args[0]))
+        if name == "pow":
+            if len(args) != 2:
+                raise RuntimeEvaluationError("pow expects 2 arguments")
+            return float(math.pow(args[0], args[1]))
+        if name == "ceil":
+            if len(args) != 1:
+                raise RuntimeEvaluationError("ceil expects 1 arguments")
+            return int(math.ceil(args[0]))
+        if name == "floor":
+            if len(args) != 1:
+                raise RuntimeEvaluationError("floor expects 1 arguments")
+            return int(math.floor(args[0]))
+        if name == "abs":
+            if len(args) != 1:
+                raise RuntimeEvaluationError("abs expects 1 arguments")
+            return abs(args[0])
+
+        if name == "println":
+            print(*args)
+            return None
+        if name == "print":
+            print(*args, end="")
+            return None
+
+        raise RuntimeEvaluationError(f"Unsupported function '{name}'")
 
     if isinstance(node, PrefixExpression):
         right = _eval(node.right, env) if node.right is not None else None
@@ -144,12 +197,42 @@ def _eval(node: Expression, env: Env) -> Any:
             return _eval(node.consequence, env) if node.consequence else None
         return _eval(node.alternative, env) if node.alternative else None
 
+    if isinstance(node, ContinueStatement):
+        raise _ContinueSignal()
+    if isinstance(node, BreakStatement):
+        raise _BreakSignal()
+
+    if isinstance(node, ForStatement):
+        _eval(node.initialization, env)
+
+        result = None
+        while bool(_eval(node.condition, env)):
+            try:
+                result = _eval(node.block, env)
+            except _ContinueSignal:
+                _eval(node.increment, env)
+                continue
+            except _BreakSignal:
+                break
+
+            _eval(node.increment, env)
+
+        return result
+
     raise RuntimeEvaluationError(
         f"Evaluation not implemented for node type {type(node).__name__}"
     )
 
 
-def evaluate(expressions: [Expression], env: Env = {}) -> Any:
-    for expression in expressions:
-        print(expression)
-        print(_eval(expression, env))
+def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+    if env is None:
+        env = {}
+    result = None
+    try:
+        for expression in expressions:
+            result = _eval(expression, env)
+    except _ContinueSignal:
+        raise RuntimeEvaluationError("continue used outside loop")
+    except _BreakSignal:
+        raise RuntimeEvaluationError("break used outside loop")
+    return result

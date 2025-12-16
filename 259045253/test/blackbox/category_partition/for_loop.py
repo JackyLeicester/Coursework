@@ -7,6 +7,7 @@ from src.parser import (
     InfixExpression,
     AssignExpression,
     BlockStatement,
+    IncorrectSyntax,
 )
 
 
@@ -38,7 +39,7 @@ class TestForLoopProcessing(unittest.TestCase):
         }
         """
         parser = self.setup_parser(program)
-        self.assertRaises(Exception, parser.parse_for_statement)
+        self.assertRaises(IncorrectSyntax, parser.parse_for_statement)
 
 
 if __name__ == "__main__":
