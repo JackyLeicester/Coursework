@@ -1,4 +1,4 @@
-from parser import IncorrectSyntax
+from src.parser import IncorrectSyntax
 from src.lexer import Lexer
 from src.parser import Parser
 import unittest

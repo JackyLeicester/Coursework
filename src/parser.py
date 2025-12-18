@@ -276,8 +276,8 @@ class Parser:
         self._accept_token(Token.LPAREN)
         identifiers: List[Identifier] = []
         while self.curr_token == Token.IDENTIFIER:
-            identifier: Identifier = self.parse_identifier_or_callexpression()
-            identifiers.append(identifier)
+            parameter: Identifier = self.parse_identifier_or_callexpression()
+            identifiers.append(parameter)
         self._accept_token(Token.RPAREN)
         block = self.parse_block_statement()
         fn: FunctionStatement = FunctionStatement(identifier, identifiers, block)

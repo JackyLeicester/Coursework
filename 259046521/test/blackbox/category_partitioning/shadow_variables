@@ -1,0 +1,10 @@
+DECLARATION:
+    let a = 0;
+    let b = 0;.[error]
+    let c = 0;.[error]
+FUNCTION:
+    fn thing(){
+        print(a);
+    };
+CALL
+    thing();

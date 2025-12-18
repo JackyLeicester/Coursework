@@ -1,0 +1,12 @@
+
+Test Case 1  		<error>
+   DECLARATION :  let b = 3;
+
+
+Test Case 2  		<error>
+   DECLARATION :  let c = 5;
+
+
+Test Case 3  		(Key = 0.)
+   DECLARATION :  <n/a>
+
