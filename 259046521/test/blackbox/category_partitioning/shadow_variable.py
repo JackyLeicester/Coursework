@@ -45,3 +45,7 @@ class ShadowVariableTester(unittest.TestCase):
             evaluate(expressions)
         except Exception:
             self.fail("Test case 3 should not be throwing errors")
+
+
+if __name__ == "__main__":
+    unittest.main()
