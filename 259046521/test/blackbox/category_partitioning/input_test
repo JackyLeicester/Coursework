@@ -1,0 +1,8 @@
+INPUT:
+    input(.
+PARAMETER:
+    "This is a thing".
+    "Enough", "Too much".[error]
+    let b = 4;.[error]
+ENDING:
+    );.
