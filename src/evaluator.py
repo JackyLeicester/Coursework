@@ -48,6 +48,12 @@ Env = List[Dict[str, tuple[Any, bool]]]
 Context = Dict[str, tuple[Any, bool]]
 
 
+def setup_runtime(arg: str) -> Env:
+    env: Env = [{}]
+    _declare_var(env, "arg", arg, True)
+    return env
+
+
 def _get_var(env: Env, name: str) -> Any:
     for context in env[::-1]:
         if name in context:
@@ -95,7 +101,8 @@ def _eval(node: Expression, env: Env) -> Any:
         return str(node.literal)
 
     if isinstance(node, Identifier):
-        return _get_var(env, node.name)
+        val, _is_const = _get_var(env, node.name)
+        return val
 
     if isinstance(node, CallExpression):
         name = node.identifier_name

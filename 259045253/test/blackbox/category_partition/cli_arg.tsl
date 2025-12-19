@@ -1,0 +1,18 @@
+
+Test Case 1  		<error>
+   Script argument in CLI :  Multiple arguments
+
+
+Test Case 2  		<error>  (follows [if])
+   Argument accessed in script :  yes
+
+
+Test Case 3  		(Key = 1.2.)
+   Script argument in CLI      :  Present
+   Argument accessed in script :  no
+
+
+Test Case 4  		(Key = 2.2.)
+   Script argument in CLI      :  Absent
+   Argument accessed in script :  no
+
