@@ -287,7 +287,6 @@ class Parser:
     def parse_return_statement(self) -> ReturnStatement:
         self._accept_token(Token.RETURN)
         expression: Expression = self.parse_expression()
-        self._accept_token(Token.SEMICOLON)
         return ReturnStatement(expression)
 
     def parse_let_statement(self) -> LetStatement:
@@ -318,6 +317,8 @@ class Parser:
     def parse_expression_statement(self) -> ExpressionStatement:
         token, _ = self.curr_token, self.curr_str
         expression = self.parse_expression()
+        if type(expression) == CallExpression:
+            self._accept_token(Token.SEMICOLON)
         return ExpressionStatement(token, expression)
 
     def parse_expression(
@@ -470,14 +471,16 @@ class Parser:
         statements: List[Expression] = []
 
         while self.curr_token not in (Token.RBRACE, Token.EOF):
-            if self.curr_token == Token.SEMICOLON:
+            start_token = self.curr_token
+
+            expr = self.parse_expression()
+            if expr is not None:
+                statements.append(expr)
+
+            while self.curr_token == Token.SEMICOLON:
                 self._next_token()
-                continue
 
-            stmt = self.parse_expression_statement()
-            statements.append(stmt)
-
-            if self.curr_token == Token.SEMICOLON:
+            if self.curr_token == start_token:
                 self._next_token()
 
         self._accept_token(Token.RBRACE)
