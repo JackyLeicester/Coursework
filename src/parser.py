@@ -287,6 +287,7 @@ class Parser:
     def parse_return_statement(self) -> ReturnStatement:
         self._accept_token(Token.RETURN)
         expression: Expression = self.parse_expression()
+        self._accept_token(Token.SEMICOLON)
         return ReturnStatement(expression)
 
     def parse_let_statement(self) -> LetStatement:
