@@ -101,7 +101,8 @@ def _eval(node: Expression, env: Env) -> Any:
         return str(node.literal)
 
     if isinstance(node, Identifier):
-        return _get_var(env, node.name)
+        val, _is_const = _get_var(env, node.name)
+        return val
 
     if isinstance(node, CallExpression):
         name = node.identifier_name
