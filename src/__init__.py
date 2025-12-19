@@ -1,3 +1,4 @@
+import argparse
 from argparse import ArgumentParser, RawDescriptionHelpFormatter
 from .lexer import Lexer
 from .parser import Parser
@@ -29,8 +30,9 @@ def read_file_contents(filename: str) -> str | None:
 
 
 def main():
+    usage_message = "interpret [-h | --help] [--debug] [file] [-- arg]"
     arg_parser = ArgumentParser(
-        prog="interpret",
+        usage=usage_message,
         description=textwrap.dedent("""
         An interpreter for simple programming language developed for Software Measurement and
         Quality Assurance coursework.
@@ -44,7 +46,11 @@ def main():
     )
     arg_parser.add_argument("file", nargs="?", help=": program read from script file")
     arg_parser.add_argument("--debug", action="store_true", help="enable debug output")
-
+    arg_parser.add_argument(
+        "args",
+        nargs=argparse.REMAINDER,
+        help=": additional argument after `--` passed through",
+    )
     args = arg_parser.parse_args()
 
     if not args.file:
