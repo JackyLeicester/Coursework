@@ -70,4 +70,4 @@ def main():
     lexer = Lexer(contents)
     parser = Parser(lexer)
     expressions = parser.run()
-    evaluate(expressions)
+    return evaluate(expressions)

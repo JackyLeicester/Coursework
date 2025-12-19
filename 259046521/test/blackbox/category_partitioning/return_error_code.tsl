@@ -1,0 +1,14 @@
+
+Test Case 1  		<error>
+   EXPRESSION :  let a = 3;
+
+
+Test Case 2  		(Key = 1.1.)
+   RETURN     :  return
+   EXPRESSION :  5
+
+
+Test Case 3  		(Key = 1.3.)
+   RETURN     :  return
+   EXPRESSION :  const b = 2;
+

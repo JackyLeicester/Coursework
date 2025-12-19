@@ -53,7 +53,7 @@ class ConstantDeclarationTest(unittest.TestCase):
         expect_exception(self, "fn realname(){}")
 
     def test12(self):
-        expect_exception(self, "fn realname(){}AA")
+        expect_exception(self, "fn realname(){};AA")
 
     def test13(self):
         output: str = run_test("fn realname(){};")
