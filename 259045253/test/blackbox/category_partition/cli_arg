@@ -1,0 +1,10 @@
+Script argument in CLI:
+    Present.
+    Absent.[property CliArgAbsent]
+
+    # due to limitation of our languge, we only support passing one argument
+    Multiple arguments.[error]
+
+Argument accessed in script:
+    yes.[if CliArgAbsent][error]
+    no.
