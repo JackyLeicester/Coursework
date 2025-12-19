@@ -48,6 +48,12 @@ Env = List[Dict[str, tuple[Any, bool]]]
 Context = Dict[str, tuple[Any, bool]]
 
 
+def setup_runtime(arg: str) -> Env:
+    env: Env = [{}]
+    _declare_var(env, "arg", arg, True)
+    return env
+
+
 def _get_var(env: Env, name: str) -> Any:
     for context in env[::-1]:
         if name in context:

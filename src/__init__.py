@@ -2,7 +2,7 @@ import argparse
 from argparse import ArgumentParser, RawDescriptionHelpFormatter
 from .lexer import Lexer
 from .parser import Parser
-from .evaluator import evaluate
+from .evaluator import evaluate, setup_runtime
 import textwrap
 import code
 
@@ -76,4 +76,9 @@ def main():
     lexer = Lexer(contents)
     parser = Parser(lexer)
     expressions = parser.run()
-    return evaluate(expressions)
+
+    # Since our language doesn't support arrays, we can only pass one argument
+    # to the script, if we add functionality of arrays then we can pass in
+    # `argc` and `argv` similar to how its done in C.
+    env = setup_runtime(args.args[0] or "")
+    return evaluate(expressions, env)
