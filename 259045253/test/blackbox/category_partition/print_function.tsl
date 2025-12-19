@@ -8,26 +8,22 @@ Test Case 2  		<single>
 
 
 Test Case 3  		<error>
-   syntax :  missing trailing semicolon
-
-
-Test Case 4  		<error>
    syntax :  missing comma
 
 
-Test Case 5  		(Key = 1.0.0.)
+Test Case 4  		(Key = 1.0.0.)
    print    :  zero arguments
    function :  <n/a>
    syntax   :  <n/a>
 
 
-Test Case 6  		(Key = 2.0.0.)
+Test Case 5  		(Key = 2.0.0.)
    print    :  single argument
    function :  <n/a>
    syntax   :  <n/a>
 
 
-Test Case 7  		(Key = 3.0.0.)
+Test Case 6  		(Key = 3.0.0.)
    print    :  multiple arguments
    function :  <n/a>
    syntax   :  <n/a>

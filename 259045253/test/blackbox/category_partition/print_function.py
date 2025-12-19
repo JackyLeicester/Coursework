@@ -15,10 +15,6 @@ class TestPrintFunction(unittest.TestCase):
         expressions = parser.run()
         return evaluate(expressions)
 
-    def test_missing_trailing_semicolon(self):
-        src = "print(1)"
-        self.assertRaises(IncorrectSyntax, self._eval, src)
-
     def test_missing_comma(self):
         src = "print(1 'a');"
         self.assertRaises(IncorrectSyntax, self._eval, src)

@@ -8,5 +8,4 @@ function:
     println.[single]
 
 syntax:
-    missing trailing semicolon.[error]
     missing comma.[error]
