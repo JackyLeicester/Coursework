@@ -80,5 +80,10 @@ def main():
     # Since our language doesn't support arrays, we can only pass one argument
     # to the script, if we add functionality of arrays then we can pass in
     # `argc` and `argv` similar to how its done in C.
-    env = setup_runtime(args.args[0] or "")
+    env = None
+    if len(args.args) > 1:
+        arg_parser.print_usage()
+        exit(1)
+    if len(args.args) == 1:
+        env = setup_runtime(args.args[0])
     return evaluate(expressions, env)
