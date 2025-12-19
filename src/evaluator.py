@@ -265,7 +265,7 @@ def _eval(node: Expression, env: Env) -> Any:
 
     if isinstance(node, ReturnStatement):
         evaluation = _eval(node.expression, env)
-        if type(evaluation) == tuple:
+        if evaluation is tuple:
             raise _ReturnSignal(evaluation[0])
         else:
             raise _ReturnSignal(evaluation)

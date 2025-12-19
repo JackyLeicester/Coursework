@@ -317,7 +317,7 @@ class Parser:
     def parse_expression_statement(self) -> ExpressionStatement:
         token, _ = self.curr_token, self.curr_str
         expression = self.parse_expression()
-        if type(expression) == CallExpression:
+        if expression is CallExpression:
             self._accept_token(Token.SEMICOLON)
         return ExpressionStatement(token, expression)
 
