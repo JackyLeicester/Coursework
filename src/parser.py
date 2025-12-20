@@ -299,7 +299,7 @@ class Parser:
         return statement
 
     def parse_let_statement(self) -> LetStatement:
-        self.parse_let_expression()
+        statement = self.parse_let_expression()
         self._accept_token(Token.SEMICOLON)
         return statement
 
