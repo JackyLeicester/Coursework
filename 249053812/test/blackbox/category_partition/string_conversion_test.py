@@ -5,7 +5,6 @@ from src import Lexer, Parser, evaluate
 
 
 class TestConversionFunctions(unittest.TestCase):
-
     @staticmethod
     def _eval(src: str) -> Any:
         lexer = Lexer(src)
@@ -32,12 +31,12 @@ class TestConversionFunctions(unittest.TestCase):
         self.assertEqual(result, 2.5)
 
     def test_to_str_function(self):
-        result = self._eval('toStr(100);')
+        result = self._eval("toStr(100);")
         self.assertIsInstance(result, str)
         self.assertEqual(result, "100")
 
     def test_return_type_str(self):
-        result = self._eval('toStr(3.14);')
+        result = self._eval("toStr(3.14);")
         self.assertIsInstance(result, str)
 
     def test_return_type_float(self):
