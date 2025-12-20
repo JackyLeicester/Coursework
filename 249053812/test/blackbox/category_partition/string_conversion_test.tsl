@@ -1,0 +1,50 @@
+
+Test Case 1  		<single>
+   functions :  isInt
+
+
+Test Case 2  		<single>
+   functions :  toInt
+
+
+Test Case 3  		<single>
+   functions :  isFloat
+
+
+Test Case 4  		<single>
+   functions :  ToFloat
+
+
+Test Case 5  		<single>
+   functions :  toStr
+
+
+Test Case 6  		<single>
+   returntype :  str
+
+
+Test Case 7  		<single>
+   returntype :  Float
+
+
+Test Case 8  		<single>
+   returntype :  int
+
+
+Test Case 9  		(Key = 1.0.1.)
+   arguments  :  zero arguments
+   functions  :  <n/a>
+   returntype :  Bool
+
+
+Test Case 10 		(Key = 2.0.1.)
+   arguments  :  single argument
+   functions  :  <n/a>
+   returntype :  Bool
+
+
+Test Case 11 		(Key = 3.0.1.)
+   arguments  :  multiple arguments
+   functions  :  <n/a>
+   returntype :  Bool
+
