@@ -149,6 +149,7 @@ class ForStatement(Expression):
         self.increment = increment
         self.block = block
 
+
 class WhileStatement(Expression):
     def __init__(self, condition: Expression, block: BlockStatement):
         self.token = Token.WHILE
