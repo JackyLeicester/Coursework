@@ -170,6 +170,54 @@ def _eval(node: Expression, env: Env) -> Any:
             if len(args) != 1:
                 raise RuntimeEvaluationError("to_str expects 1 argument")
             return str(args[0])
+        elif name == "concat":
+            if len(args) != 2:
+                raise RuntimeEvaluationError("concat expects 2 arguments")
+            for arg in args:
+                if type(arg) != str:
+                    raise RuntimeEvaluationError("Input is not a string")
+            try:
+                return args[0] + args[1]
+            except (ValueError, TypeError):
+                raise RuntimeEvaluationError("Cannot concatenate values")
+        elif name == "trim":
+            if len(args) != 1:
+                raise RuntimeEvaluationError("trim expects 1 argument")
+            if type(args[0]) != str:
+                raise RuntimeEvaluationError("Input is not a string")
+            try:
+                return args[0].strip()
+            except (ValueError, TypeError):
+                raise RuntimeEvaluationError("Cannot trim given value")
+        elif name == "hasPrefix":
+            if len(args) != 2:
+                raise RuntimeEvaluationError("hasPrefix expects 2 arguments")
+            for arg in args:
+                if type(arg) != str:
+                    raise RuntimeEvaluationError("Input is not a string")
+            try:
+                return args[1].startswith(args[0])
+            except (ValueError, TypeError):
+                raise RuntimeEvaluationError("Cannot check prefix of the value")
+        elif name == "hasSuffix":
+            if len(args) != 2:
+                raise RuntimeEvaluationError("hasSuffix expects 2 arguments")
+            for arg in args:
+                if type(arg) != str:
+                    raise RuntimeEvaluationError("Input is not a string")
+            try:
+                return args[1].endswith(args[0])
+            except (ValueError, TypeError):
+                raise RuntimeEvaluationError("Cannot check suffix of the value")
+        elif name == "length":
+            if len(args) != 1:
+                raise RuntimeEvaluationError("length expects 1 argument")
+            if type(args[0]) != str:
+                raise RuntimeEvaluationError("Input is not a string")
+            try:
+                return len(args[0])
+            except (ValueError, TypeError):
+                raise RuntimeEvaluationError("Cannot check length of the value")
         else:
             env.append(dict())
             function = _get_var(env, node.identifier_name)[0]
