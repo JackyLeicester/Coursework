@@ -140,6 +140,36 @@ def _eval(node: Expression, env: Env) -> Any:
                 return input()
             else:
                 return input(args[0])
+        elif name == "isInt":
+            if len(args) != 1:
+                raise RuntimeEvaluationError("is_int expects 1 argument")
+            return args[0].isnumeric()
+        elif name == "toInt":
+            if len(args) != 1:
+                raise RuntimeEvaluationError("to_int expects 1 argument")
+            try:
+                return int(args[0])
+            except (ValueError, TypeError):
+                raise RuntimeEvaluationError("Cannot convert value to int")
+        elif name == "isFloat":
+            if len(args) != 1:
+                raise RuntimeEvaluationError("is_float expects 1 argument")
+            try:
+                float(args[0])
+                return True
+            except (ValueError, TypeError):
+                return False
+        elif name == "toFloat":
+            if len(args) != 1:
+                raise RuntimeEvaluationError("to_float expects 1 argument")
+            try:
+                return float(args[0])
+            except (ValueError, TypeError):
+                raise RuntimeEvaluationError("Cannot convert value to float")
+        elif name == "toStr":
+            if len(args) != 1:
+                raise RuntimeEvaluationError("to_str expects 1 argument")
+            return str(args[0])
         else:
             env.append(dict())
             function = _get_var(env, node.identifier_name)[0]

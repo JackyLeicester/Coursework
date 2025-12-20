@@ -1,0 +1,17 @@
+arguments:
+    zero arguments.
+    single argument.
+    multiple arguments.
+
+functions:
+    isInt.[single]
+    toInt.[single]
+    isFloat.[single]
+    ToFloat.[single]
+    toStr.[single]
+
+returntype:
+    Bool.
+    str.[single]
+    Float.[single]
+    int.[single]
