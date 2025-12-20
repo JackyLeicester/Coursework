@@ -290,12 +290,16 @@ class Parser:
         self._accept_token(Token.SEMICOLON)
         return ReturnStatement(expression)
 
-    def parse_let_statement(self) -> LetStatement:
+    def parse_let_expression(self) -> LetStatement:
         self._accept_token(Token.LET)
         identifier: Identifier = self.parse_identifier()
         self._accept_token(Token.ASSIGN)
         expression: Expression = self.parse_expression()
         statement: LetStatement = LetStatement(identifier, expression)
+        return statement
+
+    def parse_let_statement(self) -> LetStatement:
+        statement = self.parse_let_expression()
         self._accept_token(Token.SEMICOLON)
         return statement
 
@@ -432,7 +436,7 @@ class Parser:
         self._accept_token(Token.FOR)
         self._accept_token(Token.LPAREN)
 
-        initialization = self.parse_expression()
+        initialization = self.parse_let_expression()
         self._accept_token(Token.SEMICOLON)
 
         condition = self.parse_expression()
