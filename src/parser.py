@@ -149,6 +149,13 @@ class ForStatement(Expression):
         self.increment = increment
         self.block = block
 
+
+class WhileStatement(Expression):
+    def __init__(self, condition: Expression, block: BlockStatement):
+        self.token = Token.WHILE
+        self.condition = condition
+        self.block = block
+
     def __repr__(self):
         return f"{type(self).__name__} {self.__dict__}"
 
@@ -225,6 +232,7 @@ class Parser:
         self._register_infix_fn(Token.SLASH, self.parse_infix_expression)
 
         self._register_prefix_fn(Token.FOR, self.parse_for_statement)
+        self._register_prefix_fn(Token.WHILE, self.parse_while_statement)
         self._register_prefix_fn(Token.CONTINUE, self.parse_continue_statement)
         self._register_prefix_fn(Token.LPAREN, self.parse_paren)
         self._register_prefix_fn(Token.LBRACE, self.parse_block_statement)
@@ -447,6 +455,21 @@ class Parser:
 
         block = self.parse_block_statement()
         return ForStatement(initialization, condition, increment, block)
+
+    def parse_while_statement(self) -> WhileStatement:
+        self._accept_token(Token.WHILE)
+        self._accept_token(Token.LPAREN)
+
+        condition = self.parse_expression()
+        if condition is None:
+            raise IncorrectSyntax(
+                f"SYNTAX ERROR: expected condition in while at line: {self.lexer.line_number}"
+            )
+
+        self._accept_token(Token.RPAREN)
+
+        block = self.parse_block_statement()
+        return WhileStatement(condition, block)
 
     def parse_continue_statement(self) -> ContinueStatement:
         self._accept_token(Token.CONTINUE)
