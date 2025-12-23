@@ -85,6 +85,14 @@ def _get_declaration_context(env: Env, name: str) -> Context:
     raise RuntimeEvaluationError(f"Undefined variable '{name}'")
 
 
+def _is_declared(env: Env, name: str) -> bool:
+    try:
+        _get_declaration_context(env, name)
+        return True
+    except RuntimeEvaluationError:
+        return False
+
+
 def _eval(node: Expression, env: Env) -> Any:
     if isinstance(node, IntegerLiteral):
         return int(node.value)
@@ -219,6 +227,12 @@ def _eval(node: Expression, env: Env) -> Any:
                 return len(args[0])
             except (ValueError, TypeError):
                 raise RuntimeEvaluationError("Cannot check length of the value")
+        elif name == "ifExists":
+            if len(args) != 1:
+                raise RuntimeEvaluationError("ifExists expects 1 argument")
+            if not isinstance(args[0], str):
+                raise RuntimeEvaluationError("Input is not a string")
+            return _is_declared(env, args[0])
         else:
             env.append(dict())
             function = _get_var(env, node.identifier_name)[0]
