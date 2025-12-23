@@ -41,6 +41,3 @@ class VariableDeclarationTest(unittest.TestCase):
         output: str = run_test("let realname = 5;")
         self.assertEqual(output, "")
 
-
-if __name__ == "__main__":
-    unittest.main()

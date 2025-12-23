@@ -60,5 +60,5 @@ class ConstantDeclarationTest(unittest.TestCase):
         self.assertEqual(output, "")
 
 
-if __name__ == "__main__":
-    unittest.main()
+
+

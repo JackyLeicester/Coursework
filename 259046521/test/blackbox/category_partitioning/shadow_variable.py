@@ -43,9 +43,7 @@ class ShadowVariableTester(unittest.TestCase):
             parser = Parser(lexer)
             expressions = parser.run()
             evaluate(expressions)
-        except Exception:
+        except Exception: # pragma: no cover
             self.fail("Test case 3 should not be throwing errors")
 
 
-if __name__ == "__main__":
-    unittest.main()

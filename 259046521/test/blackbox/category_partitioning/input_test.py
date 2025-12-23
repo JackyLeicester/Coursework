@@ -9,12 +9,12 @@ class InputTest(unittest.TestCase):
         with self.assertRaises(IncorrectSyntax):
             lexer: Lexer = Lexer("input(let a = 3);")
             parser = Parser(lexer)
-            expressions = parser.run()
-            evaluate(expressions)
+            parser.run()
 
     def test2(self):
         with self.assertRaises(RuntimeEvaluationError):
             lexer: Lexer = Lexer('input("Enough", "Too much");')
             parser = Parser(lexer)
             expressions = parser.run()
-            evaluate(expressions)
+            self.assertIsNone(evaluate(expressions))
+
