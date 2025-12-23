@@ -1,6 +1,6 @@
 from src.lexer import Lexer
 from src.parser import Parser
-from src.evaluator import _is_declared, evaluate, RuntimeEvaluationError
+from src.evaluator import evaluate, RuntimeEvaluationError
 import unittest
 
 
