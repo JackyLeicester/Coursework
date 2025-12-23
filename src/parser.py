@@ -312,14 +312,16 @@ class Parser:
         return statement
 
     def parse_const_statement(self) -> ConstStatement:
+        statement = self.parse_const_expression()
+        self._accept_token(Token.SEMICOLON)
+        return statement
+
+    def parse_const_expression(self) -> ConstStatement:
         self._accept_token(Token.CONST)
         identifier: Identifier = self.parse_identifier()
         self._accept_token(Token.ASSIGN)
         expression: Expression = self.parse_expression()
-        statement: ConstStatement = ConstStatement(identifier, expression)
-        # workaround for expressions not moving forwards
-        self._accept_token(Token.SEMICOLON)
-        return statement
+        return ConstStatement(identifier, expression)
 
     def parse_assignment_expression(self, lhs: Expression) -> AssignExpression:
         precedence = self._curr_precedence()
@@ -330,7 +332,7 @@ class Parser:
     def parse_expression_statement(self) -> ExpressionStatement:
         token, _ = self.curr_token, self.curr_str
         expression = self.parse_expression()
-        if expression is CallExpression:
+        if isinstance(expression, CallExpression):
             self._accept_token(Token.SEMICOLON)
         return ExpressionStatement(token, expression)
 
@@ -444,7 +446,13 @@ class Parser:
         self._accept_token(Token.FOR)
         self._accept_token(Token.LPAREN)
 
-        initialization = self.parse_let_expression()
+        if self.curr_token == Token.LET:
+            initialization = self.parse_let_expression()
+        elif self.curr_token == Token.CONST:
+            initialization = self.parse_const_expression()
+        else:
+            initialization = self.parse_expression()
+
         self._accept_token(Token.SEMICOLON)
 
         condition = self.parse_expression()
