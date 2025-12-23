@@ -266,7 +266,7 @@ class Parser:
         while self.curr_token != Token.EOF:
             start_token = self.curr_token
 
-            expr = self.parse_expression()
+            expr = self.parse_expression_statement()
             if expr is not None:
                 expressions.append(expr)
 
@@ -330,7 +330,7 @@ class Parser:
     def parse_expression_statement(self) -> ExpressionStatement:
         token, _ = self.curr_token, self.curr_str
         expression = self.parse_expression()
-        if expression is CallExpression:
+        if type(expression) is CallExpression:
             self._accept_token(Token.SEMICOLON)
         return ExpressionStatement(token, expression)
 
@@ -501,7 +501,7 @@ class Parser:
         while self.curr_token not in (Token.RBRACE, Token.EOF):
             start_token = self.curr_token
 
-            expr = self.parse_expression()
+            expr = self.parse_expression_statement()
             if expr is not None:
                 statements.append(expr)
 
