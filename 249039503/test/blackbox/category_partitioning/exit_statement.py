@@ -12,7 +12,6 @@ def evaluate_expr(program: str):
 
 
 class ExitStatementCategoryPartitioningTests(unittest.TestCase):
-
     def test_top_level_int_literal_immediate_termination(self):
         program = """
         exit(7);
