@@ -96,10 +96,6 @@ def _get_declaration_context(env: "Env | Context", name: str) -> Context:
     raise RuntimeEvaluationError(f"Undefined variable '{name}'")
 
 
-def _env_stack(env: "Env | Context") -> Env:
-    return env if isinstance(env, list) else [env]
-
-
 def _eval(node: Expression, env: "Env | Context") -> Any:
     if isinstance(node, IntegerLiteral):
         return int(node.value)
