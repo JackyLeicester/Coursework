@@ -18,3 +18,6 @@ class InputTest(unittest.TestCase):
             parser = Parser(lexer)
             expressions = parser.run()
             evaluate(expressions)
+
+if __name__ == "__main__":
+    unittest.main()

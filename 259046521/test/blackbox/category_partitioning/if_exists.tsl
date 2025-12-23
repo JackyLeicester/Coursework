@@ -1,0 +1,21 @@
+
+Test Case 1  		<error>
+   DECLARATION :  let b = 3;
+
+
+Test Case 2  		<error>
+   DECLARATION :  print(5)
+
+
+Test Case 3  		<error>
+   NAME :  3
+
+
+Test Case 4  		<error>
+   NAME :  ()
+
+
+Test Case 5  		(Key = 1.1.)
+   DECLARATION :  let a = 0;
+   NAME        :  "a"
+
