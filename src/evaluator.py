@@ -235,6 +235,25 @@ def _eval(node: Expression, env: "Env | Context") -> Any:
             if isinstance(args[0], bool) or not isinstance(args[0], int):
                 raise RuntimeEvaluationError("eixt argument must be int")
             raise _ExitSignal(args[0])
+        elif name == "type":
+            if len(args) != 1:
+                raise RuntimeEvaluationError("type expects 1 argument")
+            v = args[0]
+
+            if v is None:
+                return "null"
+            if isinstance(v, bool):
+                return "boolean"
+            if isinstance(v, int):
+                return "integer"
+            if isinstance(v, float):
+                return "float"
+            if isinstance(v, str):
+                return "string"
+            if isinstance(v, FunctionStatement):
+                return "function"
+
+            return "unknown"
         else:
             stack = _env_stack(env)
             stack.append({})

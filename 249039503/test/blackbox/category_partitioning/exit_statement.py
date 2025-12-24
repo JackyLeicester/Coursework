@@ -38,10 +38,6 @@ class ExitStatementCategoryPartitioningTests(unittest.TestCase):
         """
         self.assertEqual(evaluate_expr(program), 7)
 
-    # -----------------------
-    # INVALID: ERROR RAISED
-    # -----------------------
-
     def test_non_int_value_raises_error(self):
         program = """
         exit(1.5);
