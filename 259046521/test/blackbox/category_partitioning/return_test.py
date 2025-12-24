@@ -28,7 +28,3 @@ class ConstantDeclarationTest(unittest.TestCase):
     def test3(self):
         output: str = run_test("return 5;")
         self.assertEqual(output, "")
-
-
-if __name__ == "__main__":
-    unittest.main()

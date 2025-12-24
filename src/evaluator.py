@@ -244,6 +244,7 @@ def _eval(node: Expression, env: "Env | Context") -> Any:
                 raise RuntimeError(
                     "Looked for function but found another identifier instead"
                 )
+
             if len(node.parameters) != len(function.variables):
                 stack.pop()
                 raise RuntimeError(
@@ -381,10 +382,7 @@ def _eval(node: Expression, env: "Env | Context") -> Any:
 
     if isinstance(node, ReturnStatement):
         evaluation = _eval(node.expression, env)
-        if isinstance(evaluation, tuple):
-            raise _ReturnSignal(evaluation[0])
-        else:
-            raise _ReturnSignal(evaluation)
+        raise _ReturnSignal(evaluation)
 
     raise RuntimeEvaluationError(
         f"Evaluation not implemented for node type {type(node).__name__}"
