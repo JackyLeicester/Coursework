@@ -5,7 +5,7 @@ import unittest
 
 
 class InputTest(unittest.TestCase):
-    #test based on category partition
+    # test based on category partition
     def test1(self):
         with self.assertRaises(IncorrectSyntax):
             lexer: Lexer = Lexer("input(let a = 3);")

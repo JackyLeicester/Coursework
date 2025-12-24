@@ -259,9 +259,6 @@ class Parser:
         self.next_token, self.next_str = self.lexer.next_token()
         self.token_number += 1
 
-    def _peek_token_is(self, token: Token) -> bool:
-        return self.next_token == token
-
     def run(self) -> list[Expression]:
         expressions: list[Expression] = []
 

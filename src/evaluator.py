@@ -64,7 +64,7 @@ def _get_var(env: Env, name: str) -> Any:
 
 def _declare_var(env: Env, name: str, value: Any, is_const: bool) -> Any:
     if name in env[-1] and env[-1][name][1]:
-            raise RuntimeEvaluationError(f"Cannot redeclare constant '{name}'")
+        raise RuntimeEvaluationError(f"Cannot redeclare constant '{name}'")
     env[-1][name] = (value, is_const)
     return value
 
@@ -363,10 +363,7 @@ def _eval(node: Expression, env: Env) -> Any:
 
     if isinstance(node, ReturnStatement):
         evaluation = _eval(node.expression, env)
-        if evaluation is tuple:
-            raise _ReturnSignal(evaluation[0])
-        else:
-            raise _ReturnSignal(evaluation)
+        raise _ReturnSignal(evaluation)
 
     raise RuntimeEvaluationError(
         f"Evaluation not implemented for node type {type(node).__name__}"

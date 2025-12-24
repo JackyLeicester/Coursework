@@ -20,7 +20,7 @@ def expect_exception(tester: unittest.TestCase, test_input: str):
 
 
 class ConstantDeclarationTest(unittest.TestCase):
-#based on category partition
+    # based on category partition
     def test1(self):
         expect_exception(self, "fn true")
 
@@ -60,7 +60,8 @@ class ConstantDeclarationTest(unittest.TestCase):
     def test13(self):
         output: str = run_test("fn realname(){};")
         self.assertEqual(output, "")
-#based on branch testing
+
+    # based on branch testing
     def test14(self):
         lexer: Lexer = Lexer("""
             fn realname(test){
@@ -71,7 +72,7 @@ class ConstantDeclarationTest(unittest.TestCase):
         parser: Parser = Parser(lexer)
         statements = parser.run()
         self.assertEqual(evaluate(statements), "User error code: 5")
-    
+
     def test15(self):
         with self.assertRaises(RuntimeEvaluationError):
             lexer: Lexer = Lexer("""

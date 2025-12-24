@@ -21,7 +21,7 @@ def expect_exception(tester: unittest.TestCase, test_input: str):
 
 
 class ConstantDeclarationTest(unittest.TestCase):
-    #tests based on category partition
+    # tests based on category partition
     def test1(self):
         expect_exception(self, "AAA({")
 
@@ -38,7 +38,7 @@ class ConstantDeclarationTest(unittest.TestCase):
         output: str = run_test("AAA();")
         self.assertEqual(output, "")
 
-    #test based on branches
+    # test based on branches
     def test6(self):
         with self.assertRaises(RuntimeEvaluationError):
             lexer: Lexer = Lexer("""
