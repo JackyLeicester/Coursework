@@ -63,10 +63,7 @@ def _get_var(env: Env, name: str) -> Any:
 
 
 def _declare_var(env: Env, name: str, value: Any, is_const: bool) -> Any:
-    print("declared variable")
-    if name in env[-1]:
-        print("name already bound")
-        if env[-1][name][1]:
+    if name in env[-1] and env[-1][name][1]:
             raise RuntimeEvaluationError(f"Cannot redeclare constant '{name}'")
     env[-1][name] = (value, is_const)
     return value
