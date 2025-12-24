@@ -115,6 +115,7 @@ def test_case_21():
     module_0.read_file_contents(str_0)
 
 
+# tries to get a variable that does not exist
 def test_case_22():
     repl_0 = module_0.Repl()
     repl_1 = module_0.Repl()
@@ -122,16 +123,19 @@ def test_case_22():
     repl_1.runsource(str_0, repl_0)
 
 
+# none file name
 def test_case_23():
     none_type_0 = None
     module_0.read_file_contents(none_type_0)
 
 
+# repl as a file path
 def test_case_24():
     repl_0 = module_0.Repl()
     module_0.read_file_contents(repl_0)
 
 
+# tries getting a file that does not exist
 def test_case_25():
     repl_0 = module_0.Repl()
     str_0 = "l`]q\x0b7]kkH&wf/U\\m1"
@@ -140,6 +144,7 @@ def test_case_25():
     repl_1.runsource(repl_0, var_0)
 
 
+# object as file path
 def test_case_26():
     repl_0 = module_0.Repl()
     module_0.read_file_contents(repl_0)
@@ -149,6 +154,7 @@ def test_case_27():
     str_0 = "f:@pCz"
 
 
+# not sure on what this one does
 def test_case_28():
     module_1.global_flag_repr()
 
@@ -163,6 +169,7 @@ def test_case_30():
     module_0.read_file_contents(str_0)
 
 
+# tries running the weird string and therefore tries getting an identifier that does not exist
 def test_case_31():
     repl_0 = module_0.Repl()
     str_0 = '"'
@@ -172,6 +179,7 @@ def test_case_31():
     repl_1.runsource(str_1, symbol=repl_0)
 
 
+# tries to initialise a lexer without file text
 def test_case_32():
     str_0 = "Left-hand side of assignment must be a variable"
     var_0 = module_0.read_file_contents(str_0)
@@ -184,6 +192,7 @@ def test_case_33():
     module_0.read_file_contents(str_0)
 
 
+# tries using repl object as a string
 def test_case_34():
     repl_0 = module_0.Repl()
     str_0 = '"'
@@ -191,6 +200,7 @@ def test_case_34():
     module_0.read_file_contents(repl_0)
 
 
+# passes none as a file text
 def test_case_35():
     repl_0 = module_0.Repl()
     str_0 = "Left-hand side of assignment must be a variable"
@@ -198,6 +208,7 @@ def test_case_35():
     repl_0.runsource(var_0)
 
 
+# tries reading a file that does not exist
 def test_case_36():
     repl_0 = module_0.Repl()
     str_0 = '"'
@@ -210,6 +221,7 @@ def test_case_37():
     module_0.read_file_contents(str_0)
 
 
+# tries passing none as file text to lexer
 def test_case_38():
     repl_0 = module_0.Repl()
     str_0 = "l`]q\x0b7]kkH&wf/U\\m1"
@@ -217,6 +229,7 @@ def test_case_38():
     repl_0.runsource(var_0)
 
 
+# tries running str_1, which reads non existent identifier
 def test_case_39():
     repl_0 = module_0.Repl()
     repl_1 = module_0.Repl()
@@ -227,6 +240,7 @@ def test_case_39():
     repl_1.runsource(str_1, repl_2, repl_0)
 
 
+#tries reading variable i which has not been defined yet
 def test_case_40():
     str_0 = '"'
     module_0.read_file_contents(str_0)
