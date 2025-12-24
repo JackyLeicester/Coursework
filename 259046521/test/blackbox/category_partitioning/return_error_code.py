@@ -22,3 +22,7 @@ class ReturnErrorCodeTest(unittest.TestCase):
         parser = Parser(lexer)
         expressions = parser.run()
         self.assertEqual(evaluate(expressions), "User error code: 5")
+
+
+if __name__ == "__main__":
+    unittest.main()

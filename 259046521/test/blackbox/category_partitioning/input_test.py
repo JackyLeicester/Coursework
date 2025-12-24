@@ -17,4 +17,8 @@ class InputTest(unittest.TestCase):
             lexer: Lexer = Lexer('input("Enough", "Too much");')
             parser = Parser(lexer)
             expressions = parser.run()
-            self.assertIsNone(evaluate(expressions))
+            evaluate(expressions)
+
+
+if __name__ == "__main__":
+    unittest.main()

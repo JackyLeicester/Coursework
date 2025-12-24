@@ -5,7 +5,6 @@ import unittest
 
 
 def run_test(test_input: str) -> str:
-    # buffer: StringIO = capture_output()
     lexer: Lexer = Lexer(test_input)
     parser: Parser = Parser(lexer)
     parser.run()
