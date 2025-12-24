@@ -121,9 +121,9 @@ td.lines span{
 </head>
 <body>
 <h1>Pynguin coverage report for module 'src'</h1>
-<p>Achieved 30.43% branch coverage:
-3/3 branchless code objects covered.
-4/20 branches covered.</p>
+<p>Achieved 100.00% branch coverage:
+1/1 branchless code objects covered.
+0/0 branches covered.</p>
 <table>
     <tbody>
         <tr>
@@ -137,10 +137,10 @@ td.lines span{
                   <span class="notRelevant">7</span>
                   <span class="notRelevant">8</span>
                   <span class="notRelevant">9</span>
-                  <span class="fullyCovered" title="1/1 branchless code objects covered">10</span>
+                  <span class="notRelevant">10</span>
                   <span class="notRelevant">11</span>
                   <span class="notRelevant">12</span>
-                  <span class="fullyCovered" title="1/1 branchless code objects covered">13</span>
+                  <span class="notRelevant">13</span>
                   <span class="notRelevant">14</span>
                   <span class="notRelevant">15</span>
                   <span class="notRelevant">16</span>
@@ -148,13 +148,13 @@ td.lines span{
                   <span class="notRelevant">18</span>
                   <span class="notRelevant">19</span>
                   <span class="notRelevant">20</span>
-                  <span class="fullyCovered" title="2/2 branches covered">21</span>
+                  <span class="notRelevant">21</span>
                   <span class="notRelevant">22</span>
                   <span class="notRelevant">23</span>
-                  <span class="notCovered" title="0/2 branches covered">24</span>
+                  <span class="notRelevant">24</span>
                   <span class="notRelevant">25</span>
                   <span class="notRelevant">26</span>
-                  <span class="fullyCovered" title="2/2 branches covered">27</span>
+                  <span class="notRelevant">27</span>
                   <span class="notRelevant">28</span>
                   <span class="notRelevant">29</span>
                   <span class="notRelevant">30</span>
@@ -183,22 +183,22 @@ td.lines span{
                   <span class="notRelevant">53</span>
                   <span class="notRelevant">54</span>
                   <span class="notRelevant">55</span>
-                  <span class="notCovered" title="0/2 branches covered">56</span>
+                  <span class="notRelevant">56</span>
                   <span class="notRelevant">57</span>
                   <span class="notRelevant">58</span>
                   <span class="notRelevant">59</span>
                   <span class="notRelevant">60</span>
                   <span class="notRelevant">61</span>
-                  <span class="notCovered" title="0/2 branches covered">62</span>
+                  <span class="notRelevant">62</span>
                   <span class="notRelevant">63</span>
                   <span class="notRelevant">64</span>
                   <span class="notRelevant">65</span>
                   <span class="notRelevant">66</span>
                   <span class="notRelevant">67</span>
-                  <span class="notCovered" title="0/2 branches covered">68</span>
+                  <span class="notRelevant">68</span>
                   <span class="notRelevant">69</span>
                   <span class="notRelevant">70</span>
-                  <span class="notCovered" title="0/4 branches covered">71</span>
+                  <span class="notRelevant">71</span>
                   <span class="notRelevant">72</span>
                   <span class="notRelevant">73</span>
                   <span class="notRelevant">74</span>
@@ -211,12 +211,11 @@ td.lines span{
                   <span class="notRelevant">81</span>
                   <span class="notRelevant">82</span>
                   <span class="notRelevant">83</span>
-                  <span class="notCovered" title="0/2 branches covered">84</span>
+                  <span class="notRelevant">84</span>
                   <span class="notRelevant">85</span>
                   <span class="notRelevant">86</span>
-                  <span class="notCovered" title="0/2 branches covered">87</span>
+                  <span class="notRelevant">87</span>
                   <span class="notRelevant">88</span>
-                  <span class="notRelevant">89</span>
                   </td>
             <td style="width: 100%;"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">argparse</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArgumentParser</span><span class="p">,</span> <span class="n">RawDescriptionHelpFormatter</span>
@@ -226,8 +225,7 @@ td.lines span{
 <span class="kn">import</span><span class="w"> </span><span class="nn">textwrap</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">code</span>
 
-
-<span class="k">class</span><span class="w"> </span><span class="nc">Repl</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">InteractiveConsole</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Repl</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">InteractiveConsole</span><span class="p">):</span> <span class="c1"># pragma: no cover</span>
     <span class="n">env</span> <span class="o">=</span> <span class="p">{}</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">runsource</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;&lt;input&gt;&quot;</span><span class="p">,</span> <span class="n">symbol</span><span class="o">=</span><span class="s2">&quot;single&quot;</span><span class="p">):</span>
@@ -237,7 +235,7 @@ td.lines span{
         <span class="n">evaluate</span><span class="p">(</span><span class="n">expressions</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="p">)</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">read_file_contents</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_file_contents</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span> <span class="c1"># pragma: no cover</span>
     <span class="k">if</span> <span class="n">filename</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;filename cannot be None&quot;</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
@@ -249,7 +247,7 @@ td.lines span{
         <span class="k">return</span> <span class="kc">None</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span><span class="c1"># pragma: no cover</span>
     <span class="n">usage_message</span> <span class="o">=</span> <span class="s2">&quot;interpret [-h | --help] [--debug] [file] [-- arg]&quot;</span>
     <span class="n">arg_parser</span> <span class="o">=</span> <span class="n">ArgumentParser</span><span class="p">(</span>
         <span class="n">usage</span><span class="o">=</span><span class="n">usage_message</span><span class="p">,</span>
@@ -313,7 +311,7 @@ td.lines span{
     </tbody>
 </table>
 <footer>
-  <p>Created at 2025-12-23 22:33:51.320146</p>
+  <p>Created at 2025-12-24 00:06:10.935990</p>
 </footer>
 </body>
 </html>

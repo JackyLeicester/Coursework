@@ -184,6 +184,7 @@ class Parser:
     LOWEST_PRECEDENCE = 0
 
     def __init__(self, lexer: Lexer):
+        self.token_number = 0
         self.lexer = lexer
         self.curr_token, self.curr_str = self.lexer.next_token()
         self.next_token, self.next_str = self.lexer.next_token()
@@ -256,6 +257,7 @@ class Parser:
         self.curr_token = self.next_token
         self.curr_str = self.next_str
         self.next_token, self.next_str = self.lexer.next_token()
+        self.token_number += 1
 
     def _peek_token_is(self, token: Token) -> bool:
         return self.next_token == token
@@ -264,8 +266,7 @@ class Parser:
         expressions: list[Expression] = []
 
         while self.curr_token != Token.EOF:
-            start_token = self.curr_token
-
+            start_number = self.token_number
             expr = self.parse_expression_statement()
             if expr is not None:
                 expressions.append(expr)
@@ -273,7 +274,7 @@ class Parser:
             while self.curr_token == Token.SEMICOLON:
                 self._next_token()
 
-            if self.curr_token == start_token:
+            if start_number == self.token_number:
                 self._next_token()
 
         return expressions
@@ -499,7 +500,7 @@ class Parser:
         statements: List[Expression] = []
 
         while self.curr_token not in (Token.RBRACE, Token.EOF):
-            start_token = self.curr_token
+            start_number = self.token_number
 
             expr = self.parse_expression_statement()
             if expr is not None:
@@ -508,7 +509,7 @@ class Parser:
             while self.curr_token == Token.SEMICOLON:
                 self._next_token()
 
-            if self.curr_token == start_token:
+            if start_number == self.token_number:
                 self._next_token()
 
         self._accept_token(Token.RBRACE)

@@ -6,7 +6,7 @@ from .evaluator import evaluate, setup_runtime
 import textwrap
 import code
 
-class Repl(code.InteractiveConsole): # pragma: no cover
+class Repl(code.InteractiveConsole):
     env = {}
 
     def runsource(self, source: str, filename="<input>", symbol="single"):
@@ -16,7 +16,7 @@ class Repl(code.InteractiveConsole): # pragma: no cover
         evaluate(expressions, self.env)
 
 
-def read_file_contents(filename: str) -> str | None: # pragma: no cover
+def read_file_contents(filename: str) -> str | None:
     if filename is None:
         raise ValueError("filename cannot be None")
     try:
@@ -28,7 +28,7 @@ def read_file_contents(filename: str) -> str | None: # pragma: no cover
         return None
 
 
-def main():# pragma: no cover
+def main():
     usage_message = "interpret [-h | --help] [--debug] [file] [-- arg]"
     arg_parser = ArgumentParser(
         usage=usage_message,
