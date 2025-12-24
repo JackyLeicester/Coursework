@@ -237,18 +237,18 @@ def _eval(node: Expression, env: "Env | Context") -> Any:
                 return len(args[0])
             except (ValueError, TypeError):
                 raise RuntimeEvaluationError("Cannot check length of the value")
-        elif name == "exit":
-            if len(args) != 1:
-                raise RuntimeEvaluationError("exit expects 1 argument")
-            if isinstance(args[0], bool) or not isinstance(args[0], int):
-                raise RuntimeEvaluationError("eixt argument must be int")
-            raise _ExitSignal(args[0])
         elif name == "ifExists":
             if len(args) != 1:
                 raise RuntimeEvaluationError("ifExists expects 1 argument")
             if not isinstance(args[0], str):
                 raise RuntimeEvaluationError("Input is not a string")
             return _is_declared(env, args[0])
+        elif name == "exit":
+            if len(args) != 1:
+                raise RuntimeEvaluationError("exit expects 1 argument")
+            if isinstance(args[0], bool) or not isinstance(args[0], int):
+                raise RuntimeEvaluationError("eixt argument must be int")
+            raise _ExitSignal(args[0])
         else:
             stack = _env_stack(env)
             stack.append({})
