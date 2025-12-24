@@ -35,5 +35,3 @@ class ConstantDeclarationTest(unittest.TestCase):
     def test5(self):
         output: str = run_test("AAA();")
         self.assertEqual(output, "")
-
-

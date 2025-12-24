@@ -6,6 +6,7 @@ from .evaluator import evaluate, setup_runtime
 import textwrap
 import code
 
+
 class Repl(code.InteractiveConsole):
     env = {}
 

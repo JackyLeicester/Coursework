@@ -50,7 +50,7 @@ class ConstantDeclarationTest(unittest.TestCase):
             parser: Parser = Parser(lexer)
             statements = parser.run()
             evaluate(statements)
-    
+
     def test9(self):
         with self.assertRaises(RuntimeEvaluationError):
             lexer: Lexer = Lexer("const realname = 5; realname = 8;")

@@ -58,7 +58,3 @@ class ConstantDeclarationTest(unittest.TestCase):
     def test13(self):
         output: str = run_test("fn realname(){};")
         self.assertEqual(output, "")
-
-
-
-

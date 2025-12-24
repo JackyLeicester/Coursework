@@ -17,4 +17,3 @@ class InputTest(unittest.TestCase):
             parser = Parser(lexer)
             expressions = parser.run()
             self.assertIsNone(evaluate(expressions))
-
