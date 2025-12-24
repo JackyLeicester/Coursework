@@ -8,7 +8,7 @@ import code
 
 
 class Repl(code.InteractiveConsole):
-    env = {}
+    env = []
 
     def runsource(self, source: str, filename="<input>", symbol="single"):
         lexer = Lexer(source)
