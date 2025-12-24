@@ -9,15 +9,13 @@ class ReturnErrorCodeTest(unittest.TestCase):
         with self.assertRaises(IncorrectSyntax):
             lexer: Lexer = Lexer("return let a = 3;")
             parser = Parser(lexer)
-            expressions = parser.run()
-            evaluate(expressions)
+            parser.run()
 
     def test2(self):
         with self.assertRaises(IncorrectSyntax):
             lexer: Lexer = Lexer("return const b = 2;")
             parser = Parser(lexer)
-            expressions = parser.run()
-            evaluate(expressions)
+            parser.run()
 
     def test3(self):
         lexer: Lexer = Lexer("return 5;")

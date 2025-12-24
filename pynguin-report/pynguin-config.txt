@@ -1,8 +1,9 @@
-("Configuration(project_path='.', module_name='src.lexer', "
- "test_case_output=TestCaseOutputConfiguration(output_path='./259045253/pynguin-results', "
+("Configuration(project_path='.', module_name='src', "
+ "test_case_output=TestCaseOutputConfiguration(output_path='./259046521/test/blackbox/pynguin-results', "
  "crash_path='', export_strategy=<ExportStrategy.PY_TEST: 'PY_TEST'>, "
- 'max_length_test_case=2500, assertion_generation=<AssertionGenerator.NONE: '
- "'NONE'>, allow_stale_assertions=False, "
+ 'max_length_test_case=2500, '
+ 'assertion_generation=<AssertionGenerator.MUTATION_ANALYSIS: '
+ "'MUTATION_ANALYSIS'>, allow_stale_assertions=False, "
  'mutation_strategy=<MutationStrategy.FIRST_ORDER_MUTANTS: '
  "'FIRST_ORDER_MUTANTS'>, mutation_order=1, post_process=True, "
  'minimization=Minimization(test_case_minimization_strategy=<MinimizationStrategy.CASE: '
@@ -14,12 +15,12 @@
  'timeline_interval=1000000000, timeline_interpolation=True, '
  "coverage_metrics=[<CoverageMetric.BRANCH: 'BRANCH'>], "
  "output_variables=[TargetModule, Coverage], configuration_id='', run_id='', "
- "project_name='', create_coverage_report=False, type_guess_top_n=10, "
+ "project_name='', create_coverage_report=True, type_guess_top_n=10, "
  'store_test_before_execution=False), '
- 'stopping=StoppingConfiguration(maximum_search_time=60, '
+ 'stopping=StoppingConfiguration(maximum_search_time=1, '
  'maximum_test_executions=-1, maximum_statement_executions=-1, '
  'maximum_slicing_time=600, maximum_iterations=-1, '
- 'maximum_test_execution_timeout=5, maximum_coverage=100, '
+ 'maximum_test_execution_timeout=1, maximum_coverage=100, '
  'maximum_coverage_plateau=-1, minimum_coverage=100, '
  'minimum_plateau_iterations=-1, maximum_memory=3000, '
  'test_execution_time_per_statement=1), '
