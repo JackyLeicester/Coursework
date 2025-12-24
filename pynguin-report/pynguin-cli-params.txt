@@ -69,7 +69,7 @@ False
 --mio.initial_config.random_test_or_from_archive_probability
 0.5
 --module_name
-src.lexer
+src
 --project_path
 .
 --pynguinml.ignore_constraints_probability
@@ -153,7 +153,7 @@ False
 --statistics_output.coverage_metrics
 BRANCH
 --statistics_output.create_coverage_report
-False
+True
 --statistics_output.output_variables
 TargetModule
 Coverage
@@ -178,13 +178,13 @@ True
 --stopping.maximum_memory
 3000
 --stopping.maximum_search_time
-60
+1
 --stopping.maximum_slicing_time
 600
 --stopping.maximum_statement_executions
 -1
 --stopping.maximum_test_execution_timeout
-5
+1
 --stopping.maximum_test_executions
 -1
 --stopping.minimum_coverage
@@ -208,7 +208,7 @@ True
 --test_case_output.allow_stale_assertions
 False
 --test_case_output.assertion_generation
-NONE
+MUTATION_ANALYSIS
 --test_case_output.export_strategy
 PY_TEST
 --test_case_output.float_precision
@@ -226,7 +226,7 @@ CASE
 --test_case_output.mutation_strategy
 FIRST_ORDER_MUTANTS
 --test_case_output.output_path
-./259045253/pynguin-results
+./259046521/test/blackbox/pynguin-results
 --test_case_output.post_process
 True
 --test_creation.any_weight

@@ -1,5 +1,4 @@
 import math
-import sys
 from typing import Any, Dict, List
 from .parser import (
     Expression,
@@ -45,8 +44,17 @@ class RuntimeEvaluationError(Exception):
     pass
 
 
+class _ExitSignal(Exception):
+    def __init__(self, code: int):
+        self.code = code
+
+
 Env = List[Dict[str, tuple[Any, bool]]]
 Context = Dict[str, tuple[Any, bool]]
+
+
+def _env_stack(env: "Env | Context") -> Env:
+    return env if isinstance(env, list) else [env]
 
 
 def setup_runtime(arg: str) -> Env:
@@ -55,45 +63,40 @@ def setup_runtime(arg: str) -> Env:
     return env
 
 
-def _get_var(env: Env, name: str) -> Any:
-    for context in env[::-1]:
+def _get_var(env: "Env | Context", name: str) -> tuple[Any, bool]:
+    stack = _env_stack(env)
+    for context in stack[::-1]:
         if name in context:
             return context[name]
     raise RuntimeEvaluationError(f"Undefined variable '{name}'")
 
 
-def _declare_var(env: Env, name: str, value: Any, is_const: bool) -> Any:
-    if name in env[-1] and env[-1][name][1]:
+def _declare_var(env: "Env | Context", name: str, value: Any, is_const: bool) -> Any:
+    stack = _env_stack(env)
+    if name in stack[-1] and stack[-1][name][1]:
         raise RuntimeEvaluationError(f"Cannot redeclare constant '{name}'")
-    env[-1][name] = (value, is_const)
+    stack[-1][name] = (value, is_const)
     return value
 
 
-def _assign_var(env: Env, name: str, value: Any) -> Any:
-    context: Context = _get_declaration_context(env, name)
+def _assign_var(env: "Env | Context", name: str, value: Any) -> Any:
+    context = _get_declaration_context(env, name)
     _, is_const = context[name]
     if is_const:
         raise RuntimeEvaluationError(f"Cannot assign to constant '{name}'")
-    context[name] = (value, is_const)
+    context[name] = (value, False)
     return value
 
 
-def _get_declaration_context(env: Env, name: str) -> Context:
-    for context in env[::-1]:
+def _get_declaration_context(env: "Env | Context", name: str) -> Context:
+    stack = _env_stack(env)
+    for context in stack[::-1]:
         if name in context:
             return context
     raise RuntimeEvaluationError(f"Undefined variable '{name}'")
 
 
-def _is_declared(env: Env, name: str) -> bool:
-    try:
-        _get_declaration_context(env, name)
-        return True
-    except RuntimeEvaluationError:
-        return False
-
-
-def _eval(node: Expression, env: Env) -> Any:
+def _eval(node: Expression, env: "Env | Context") -> Any:
     if isinstance(node, IntegerLiteral):
         return int(node.value)
 
@@ -143,12 +146,11 @@ def _eval(node: Expression, env: Env) -> Any:
             print(*args, end="")
             return None
         elif name == "input":
-            if len(args) > 0:
+            if len(args) > 1:
                 raise RuntimeEvaluationError("abs expects 0 or 1 arguments")
             elif len(args) == 0:
                 return input()
-            else:
-                return input(args[0])
+            return input(str(args[0]))
         elif name == "isInt":
             if len(args) != 1:
                 raise RuntimeEvaluationError("is_int expects 1 argument")
@@ -233,27 +235,36 @@ def _eval(node: Expression, env: Env) -> Any:
             if not isinstance(args[0], str):
                 raise RuntimeEvaluationError("Input is not a string")
             return _is_declared(env, args[0])
+        elif name == "exit":
+            if len(args) != 1:
+                raise RuntimeEvaluationError("exit expects 1 argument")
+            if isinstance(args[0], bool) or not isinstance(args[0], int):
+                raise RuntimeEvaluationError("eixt argument must be int")
+            raise _ExitSignal(args[0])
         else:
-            env.append(dict())
-            function = _get_var(env, node.identifier_name)[0]
+            stack = _env_stack(env)
+            stack.append({})
+            function = _get_var(stack, node.identifier_name)[0]
             if not isinstance(function, FunctionStatement):
+                stack.pop()
                 raise RuntimeError(
                     "Looked for function but found another identifier instead"
                 )
+
             if len(node.parameters) != len(function.variables):
+                stack.pop()
                 raise RuntimeError(
                     "Number of parameters passed is not equal to number of function parameters"
                 )
             for identifier, expression in zip(function.variables, node.parameters):
-                _declare_var(env, identifier.name, _eval(expression, env), False)
+                _declare_var(stack, identifier.name, _eval(expression, env), False)
             try:
-                result = _eval(function.block, env)
-                env.pop()
+                result = _eval(function.block, stack)
+                stack.pop()
                 return result
-            except _ReturnSignal:
-                _, value, _ = sys.exc_info()
-                env.pop()
-                return value.value
+            except _ReturnSignal as e:
+                stack.pop()
+                return e.value
 
     if isinstance(node, PrefixExpression):
         right = _eval(node.right, env) if node.right is not None else None
@@ -377,10 +388,7 @@ def _eval(node: Expression, env: Env) -> Any:
 
     if isinstance(node, ReturnStatement):
         evaluation = _eval(node.expression, env)
-        if evaluation is tuple:
-            raise _ReturnSignal(evaluation[0])
-        else:
-            raise _ReturnSignal(evaluation)
+        raise _ReturnSignal(evaluation)
 
     raise RuntimeEvaluationError(
         f"Evaluation not implemented for node type {type(node).__name__}"
@@ -390,15 +398,17 @@ def _eval(node: Expression, env: Env) -> Any:
 def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
     if env is None:
         env = [{}]
-    result = None
+
     try:
+        result = None
         for expression in expressions:
             result = _eval(expression, env)
-    except _ReturnSignal:
-        _, value, _ = sys.exc_info()
-        return "User error code: " + str(value)
+        return result
+    except _ExitSignal as e:
+        return e.code
+    except _ReturnSignal as e:
+        return e.value
     except _ContinueSignal:
         raise RuntimeEvaluationError("continue used outside loop")
     except _BreakSignal:
         raise RuntimeEvaluationError("break used outside loop")
-    return result
