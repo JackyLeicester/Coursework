@@ -240,7 +240,7 @@ def test_case_39():
     repl_1.runsource(str_1, repl_2, repl_0)
 
 
-#tries reading variable i which has not been defined yet
+# tries reading variable i which has not been defined yet
 def test_case_40():
     str_0 = '"'
     module_0.read_file_contents(str_0)

@@ -144,7 +144,6 @@ def test_case_25():
     repl_1.runsource(repl_0, var_0)
 
 
-
 # again, the command line would never read an argument as Repl object
 def test_case_26():
     repl_0 = module_0.Repl()
