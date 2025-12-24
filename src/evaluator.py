@@ -223,11 +223,11 @@ def _eval(node: Expression, env: Env) -> Any:
             env.append(dict())
             function = _get_var(env, node.identifier_name)[0]
             if not isinstance(function, FunctionStatement):
-                raise RuntimeError(
+                raise RuntimeEvaluationError(
                     "Looked for function but found another identifier instead"
                 )
             if len(node.parameters) != len(function.variables):
-                raise RuntimeError(
+                raise RuntimeEvaluationError(
                     "Number of parameters passed is not equal to number of function parameters"
                 )
             for identifier, expression in zip(function.variables, node.parameters):
