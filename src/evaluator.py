@@ -274,13 +274,13 @@ def _eval(node: Expression, env: "Env | Context") -> Any:
             function = _get_var(stack, node.identifier_name)[0]
             if not isinstance(function, FunctionStatement):
                 stack.pop()
-                raise RuntimeError(
+                raise RuntimeEvaluationError(
                     "Looked for function but found another identifier instead"
                 )
 
             if len(node.parameters) != len(function.variables):
                 stack.pop()
-                raise RuntimeError(
+                raise RuntimeEvaluationError(
                     "Number of parameters passed is not equal to number of function parameters"
                 )
             for identifier, expression in zip(function.variables, node.parameters):

@@ -47,4 +47,4 @@ class ConstantDeclarationTest(unittest.TestCase):
             """)
             parser: Parser = Parser(lexer)
             statements = parser.run()
-            self.assertEqual(evaluate(statements), "5")
+            evaluate(statements)

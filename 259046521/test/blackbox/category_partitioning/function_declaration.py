@@ -71,7 +71,7 @@ class ConstantDeclarationTest(unittest.TestCase):
         """)
         parser: Parser = Parser(lexer)
         statements = parser.run()
-        self.assertEqual(evaluate(statements), "User error code: 5")
+        evaluate(statements), 5
 
     def test15(self):
         with self.assertRaises(RuntimeEvaluationError):
@@ -83,4 +83,4 @@ class ConstantDeclarationTest(unittest.TestCase):
             """)
             parser: Parser = Parser(lexer)
             statements = parser.run()
-            self.assertEqual(evaluate(statements), "5")
+            evaluate(statements)

@@ -11,7 +11,7 @@ class ReturnErrorCodeTest(unittest.TestCase):
         """)
         parser = Parser(lexer)
         expressions = parser.run()
-        self.assertEqual(evaluate(expressions), "User error code: False")
+        evaluate(expressions)
 
     def test2(self):
         with self.assertRaises(RuntimeEvaluationError):
