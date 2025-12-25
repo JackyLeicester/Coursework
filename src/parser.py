@@ -363,6 +363,7 @@ class Parser:
 
     def parse_infix_expression(self, lhs: Expression) -> InfixExpression | None:
         operator = self.curr_token
+        operator_symbol = self.curr_str
         precedence = self._curr_precedence()
         self._next_token()
 
@@ -370,7 +371,7 @@ class Parser:
 
         if rhs is None:
             raise IncorrectSyntax(
-                f"SYNTAX ERROR: expected expression after operator {str(operator)} at line: {self.lexer.line_number}"
+                f"SYNTAX ERROR: expected expression after operator {str(operator_symbol)} at line: {self.lexer.line_number}"
             )
 
         return InfixExpression(lhs, operator, rhs)
