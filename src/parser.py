@@ -179,6 +179,9 @@ class Parser:
         Token.MINUS: 5,
         Token.ASTERISK: 6,
         Token.SLASH: 6,
+        Token.BITWISE_OR: 7,
+        Token.BITWISE_XOR: 8,
+        Token.BITWISE_AND: 9,
         Token.ASSIGN: 1,
     }
     LOWEST_PRECEDENCE = 0
@@ -223,6 +226,9 @@ class Parser:
             Token.GREATEREQUAL,
             Token.AND,
             Token.OR,
+            Token.BITWISE_AND,
+            Token.BITWISE_OR,
+            Token.BITWISE_XOR,
         ]:
             self._register_infix_fn(token, self.parse_infix_expression)
 
