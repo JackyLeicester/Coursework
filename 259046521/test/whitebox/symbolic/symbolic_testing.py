@@ -2,9 +2,10 @@ from itertools import product
 from typing import List
 from z3 import *
 
-#symbolic testing will only be used on code with branching paths
+# symbolic testing will only be used on code with branching paths
 # only code with if statements were tested using this, the following is about the evaluate file
 # important to mention that there are a lot of if statements in the _eval function, so the first layer of the if statement is ignored as its only ever a type check
+
 
 def test_env_stack1():
     is_env = Bool("is_env")
@@ -13,6 +14,7 @@ def test_env_stack1():
     print(s.check())
     print(s.model())
 
+
 def test_env_stack2():
     is_env = Bool("is_env")
     s = Solver()
@@ -20,15 +22,18 @@ def test_env_stack2():
     print(s.check())
     print(s.model())
 
+
 test_env_stack1()
 test_env_stack2()
+
 
 def test_declare_var1():
     declared = Bool("declared")
     s = Solver()
     s.add(declared == False)
     print(s.check())
-    print(s.model())    
+    print(s.model())
+
 
 def test_declare_var2():
     declared = Bool("declared")
@@ -37,8 +42,10 @@ def test_declare_var2():
     print(s.check())
     print(s.model())
 
+
 test_declare_var1()
 test_declare_var2()
+
 
 def test_assign_var1():
     is_const = Bool("is_const")
@@ -46,17 +53,19 @@ def test_assign_var1():
     s.add(is_const == False)
     print(s.check())
     print(s.model())
-    
+
 
 def test_assign_var2():
     is_const = Bool("is_const")
     s = Solver()
-    s.add(is_const == True) 
+    s.add(is_const == True)
     print(s.check())
     print(s.model())
 
+
 test_assign_var1()
 test_assign_var2()
+
 
 def test_call_expression_base(identifier: str, args: int):
     identifier_s = String("identifier")
@@ -71,17 +80,22 @@ def test_call_expression_base(identifier: str, args: int):
 def test_call_expression1():
     test_call_expression_base("sqrt", 1)
 
+
 def test_call_expression2():
     test_call_expression_base("pow", 2)
+
 
 def test_call_expression3():
     test_call_expression_base("ceil", 1)
 
+
 def test_call_expression4():
     test_call_expression_base("floor", 1)
 
+
 def test_call_expression5():
     test_call_expression_base("abs", 1)
+
 
 # this one is a special case
 def test_call_expression6():
@@ -91,6 +105,7 @@ def test_call_expression6():
     print(s.check())
     print(s.model())
 
+
 def test_call_expression7():
     identifier_s = String("identifier")
     s = Solver()
@@ -98,47 +113,62 @@ def test_call_expression7():
     print(s.check())
     print(s.model())
 
+
 def test_call_expression8():
     test_call_expression_base("input", 1)
+
 
 def test_call_expression9():
     test_call_expression_base("input", 0)
 
+
 def test_call_expression10():
     test_call_expression_base("isInt", 1)
+
 
 def test_call_expression11():
     test_call_expression_base("isFloat", 1)
 
+
 def test_call_expression12():
     test_call_expression_base("toFloat", 1)
+
 
 def test_call_expression13():
     test_call_expression_base("toFloat", 1)
 
+
 def test_call_expression14():
     test_call_expression_base("toStr", 1)
+
 
 def test_call_expression15():
     test_call_expression_base("concat", 2)
 
+
 def test_call_expression16():
     test_call_expression_base("trim", 1)
+
 
 def test_call_expression17():
     test_call_expression_base("hasPrefix", 2)
 
+
 def test_call_expression18():
     test_call_expression_base("hasSuffix", 2)
+
 
 def test_call_expression19():
     test_call_expression_base("length", 1)
 
+
 def test_call_expression20():
     test_call_expression_base("ifExists", 1)
 
+
 def test_call_expression21():
     test_call_expression_base("exit", 1)
+
 
 def test_call_expression22():
     identifier_s = String("identifier")
@@ -149,6 +179,7 @@ def test_call_expression22():
     s.add(parameter_count == user_defined_parameters)
     print(s.check())
     print(s.model())
+
 
 test_call_expression1()
 test_call_expression2()
@@ -174,7 +205,7 @@ test_call_expression21()
 test_call_expression22()
 
 
-def test_prefix_expression(): 
+def test_prefix_expression():
     operation_s = String("operation")
     for operation in ["MINUS", "PLUS", "NOT"]:
         s = Solver()
@@ -182,17 +213,33 @@ def test_prefix_expression():
         print(s.check())
         print(s.model())
 
+
 test_prefix_expression()
+
 
 def test_infix_expression():
     operation_s = String("operation")
-    for operation in ["PLUS", "MINUS", "ASTERISK", "SLASH", "EQUAL", "NOTEQUAL", "LESS", "GREATER", "GREATEREQUAL", "AND", "OR"]:
+    for operation in [
+        "PLUS",
+        "MINUS",
+        "ASTERISK",
+        "SLASH",
+        "EQUAL",
+        "NOTEQUAL",
+        "LESS",
+        "GREATER",
+        "GREATEREQUAL",
+        "AND",
+        "OR",
+    ]:
         s = Solver()
         s.add(operation_s == operation)
         print(s.check())
         print(s.model())
 
+
 test_infix_expression()
+
 
 def test_assign_expression1():
     left = String("left")
@@ -209,15 +256,18 @@ def test_assign_expression2():
     print(s.check())
     print(s.model())
 
+
 test_assign_expression1()
 test_assign_expression2()
+
 
 def test_expression1():
     expression = String("expression")
     s = Solver()
-    s.add(expression != "None") 
+    s.add(expression != "None")
     print(s.check())
     print(s.model())
+
 
 def test_expression2():
     expression = String("expression")
@@ -226,22 +276,26 @@ def test_expression2():
     print(s.check())
     print(s.model())
 
+
 test_expression1()
 test_expression2()
+
 
 def test_if1():
     if_s = Bool("if")
     s = Solver()
-    s.add(if_s == True) 
+    s.add(if_s == True)
     print(s.check())
     print(s.model())
+
 
 def test_if2():
     if_s = Bool("if")
     s = Solver()
-    s.add(if_s == False) 
+    s.add(if_s == False)
     print(s.check())
     print(s.model())
+
 
 test_if1()
 test_if2()
