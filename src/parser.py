@@ -369,7 +369,9 @@ class Parser:
         rhs = self.parse_expression(precedence)
 
         if rhs is None:
-            return None
+            raise IncorrectSyntax(
+                f"SYNTAX ERROR: expected expression after operator {str(operator)} at line: {self.lexer.line_number}"
+            )
 
         return InfixExpression(lhs, operator, rhs)
 
