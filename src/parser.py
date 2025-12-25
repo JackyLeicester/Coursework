@@ -61,6 +61,11 @@ class BooleanLiteral(Expression):
 
 
 @dataclass
+class NullLiteral(Expression):
+    literal: str
+
+
+@dataclass
 class StringLiteral(Expression):
     literal: str
 
@@ -203,6 +208,7 @@ class Parser:
         self._register_prefix_fn(Token.NOT, self.parse_prefix_expression)
         self._register_prefix_fn(Token.TRUE, self.parse_boolean)
         self._register_prefix_fn(Token.FALSE, self.parse_boolean)
+        self._register_prefix_fn(Token.NULL, self.parse_null)
         self._register_prefix_fn(Token.CHAR, self.parse_char)
         self._register_prefix_fn(Token.STRING, self.parse_string)
         self._register_prefix_fn(Token.FUNCTION, self.parse_function_statement)
@@ -382,6 +388,11 @@ class Parser:
 
     def parse_boolean(self) -> BooleanLiteral:
         literal = BooleanLiteral(self.curr_str == "true")
+        self._next_token()
+        return literal
+
+    def parse_null(self) -> NullLiteral:
+        literal = NullLiteral("null")
         self._next_token()
         return literal
 

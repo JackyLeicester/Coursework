@@ -223,6 +223,8 @@ class Lexer:
                 return Token.TRUE, word
             case "false":
                 return Token.FALSE, word
+            case "null":
+                return Token.NULL, word
             case "fn":
                 return Token.FUNCTION, word
             case "return":
