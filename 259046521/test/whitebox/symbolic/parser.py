@@ -2,6 +2,7 @@ from z3 import *
 
 # we only care about what is inside the loop in this case
 # we do not need a test case about what goes on after the loop since there are no branches after the loop
+# mainly looking for dead code
 def test_run1():
     s = Solver()
     curr_token = String("curr_token")

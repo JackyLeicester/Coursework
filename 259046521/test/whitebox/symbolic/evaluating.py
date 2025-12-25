@@ -3,7 +3,7 @@ from z3 import *
 # symbolic testing will only be used on code with branching paths
 # only code with if statements were tested using this, the following is about the evaluate file
 # important to mention that there are a lot of if statements in the _eval function, so the first layer of the if statement is ignored as its only ever a type check
-
+# mainly looking for dead code
 
 def test_env_stack1():
     is_env = Bool("is_env")
