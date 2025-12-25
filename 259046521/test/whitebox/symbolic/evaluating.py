@@ -1,5 +1,3 @@
-from itertools import product
-from typing import List
 from z3 import *
 
 # symbolic testing will only be used on code with branching paths
