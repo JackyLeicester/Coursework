@@ -61,6 +61,11 @@ class BooleanLiteral(Expression):
 
 
 @dataclass
+class NullLiteral(Expression):
+    literal: str
+
+
+@dataclass
 class StringLiteral(Expression):
     literal: str
 
@@ -140,6 +145,13 @@ class ForStatement(Expression):
         self.increment = increment
         self.block = block
 
+
+class WhileStatement(Expression):
+    def __init__(self, condition: Expression, block: BlockStatement):
+        self.token = Token.WHILE
+        self.condition = condition
+        self.block = block
+
     def __repr__(self):
         return f"{type(self).__name__} {self.__dict__}"
 
@@ -163,11 +175,15 @@ class Parser:
         Token.MINUS: 5,
         Token.ASTERISK: 6,
         Token.SLASH: 6,
+        Token.BITWISE_OR: 7,
+        Token.BITWISE_XOR: 8,
+        Token.BITWISE_AND: 9,
         Token.ASSIGN: 1,
     }
     LOWEST_PRECEDENCE = 0
 
     def __init__(self, lexer: Lexer):
+        self.token_number = 0
         self.lexer = lexer
         self.curr_token, self.curr_str = self.lexer.next_token()
         self.next_token, self.next_str = self.lexer.next_token()
@@ -186,6 +202,7 @@ class Parser:
         self._register_prefix_fn(Token.NOT, self.parse_prefix_expression)
         self._register_prefix_fn(Token.TRUE, self.parse_boolean)
         self._register_prefix_fn(Token.FALSE, self.parse_boolean)
+        self._register_prefix_fn(Token.NULL, self.parse_null)
         self._register_prefix_fn(Token.CHAR, self.parse_char)
         self._register_prefix_fn(Token.STRING, self.parse_string)
         self._register_prefix_fn(Token.FUNCTION, self.parse_function_statement)
@@ -206,6 +223,9 @@ class Parser:
             Token.GREATEREQUAL,
             Token.AND,
             Token.OR,
+            Token.BITWISE_AND,
+            Token.BITWISE_OR,
+            Token.BITWISE_XOR,
         ]:
             self._register_infix_fn(token, self.parse_infix_expression)
 
@@ -216,6 +236,7 @@ class Parser:
         self._register_infix_fn(Token.SLASH, self.parse_infix_expression)
 
         self._register_prefix_fn(Token.FOR, self.parse_for_statement)
+        self._register_prefix_fn(Token.WHILE, self.parse_while_statement)
         self._register_prefix_fn(Token.CONTINUE, self.parse_continue_statement)
         self._register_prefix_fn(Token.LPAREN, self.parse_paren)
         self._register_prefix_fn(Token.LBRACE, self.parse_block_statement)
@@ -239,24 +260,21 @@ class Parser:
         self.curr_token = self.next_token
         self.curr_str = self.next_str
         self.next_token, self.next_str = self.lexer.next_token()
-
-    def _peek_token_is(self, token: Token) -> bool:
-        return self.next_token == token
+        self.token_number += 1
 
     def run(self) -> list[Expression]:
         expressions: list[Expression] = []
 
         while self.curr_token != Token.EOF:
-            start_token = self.curr_token
-
-            expr = self.parse_expression()
+            start_number = self.token_number
+            expr = self.parse_expression_statement()
             if expr is not None:
                 expressions.append(expr)
 
             while self.curr_token == Token.SEMICOLON:
                 self._next_token()
 
-            if self.curr_token == start_token:
+            if start_number == self.token_number:
                 self._next_token()
 
         return expressions
@@ -313,7 +331,7 @@ class Parser:
     def parse_expression_statement(self) -> ExpressionStatement:
         token, _ = self.curr_token, self.curr_str
         expression = self.parse_expression()
-        if expression is CallExpression:
+        if type(expression) is CallExpression:
             self._accept_token(Token.SEMICOLON)
         return ExpressionStatement(token, expression)
 
@@ -342,13 +360,16 @@ class Parser:
 
     def parse_infix_expression(self, lhs: Expression) -> InfixExpression | None:
         operator = self.curr_token
+        operator_symbol = self.curr_str
         precedence = self._curr_precedence()
         self._next_token()
 
         rhs = self.parse_expression(precedence)
 
         if rhs is None:
-            return None
+            raise IncorrectSyntax(
+                f"SYNTAX ERROR: expected expression after operator {str(operator_symbol)} at line: {self.lexer.line_number}"
+            )
 
         return InfixExpression(lhs, operator, rhs)
 
@@ -367,6 +388,11 @@ class Parser:
 
     def parse_boolean(self) -> BooleanLiteral:
         literal = BooleanLiteral(self.curr_str == "true")
+        self._next_token()
+        return literal
+
+    def parse_null(self) -> NullLiteral:
+        literal = NullLiteral("null")
         self._next_token()
         return literal
 
@@ -439,6 +465,21 @@ class Parser:
         block = self.parse_block_statement()
         return ForStatement(initialization, condition, increment, block)
 
+    def parse_while_statement(self) -> WhileStatement:
+        self._accept_token(Token.WHILE)
+        self._accept_token(Token.LPAREN)
+
+        condition = self.parse_expression()
+        if condition is None:
+            raise IncorrectSyntax(
+                f"SYNTAX ERROR: expected condition in while at line: {self.lexer.line_number}"
+            )
+
+        self._accept_token(Token.RPAREN)
+
+        block = self.parse_block_statement()
+        return WhileStatement(condition, block)
+
     def parse_continue_statement(self) -> ContinueStatement:
         self._accept_token(Token.CONTINUE)
         self._accept_token(Token.SEMICOLON)
@@ -467,16 +508,16 @@ class Parser:
         statements: List[Expression] = []
 
         while self.curr_token not in (Token.RBRACE, Token.EOF):
-            start_token = self.curr_token
+            start_number = self.token_number
 
-            expr = self.parse_expression()
+            expr = self.parse_expression_statement()
             if expr is not None:
                 statements.append(expr)
 
             while self.curr_token == Token.SEMICOLON:
                 self._next_token()
 
-            if self.curr_token == start_token:
+            if start_number == self.token_number:
                 self._next_token()
 
         self._accept_token(Token.RBRACE)

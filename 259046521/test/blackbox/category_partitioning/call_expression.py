@@ -1,6 +1,7 @@
 from src.parser import IncorrectSyntax
 from src.lexer import Lexer
 from src.parser import Parser
+from src.evaluator import evaluate, RuntimeEvaluationError
 import unittest
 
 
@@ -20,6 +21,7 @@ def expect_exception(tester: unittest.TestCase, test_input: str):
 
 
 class ConstantDeclarationTest(unittest.TestCase):
+    # tests based on category partition
     def test1(self):
         expect_exception(self, "AAA({")
 
@@ -36,6 +38,13 @@ class ConstantDeclarationTest(unittest.TestCase):
         output: str = run_test("AAA();")
         self.assertEqual(output, "")
 
-
-if __name__ == "__main__":
-    unittest.main()
+    # test based on branches
+    def test6(self):
+        with self.assertRaises(RuntimeEvaluationError):
+            lexer: Lexer = Lexer("""
+                let thing = 3;
+                thing();
+            """)
+            parser: Parser = Parser(lexer)
+            statements = parser.run()
+            evaluate(statements)

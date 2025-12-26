@@ -1,13 +1,14 @@
+import argparse
 from argparse import ArgumentParser, RawDescriptionHelpFormatter
 from .lexer import Lexer
 from .parser import Parser
-from .evaluator import evaluate
+from .evaluator import evaluate, setup_runtime
 import textwrap
 import code
 
 
 class Repl(code.InteractiveConsole):
-    env = {}
+    env = []
 
     def runsource(self, source: str, filename="<input>", symbol="single"):
         lexer = Lexer(source)
@@ -29,8 +30,9 @@ def read_file_contents(filename: str) -> str | None:
 
 
 def main():
+    usage_message = "interpret [-h | --help] [--debug] [file] [-- arg]"
     arg_parser = ArgumentParser(
-        prog="interpret",
+        usage=usage_message,
         description=textwrap.dedent("""
         An interpreter for simple programming language developed for Software Measurement and
         Quality Assurance coursework.
@@ -44,7 +46,11 @@ def main():
     )
     arg_parser.add_argument("file", nargs="?", help=": program read from script file")
     arg_parser.add_argument("--debug", action="store_true", help="enable debug output")
-
+    arg_parser.add_argument(
+        "args",
+        nargs=argparse.REMAINDER,
+        help=": additional argument after `--` passed through",
+    )
     args = arg_parser.parse_args()
 
     if not args.file:
@@ -70,4 +76,14 @@ def main():
     lexer = Lexer(contents)
     parser = Parser(lexer)
     expressions = parser.run()
-    return evaluate(expressions)
+
+    # Since our language doesn't support arrays, we can only pass one argument
+    # to the script, if we add functionality of arrays then we can pass in
+    # `argc` and `argv` similar to how its done in C.
+    env = None
+    if len(args.args) > 1:
+        arg_parser.print_usage()
+        exit(1)
+    if len(args.args) == 1:
+        env = setup_runtime(args.args[0])
+    return evaluate(expressions, env)

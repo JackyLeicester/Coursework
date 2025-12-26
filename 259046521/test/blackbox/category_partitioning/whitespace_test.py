@@ -86,3 +86,7 @@ class ConstantDeclarationTest(unittest.TestCase):
         self.assertEqual(str_repr, "B")
         _, str_repr = lexer.next_token()
         self.assertEqual(str_repr, "D")
+
+
+if __name__ == "__main__":
+    unittest.main()

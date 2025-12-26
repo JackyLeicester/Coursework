@@ -1,10 +1,10 @@
 from src.lexer import Lexer
 from src.parser import Parser, IncorrectSyntax
+from src.evaluator import evaluate, RuntimeEvaluationError
 import unittest
 
 
 def run_test(test_input: str) -> str:
-    # buffer: StringIO = capture_output()
     lexer: Lexer = Lexer(test_input)
     parser: Parser = Parser(lexer)
     parser.run()
@@ -19,6 +19,7 @@ def expect_exception(tester: unittest.TestCase, test_input: str):
 
 
 class ConstantDeclarationTest(unittest.TestCase):
+    # based on category partition, testing code inputs
     def test1(self):
         expect_exception(self, "const true")
 
@@ -41,6 +42,18 @@ class ConstantDeclarationTest(unittest.TestCase):
         output: str = run_test("const realname = 5;")
         self.assertEqual(output, "")
 
+    # based on branch testing and ensuring all bran ches are tested
 
-if __name__ == "__main__":
-    unittest.main()
+    def test8(self):
+        with self.assertRaises(RuntimeEvaluationError):
+            lexer: Lexer = Lexer("const realname = 5; const realname = 3;")
+            parser: Parser = Parser(lexer)
+            statements = parser.run()
+            evaluate(statements)
+
+    def test9(self):
+        with self.assertRaises(RuntimeEvaluationError):
+            lexer: Lexer = Lexer("const realname = 5; realname = 8;")
+            parser: Parser = Parser(lexer)
+            statements = parser.run()
+            evaluate(statements)

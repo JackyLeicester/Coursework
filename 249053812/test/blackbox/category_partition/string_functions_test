@@ -1,0 +1,28 @@
+# Functions
+functions:
+    concat.[property Concat]
+    trim.[property Trim]
+    hasPrefix.[property Prefix]
+    hasSuffix.[property Suffix]
+    length.[property Length]
+
+# Arguments
+arguments:
+    zero arguments.[error]
+
+    single argument.[if Trim]
+    single argument.[if Length]
+
+    two arguments.[if Concat]
+    two arguments.[if Prefix]
+    two arguments.[if Suffix]
+
+# Return types
+returntype:
+    Bool.[if Prefix]
+    Bool.[if Suffix]
+
+    str.[if Concat]
+    str.[if Trim]
+
+    int.[if Length]

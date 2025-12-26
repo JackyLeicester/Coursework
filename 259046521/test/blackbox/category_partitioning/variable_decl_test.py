@@ -1,10 +1,10 @@
 from src.lexer import Lexer
 from src.parser import Parser
+from src.evaluator import evaluate
 import unittest
 
 
 def run_test(test_input: str) -> str:
-    # buffer: StringIO = capture_output()
     lexer: Lexer = Lexer(test_input)
     parser: Parser = Parser(lexer)
     parser.run()
@@ -19,6 +19,7 @@ def expect_exception(tester: unittest.TestCase, test_input: str):
 
 
 class VariableDeclarationTest(unittest.TestCase):
+    # based on category partition
     def test1(self):
         expect_exception(self, "let true")
 
@@ -41,6 +42,9 @@ class VariableDeclarationTest(unittest.TestCase):
         output: str = run_test("let realname = 5;")
         self.assertEqual(output, "")
 
-
-if __name__ == "__main__":
-    unittest.main()
+    # based on branch testing
+    def test8(self):
+        lexer: Lexer = Lexer("let realname = 5; realname = 12;")
+        parser: Parser = Parser(lexer)
+        statements = parser.run()
+        evaluate(statements)

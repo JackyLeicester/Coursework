@@ -1,11 +1,11 @@
 import math
-import sys
 from typing import Any, Dict, List
 from .parser import (
     Expression,
     IntegerLiteral,
     FloatLiteral,
     BooleanLiteral,
+    NullLiteral,
     CharLiteral,
     StringLiteral,
     PrefixExpression,
@@ -19,6 +19,7 @@ from .parser import (
     ExpressionStatement,
     CallExpression,
     ForStatement,
+    WhileStatement,
     ContinueStatement,
     BreakStatement,
     FunctionStatement,
@@ -44,26 +45,48 @@ class RuntimeEvaluationError(Exception):
     pass
 
 
+class _ExitSignal(Exception):
+    def __init__(self, code: int):
+        self.code = code
+
+
 Env = List[Dict[str, tuple[Any, bool]]]
 Context = Dict[str, tuple[Any, bool]]
 
 
-def _get_var(env: Env, name: str) -> Any:
-    for context in env[::-1]:
+def _env_stack(env: "Env | Context") -> Env:
+    return env if isinstance(env, list) else [env]
+
+
+def setup_runtime(arg: str) -> Env:
+    env: Env = [{}]
+    _declare_var(env, "arg", arg, True)
+    return env
+
+
+def _get_var(env: "Env | Context", name: str) -> tuple[Any, bool]:
+    stack = _env_stack(env)
+    for context in stack[::-1]:
         if name in context:
             return context[name][0]
     raise RuntimeEvaluationError(f"Undefined variable '{name}'")
 
 
-def _declare_var(env: Env, name: str, value: Any, is_const: bool) -> Any:
-    if name in env[-1] and env[-1][name][1]:
+def _check_integer_operands(left: Any, right: Any) -> None:
+    if not isinstance(left, int) or not isinstance(right, int):
+        raise RuntimeEvaluationError("Bitwise operations require integers")
+
+
+def _declare_var(env: "Env | Context", name: str, value: Any, is_const: bool) -> Any:
+    stack = _env_stack(env)
+    if name in stack[-1] and stack[-1][name][1]:
         raise RuntimeEvaluationError(f"Cannot redeclare constant '{name}'")
-    env[-1][name] = (value, is_const)
+    stack[-1][name] = (value, is_const)
     return value
 
 
-def _assign_var(env: Env, name: str, value: Any) -> Any:
-    context: Context = _get_declaration_context(env, name)
+def _assign_var(env: "Env | Context", name: str, value: Any) -> Any:
+    context = _get_declaration_context(env, name)
     _, is_const = context[name]
     if is_const:
         raise RuntimeEvaluationError(f"Cannot assign to constant '{name}'")
@@ -71,14 +94,23 @@ def _assign_var(env: Env, name: str, value: Any) -> Any:
     return value
 
 
-def _get_declaration_context(env: Env, name: str) -> Context:
-    for context in env[::-1]:
+def _get_declaration_context(env: "Env | Context", name: str) -> Context:
+    stack = _env_stack(env)
+    for context in stack[::-1]:
         if name in context:
             return context
     raise RuntimeEvaluationError(f"Undefined variable '{name}'")
 
 
-def _eval(node: Expression, env: Env) -> Any:
+def _is_declared(env: Env, name: str) -> bool:
+    try:
+        _get_declaration_context(env, name)
+        return True
+    except RuntimeEvaluationError:
+        return False
+
+
+def _eval(node: Expression, env: "Env | Context") -> Any:
     if isinstance(node, IntegerLiteral):
         return int(node.value)
 
@@ -88,6 +120,9 @@ def _eval(node: Expression, env: Env) -> Any:
     if isinstance(node, BooleanLiteral):
         return bool(node.literal)
 
+    if isinstance(node, NullLiteral):
+        return None
+
     if isinstance(node, CharLiteral):
         return str(node.literal)
 
@@ -95,7 +130,8 @@ def _eval(node: Expression, env: Env) -> Any:
         return str(node.literal)
 
     if isinstance(node, Identifier):
-        return _get_var(env, node.name)
+        val, _is_const = _get_var(env, node.name)
+        return val
 
     if isinstance(node, CallExpression):
         name = node.identifier_name
@@ -127,33 +163,144 @@ def _eval(node: Expression, env: Env) -> Any:
             print(*args, end="")
             return None
         elif name == "input":
-            if len(args) > 0:
-                raise RuntimeEvaluationError("abs expects 0 or 1 arguments")
+            if len(args) > 1:
+                raise RuntimeEvaluationError("input expects 0 or 1 arguments")
             elif len(args) == 0:
                 return input()
-            else:
-                return input(args[0])
+            return input(str(args[0]))
+        elif name == "isInt":
+            if len(args) != 1:
+                raise RuntimeEvaluationError("is_int expects 1 argument")
+            return args[0].isnumeric()
+        elif name == "toInt":
+            if len(args) != 1:
+                raise RuntimeEvaluationError("to_int expects 1 argument")
+            try:
+                return int(args[0])
+            except (ValueError, TypeError):
+                raise RuntimeEvaluationError("Cannot convert value to int")
+        elif name == "isFloat":
+            if len(args) != 1:
+                raise RuntimeEvaluationError("is_float expects 1 argument")
+            try:
+                float(args[0])
+                return True
+            except (ValueError, TypeError):
+                return False
+        elif name == "toFloat":
+            if len(args) != 1:
+                raise RuntimeEvaluationError("to_float expects 1 argument")
+            try:
+                return float(args[0])
+            except (ValueError, TypeError):
+                raise RuntimeEvaluationError("Cannot convert value to float")
+        elif name == "toStr":
+            if len(args) != 1:
+                raise RuntimeEvaluationError("to_str expects 1 argument")
+            return str(args[0])
+        elif name == "concat":
+            if len(args) != 2:
+                raise RuntimeEvaluationError("concat expects 2 arguments")
+            for arg in args:
+                if not isinstance(arg, str):
+                    raise RuntimeEvaluationError("Input is not a string")
+            try:
+                return args[0] + args[1]
+            except (ValueError, TypeError):
+                raise RuntimeEvaluationError("Cannot concatenate values")
+        elif name == "trim":
+            if len(args) != 1:
+                raise RuntimeEvaluationError("trim expects 1 argument")
+            if not isinstance(args[0], str):
+                raise RuntimeEvaluationError("Input is not a string")
+            try:
+                return args[0].strip()
+            except (ValueError, TypeError):
+                raise RuntimeEvaluationError("Cannot trim given value")
+        elif name == "hasPrefix":
+            if len(args) != 2:
+                raise RuntimeEvaluationError("hasPrefix expects 2 arguments")
+            for arg in args:
+                if not isinstance(arg, str):
+                    raise RuntimeEvaluationError("Input is not a string")
+            try:
+                return args[1].startswith(args[0])
+            except (ValueError, TypeError):
+                raise RuntimeEvaluationError("Cannot check prefix of the value")
+        elif name == "hasSuffix":
+            if len(args) != 2:
+                raise RuntimeEvaluationError("hasSuffix expects 2 arguments")
+            for arg in args:
+                if not isinstance(arg, str):
+                    raise RuntimeEvaluationError("Input is not a string")
+            try:
+                return args[1].endswith(args[0])
+            except (ValueError, TypeError):
+                raise RuntimeEvaluationError("Cannot check suffix of the value")
+        elif name == "length":
+            if len(args) != 1:
+                raise RuntimeEvaluationError("length expects 1 argument")
+            if not isinstance(args[0], str):
+                raise RuntimeEvaluationError("Input is not a string")
+            try:
+                return len(args[0])
+            except (ValueError, TypeError):
+                raise RuntimeEvaluationError("Cannot check length of the value")
+        elif name == "ifExists":
+            if len(args) != 1:
+                raise RuntimeEvaluationError("ifExists expects 1 argument")
+            if not isinstance(args[0], str):
+                raise RuntimeEvaluationError("Input is not a string")
+            return _is_declared(env, args[0])
+        elif name == "exit":
+            if len(args) != 1:
+                raise RuntimeEvaluationError("exit expects 1 argument")
+            if isinstance(args[0], bool) or not isinstance(args[0], int):
+                raise RuntimeEvaluationError("eixt argument must be int")
+            raise _ExitSignal(args[0])
+        elif name == "type":
+            if len(args) != 1:
+                raise RuntimeEvaluationError("type expects 1 argument")
+            v = args[0]
+
+            if v is None:
+                return "null"
+            if isinstance(v, bool):
+                return "boolean"
+            if isinstance(v, int):
+                return "integer"
+            if isinstance(v, float):
+                return "float"
+            if isinstance(v, str):
+                return "string"
+            if isinstance(v, FunctionStatement):
+                return "function"
+
+            return "unknown"
         else:
-            env.append(dict())
-            function = _get_var(env, node.identifier_name)[0]
+            stack = _env_stack(env)
+            stack.append({})
+            function = _get_var(stack, node.identifier_name)[0]
             if not isinstance(function, FunctionStatement):
-                raise RuntimeError(
+                stack.pop()
+                raise RuntimeEvaluationError(
                     "Looked for function but found another identifier instead"
                 )
+
             if len(node.parameters) != len(function.variables):
-                raise RuntimeError(
+                stack.pop()
+                raise RuntimeEvaluationError(
                     "Number of parameters passed is not equal to number of function parameters"
                 )
             for identifier, expression in zip(function.variables, node.parameters):
-                _declare_var(env, identifier.name, _eval(expression, env), False)
+                _declare_var(stack, identifier.name, _eval(expression, env), False)
             try:
-                result = _eval(function.block, env)
-                env.pop()
+                result = _eval(function.block, stack)
+                stack.pop()
                 return result
-            except _ReturnSignal:
-                _, value, _ = sys.exc_info()
-                env.pop()
-                return value.value
+            except _ReturnSignal as e:
+                stack.pop()
+                return e.value
 
     if isinstance(node, PrefixExpression):
         right = _eval(node.right, env) if node.right is not None else None
@@ -182,6 +329,17 @@ def _eval(node: Expression, env: Env) -> Any:
             if right == 0:
                 raise RuntimeEvaluationError("Division by zero")
             return left / right
+
+        # bitwise
+        if t == Token.BITWISE_AND:
+            _check_integer_operands(left, right)
+            return left & right
+        if t == Token.BITWISE_OR:
+            _check_integer_operands(left, right)
+            return left | right
+        if t == Token.BITWISE_XOR:
+            _check_integer_operands(left, right)
+            return left ^ right
 
         # comparisons
         if t == Token.EQUAL:
@@ -258,16 +416,24 @@ def _eval(node: Expression, env: Env) -> Any:
             _eval(node.increment, env)
         return result
 
+    if isinstance(node, WhileStatement):
+        result = None
+        while bool(_eval(node.condition, env)):
+            try:
+                result = _eval(node.block, env)
+            except _ContinueSignal:
+                continue
+            except _BreakSignal:
+                break
+        return result
+
     if isinstance(node, FunctionStatement):
         _declare_var(env, node.identifier.name, node, True)
         return None
 
     if isinstance(node, ReturnStatement):
         evaluation = _eval(node.expression, env)
-        if evaluation is tuple:
-            raise _ReturnSignal(evaluation[0])
-        else:
-            raise _ReturnSignal(evaluation)
+        raise _ReturnSignal(evaluation)
 
     raise RuntimeEvaluationError(
         f"Evaluation not implemented for node type {type(node).__name__}"
@@ -277,15 +443,17 @@ def _eval(node: Expression, env: Env) -> Any:
 def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
     if env is None:
         env = [{}]
-    result = None
+
     try:
+        result = None
         for expression in expressions:
             result = _eval(expression, env)
-    except _ReturnSignal:
-        _, value, _ = sys.exc_info()
-        return "User error code: " + str(value)
+        return result
+    except _ExitSignal as e:
+        return e.code
+    except _ReturnSignal as e:
+        return e.value
     except _ContinueSignal:
         raise RuntimeEvaluationError("continue used outside loop")
     except _BreakSignal:
         raise RuntimeEvaluationError("break used outside loop")
-    return result

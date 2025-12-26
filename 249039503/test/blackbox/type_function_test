@@ -1,0 +1,18 @@
+ARGUMENT_COUNT
+    ONE_ARG.[single]
+    NO_ARGS.[error]
+
+ARGUMENT_FORM
+    LITERAL.[single]
+    VARIABLE.[single]
+    EXPRESSION.[single]
+    UNDEFINED_VARIABLE.[error]
+
+RUNTIME_VALUE_TYPE
+    INT_VALUE.[single]
+    FLOAT_VALUE.[single]
+    BOOLEAN_VALUE.[single]
+    STRING_VALUE.[single]
+    NULL_VALUE.[single]
+    FUNCTION_VALUE.[single]
+
