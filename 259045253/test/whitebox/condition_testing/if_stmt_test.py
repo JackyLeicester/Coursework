@@ -66,7 +66,7 @@ class TestIfStatement(unittest.TestCase):
     @patch("sys.stdout", new_callable=io.StringIO)
     def test_evaluator1(self, mock_stdout):
         parser = self.setup_parser("""
-        if true { print(1) }
+        if true { print(1); }
         """)
         expressions = parser.run()
         result = evaluate(expressions)
@@ -77,7 +77,7 @@ class TestIfStatement(unittest.TestCase):
     @patch("sys.stdout", new_callable=io.StringIO)
     def test_evaluator2(self, mock_stdout):
         parser = self.setup_parser("""
-        if false { print(1) } else { print(2) }
+        if false { print(1); } else { print(2); }
         """)
         expressions = parser.run()
         result = evaluate(expressions)

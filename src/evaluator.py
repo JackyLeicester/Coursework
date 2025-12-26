@@ -68,7 +68,7 @@ def _get_var(env: "Env | Context", name: str) -> tuple[Any, bool]:
     stack = _env_stack(env)
     for context in stack[::-1]:
         if name in context:
-            return context[name][0]
+            return context[name]
     raise RuntimeEvaluationError(f"Undefined variable '{name}'")
 
 
