@@ -99,20 +99,11 @@ class BlockStatement(Expression):
         self.statements: List[Expression] = statements
 
 
+@dataclass
 class IfExpression(Expression):
-    def __init__(
-        self,
-        condition: Expression | None,
-        consequence: BlockStatement | None,
-        alternative: BlockStatement | None,
-    ) -> None:
-        self.token = Token.IF
-        self.condition = condition
-        self.consequence = consequence
-        self.alternative = alternative
-
-    def __repr__(self):
-        return f"{type(self).__name__} {self.__dict__}"
+    condition: Expression
+    consequence: BlockStatement
+    alternative: BlockStatement | None
 
 
 class FunctionStatement(Expression):
