@@ -1,9 +1,5 @@
 import unittest
 
-from src import Lexer, Parser, evaluate
-from src.parser import ForStatement
-from src.tokens import Token
-
 
 class TestForLoop(unittest.TestCase):
     """

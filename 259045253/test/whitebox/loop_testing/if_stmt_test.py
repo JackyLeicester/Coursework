@@ -1,10 +1,4 @@
 import unittest
-from unittest.mock import patch
-import io
-
-from src import Lexer, Parser, evaluate
-from src.parser import IfExpression, BooleanLiteral, BlockStatement
-from src.tokens import Token
 
 
 class TestIfStatement(unittest.TestCase):
