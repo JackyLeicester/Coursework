@@ -16,6 +16,7 @@ class Token(IntEnum):
     FLOAT = auto()
     CHAR = auto()
     STRING = auto()
+    NULL = auto()
     IF = auto()
     ELSE = auto()
     LPAREN = auto()

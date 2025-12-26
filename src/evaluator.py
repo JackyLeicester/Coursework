@@ -5,6 +5,7 @@ from .parser import (
     IntegerLiteral,
     FloatLiteral,
     BooleanLiteral,
+    NullLiteral,
     CharLiteral,
     StringLiteral,
     PrefixExpression,
@@ -113,6 +114,9 @@ def _eval(node: Expression, env: "Env | Context") -> Any:
 
     if isinstance(node, BooleanLiteral):
         return bool(node.literal)
+
+    if isinstance(node, NullLiteral):
+        return None
 
     if isinstance(node, CharLiteral):
         return str(node.literal)
