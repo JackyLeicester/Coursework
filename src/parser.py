@@ -61,6 +61,11 @@ class BooleanLiteral(Expression):
 
 
 @dataclass
+class NullLiteral(Expression):
+    literal: str
+
+
+@dataclass
 class StringLiteral(Expression):
     literal: str
 
@@ -179,6 +184,9 @@ class Parser:
         Token.MINUS: 5,
         Token.ASTERISK: 6,
         Token.SLASH: 6,
+        Token.BITWISE_OR: 7,
+        Token.BITWISE_XOR: 8,
+        Token.BITWISE_AND: 9,
         Token.ASSIGN: 1,
     }
     LOWEST_PRECEDENCE = 0
@@ -203,6 +211,7 @@ class Parser:
         self._register_prefix_fn(Token.NOT, self.parse_prefix_expression)
         self._register_prefix_fn(Token.TRUE, self.parse_boolean)
         self._register_prefix_fn(Token.FALSE, self.parse_boolean)
+        self._register_prefix_fn(Token.NULL, self.parse_null)
         self._register_prefix_fn(Token.CHAR, self.parse_char)
         self._register_prefix_fn(Token.STRING, self.parse_string)
         self._register_prefix_fn(Token.FUNCTION, self.parse_function_statement)
@@ -223,6 +232,9 @@ class Parser:
             Token.GREATEREQUAL,
             Token.AND,
             Token.OR,
+            Token.BITWISE_AND,
+            Token.BITWISE_OR,
+            Token.BITWISE_XOR,
         ]:
             self._register_infix_fn(token, self.parse_infix_expression)
 
@@ -357,13 +369,16 @@ class Parser:
 
     def parse_infix_expression(self, lhs: Expression) -> InfixExpression | None:
         operator = self.curr_token
+        operator_symbol = self.curr_str
         precedence = self._curr_precedence()
         self._next_token()
 
         rhs = self.parse_expression(precedence)
 
         if rhs is None:
-            return None
+            raise IncorrectSyntax(
+                f"SYNTAX ERROR: expected expression after operator {str(operator_symbol)} at line: {self.lexer.line_number}"
+            )
 
         return InfixExpression(lhs, operator, rhs)
 
@@ -382,6 +397,11 @@ class Parser:
 
     def parse_boolean(self) -> BooleanLiteral:
         literal = BooleanLiteral(self.curr_str == "true")
+        self._next_token()
+        return literal
+
+    def parse_null(self) -> NullLiteral:
+        literal = NullLiteral("null")
         self._next_token()
         return literal
 

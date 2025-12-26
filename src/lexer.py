@@ -110,13 +110,15 @@ class Lexer:
                     self.read_char()
                     token, str_repr = Token.AND, "&&"
                 else:
-                    token, str_repr = Token.EOF, "Unknown"
+                    token, str_repr = Token.BITWISE_AND, "&"
             case "|":
                 if self.peek() == "|":
                     self.read_char()
                     token, str_repr = Token.OR, "||"
                 else:
-                    token, str_repr = Token.EOF, "Unknown"
+                    token, str_repr = Token.BITWISE_OR, "|"
+            case "^":
+                token, str_repr = Token.BITWISE_XOR, "^"
             case ";":
                 token, str_repr = Token.SEMICOLON, ";"
             case "\0":
@@ -223,6 +225,8 @@ class Lexer:
                 return Token.TRUE, word
             case "false":
                 return Token.FALSE, word
+            case "null":
+                return Token.NULL, word
             case "fn":
                 return Token.FUNCTION, word
             case "return":

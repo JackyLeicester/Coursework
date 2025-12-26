@@ -5,6 +5,7 @@ from .parser import (
     IntegerLiteral,
     FloatLiteral,
     BooleanLiteral,
+    NullLiteral,
     CharLiteral,
     StringLiteral,
     PrefixExpression,
@@ -71,6 +72,11 @@ def _get_var(env: "Env | Context", name: str) -> tuple[Any, bool]:
     raise RuntimeEvaluationError(f"Undefined variable '{name}'")
 
 
+def _check_integer_operands(left: Any, right: Any) -> None:
+    if not isinstance(left, int) or not isinstance(right, int):
+        raise RuntimeEvaluationError("Bitwise operations require integers")
+
+
 def _declare_var(env: "Env | Context", name: str, value: Any, is_const: bool) -> Any:
     stack = _env_stack(env)
     if name in stack[-1] and stack[-1][name][1]:
@@ -114,6 +120,9 @@ def _eval(node: Expression, env: "Env | Context") -> Any:
     if isinstance(node, BooleanLiteral):
         return bool(node.literal)
 
+    if isinstance(node, NullLiteral):
+        return None
+
     if isinstance(node, CharLiteral):
         return str(node.literal)
 
@@ -155,7 +164,7 @@ def _eval(node: Expression, env: "Env | Context") -> Any:
             return None
         elif name == "input":
             if len(args) > 1:
-                raise RuntimeEvaluationError("abs expects 0 or 1 arguments")
+                raise RuntimeEvaluationError("input expects 0 or 1 arguments")
             elif len(args) == 0:
                 return input()
             return input(str(args[0]))
@@ -320,6 +329,17 @@ def _eval(node: Expression, env: "Env | Context") -> Any:
             if right == 0:
                 raise RuntimeEvaluationError("Division by zero")
             return left / right
+
+        # bitwise
+        if t == Token.BITWISE_AND:
+            _check_integer_operands(left, right)
+            return left & right
+        if t == Token.BITWISE_OR:
+            _check_integer_operands(left, right)
+            return left | right
+        if t == Token.BITWISE_XOR:
+            _check_integer_operands(left, right)
+            return left ^ right
 
         # comparisons
         if t == Token.EQUAL:

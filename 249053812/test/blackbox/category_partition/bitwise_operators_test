@@ -1,0 +1,17 @@
+Operator:
+    BITWISE_AND.   [property bitwise_and]
+    BITWISE_XOR.   [property bitwise_xor]
+    BITWISE_OR.    [property bitwise_or]
+
+
+Arguments:
+    Valid Two Integers.
+    Missing Comma.            [error]
+    Incorrect Argument Type.  [error]
+    Input not provided.       [error]
+
+
+Return:
+    Integer.  [if bitwise_and]
+    Integer.  [if bitwise_xor]
+    Integer.  [if bitwise_or]
