@@ -8,10 +8,6 @@ from src import Lexer, Parser, evaluate
 
 class TestPrintFunction(unittest.TestCase):
     """
-    NOTE: Since there are no loops in the method involved in executing `print`
-    statement, there is nothing to test via loop testing and hence this class
-    is empty.
-
     This class performs condition testing on the following:
     - default branch in `_read_identifier` of the `Lexer`.
     - `parse_identifier_or_callexpression` method of `Parser`.

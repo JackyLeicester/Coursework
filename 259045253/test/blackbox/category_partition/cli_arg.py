@@ -9,7 +9,7 @@ from src.evaluator import RuntimeEvaluationError
 
 # Calling `main` directly here as this will test argument parsing, setting up
 # of environment, and accessing of argument in one go.
-class TestStringProcessing(unittest.TestCase):
+class TestCliArgs(unittest.TestCase):
     def setUp(self):
         self.file_name_access = "test_access"
         self.file_name_no_access = "test_no_access"
