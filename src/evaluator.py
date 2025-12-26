@@ -51,7 +51,7 @@ Context = Dict[str, tuple[Any, bool]]
 def _get_var(env: Env, name: str) -> Any:
     for context in env[::-1]:
         if name in context:
-            return context[name]
+            return context[name][0]
     raise RuntimeEvaluationError(f"Undefined variable '{name}'")
 
 
