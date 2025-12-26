@@ -11,7 +11,7 @@ from src.parser import (
 )
 
 
-class TestForLoopProcessing(unittest.TestCase):
+class TestForLoop(unittest.TestCase):
     @staticmethod
     def setup_parser(src: str) -> Parser:
         lexer = Lexer(src)

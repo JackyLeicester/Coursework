@@ -4,7 +4,7 @@ from src import Parser, Lexer, evaluate
 from src.parser import NullLiteral
 
 
-class LogicalOperatorsTest(unittest.TestCase):
+class TestNullLiteral(unittest.TestCase):
     @staticmethod
     def setup_parser(src: str) -> Parser:
         lexer = Lexer(src)

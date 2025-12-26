@@ -413,9 +413,7 @@ def _eval(node: Expression, env: "Env | Context") -> Any:
                 continue
             except _BreakSignal:
                 break
-
             _eval(node.increment, env)
-
         return result
 
     if isinstance(node, WhileStatement):
