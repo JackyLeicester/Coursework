@@ -204,48 +204,33 @@ def _eval(node: Expression, env: "Env | Context") -> Any:
             for arg in args:
                 if not isinstance(arg, str):
                     raise RuntimeEvaluationError("Input is not a string")
-            try:
-                return args[0] + args[1]
-            except (ValueError, TypeError):
-                raise RuntimeEvaluationError("Cannot concatenate values")
+            return args[0] + args[1]
         elif name == "trim":
             if len(args) != 1:
                 raise RuntimeEvaluationError("trim expects 1 argument")
             if not isinstance(args[0], str):
                 raise RuntimeEvaluationError("Input is not a string")
-            try:
-                return args[0].strip()
-            except (ValueError, TypeError):
-                raise RuntimeEvaluationError("Cannot trim given value")
+            return args[0].strip()
         elif name == "hasPrefix":
             if len(args) != 2:
                 raise RuntimeEvaluationError("hasPrefix expects 2 arguments")
             for arg in args:
                 if not isinstance(arg, str):
                     raise RuntimeEvaluationError("Input is not a string")
-            try:
-                return args[1].startswith(args[0])
-            except (ValueError, TypeError):
-                raise RuntimeEvaluationError("Cannot check prefix of the value")
+            return args[1].startswith(args[0])
         elif name == "hasSuffix":
             if len(args) != 2:
                 raise RuntimeEvaluationError("hasSuffix expects 2 arguments")
             for arg in args:
                 if not isinstance(arg, str):
                     raise RuntimeEvaluationError("Input is not a string")
-            try:
-                return args[1].endswith(args[0])
-            except (ValueError, TypeError):
-                raise RuntimeEvaluationError("Cannot check suffix of the value")
+            return args[1].endswith(args[0])
         elif name == "length":
             if len(args) != 1:
                 raise RuntimeEvaluationError("length expects 1 argument")
             if not isinstance(args[0], str):
                 raise RuntimeEvaluationError("Input is not a string")
-            try:
-                return len(args[0])
-            except (ValueError, TypeError):
-                raise RuntimeEvaluationError("Cannot check length of the value")
+            return len(args[0])
         elif name == "ifExists":
             if len(args) != 1:
                 raise RuntimeEvaluationError("ifExists expects 1 argument")
