@@ -72,6 +72,11 @@ def _get_var(env: "Env | Context", name: str) -> tuple[Any, bool]:
     raise RuntimeEvaluationError(f"Undefined variable '{name}'")
 
 
+def _check_integer_operands(left: Any, right: Any) -> None:
+    if not isinstance(left, int) or not isinstance(right, int):
+        raise RuntimeEvaluationError("Bitwise operations require integers")
+
+
 def _declare_var(env: "Env | Context", name: str, value: Any, is_const: bool) -> Any:
     stack = _env_stack(env)
     if name in stack[-1] and stack[-1][name][1]:
@@ -324,6 +329,17 @@ def _eval(node: Expression, env: "Env | Context") -> Any:
             if right == 0:
                 raise RuntimeEvaluationError("Division by zero")
             return left / right
+
+        # bitwise
+        if t == Token.BITWISE_AND:
+            _check_integer_operands(left, right)
+            return left & right
+        if t == Token.BITWISE_OR:
+            _check_integer_operands(left, right)
+            return left | right
+        if t == Token.BITWISE_XOR:
+            _check_integer_operands(left, right)
+            return left ^ right
 
         # comparisons
         if t == Token.EQUAL:
