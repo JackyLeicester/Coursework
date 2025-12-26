@@ -67,7 +67,7 @@ def _assign_var(env: Env, name: str, value: Any) -> Any:
     _, is_const = context[name]
     if is_const:
         raise RuntimeEvaluationError(f"Cannot assign to constant '{name}'")
-    env[name] = (value, False)
+    context[name] = (value, False)
     return value
 
 
@@ -255,10 +255,9 @@ def _eval(node: Expression, env: Env) -> Any:
                 continue
             except _BreakSignal:
                 break
-
             _eval(node.increment, env)
-
         return result
+
     if isinstance(node, FunctionStatement):
         _declare_var(env, node.identifier.name, node, True)
         return None
