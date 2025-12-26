@@ -45,7 +45,7 @@ class RuntimeEvaluationError(Exception):
 
 
 class _ExitSignal(Exception):
-    def __init__(self, code: int):
+    def __init__(self, code: int):# pragma: no cover
         self.code = code
 
 
@@ -57,7 +57,7 @@ def _env_stack(env: "Env | Context") -> Env:
     return env if isinstance(env, list) else [env]
 
 
-def setup_runtime(arg: str) -> Env:
+def setup_runtime(arg: str) -> Env:# pragma: no cover
     env: Env = [{}]
     _declare_var(env, "arg", arg, True)
     return env

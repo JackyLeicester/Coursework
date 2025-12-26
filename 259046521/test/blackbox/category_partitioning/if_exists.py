@@ -29,6 +29,14 @@ class ReturnErrorCodeTest(unittest.TestCase):
             expressions = parser.run()
             evaluate(expressions)
 
+    def test4(self):
+        lexer: Lexer = Lexer("""
+            let a = 3;
+            return ifExists("a");
+        """)
+        parser = Parser(lexer)
+        expressions = parser.run()
+        evaluate(expressions)
 
 if __name__ == "__main__":
     unittest.main()
