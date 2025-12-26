@@ -120,10 +120,10 @@ class ReturnStatement(Expression):
         self.expression = expression
 
 
+@dataclass
 class CallExpression(Expression):
-    def __init__(self, identifier_name: str, parameters: List[Expression]):
-        self.identifier_name = identifier_name
-        self.parameters = parameters
+    identifier_name: str
+    parameters: List[Expression]
 
 
 class ForStatement(Expression):
