@@ -392,7 +392,7 @@ class Parser:
         return literal
 
     def parse_null(self) -> NullLiteral:
-        literal = NullLiteral("null")
+        literal = NullLiteral(self.curr_str)
         self._next_token()
         return literal
 
