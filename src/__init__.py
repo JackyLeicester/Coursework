@@ -7,7 +7,7 @@ import textwrap
 import code
 
 
-class Repl(code.InteractiveConsole):
+class Repl(code.InteractiveConsole):  # pragma: no cover
     env = []
 
     def runsource(self, source: str, filename="<input>", symbol="single"):

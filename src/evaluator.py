@@ -46,7 +46,7 @@ class RuntimeEvaluationError(Exception):
 
 
 class _ExitSignal(Exception):
-    def __init__(self, code: int):
+    def __init__(self, code: int):  # pragma: no cover
         self.code = code
 
 
@@ -162,7 +162,7 @@ def _eval(node: Expression, env: "Env | Context") -> Any:
         elif name == "print":
             print(*args, end="")
             return None
-        elif name == "input":
+        elif name == "input":  # pragma: no cover
             if len(args) > 1:
                 raise RuntimeEvaluationError("input expects 0 or 1 arguments")
             elif len(args) == 0:
