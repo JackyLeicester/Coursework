@@ -58,7 +58,7 @@ def _env_stack(env: "Env | Context") -> Env:
     return env if isinstance(env, list) else [env]
 
 
-def setup_runtime(arg: str) -> Env:  # pragma: no cover
+def setup_runtime(arg: str) -> Env:
     env: Env = [{}]
     _declare_var(env, "arg", arg, True)
     return env
