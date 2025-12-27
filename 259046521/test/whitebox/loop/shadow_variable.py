@@ -3,6 +3,7 @@ from src.parser import Parser
 from src.evaluator import evaluate, RuntimeEvaluationError
 import unittest
 
+
 # we cannot test the scenario with 0 loop iterations as there will always at least be 1 context
 class Tester(unittest.TestCase):
     # loop more than once
@@ -18,7 +19,7 @@ class Tester(unittest.TestCase):
         parser = Parser(lexer)
         expressions = parser.run()
         self.assertEqual(evaluate(expressions), 2)
-         
+
     # loop exactly once
     def test2(self):
         lexer: Lexer = Lexer("""
@@ -33,4 +34,3 @@ class Tester(unittest.TestCase):
         parser = Parser(lexer)
         expressions = parser.run()
         self.assertEqual(evaluate(expressions), 0)
-        
