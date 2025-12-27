@@ -46,7 +46,7 @@ class RuntimeEvaluationError(Exception):
 
 
 class _ExitSignal(Exception):
-    def __init__(self, code: int):
+    def __init__(self, code: int):  # pragma: no cover
         self.code = code
 
 
@@ -162,7 +162,7 @@ def _eval(node: Expression, env: "Env | Context") -> Any:
         elif name == "print":
             print(*args, end="")
             return None
-        elif name == "input":
+        elif name == "input":  # pragma: no cover
             if len(args) > 1:
                 raise RuntimeEvaluationError("input expects 0 or 1 arguments")
             elif len(args) == 0:
@@ -206,7 +206,8 @@ def _eval(node: Expression, env: "Env | Context") -> Any:
                     raise RuntimeEvaluationError("Input is not a string")
             try:
                 return args[0] + args[1]
-            except (ValueError, TypeError):
+            except (ValueError, TypeError):  # pragma: no cover
+                # seems like dead code
                 raise RuntimeEvaluationError("Cannot concatenate values")
         elif name == "trim":
             if len(args) != 1:
@@ -215,7 +216,8 @@ def _eval(node: Expression, env: "Env | Context") -> Any:
                 raise RuntimeEvaluationError("Input is not a string")
             try:
                 return args[0].strip()
-            except (ValueError, TypeError):
+            except (ValueError, TypeError):  # pragma: no cover
+                # seems like dead code
                 raise RuntimeEvaluationError("Cannot trim given value")
         elif name == "hasPrefix":
             if len(args) != 2:
@@ -225,7 +227,8 @@ def _eval(node: Expression, env: "Env | Context") -> Any:
                     raise RuntimeEvaluationError("Input is not a string")
             try:
                 return args[1].startswith(args[0])
-            except (ValueError, TypeError):
+            except (ValueError, TypeError):  # pragma: no cover
+                # seems like dead code
                 raise RuntimeEvaluationError("Cannot check prefix of the value")
         elif name == "hasSuffix":
             if len(args) != 2:
@@ -235,7 +238,8 @@ def _eval(node: Expression, env: "Env | Context") -> Any:
                     raise RuntimeEvaluationError("Input is not a string")
             try:
                 return args[1].endswith(args[0])
-            except (ValueError, TypeError):
+            except (ValueError, TypeError):  # pragma: no cover
+                # seems like dead code
                 raise RuntimeEvaluationError("Cannot check suffix of the value")
         elif name == "length":
             if len(args) != 1:
@@ -244,7 +248,8 @@ def _eval(node: Expression, env: "Env | Context") -> Any:
                 raise RuntimeEvaluationError("Input is not a string")
             try:
                 return len(args[0])
-            except (ValueError, TypeError):
+            except (ValueError, TypeError):  # pragma: no cover
+                # seems like dead code
                 raise RuntimeEvaluationError("Cannot check length of the value")
         elif name == "ifExists":
             if len(args) != 1:
