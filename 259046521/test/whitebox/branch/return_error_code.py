@@ -5,24 +5,16 @@ import unittest
 
 
 class ReturnErrorCodeTest(unittest.TestCase):
+    # reach an invalid branch in parser
     def test1(self):
         with self.assertRaises(IncorrectSyntax):
             lexer: Lexer = Lexer("return let a = 3;")
             parser = Parser(lexer)
             parser.run()
-
+    # tests the valid branch up to evaluator
     def test2(self):
-        with self.assertRaises(IncorrectSyntax):
-            lexer: Lexer = Lexer("return const b = 2;")
-            parser = Parser(lexer)
-            parser.run()
-
-    def test3(self):
         lexer: Lexer = Lexer("return 5;")
         parser = Parser(lexer)
         expressions = parser.run()
         self.assertEqual(evaluate(expressions), 5)
 
-
-if __name__ == "__main__":
-    unittest.main()

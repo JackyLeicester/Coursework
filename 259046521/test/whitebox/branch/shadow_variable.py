@@ -5,33 +5,6 @@ import unittest
 
 
 class ShadowVariableTester(unittest.TestCase):
-    # tests based on category partition
-    def test1(self):
-        with self.assertRaises(RuntimeEvaluationError):
-            lexer: Lexer = Lexer("""
-                let b = 0;
-                fn thing(){
-                    print(a);
-                };
-                thing();
-            """)
-            parser = Parser(lexer)
-            expressions = parser.run()
-            evaluate(expressions)
-
-    def test2(self):
-        with self.assertRaises(RuntimeEvaluationError):
-            lexer: Lexer = Lexer("""
-                let c = 0;
-                fn thing(){
-                    print(a);
-                };
-                thing();
-            """)
-            parser = Parser(lexer)
-            expressions = parser.run()
-            evaluate(expressions)
-
     def test3(self):
         try:
             lexer: Lexer = Lexer("""
@@ -47,7 +20,7 @@ class ShadowVariableTester(unittest.TestCase):
         except Exception:  # pragma: no cover
             self.fail("Test case 3 should not be throwing errors")
 
-    # based on branch based testing
+    # make the evaluator run teh branch that throws an error
     def test4(self):
         with self.assertRaises(RuntimeEvaluationError):
             lexer: Lexer = Lexer("""

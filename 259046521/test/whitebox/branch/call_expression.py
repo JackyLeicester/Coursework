@@ -21,25 +21,12 @@ def expect_exception(tester: unittest.TestCase, test_input: str):
 
 
 class ConstantDeclarationTest(unittest.TestCase):
-    # tests based on category partition
+    # test based on branches
     def test1(self):
-        expect_exception(self, "AAA({")
-
-    def test2(self):
-        expect_exception(self, "AAA(}")
-
-    def test3(self):
-        expect_exception(self, "AAA(),")
-
-    def test4(self):
-        expect_exception(self, "AAA()AAA")
-
-    def test5(self):
         output: str = run_test("AAA();")
         self.assertEqual(output, "")
 
-    # test based on branches
-    def test6(self):
+    def test2(self):
         with self.assertRaises(RuntimeEvaluationError):
             lexer: Lexer = Lexer("""
                 let thing = 3;

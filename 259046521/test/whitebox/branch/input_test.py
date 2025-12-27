@@ -5,7 +5,7 @@ import unittest
 
 
 class InputTest(unittest.TestCase):
-    # test based on category partition
+    # tests made to reach error branches on the parser
     def test1(self):
         with self.assertRaises(IncorrectSyntax):
             lexer: Lexer = Lexer("input(let a = 3);")
@@ -18,7 +18,3 @@ class InputTest(unittest.TestCase):
             parser = Parser(lexer)
             expressions = parser.run()
             evaluate(expressions)
-
-
-if __name__ == "__main__":
-    unittest.main()

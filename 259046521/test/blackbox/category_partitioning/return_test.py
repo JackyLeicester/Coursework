@@ -18,7 +18,7 @@ def expect_exception(tester: unittest.TestCase, test_input: str):
         parser.run()
 
 
-class ConstantDeclarationTest(unittest.TestCase):
+class ReturnTest(unittest.TestCase):
     def test1(self):
         expect_exception(self, "return fn")
 

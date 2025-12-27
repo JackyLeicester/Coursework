@@ -1,10 +1,10 @@
 from src.lexer import Lexer
 from src.parser import Parser
+from src.evaluator import evaluate
 import unittest
 
 
 def run_test(test_input: str) -> str:
-    # buffer: StringIO = capture_output()
     lexer: Lexer = Lexer(test_input)
     parser: Parser = Parser(lexer)
     parser.run()
@@ -18,13 +18,14 @@ def expect_exception(tester: unittest.TestCase, test_input: str):
         parser.run()
 
 
-class ConstantDeclarationTest(unittest.TestCase):
+class VariableDeclarationTest(unittest.TestCase):
+    # tests errors branches on the parser
     def test1(self):
-        expect_exception(self, "return fn")
+        expect_exception(self, "let true")
 
+    #tests the main branch for variables
     def test2(self):
-        expect_exception(self, "return let")
-
-    def test3(self):
-        output: str = run_test("return 5;")
-        self.assertEqual(output, "")
+        lexer: Lexer = Lexer("let realname = 5; realname = 12; return realname;")
+        parser: Parser = Parser(lexer)
+        statements = parser.run()
+        self.assertEqual(evaluate(statements), 12)

@@ -38,6 +38,3 @@ class ReturnErrorCodeTest(unittest.TestCase):
         expressions = parser.run()
         evaluate(expressions)
 
-
-if __name__ == "__main__":
-    unittest.main()
