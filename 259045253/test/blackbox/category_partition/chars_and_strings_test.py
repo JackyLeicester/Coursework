@@ -5,7 +5,7 @@ from src.tokens import Token
 from src.parser import StringLiteral, CharLiteral
 
 
-class TestStringProcessing(unittest.TestCase):
+class TestCharStrings(unittest.TestCase):
     @staticmethod
     def setup_lexer(src: str) -> Lexer:
         return Lexer(src)

@@ -104,20 +104,11 @@ class BlockStatement(Expression):
         self.statements: List[Expression] = statements
 
 
+@dataclass
 class IfExpression(Expression):
-    def __init__(
-        self,
-        condition: Expression | None,
-        consequence: BlockStatement | None,
-        alternative: BlockStatement | None,
-    ) -> None:
-        self.token = Token.IF
-        self.condition = condition
-        self.consequence = consequence
-        self.alternative = alternative
-
-    def __repr__(self):
-        return f"{type(self).__name__} {self.__dict__}"
+    condition: Expression
+    consequence: BlockStatement
+    alternative: BlockStatement | None
 
 
 class FunctionStatement(Expression):
@@ -134,10 +125,10 @@ class ReturnStatement(Expression):
         self.expression = expression
 
 
+@dataclass
 class CallExpression(Expression):
-    def __init__(self, identifier_name: str, parameters: List[Expression]):
-        self.identifier_name = identifier_name
-        self.parameters = parameters
+    identifier_name: str
+    parameters: List[Expression]
 
 
 class ForStatement(Expression):
@@ -405,7 +396,7 @@ class Parser:
         return literal
 
     def parse_null(self) -> NullLiteral:
-        literal = NullLiteral("null")
+        literal = NullLiteral(self.curr_str)
         self._next_token()
         return literal
 

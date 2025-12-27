@@ -7,9 +7,18 @@ from src import main
 from src.evaluator import RuntimeEvaluationError
 
 
-# Calling `main` directly here as this will test argument parsing, setting up
-# of environment, and accessing of argument in one go.
-class TestStringProcessing(unittest.TestCase):
+class TestCliArgs(unittest.TestCase):
+    """
+    This class performs condition testing on the following:
+    - Passing of cli arguments to the script as `arg`
+
+    This corresponds to user story number: #11
+    <https://github.com/JackyLeicester/Coursework/issues/11>
+
+    Calling `main` directly here as this will test argument parsing, setting up
+    of environment, and accessing of argument in one go.
+    """
+
     def setUp(self):
         self.file_name_access = "test_access"
         self.file_name_no_access = "test_no_access"
