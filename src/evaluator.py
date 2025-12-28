@@ -417,7 +417,7 @@ def _eval(node: Expression, env: "Env | Context") -> Any:
         return None
 
     if isinstance(node, ReturnStatement):
-        evaluation = _eval(node.expression, env)
+        evaluation = _eval(node.expression, env) if node.expression != None else ""
         raise _ReturnSignal(evaluation)
 
     raise RuntimeEvaluationError(
