@@ -20,31 +20,23 @@ def expect_exception(tester: unittest.TestCase, test_input: str):
         parser.run()
 
 
-class ConstantDeclarationTest(unittest.TestCase):
-    # tests based on category partition
+class CallExpressionTest(unittest.TestCase):
+    # Each of these tests check what happens if an error is thrown if any element of the expression is different from what is expected
+    # if closing parethesis is missing
     def test1(self):
         expect_exception(self, "AAA({")
 
     def test2(self):
         expect_exception(self, "AAA(}")
 
+    # if semicolon is missing or wrong
     def test3(self):
         expect_exception(self, "AAA(),")
 
     def test4(self):
         expect_exception(self, "AAA()AAA")
 
+    # test is a valid callexpression can be parsed
     def test5(self):
         output: str = run_test("AAA();")
         self.assertEqual(output, "")
-
-    # test based on branches
-    def test6(self):
-        with self.assertRaises(RuntimeEvaluationError):
-            lexer: Lexer = Lexer("""
-                let thing = 3;
-                thing();
-            """)
-            parser: Parser = Parser(lexer)
-            statements = parser.run()
-            evaluate(statements)

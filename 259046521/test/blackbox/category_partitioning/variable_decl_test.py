@@ -19,32 +19,26 @@ def expect_exception(tester: unittest.TestCase, test_input: str):
 
 
 class VariableDeclarationTest(unittest.TestCase):
-    # based on category partition
+    # tests the correct enforcement of syntax for variable declarations
+    # wrong identifiers
     def test1(self):
         expect_exception(self, "let true")
 
     def test2(self):
         expect_exception(self, "let false")
 
+    # missing assignment operator
     def test3(self):
-        expect_exception(self, "let true")
-
-    def test4(self):
         expect_exception(self, "let real_name ?")
 
-    def test5(self):
+    def test4(self):
         expect_exception(self, "let real_name ==")
 
-    def test6(self):
+    def test5(self):
         expect_exception(self, "let real_name HAM")
 
-    def test7(self):
+    # correct version of the program
+    def test6(self):
         output: str = run_test("let realname = 5;")
         self.assertEqual(output, "")
 
-    # based on branch testing
-    def test8(self):
-        lexer: Lexer = Lexer("let realname = 5; realname = 12;")
-        parser: Parser = Parser(lexer)
-        statements = parser.run()
-        evaluate(statements)

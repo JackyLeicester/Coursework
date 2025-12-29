@@ -5,7 +5,8 @@ import unittest
 
 
 class ShadowVariableTester(unittest.TestCase):
-    # tests based on category partition
+    # tests the various scenarious that should lead to logical errors
+    # if variable that is being read does not exist
     def test1(self):
         with self.assertRaises(RuntimeEvaluationError):
             lexer: Lexer = Lexer("""
@@ -32,6 +33,7 @@ class ShadowVariableTester(unittest.TestCase):
             expressions = parser.run()
             evaluate(expressions)
 
+    # if the variable actually exists
     def test3(self):
         try:
             lexer: Lexer = Lexer("""
@@ -47,16 +49,3 @@ class ShadowVariableTester(unittest.TestCase):
         except Exception:  # pragma: no cover
             self.fail("Test case 3 should not be throwing errors")
 
-    # based on branch based testing
-    def test4(self):
-        with self.assertRaises(RuntimeEvaluationError):
-            lexer: Lexer = Lexer("""
-                let a = 0;
-                fn thing(){
-                    b = 3;
-                };
-                thing();
-            """)
-            parser = Parser(lexer)
-            expressions = parser.run()
-            evaluate(expressions)

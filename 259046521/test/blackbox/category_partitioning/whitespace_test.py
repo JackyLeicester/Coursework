@@ -3,6 +3,7 @@ import unittest
 
 
 class ConstantDeclarationTest(unittest.TestCase):
+    # tests the various things that could be between 2 tokens and makes sure that the output is still the 2 tokens
     def test1(self):
         lexer: Lexer = Lexer("A C")
         _, str_repr = lexer.next_token()
