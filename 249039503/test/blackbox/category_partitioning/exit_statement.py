@@ -31,7 +31,7 @@ class ExitStatementCategoryPartitioningTests(unittest.TestCase):
     def test_inside_loop_int_literal_immediate_termination(self):
         program = """
         let i = 0;
-        for (i = 0; i < 10; i = i + 1) {
+        for (let i = 0; i < 10; i = i + 1) {
             exit(7);
         }
         999;

@@ -36,5 +36,6 @@ class TestTypeFunctionCondition(unittest.TestCase):
     def test_type_string(self):
         self.assertEqual(evaluate_expr('type("abc");'), "string")
 
+
 if __name__ == "__main__":
     unittest.main()

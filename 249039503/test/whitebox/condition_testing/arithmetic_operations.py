@@ -9,13 +9,13 @@ Tests focus on condition testing which cover all feasible outcomes
 of conditions in evaluator decision points in arithmetic operations
 """
 
+
 def run(code: str):
     expressions = Parser(Lexer(code)).run()
     return evaluate(expressions)
 
 
 class TestArithmeticOperationsCondition(unittest.TestCase):
-
     def test_division_right_nonzero_int(self):
         self.assertEqual(run("10/2;"), 5)
 
@@ -67,8 +67,7 @@ class TestArithmeticOperationsCondition(unittest.TestCase):
     def test_bitwise_and_requires_integers_raises(self):
         with self.assertRaises(RuntimeEvaluationError) as ctx:
             run("1.5 & 1;")
-        self.assertIn("Bitwise operations require integers",
-                      str(ctx.exception))
+        self.assertIn("Bitwise operations require integers", str(ctx.exception))
 
 
 if __name__ == "__main__":

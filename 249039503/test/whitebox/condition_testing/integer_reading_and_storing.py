@@ -11,7 +11,6 @@ def evaluate_expr(program: str):
 
 
 class TestIntegerReadAndStoreCondition(unittest.TestCase):
-
     def test_isInt_numeric_string_true(self):
         self.assertEqual(evaluate_expr('isInt("123");'), True)
 

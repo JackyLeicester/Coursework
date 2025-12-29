@@ -43,7 +43,9 @@ class TestLogicalErrorCondition(unittest.TestCase):
         program = "(1 + 2) = 3;"
         with self.assertRaises(RuntimeEvaluationError) as ctx:
             evaluate_expr(program)
-        self.assertIn("Left-hand side of assignment must be a variable", str(ctx.exception))
+        self.assertIn(
+            "Left-hand side of assignment must be a variable", str(ctx.exception)
+        )
 
     def test_break_outside_loop_raises(self):
         with self.assertRaises(RuntimeEvaluationError) as ctx:

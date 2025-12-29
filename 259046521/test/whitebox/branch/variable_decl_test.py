@@ -23,7 +23,7 @@ class VariableDeclarationTest(unittest.TestCase):
     def test1(self):
         expect_exception(self, "let true")
 
-    #tests the main branch for variables
+    # tests the main branch for variables
     def test2(self):
         lexer: Lexer = Lexer("let realname = 5; realname = 12; return realname;")
         parser: Parser = Parser(lexer)

@@ -207,7 +207,7 @@ class Lexer:
             self.read_char()
         word += self.ch
         return self._match_identifier(word)
-    
+
     def _match_identifier(self, word: str) -> Tuple[Token, str]:
         match word:
             case "let":
