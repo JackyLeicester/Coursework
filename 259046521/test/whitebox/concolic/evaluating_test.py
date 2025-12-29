@@ -9,7 +9,7 @@ from fuzzingbook.Grammars import extend_grammar
 LANGUAGE_GRAMMAR = extend_grammar({
     "<start>": ["<statement>"],
     "<statement>" : ["<initialisation>", "<function>", "<return>"],
-    "<initialisation>" : ["let <identifier> = <expression>;"],
+    "<initialisation>" : ["let <identifier> = <expression>;", "const <identifier> = <expression>;"],
     "<parameter>" : ["", "<identifier>"], 
     "<identifier>" : list(string.ascii_letters),
     "<expression>" : list(string.digits),

@@ -10,7 +10,7 @@ from fuzzingbook.Grammars import extend_grammar, is_valid_grammar
 LANGUAGE_GRAMMAR = extend_grammar({
     "<start>": ["<statement>"],
     "<statement>" : ["<callable>", "<initialisation>", "<function>", "<return>"],
-    "<initialisation>" : ["let <identifier> = <expression>;"],
+    "<initialisation>" : ["let <identifier> = <expression>;", "const <identifier> = <expression>;"],
     "<callable>" : ["ifExists(<identifier>);", "<identifier>(<parameter>);"], 
     "<parameter>" : ["", "<identifier>"], 
     "<identifier>" : list(string.ascii_letters),
