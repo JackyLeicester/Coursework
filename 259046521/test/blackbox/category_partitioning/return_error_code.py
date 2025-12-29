@@ -5,6 +5,7 @@ import unittest
 
 
 class ReturnErrorCodeTest(unittest.TestCase):
+    # testing returns followed by expressions that should be invalid
     def test1(self):
         with self.assertRaises(IncorrectSyntax):
             lexer: Lexer = Lexer("return let a = 3;")
@@ -17,6 +18,7 @@ class ReturnErrorCodeTest(unittest.TestCase):
             parser = Parser(lexer)
             parser.run()
 
+    # correct syntax
     def test3(self):
         lexer: Lexer = Lexer("return 5;")
         parser = Parser(lexer)

@@ -1,6 +1,6 @@
 
 Test Case 1  		<error>
-   PARAMETER :  "Enough", "Too much"
+   PARAMETER :  5
 
 
 Test Case 2  		<error>

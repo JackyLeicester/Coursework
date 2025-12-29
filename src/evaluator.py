@@ -167,6 +167,8 @@ def _eval(node: Expression, env: "Env | Context") -> Any:
                 raise RuntimeEvaluationError("input expects 0 or 1 arguments")
             elif len(args) == 0:
                 return input()
+            if not isinstance(args[0], str):
+                raise RuntimeEvaluationError("input only expects a string input")
             return input(str(args[0]))
         elif name == "isInt":
             if len(args) != 1:
