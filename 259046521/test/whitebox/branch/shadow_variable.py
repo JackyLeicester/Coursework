@@ -5,7 +5,7 @@ import unittest
 
 
 class ShadowVariableTester(unittest.TestCase):
-    def test3(self):
+    def test1(self):
         try:
             lexer: Lexer = Lexer("""
                 let a = 0;
@@ -21,7 +21,7 @@ class ShadowVariableTester(unittest.TestCase):
             self.fail("Test case 3 should not be throwing errors")
 
     # make the evaluator run teh branch that throws an error
-    def test4(self):
+    def test2(self):
         with self.assertRaises(RuntimeEvaluationError):
             lexer: Lexer = Lexer("""
                 let a = 0;
