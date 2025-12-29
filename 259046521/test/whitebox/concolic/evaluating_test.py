@@ -1,28 +1,21 @@
 import string
 import unittest
-from fuzzingbook.ConcolicFuzzer import (
-    ConcolicTracer,
-    ConcolicGrammarFuzzer,
-    ExpectError,
-)
+from fuzzingbook.ConcolicFuzzer import ConcolicTracer, ConcolicGrammarFuzzer, ExpectError
 from src.parser import Parser
 from src.lexer import Lexer
 from src.evaluator import evaluate
 from fuzzingbook.Grammars import extend_grammar
 
-LANGUAGE_GRAMMAR = extend_grammar(
-    {
-        "<start>": ["<statement>"],
-        "<statement>": ["<initialisation>", "<function>", "<return>"],
-        "<initialisation>": ["let <identifier> = <expression>;"],
-        "<parameter>": ["", "<identifier>"],
-        "<identifier>": list(string.ascii_letters),
-        "<expression>": list(string.digits),
-        "<function>": ["fn <identifier>(<parameter>){<statement>};"],
-        "<return>": ["return ;"],
-    }
-)
-
+LANGUAGE_GRAMMAR = extend_grammar({
+    "<start>": ["<statement>"],
+    "<statement>" : ["<initialisation>", "<function>", "<return>"],
+    "<initialisation>" : ["let <identifier> = <expression>;", "const <identifier> = <expression>;"],
+    "<parameter>" : ["", "<identifier>"], 
+    "<identifier>" : list(string.ascii_letters),
+    "<expression>" : list(string.digits),
+    "<function>" : ["fn <identifier>(<parameter>){<statement>};"],
+    "<return>" : ["return ;"]
+})
 
 def thing(input: str):
     input = str(input)
@@ -30,7 +23,6 @@ def thing(input: str):
     parser = Parser(lexer)
     statements = parser.run()
     evaluate(statements)
-
 
 class ParseTest(unittest.TestCase):
     def test_parsing(self):
