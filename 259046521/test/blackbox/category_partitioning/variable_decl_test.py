@@ -41,4 +41,3 @@ class VariableDeclarationTest(unittest.TestCase):
     def test6(self):
         output: str = run_test("let realname = 5;")
         self.assertEqual(output, "")
-

@@ -16,7 +16,7 @@ class BreakStatementCategoryPartitioningTests(unittest.TestCase):
         program = """
         let i = 0;
 
-        for(i = 0; i < 5; i = i + 1) {
+        for(let i = 0; i < 5; i = i + 1) {
             i = i;
         }
 
@@ -28,7 +28,7 @@ class BreakStatementCategoryPartitioningTests(unittest.TestCase):
         program = """
         let i = 0;
 
-        for(i = 0; i < 5; i = i + 1) {
+        for(let i = 0; i < 5; i = i + 1) {
             break;
         }
 
@@ -40,7 +40,7 @@ class BreakStatementCategoryPartitioningTests(unittest.TestCase):
         program = """
         let i = 0;
 
-        for(i = 0; i < 10; i = i + 1) {
+        for(let i = 0; i < 10; i = i + 1) {
             if (i == 3) {
                 break;
             }
@@ -54,7 +54,7 @@ class BreakStatementCategoryPartitioningTests(unittest.TestCase):
         program = """
         let i = 0;
 
-        for(i = 0; i < 5; i = i + 1) {
+        for(let i = 0; i < 5; i = i + 1) {
             if (i == 4) {
                 break;
             }
@@ -68,9 +68,9 @@ class BreakStatementCategoryPartitioningTests(unittest.TestCase):
         program = """
         let i = 0;
 
-        for(i = 0; i < 3; i = i + 1) {
+        for(let i = 0; i < 3; i = i + 1) {
             let j = 0;
-            for(j = 0; j < 5; j = j + 1) {
+            for(let j = 0; j < 5; j = j + 1) {
                 if (j == 2) {
                     break;
                 }

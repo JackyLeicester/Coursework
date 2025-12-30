@@ -1,5 +1,6 @@
 from z3 import *
 
+
 # we only care about what is inside the loop in this case
 # we do not need a test case about what goes on after the loop since there are no branches after the loop
 # mainly looking for dead code
@@ -14,7 +15,7 @@ def test_run1():
     s.add(start_number > token_number)
     print(s.check())
     print(s.model())
-    
+
 
 def test_run2():
     s = Solver()
@@ -28,6 +29,7 @@ def test_run2():
     print(s.check())
     print(s.model())
 
+
 def test_run3():
     s = Solver()
     curr_token = String("curr_token")
@@ -39,7 +41,7 @@ def test_run3():
     s.add(start_number > token_number)
     print(s.check())
     print(s.model())
-    
+
 
 def test_run4():
     s = Solver()
@@ -53,10 +55,12 @@ def test_run4():
     print(s.check())
     print(s.model())
 
+
 test_run1()
 test_run2()
 test_run3()
 test_run4()
+
 
 def test_parse_function():
     s = Solver()
@@ -67,7 +71,9 @@ def test_parse_function():
     print(s.check())
     print(s.model())
 
+
 test_parse_function()
+
 
 def test_parse_identifier_or_callexpression():
     s = Solver()
@@ -75,7 +81,9 @@ def test_parse_identifier_or_callexpression():
     print(s.check())
     print(s.model())
 
+
 test_parse_identifier_or_callexpression()
+
 
 def test_callexpression():
     s = Solver()
@@ -83,7 +91,9 @@ def test_callexpression():
     print(s.check())
     print(s.model())
 
+
 test_callexpression()
+
 
 def test_accept_token1():
     s = Solver()
@@ -91,11 +101,13 @@ def test_accept_token1():
     print(s.check())
     print(s.model())
 
+
 def test_accept_token2():
     s = Solver()
     s.add(String("current_token") == String("expected_token"))
     print(s.check())
     print(s.model())
+
 
 test_accept_token1()
 test_accept_token2()

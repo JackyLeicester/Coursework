@@ -22,4 +22,3 @@ class ReturnErrorCodeTest(unittest.TestCase):
         parser = Parser(lexer)
         expressions = parser.run()
         evaluate(expressions)
-
