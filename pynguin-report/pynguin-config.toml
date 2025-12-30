@@ -1,5 +1,5 @@
 project_path = "."
-module_name = "src"
+module_name = "src.evaluator"
 algorithm = "RANDOM"
 ignore_modules = []
 ignore_methods = []
@@ -8,11 +8,11 @@ subprocess_if_recommended = true
 use_master_worker = true
 
 [test_case_output]
-output_path = "./259046521/test/blackbox/pynguin-results"
+output_path = "249039503/test/blackbox/mutation_testing"
 crash_path = ""
 export_strategy = "PY_TEST"
 max_length_test_case = 2500
-assertion_generation = "MUTATION_ANALYSIS"
+assertion_generation = "NONE"
 allow_stale_assertions = false
 mutation_strategy = "FIRST_ORDER_MUTANTS"
 mutation_order = 1
@@ -30,17 +30,17 @@ output_variables = [ "TargetModule", "Coverage",]
 configuration_id = ""
 run_id = ""
 project_name = ""
-create_coverage_report = true
+create_coverage_report = false
 type_guess_top_n = 10
 store_test_before_execution = false
 
 [stopping]
-maximum_search_time = 1
+maximum_search_time = 60
 maximum_test_executions = -1
 maximum_statement_executions = -1
 maximum_slicing_time = 600
 maximum_iterations = -1
-maximum_test_execution_timeout = 1
+maximum_test_execution_timeout = 5
 maximum_coverage = 100
 maximum_coverage_plateau = -1
 minimum_coverage = 100
