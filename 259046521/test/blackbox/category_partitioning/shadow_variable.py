@@ -48,4 +48,3 @@ class ShadowVariableTester(unittest.TestCase):
             evaluate(expressions)
         except Exception:  # pragma: no cover
             self.fail("Test case 3 should not be throwing errors")
-
