@@ -1,38 +1,29 @@
 import string
 import unittest
-from fuzzingbook.ConcolicFuzzer import (
-    ConcolicTracer,
-    ConcolicGrammarFuzzer,
-    ExpectError,
-    GrammarFuzzer,
-)
+from fuzzingbook.ConcolicFuzzer import ConcolicTracer, ConcolicGrammarFuzzer, ExpectError, GrammarFuzzer
 from src.parser import Parser, IncorrectSyntax
 from src.lexer import Lexer
 from src.evaluator import evaluate
 from src.tokens import Token
 from fuzzingbook.Grammars import extend_grammar, is_valid_grammar
 
-LANGUAGE_GRAMMAR = extend_grammar(
-    {
-        "<start>": ["<statement>"],
-        "<statement>": ["<callable>", "<initialisation>", "<function>", "<return>"],
-        "<initialisation>": ["let <identifier> = <expression>;"],
-        "<callable>": ["ifExists(<identifier>);", "<identifier>(<parameter>);"],
-        "<parameter>": ["", "<identifier>"],
-        "<identifier>": list(string.ascii_letters),
-        "<expression>": list(string.digits),
-        "<function>": ["fn <identifier>(<parameter>){<statement>};"],
-        "<return>": ["return <parameter>;"],
-    }
-)
-
+LANGUAGE_GRAMMAR = extend_grammar({
+    "<start>": ["<statement>"],
+    "<statement>" : ["<callable>", "<initialisation>", "<function>", "<return>"],
+    "<initialisation>" : ["let <identifier> = <expression>;", "const <identifier> = <expression>;"],
+    "<callable>" : ["ifExists(<identifier>);", "<identifier>(<parameter>);"], 
+    "<parameter>" : ["", "<identifier>"], 
+    "<identifier>" : list(string.ascii_letters),
+    "<expression>" : list(string.digits),
+    "<function>" : ["fn <identifier>(<parameter>){<statement>};"],
+    "<return>" : ["return <parameter>;"]
+})
 
 def thing(input: str):
     input = str(input)
     lexer = Lexer(input)
     parser = Parser(lexer)
     parser.run()
-
 
 class ParseTest(unittest.TestCase):
     def test_parsing(self):
