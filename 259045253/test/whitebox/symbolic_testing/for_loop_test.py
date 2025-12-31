@@ -7,13 +7,13 @@ from src import Lexer, Parser
 def build_for_statement(for_ok, lpar_ok, semi1_ok, semi2_ok, rpar_ok):
     parts = []
     parts.append("for" if for_ok else "fr")
-    parts.append(" " )
+    parts.append(" ")
     parts.append("(" if lpar_ok else " ")
-    parts.append("let x = 0" )
+    parts.append("let x = 0")
     parts.append(";" if semi1_ok else " ")
-    parts.append(" x < 10" )
+    parts.append(" x < 10")
     parts.append(";" if semi2_ok else " ")
-    parts.append(" x = x + 1" )
+    parts.append(" x = x + 1")
     parts.append(")" if rpar_ok else " ")
     parts.append(" { }")
     return "".join(parts)
@@ -27,6 +27,7 @@ def parse_for_statement(src: str):
         return "ok", res
     except Exception:
         return "err", None
+
 
 def test_for_statement():
     for_ok = Bool("for_ok")

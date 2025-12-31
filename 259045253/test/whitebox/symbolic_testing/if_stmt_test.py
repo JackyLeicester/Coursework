@@ -21,6 +21,7 @@ def build_if_expression(if_ok, cond_ok, cons_ok, else_ok, alt_ok):
         parts.append("{ 43; }" if alt_ok else "{ 43 ")
     return "".join(parts)
 
+
 def parse_if(src: str):
     lexer = Lexer(src)
     parser = Parser(lexer)
@@ -30,12 +31,14 @@ def parse_if(src: str):
     except Exception:
         return "err", None
 
+
 def test_if_expression_all_good_parses():
     # All parts correct -> should produce IfExpression (no else)
     src = build_if_expression(True, True, True, None, None)
     tag, node = parse_if(src)
     assert tag == "ok"
     assert isinstance(node, IfExpression)
+
 
 def test_if_expression_with_else_parses():
     # All parts correct -> should produce IfExpression with alternative
@@ -44,6 +47,7 @@ def test_if_expression_with_else_parses():
     assert tag == "ok"
     assert isinstance(node, IfExpression)
     assert node.alternative is not None
+
 
 def test_if_expression_symbolic_failures():
     s = Solver()
@@ -89,7 +93,14 @@ def test_if_expression_symbolic_failures():
     # Check failures when else branch present but broken
     else_flags = [
         ("else_ok", True, True, True, True, False),  # else token broken
-        ("alt_ok", True, True, True, True, False),   # alt block broken (same src pattern covers both)
+        (
+            "alt_ok",
+            True,
+            True,
+            True,
+            True,
+            False,
+        ),  # alt block broken (same src pattern covers both)
     ]
     for name, ifv, condv, consv, elsep, altv in else_flags:
         src = build_if_expression(ifv, condv, consv, elsep, altv)
