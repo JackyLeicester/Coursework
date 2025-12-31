@@ -6,5 +6,7 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "coverage>=7.13.0",
+    "fuzzingbook",
     "pynguin>=0.44.0",
+    "z3-solver>=4.15.4.0",
 ]

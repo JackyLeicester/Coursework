@@ -58,7 +58,7 @@ literal         = integer
                 | boolean
                 | string
                 | char
-                | array ;
+                | null ;
 
 integer         = [ "-" ] digit { digit } ;
 float           = [ "-" ] digit { digit } "." digit { digit } ;
@@ -68,3 +68,4 @@ string          = '"' { ? any character ? } '"' ;
 letter          = ? a-z | A-Z ? ;
 digit           = ? 0..9 ? ;
 ```
+null            = "null"
