@@ -138,7 +138,6 @@ def _eval(node: Expression, env: "Env | Context") -> Any:
         args = []
         for arg in node.parameters:
             args.append(_eval(arg, env))
-
         if name == "sqrt":
             if len(args) != 1:
                 raise RuntimeEvaluationError("sqrt expects 1 arguments")
