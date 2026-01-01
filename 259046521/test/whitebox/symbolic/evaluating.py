@@ -4,8 +4,10 @@ from z3 import *
 # only code with if statements were tested using this, the following is about the evaluate file
 # important to mention that there are a lot of if statements in the _eval function, so the first layer of the if statement is ignored as its only ever a type check
 # mainly looking for dead code
+# the reason why booleans are used for variable types is because in many cases we will be checking things like enums, which z3 regards as integers and therefore creates non existent enums
 
 
+# tests the _env_stack function, uses a boolean for if the value is an env, since z3 will not handle class types well
 def test_env_stack1():
     is_env = Bool("is_env")
     s = Solver()
@@ -27,7 +29,7 @@ test_env_stack2()
 
 
 def test_declare_var1():
-    declared = Bool("declared")
+    declared = Bool("already_declared")
     s = Solver()
     s.add(declared == False)
     print(s.check())
@@ -35,7 +37,7 @@ def test_declare_var1():
 
 
 def test_declare_var2():
-    declared = Bool("declared")
+    declared = Bool("already_declared")
     s = Solver()
     s.add(declared == False)
     print(s.check())
@@ -65,9 +67,9 @@ def test_assign_var2():
 test_assign_var1()
 test_assign_var2()
 
-
+# this isnt testing a function, rather a branch of the _eval function, specifically the section about call expressions
 def test_call_expression_base(identifier: str, args: int):
-    identifier_s = String("identifier")
+    identifier_s = String("node")
     identifier_length = Int("parameters_length")
     s = Solver()
     s.add(identifier_s == identifier)
@@ -96,9 +98,9 @@ def test_call_expression5():
     test_call_expression_base("abs", 1)
 
 
-# this one is a special case
+# this one is a special case as there is no limit to the amount of parameters passed
 def test_call_expression6():
-    identifier_s = String("identifier")
+    identifier_s = String("node")
     s = Solver()
     s.add(identifier_s == "print")
     print(s.check())
@@ -106,7 +108,7 @@ def test_call_expression6():
 
 
 def test_call_expression7():
-    identifier_s = String("identifier")
+    identifier_s = String("node")
     s = Solver()
     s.add(identifier_s == "println")
     print(s.check())
@@ -114,11 +116,25 @@ def test_call_expression7():
 
 
 def test_call_expression8():
-    test_call_expression_base("input", 1)
+    identifier_s = String("node")
+    identifier_length = Int("parameters_length")
+    parameter_type = String("type")
+    s = Solver()
+    s.add(identifier_s == "input")
+    s.add(identifier_length == 1)
+    s.add(parameter_type == "str")
+    print(s.check())
+    print(s.model())
 
 
 def test_call_expression9():
-    test_call_expression_base("input", 0)
+    identifier_s = String("node")
+    identifier_length = Int("parameters_length")
+    s = Solver()
+    s.add(identifier_s == "input")
+    s.add(identifier_length == 0)
+    print(s.check())
+    print(s.model())
 
 
 def test_call_expression10():
@@ -134,43 +150,47 @@ def test_call_expression12():
 
 
 def test_call_expression13():
-    test_call_expression_base("toFloat", 1)
-
-
-def test_call_expression14():
     test_call_expression_base("toStr", 1)
 
 
-def test_call_expression15():
+def test_call_expression14():
     test_call_expression_base("concat", 2)
 
 
-def test_call_expression16():
+def test_call_expression15():
     test_call_expression_base("trim", 1)
 
 
-def test_call_expression17():
+def test_call_expression16():
     test_call_expression_base("hasPrefix", 2)
 
 
-def test_call_expression18():
+def test_call_expression17():
     test_call_expression_base("hasSuffix", 2)
 
 
-def test_call_expression19():
+def test_call_expression18():
     test_call_expression_base("length", 1)
 
 
+def test_call_expression19():
+    identifier_s = String("node")
+    identifier_length = Int("parameters_length")
+    parameter_type = String("type")
+    s = Solver()
+    s.add(identifier_s == "ifExists")
+    s.add(identifier_length == 1)
+    s.add(parameter_type == "str")
+    print(s.check())
+    print(s.model())
+
+
 def test_call_expression20():
-    test_call_expression_base("ifExists", 1)
-
-
-def test_call_expression21():
     test_call_expression_base("exit", 1)
 
 
-def test_call_expression22():
-    identifier_s = String("identifier")
+def test_call_expression21():
+    identifier_s = String("node")
     parameter_count = Int("parameter_count")
     user_defined_parameters = Int("user_parameter_count")
     s = Solver()
@@ -201,7 +221,6 @@ test_call_expression18()
 test_call_expression19()
 test_call_expression20()
 test_call_expression21()
-test_call_expression22()
 
 
 def test_prefix_expression():
@@ -215,7 +234,7 @@ def test_prefix_expression():
 
 test_prefix_expression()
 
-
+# operation is a string in place of enum
 def test_infix_expression():
     operation_s = String("operation")
     for operation in [
@@ -239,7 +258,7 @@ def test_infix_expression():
 
 test_infix_expression()
 
-
+# we cant really do a type check so instead its a string check
 def test_assign_expression1():
     left = String("left")
     s = Solver()

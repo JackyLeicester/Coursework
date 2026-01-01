@@ -6,11 +6,9 @@ from fuzzingbook.ConcolicFuzzer import (
     ExpectError,
     GrammarFuzzer,
 )
-from src.parser import Parser, IncorrectSyntax
+from src.parser import Parser
 from src.lexer import Lexer
-from src.evaluator import evaluate
-from src.tokens import Token
-from fuzzingbook.Grammars import extend_grammar, is_valid_grammar
+from fuzzingbook.Grammars import extend_grammar
 
 LANGUAGE_GRAMMAR = extend_grammar(
     {
