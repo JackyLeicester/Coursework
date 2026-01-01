@@ -135,7 +135,9 @@ def _eval(node: Expression, env: "Env | Context") -> Any:
 
     if isinstance(node, CallExpression):
         name = node.identifier_name
-        args = [_eval(arg, env) for arg in node.parameters]
+        args = []
+        for arg in node.parameters:
+            args.append(_eval(arg, env))
         if name == "sqrt":
             if len(args) != 1:
                 raise RuntimeEvaluationError("sqrt expects 1 arguments")
@@ -167,6 +169,8 @@ def _eval(node: Expression, env: "Env | Context") -> Any:
                 raise RuntimeEvaluationError("input expects 0 or 1 arguments")
             elif len(args) == 0:
                 return input()
+            if not isinstance(args[0], str):
+                raise RuntimeEvaluationError("input only expects a string input")
             return input(str(args[0]))
         elif name == "isInt":
             if len(args) != 1:
@@ -417,7 +421,7 @@ def _eval(node: Expression, env: "Env | Context") -> Any:
         return None
 
     if isinstance(node, ReturnStatement):
-        evaluation = _eval(node.expression, env)
+        evaluation = _eval(node.expression, env) if node.expression != None else ""
         raise _ReturnSignal(evaluation)
 
     raise RuntimeEvaluationError(

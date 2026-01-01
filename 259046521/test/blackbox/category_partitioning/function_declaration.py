@@ -20,19 +20,22 @@ def expect_exception(tester: unittest.TestCase, test_input: str):
 
 
 class ConstantDeclarationTest(unittest.TestCase):
-    # based on category partition
+    # Each of these tests check what happens if an error is thrown if any element of the expression is different from what is expected
+    # incorrect identifier
     def test1(self):
         expect_exception(self, "fn true")
 
     def test2(self):
         expect_exception(self, "fn false")
 
+    # missing or incorrect parenthesis
     def test3(self):
         expect_exception(self, "fn realname)")
 
     def test4(self):
         expect_exception(self, "fn realname(")
 
+    # incorrect closing parenthesis
     def test5(self):
         expect_exception(self, "fn realname((")
 
@@ -45,12 +48,14 @@ class ConstantDeclarationTest(unittest.TestCase):
     def test8(self):
         expect_exception(self, "fn realname()A")
 
+    # curly braces
     def test9(self):
         expect_exception(self, "fn realname(){{")
 
     def test10(self):
         expect_exception(self, "fn realname(){{)")
 
+    # incorrect or invalid semicolon
     def test11(self):
         expect_exception(self, "fn realname(){}")
 

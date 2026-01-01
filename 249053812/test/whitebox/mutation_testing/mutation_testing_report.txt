@@ -1,0 +1,28 @@
+Mutation Testing Report for Student ID: 249053812
+
+This report summarizes the mutation testing performed on the src.evaluator module using Pynguin with MUTATION_ANALYSIS.
+
+Pynguin Configuration:
+- Algorithm: RANDOM
+- Assertion Generation: MUTATION_ANALYSIS
+- Seed: 0
+- Maximum Search Time: 30 seconds
+- Coverage Metrics: BRANCH
+- Other parameters as in pynguin-cli-params.txt
+
+Test Generation Results:
+- Total tests generated: 644
+- Tests passed: 589
+- Tests xfailed (expected to fail, indicating mutant detection): 55
+
+Mutation Score:
+- Mutants killed: 55
+- Mutants survived: 589
+- Total mutants: 644
+- Mutation score: 55 / 644 ≈ 8.54%
+
+Note: The xfailed tests are those that detected mutations (killed mutants), as they are designed to fail on mutant code but are marked as expected failures in the test run on original code.
+
+The detailed test results are in mutation_testing_results.txt.
+The generated test cases are in pynguin-results/test_src_evaluator.py.
+The Pynguin configuration is in pynguin-report/pynguin-cli-params.txt.

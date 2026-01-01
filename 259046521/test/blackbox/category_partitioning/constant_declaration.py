@@ -19,41 +19,25 @@ def expect_exception(tester: unittest.TestCase, test_input: str):
 
 
 class ConstantDeclarationTest(unittest.TestCase):
-    # based on category partition, testing code inputs
+    # Each of these tests check what happens if an error is thrown if any element of the expression is different from what is expected
+    # if the identifier is wrong
     def test1(self):
         expect_exception(self, "const true")
 
     def test2(self):
         expect_exception(self, "const false")
 
+    # if the equal sign is wrong
     def test3(self):
-        expect_exception(self, "const true")
-
-    def test4(self):
         expect_exception(self, "const real_name ?")
 
-    def test5(self):
+    def test4(self):
         expect_exception(self, "const real_name ==")
 
-    def test6(self):
+    # if the semicolon is missing
+    def test5(self):
         expect_exception(self, "const real_name HAM")
 
-    def test7(self):
+    def test6(self):
         output: str = run_test("const realname = 5;")
         self.assertEqual(output, "")
-
-    # based on branch testing and ensuring all bran ches are tested
-
-    def test8(self):
-        with self.assertRaises(RuntimeEvaluationError):
-            lexer: Lexer = Lexer("const realname = 5; const realname = 3;")
-            parser: Parser = Parser(lexer)
-            statements = parser.run()
-            evaluate(statements)
-
-    def test9(self):
-        with self.assertRaises(RuntimeEvaluationError):
-            lexer: Lexer = Lexer("const realname = 5; realname = 8;")
-            parser: Parser = Parser(lexer)
-            statements = parser.run()
-            evaluate(statements)

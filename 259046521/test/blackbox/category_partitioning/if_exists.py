@@ -4,15 +4,18 @@ from src.evaluator import evaluate, RuntimeEvaluationError
 import unittest
 
 
-class ReturnErrorCodeTest(unittest.TestCase):
+class IfExistsTest(unittest.TestCase):
+    # since callexpressions have already been tested, we will only test invalid parameters
+    # a valid expression
     def test1(self):
         lexer: Lexer = Lexer("""
             return ifExists("a");
         """)
         parser = Parser(lexer)
         expressions = parser.run()
-        evaluate(expressions)
+        self.assertFalse(evaluate(expressions))
 
+    # testing invalid parameters
     def test2(self):
         with self.assertRaises(RuntimeEvaluationError):
             lexer: Lexer = Lexer("""
@@ -29,6 +32,7 @@ class ReturnErrorCodeTest(unittest.TestCase):
             expressions = parser.run()
             evaluate(expressions)
 
+    # testing an outcome that would lead to true as the output
     def test4(self):
         lexer: Lexer = Lexer("""
             let a = 3;

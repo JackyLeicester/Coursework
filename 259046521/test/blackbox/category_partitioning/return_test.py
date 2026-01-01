@@ -18,7 +18,9 @@ def expect_exception(tester: unittest.TestCase, test_input: str):
         parser.run()
 
 
-class ConstantDeclarationTest(unittest.TestCase):
+class ReturnTest(unittest.TestCase):
+    # testing return and if that works
+    # different from return_error_code as it does not care about the output of the program and just the correct parsing
     def test1(self):
         expect_exception(self, "return fn")
 
