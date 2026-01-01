@@ -67,6 +67,7 @@ def test_assign_var2():
 test_assign_var1()
 test_assign_var2()
 
+
 # this isnt testing a function, rather a branch of the _eval function, specifically the section about call expressions
 def test_call_expression_base(identifier: str, args: int):
     identifier_s = String("node")
@@ -234,6 +235,7 @@ def test_prefix_expression():
 
 test_prefix_expression()
 
+
 # operation is a string in place of enum
 def test_infix_expression():
     operation_s = String("operation")
@@ -257,6 +259,7 @@ def test_infix_expression():
 
 
 test_infix_expression()
+
 
 # we cant really do a type check so instead its a string check
 def test_assign_expression1():

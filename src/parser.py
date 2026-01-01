@@ -284,9 +284,13 @@ class Parser:
         identifier: Identifier = self.parse_identifier()
         self._accept_token(Token.LPAREN)
         identifiers: List[Identifier] = []
-        while self.curr_token == Token.IDENTIFIER:
+        first_parameter: bool = True
+        while self.curr_token != Token.RPAREN:
+            if not first_parameter:
+                self._accept_token(Token.COMMA)
             parameter: Identifier = self.parse_identifier_or_callexpression()
             identifiers.append(parameter)
+            first_parameter = False
         self._accept_token(Token.RPAREN)
         block = self.parse_block_statement()
         fn: FunctionStatement = FunctionStatement(identifier, identifiers, block)
