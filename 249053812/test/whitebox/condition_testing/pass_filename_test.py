@@ -5,7 +5,6 @@ from src import read_file_contents
 
 
 class TestReadFileContents(unittest.TestCase):
-
     def setUp(self):
         self.file_name = "test_file.txt"
         self.test_file_contents = "This is a test file."

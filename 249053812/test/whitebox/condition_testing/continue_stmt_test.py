@@ -7,7 +7,6 @@ from src.tokens import Token
 
 
 class TestContinueStmt(unittest.TestCase):
-
     @staticmethod
     def setup_parser(src: str) -> Parser:
         lexer = Lexer(src)

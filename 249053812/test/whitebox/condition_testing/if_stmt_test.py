@@ -8,7 +8,6 @@ from src.tokens import Token
 
 
 class TestIfStatement(unittest.TestCase):
-
     @staticmethod
     def setup_parser(src: str) -> Parser:
         lexer = Lexer(src)

@@ -9,7 +9,6 @@ from src.tokens import Token
 
 
 class TestPrintFunction(unittest.TestCase):
-
     @staticmethod
     def eval(src: str) -> Any:
         lexer = Lexer(src)
