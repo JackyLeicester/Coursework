@@ -5,7 +5,7 @@ import unittest
 
 
 # we cannot test the scenario with 0 loop iterations as there will always at least be 1 context
-class Tester(unittest.TestCase):
+class ShadowVariableLoop(unittest.TestCase):
     # loop more than once
     def test1(self):
         lexer: Lexer = Lexer("""

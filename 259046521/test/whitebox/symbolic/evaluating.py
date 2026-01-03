@@ -69,7 +69,7 @@ test_assign_var2()
 
 
 # this isnt testing a function, rather a branch of the _eval function, specifically the section about call expressions
-def test_call_expression_base(identifier: str, args: int):
+def call_expression_base(identifier: str, args: int):
     identifier_s = String("node")
     identifier_length = Int("parameters_length")
     s = Solver()
@@ -80,23 +80,23 @@ def test_call_expression_base(identifier: str, args: int):
 
 
 def test_call_expression1():
-    test_call_expression_base("sqrt", 1)
+    call_expression_base("sqrt", 1)
 
 
 def test_call_expression2():
-    test_call_expression_base("pow", 2)
+    call_expression_base("pow", 2)
 
 
 def test_call_expression3():
-    test_call_expression_base("ceil", 1)
+    call_expression_base("ceil", 1)
 
 
 def test_call_expression4():
-    test_call_expression_base("floor", 1)
+    call_expression_base("floor", 1)
 
 
 def test_call_expression5():
-    test_call_expression_base("abs", 1)
+    call_expression_base("abs", 1)
 
 
 # this one is a special case as there is no limit to the amount of parameters passed
@@ -139,39 +139,39 @@ def test_call_expression9():
 
 
 def test_call_expression10():
-    test_call_expression_base("isInt", 1)
+    call_expression_base("isInt", 1)
 
 
 def test_call_expression11():
-    test_call_expression_base("isFloat", 1)
+    call_expression_base("isFloat", 1)
 
 
 def test_call_expression12():
-    test_call_expression_base("toFloat", 1)
+    call_expression_base("toFloat", 1)
 
 
 def test_call_expression13():
-    test_call_expression_base("toStr", 1)
+    call_expression_base("toStr", 1)
 
 
 def test_call_expression14():
-    test_call_expression_base("concat", 2)
+    call_expression_base("concat", 2)
 
 
 def test_call_expression15():
-    test_call_expression_base("trim", 1)
+    call_expression_base("trim", 1)
 
 
 def test_call_expression16():
-    test_call_expression_base("hasPrefix", 2)
+    call_expression_base("hasPrefix", 2)
 
 
 def test_call_expression17():
-    test_call_expression_base("hasSuffix", 2)
+    call_expression_base("hasSuffix", 2)
 
 
 def test_call_expression18():
-    test_call_expression_base("length", 1)
+    call_expression_base("length", 1)
 
 
 def test_call_expression19():
@@ -187,7 +187,7 @@ def test_call_expression19():
 
 
 def test_call_expression20():
-    test_call_expression_base("exit", 1)
+    call_expression_base("exit", 1)
 
 
 def test_call_expression21():
