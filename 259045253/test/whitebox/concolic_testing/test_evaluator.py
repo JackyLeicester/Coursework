@@ -13,6 +13,7 @@ from fuzzingbook.Grammars import extend_grammar
 LANGUAGE_GRAMMAR = extend_grammar(
     {
         "<program>": list("<statement>"),
+        "<statement>": ["<literal>", "<if_statement>", "<for_stmt>"],
         "<literal>": ["<string>", "<char>"],
         "<char>": ["'<char_inner>'"],
         "<char_inner>": list(string.printable),
