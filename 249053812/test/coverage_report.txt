@@ -1,0 +1,9 @@
+Name               Stmts   Miss  Cover
+--------------------------------------
+src/__init__.py       49     10    80%
+src/evaluator.py     338    179    47%
+src/lexer.py         197     50    75%
+src/parser.py        354     57    84%
+src/tokens.py         48      0   100%
+--------------------------------------
+TOTAL                986    296    70%
