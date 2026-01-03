@@ -1,0 +1,51 @@
+Test Case 1        (Key = 1.1.1.1.)
+   FEATURE              :  BREAK
+   BREAK_POSITION       :  NONE
+   LOOP_NESTING         :  SINGLE
+   LOOP_UPDATES_OUTER   :  YES
+   SPECIAL_CASES        :  NORMAL
+
+
+Test Case 2        (Key = 1.1.1.2.)
+   FEATURE              :  BREAK
+   BREAK_POSITION       :  FIRST_ITERATION
+   LOOP_NESTING         :  SINGLE
+   LOOP_UPDATES_OUTER   :  NO
+   SPECIAL_CASES        :  NORMAL
+
+
+Test Case 3        (Key = 1.1.2.1.)
+   FEATURE              :  BREAK
+   BREAK_POSITION       :  MIDDLE_ITERATION (trigger at i == 3)
+   LOOP_NESTING         :  SINGLE
+   LOOP_UPDATES_OUTER   :  YES (increment happens before check in loop flow)
+   SPECIAL_CASES        :  NORMAL
+
+
+Test Case 4        (Key = 1.1.2.2.)
+   FEATURE              :  BREAK
+   BREAK_POSITION       :  LAST_ITERATION (trigger at i == 4)
+   LOOP_NESTING         :  SINGLE
+   LOOP_UPDATES_OUTER   :  YES
+   SPECIAL_CASES        :  NORMAL
+
+
+Test Case 5        (Key = 1.2.1.1.)
+   FEATURE              :  BREAK
+   BREAK_POSITION       :  INNER_LOOP_ONLY (trigger at j == 2)
+   LOOP_NESTING         :  NESTED
+   BREAK_SCOPE          :  INNER
+   SPECIAL_CASES        :  NORMAL
+
+
+Test Case 6        (Key = 2.1.1.1.)
+   FEATURE              :  BREAK
+   CONTEXT              :  OUTSIDE_LOOP
+   SPECIAL_CASES        :  INVALID_BREAK_CONTEXT
+
+
+Test Case 7        (Key = 3.1.1.1.)
+   FEATURE              :  ASSIGNMENT
+   ASSIGN_TARGET        :  EXISTING_VARIABLE
+   ASSIGN_EXPRESSION    :  RANDOMLY CHOSEN
+   SPECIAL_CASES        :  NORMAL

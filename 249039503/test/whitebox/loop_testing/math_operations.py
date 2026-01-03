@@ -11,17 +11,17 @@ def evaluate_expr(program: str):
 
 
 class TestMathOperationsLoopTesting(unittest.TestCase):
-    # Case 1: Zero math operations
+    # Zero math operations
     def test_zero_math_operations(self):
         program = "1 + 2;"
         self.assertEqual(evaluate_expr(program), 3)
 
-    # Case 2: One math operation
+    # One math operation
     def test_one_math_operation(self):
         program = "sqrt(9);"
         self.assertEqual(evaluate_expr(program), 3.0)
 
-    # Case 3: Multiple math operations
+    # Multiple math operations
     def test_multiple_math_operations(self):
         program = """
         let a = sqrt(9);

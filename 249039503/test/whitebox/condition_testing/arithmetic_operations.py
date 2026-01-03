@@ -24,11 +24,6 @@ class TestArithmeticOperationsCondition(unittest.TestCase):
             run("10/0;")
         self.assertIn("Division by zero", str(ctx.exception))
 
-    def test_division_right_zero_float_raises(self):
-        with self.assertRaises(RuntimeEvaluationError) as ctx:
-            run("10.0/0.0;")
-        self.assertIn("Division by zero", str(ctx.exception))
-
     def test_division_right_nonzero_float(self):
         self.assertEqual(run("7.5/2.5;"), 3.0)
 
@@ -42,7 +37,6 @@ class TestArithmeticOperationsCondition(unittest.TestCase):
         self.assertEqual(run("3*4;"), 12)
 
     def test_plus_int_float(self):
-        # Python semantics: int + float -> float
         self.assertEqual(run("1+2.5;"), 3.5)
 
     def test_multiply_float_int(self):

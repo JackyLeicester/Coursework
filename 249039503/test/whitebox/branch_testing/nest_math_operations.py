@@ -11,37 +11,31 @@ def run(code: str):
 
 
 class NestMathOperationsBranchTest(unittest.TestCase):
-    def test_simple_nested_add_mul(self):
-        # 1 + (2 * 3) = 7
+    def test_simple_nested_add_mul_1(self):
         self.assertEqual(run("1 + (2 * 3);"), 7)
 
-    def test_deeply_nested_parentheses(self):
-        # (((1 + 2) * 3) - 4) = 5
+    def test_deeply_nested_parentheses_2(self):
         self.assertEqual(run("(((1 + 2) * 3) - 4);"), 5)
 
-    def test_nested_mixed_precedence(self):
-        # (1 + 2) * (3 + 4) = 21
+    def test_nested_mixed_precedence_3(self):
         self.assertEqual(run("(1 + 2) * (3 + 4);"), 21)
 
-    def test_nested_unary_inside(self):
+    def test_nested_unary_inside_4(self):
         self.assertEqual(run("-(2 * (3 + 1));"), 8)
 
-    def test_unary_and_binary_chain(self):
-        # -1 - (2 * -3) = -1 - (-6) = 5
+    def test_unary_and_binary_chain_5(self):
         self.assertEqual(run("-1 - (2 * -3);"), 5)
 
-    def test_nested_division_associativity(self):
-        # (20 / (2 * 2)) = 5
+    def test_nested_division_associativity_6(self):
         self.assertEqual(run("20 / (2 * 2);"), 5)
 
-    def test_left_associative_without_parentheses(self):
-        # ((10 - 3) - 2) = 5
+    def test_left_associative_without_parentheses_7(self):
         self.assertEqual(run("10 - 3 - 2;"), 5)
 
-    def test_missing_closing_parenthesis_raises(self):
+    def test_missing_closing_parenthesis_raises_8(self):
         with self.assertRaises(Exception):
             run("1 + (2 * (3 + 4);")
 
-    def test_operator_after_open_paren_raises(self):
+    def test_operator_after_open_paren_raises_9(self):
         with self.assertRaises(Exception):
             run("(+ 2);")

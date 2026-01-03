@@ -16,54 +16,54 @@ class IntegersTest(unittest.TestCase):
 
         return tokens
 
-    def test_zero_standalone(self):
+    def test_zero_1(self):
         src = "0"
         tokens = self._collect_tokens(src)
         expected = [(Token.INT, "0")]
         self.assertEqual(tokens, expected)
 
-    def test_positive_single_digit(self):
-        src = "5"
+    def test_positive_digit_2(self):
+        src = "7"
         tokens = self._collect_tokens(src)
-        expected = [(Token.INT, "5")]
+        expected = [(Token.INT, "7")]
         self.assertEqual(tokens, expected)
 
-    def test_positive_multi_digit(self):
-        src = "123"
+    def test_positive_multi_digit_3(self):
+        src = "567"
         tokens = self._collect_tokens(src)
-        expected = [(Token.INT, "123")]
+        expected = [(Token.INT, "567")]
         self.assertEqual(tokens, expected)
 
-    def test_negative_single_digit(self):
-        src = "-5"
+    def test_negative_single_digit_4(self):
+        src = "-3"
         tokens = self._collect_tokens(src)
-        expected = [(Token.INT, "-5")]
+        expected = [(Token.INT, "-3")]
         self.assertEqual(tokens, expected)
 
-    def test_negative_multi_digit(self):
-        src = "-123"
+    def test_negative_multi_digit_5(self):
+        src = "-857"
         tokens = self._collect_tokens(src)
-        expected = [(Token.INT, "-123")]
+        expected = [(Token.INT, "-857")]
         self.assertEqual(tokens, expected)
 
-    def test_leading_zero_integer(self):
+    def test_leading_zero_integer_6(self):
         src = "007"
         tokens = self._collect_tokens(src)
         expected = [(Token.INT, "007")]
         self.assertEqual(tokens, expected)
 
-    def test_assignment_positive_integer(self):
-        src = "let x = 42"
+    def test_assigned_positive_integer_7(self):
+        src = "let x = 87"
         tokens = self._collect_tokens(src)
         expected = [
             (Token.LET, "let"),
             (Token.IDENTIFIER, "x"),
             (Token.ASSIGN, "="),
-            (Token.INT, "42"),
+            (Token.INT, "87"),
         ]
         self.assertEqual(tokens, expected)
 
-    def test_assignment_negative_integer(self):
+    def test_assigned_negative_integer_8(self):
         src = "let x = -42"
         tokens = self._collect_tokens(src)
         expected = [
@@ -74,7 +74,7 @@ class IntegersTest(unittest.TestCase):
         ]
         self.assertEqual(tokens, expected)
 
-    def test_trailing_dot_raises_error(self):
+    def test_trailing_dot_error_9(self):
         src = "1."
         with self.assertRaises(Exception):
             self._collect_tokens(src)

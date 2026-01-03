@@ -19,37 +19,37 @@ def assert_type_str(testcase: unittest.TestCase, value, expected_keywords):
 
 
 class TypeFunctionBranchTest(unittest.TestCase):
-    def test_type_int_literal(self):
+    def test_type_int_literal_1(self):
         v = run("type(1);")
         assert_type_str(self, v, ("int", "integer", "number"))
 
-    def test_type_float_literal(self):
+    def test_type_float_literal_2(self):
         v = run("type(1.5);")
         assert_type_str(self, v, ("float", "double", "number"))
 
-    def test_type_bool_literal(self):
+    def test_type_bool_literal_3(self):
         v = run("type(true);")
         assert_type_str(self, v, ("bool", "boolean"))
 
-    def test_type_string_literal(self):
+    def test_type_string_literal_4(self):
         v = run('type("x");')
         assert_type_str(self, v, ("string", "str"))
 
-    def test_type_char_literal_if_supported(self):
+    def test_type_char_literal_if_supported_5(self):
         try:
             v = run("type('a');")
             assert_type_str(self, v, ("char", "character", "string"))
         except Exception:
             pass
 
-    def test_type_identifier(self):
+    def test_type_identifier_6(self):
         v = run("let x = 10; type(x);")
         assert_type_str(self, v, ("int", "integer", "number"))
 
-    def test_type_wrong_arity_zero_args_raises(self):
+    def test_type_wrong_arity_zero_args_raises_7(self):
         with self.assertRaises(Exception):
             run("type();")
 
-    def test_type_wrong_arity_two_args_raises(self):
+    def test_type_wrong_arity_two_args_raises_8(self):
         with self.assertRaises(Exception):
             run("type(1, 2);")

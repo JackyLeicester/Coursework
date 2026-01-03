@@ -11,11 +11,11 @@ def evaluate_expr(program: str):
 
 
 class TestExitStatementLoopTesting(unittest.TestCase):
-    # Case 1: Zero statements before exit
+    # Zero statements before exit
     def test_exit_zero_statements(self):
         self.assertEqual(evaluate_expr("exit(1);"), 1)
 
-    # Case 2: One statement before exit
+    # 1 statement before exit
     def test_exit_one_statement(self):
         program = """
         let x = 10;
@@ -23,7 +23,7 @@ class TestExitStatementLoopTesting(unittest.TestCase):
         """
         self.assertEqual(evaluate_expr(program), 2)
 
-    # Case 3: Multiple statements before exit
+    # Multiple statements before exit
     def test_exit_multiple_statements(self):
         program = """
         let x = 1;
