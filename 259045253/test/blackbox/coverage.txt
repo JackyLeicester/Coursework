@@ -1,0 +1,23 @@
+Name                                                                   Stmts   Miss  Cover   Missing
+----------------------------------------------------------------------------------------------------
+259045253/test/__init__.py                                                 0      0   100%
+259045253/test/blackbox/__init__.py                                        0      0   100%
+259045253/test/blackbox/category_partition/__init__.py                     6      4    33%   4-7
+259045253/test/blackbox/category_partition/chars_and_strings_test.py      48      1    98%   61
+259045253/test/blackbox/category_partition/cli_arg_test.py                46      1    98%   62
+259045253/test/blackbox/category_partition/continue_stmt_test.py          20      1    95%   28
+259045253/test/blackbox/category_partition/for_loop_test.py               23      1    96%   46
+259045253/test/blackbox/category_partition/if_stmt_test.py                42      1    98%   79
+259045253/test/blackbox/category_partition/null_type_test.py              19      1    95%   26
+259045253/test/blackbox/category_partition/pass_filename_test.py          23      1    96%   33
+259045253/test/blackbox/category_partition/print_function_test.py         48      1    98%   59
+259045253/test/blackbox/random_testing/__init__.py                         0      0   100%
+259045253/test/blackbox/random_testing/test_src_evaluator.py            6144      0   100%
+259045253/test/blackbox/random_testing/test_src_lexer.py                9093      0   100%
+src/__init__.py                                                           49     10    80%   57-59, 63, 69-74
+src/evaluator.py                                                         338    236    30%   76-77, 83, 89-94, 98-102, 106-110, 142-144, 146-148, 150-152, 154-156, 158-160, 175-292, 296-303, 307-353, 356-357, 360-361, 364-369, 373, 377-380, 383-386, 391, 394-406, 409-417, 420-421, 424-425, 442, 444, 448
+src/lexer.py                                                             197     52    74%   44-49, 58, 68, 76-88, 99-100, 104-105, 107, 109-113, 115-119, 121, 127-131, 134-135, 154-157, 159, 161, 170-171, 198, 216, 224, 234, 236, 238
+src/parser.py                                                            354     81    77%   91-92, 118-120, 125, 151-153, 156, 247, 275, 278, 283-298, 301-304, 315-317, 320-327, 347, 351, 358, 361, 374, 381, 387-391, 473-485, 493-495, 498-508, 515-525
+src/tokens.py                                                             48      0   100%
+----------------------------------------------------------------------------------------------------
+TOTAL                                                                  16498    391    98%

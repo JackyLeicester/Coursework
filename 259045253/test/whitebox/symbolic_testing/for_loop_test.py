@@ -38,7 +38,7 @@ def test_for_statement():
 
     s = Solver()
     s.add(And(for_ok, lpar_ok, semi1_ok, semi2_ok, rpar_ok))
-    if s.check() == "sat":
+    if s.check() == sat:
         print(s.model())
         src = build_for_statement(True, True, True, True, True)
         tag, node = parse_for_statement(src)
