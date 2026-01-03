@@ -2,248 +2,251 @@
 # Please check them before you use them.
 import src as module_0
 import enum as module_1
+import unittest
 
 
-def test_case_0():
-    module_0.Repl()
+class TestEvaluator(unittest.TestCase):
 
+    def test_case_0(self):
+        module_0.Repl()
 
-def test_case_1():
-    module_0.Repl()
 
+    def test_case_1(self):
+        module_0.Repl()
 
-def test_case_2():
-    module_0.Repl()
 
+    def test_case_2(self):
+        module_0.Repl()
 
-def test_case_3():
-    str_0 = "l`]q\x0b7]kkH&wf/U\\m1"
-    module_0.read_file_contents(str_0)
 
+    def test_case_3(self):
+        str_0 = "l`]q\x0b7]kkH&wf/U\\m1"
+        module_0.read_file_contents(str_0)
 
-def test_case_4():
-    str_0 = "l`]q\x0b7]kkH&wf/U\\m1"
-    module_0.read_file_contents(str_0)
 
+    def test_case_4(self):
+        str_0 = "l`]q\x0b7]kkH&wf/U\\m1"
+        module_0.read_file_contents(str_0)
 
-def test_case_5():
-    str_0 = '"'
-    module_0.read_file_contents(str_0)
 
+    def test_case_5(self):
+        str_0 = '"'
+        module_0.read_file_contents(str_0)
 
-def test_case_6():
-    str_0 = '"'
-    module_0.read_file_contents(str_0)
 
+    def test_case_6(self):
+        str_0 = '"'
+        module_0.read_file_contents(str_0)
 
-def test_case_7():
-    str_0 = "Left-hand side of assignment must be a variable"
-    module_0.read_file_contents(str_0)
 
+    def test_case_7(self):
+        str_0 = "Left-hand side of assignment must be a variable"
+        module_0.read_file_contents(str_0)
 
-def test_case_8():
-    str_0 = '"'
-    module_0.read_file_contents(str_0)
 
+    def test_case_8(self):
+        str_0 = '"'
+        module_0.read_file_contents(str_0)
 
-def test_case_9():
-    str_0 = '"'
-    module_0.read_file_contents(str_0)
 
+    def test_case_9(self):
+        str_0 = '"'
+        module_0.read_file_contents(str_0)
 
-def test_case_10():
-    str_0 = '"'
-    module_0.read_file_contents(str_0)
 
+    def test_case_10(self):
+        str_0 = '"'
+        module_0.read_file_contents(str_0)
 
-def test_case_11():
-    str_0 = '"'
-    module_0.read_file_contents(str_0)
 
+    def test_case_11(self):
+        str_0 = '"'
+        module_0.read_file_contents(str_0)
 
-def test_case_12():
-    str_0 = "l`]q\x0b7]kkH&wf/U\\m1"
-    module_0.read_file_contents(str_0)
 
+    def test_case_12(self):
+        str_0 = "l`]q\x0b7]kkH&wf/U\\m1"
+        module_0.read_file_contents(str_0)
 
-def test_case_13():
-    str_0 = "Left-hand side of assignment must be a variable"
-    module_0.read_file_contents(str_0)
 
+    def test_case_13(self):
+        str_0 = "Left-hand side of assignment must be a variable"
+        module_0.read_file_contents(str_0)
 
-def test_case_14():
-    str_0 = "Left-hand side of assignment must be a variable"
-    module_0.read_file_contents(str_0)
-    repl_0 = module_0.Repl()
-    repl_1 = module_0.Repl()
-    str_1 = "\x0c#`&R#DeiS+SadR8cR\x0cj"
-    repl_0.runsource(str_1, repl_1)
 
+    def test_case_14(self):
+        str_0 = "Left-hand side of assignment must be a variable"
+        module_0.read_file_contents(str_0)
+        repl_0 = module_0.Repl()
+        repl_1 = module_0.Repl()
+        str_1 = "\x0c#`&R#DeiS+SadR8cR\x0cj"
+        repl_0.runsource(str_1, repl_1)
 
-def test_case_15():
-    str_0 = "l`]q\x0b7]kkH&wf/U\\m1"
-    module_0.read_file_contents(str_0)
 
+    def test_case_15(self):
+        str_0 = "l`]q\x0b7]kkH&wf/U\\m1"
+        module_0.read_file_contents(str_0)
 
-def test_case_16():
-    str_0 = "Left-hand side of assignment must be a variable"
-    module_0.read_file_contents(str_0)
 
+    def test_case_16(self):
+        str_0 = "Left-hand side of assignment must be a variable"
+        module_0.read_file_contents(str_0)
 
-def test_case_17():
-    str_0 = '"'
-    module_0.read_file_contents(str_0)
 
+    def test_case_17(self):
+        str_0 = '"'
+        module_0.read_file_contents(str_0)
 
-def test_case_18():
-    str_0 = "i\n,AodT"
-    module_0.read_file_contents(str_0)
 
+    def test_case_18(self):
+        str_0 = "i\n,AodT"
+        module_0.read_file_contents(str_0)
 
-def test_case_19():
-    str_0 = '"'
-    module_0.read_file_contents(str_0)
 
+    def test_case_19(self):
+        str_0 = '"'
+        module_0.read_file_contents(str_0)
 
-def test_case_20():
-    str_0 = "Left-hand side of assignment must be a variable"
-    module_0.read_file_contents(str_0)
 
+    def test_case_20(self):
+        str_0 = "Left-hand side of assignment must be a variable"
+        module_0.read_file_contents(str_0)
 
-def test_case_21():
-    str_0 = "N?y"
-    module_0.read_file_contents(str_0)
 
+    def test_case_21(self):
+        str_0 = "N?y"
+        module_0.read_file_contents(str_0)
 
-# tries to get a variable that does not exist
-def test_case_22():
-    repl_0 = module_0.Repl()
-    repl_1 = module_0.Repl()
-    str_0 = "aF;e!.=Gov2"
-    repl_1.runsource(str_0, repl_0)
 
+    # tries to get a variable that does not exist
+    def test_case_22(self):
+        repl_0 = module_0.Repl()
+        repl_1 = module_0.Repl()
+        str_0 = "aF;e!.=Gov2"
+        repl_1.runsource(str_0, repl_0)
 
-# none file name
-def test_case_23():
-    none_type_0 = None
-    module_0.read_file_contents(none_type_0)
 
+    # none file name
+    def test_case_23(self):
+        none_type_0 = None
+        module_0.read_file_contents(none_type_0)
 
-# repl as a file path
-def test_case_24():
-    repl_0 = module_0.Repl()
-    module_0.read_file_contents(repl_0)
 
+    # repl as a file path
+    def test_case_24(self):
+        repl_0 = module_0.Repl()
+        module_0.read_file_contents(repl_0)
 
-# tries getting a file that does not exist
-def test_case_25():
-    repl_0 = module_0.Repl()
-    str_0 = "l`]q\x0b7]kkH&wf/U\\m1"
-    var_0 = module_0.read_file_contents(str_0)
-    repl_1 = module_0.Repl()
-    repl_1.runsource(repl_0, var_0)
 
+    # tries getting a file that does not exist
+    def test_case_25(self):
+        repl_0 = module_0.Repl()
+        str_0 = "l`]q\x0b7]kkH&wf/U\\m1"
+        var_0 = module_0.read_file_contents(str_0)
+        repl_1 = module_0.Repl()
+        repl_1.runsource(repl_0, var_0)
 
-# object as file path
-def test_case_26():
-    repl_0 = module_0.Repl()
-    module_0.read_file_contents(repl_0)
 
+    # object as file path
+    def test_case_26(self):
+        repl_0 = module_0.Repl()
+        module_0.read_file_contents(repl_0)
 
-def test_case_27():
-    str_0 = "f:@pCz"
 
+    def test_case_27(self):
+        str_0 = "f:@pCz"
 
-# not sure on what this one does
-def test_case_28():
-    module_1.global_flag_repr()
 
+    # not sure on what this one does
+    def test_case_28(self):
+        module_1.global_flag_repr()
 
-def test_case_29():
-    str_0 = "Left-hand side of assignment must be a variable"
-    module_0.read_file_contents(str_0)
 
+    def test_case_29(self):
+        str_0 = "Left-hand side of assignment must be a variable"
+        module_0.read_file_contents(str_0)
 
-def test_case_30():
-    str_0 = "l`]q\x0b7]kkH&wf/U\\m1"
-    module_0.read_file_contents(str_0)
 
+    def test_case_30(self):
+        str_0 = "l`]q\x0b7]kkH&wf/U\\m1"
+        module_0.read_file_contents(str_0)
 
-# tries running the weird string and therefore tries getting an identifier that does not exist
-def test_case_31():
-    repl_0 = module_0.Repl()
-    str_0 = '"'
-    module_0.read_file_contents(str_0)
-    repl_1 = module_0.Repl()
-    str_1 = "l`]q\x0b7]kkH&wf/U\\m1"
-    repl_1.runsource(str_1, symbol=repl_0)
 
+    # tries running the weird string and therefore tries getting an identifier that does not exist
+    def test_case_31(self):
+        repl_0 = module_0.Repl()
+        str_0 = '"'
+        module_0.read_file_contents(str_0)
+        repl_1 = module_0.Repl()
+        str_1 = "l`]q\x0b7]kkH&wf/U\\m1"
+        repl_1.runsource(str_1, symbol=repl_0)
 
-# tries to initialise a lexer without file text
-def test_case_32():
-    str_0 = "Left-hand side of assignment must be a variable"
-    var_0 = module_0.read_file_contents(str_0)
-    repl_0 = module_0.Repl()
-    repl_0.runsource(var_0)
 
+    # tries to initialise a lexer without file text
+    def test_case_32(self):
+        str_0 = "Left-hand side of assignment must be a variable"
+        var_0 = module_0.read_file_contents(str_0)
+        repl_0 = module_0.Repl()
+        repl_0.runsource(var_0)
 
-def test_case_33():
-    str_0 = '"'
-    module_0.read_file_contents(str_0)
 
+    def test_case_33(self):
+        str_0 = '"'
+        module_0.read_file_contents(str_0)
 
-# tries using repl object as a string
-def test_case_34():
-    repl_0 = module_0.Repl()
-    str_0 = '"'
-    module_0.read_file_contents(str_0)
-    module_0.read_file_contents(repl_0)
 
+    # tries using repl object as a string
+    def test_case_34(self):
+        repl_0 = module_0.Repl()
+        str_0 = '"'
+        module_0.read_file_contents(str_0)
+        module_0.read_file_contents(repl_0)
 
-# passes none as a file text
-def test_case_35():
-    repl_0 = module_0.Repl()
-    str_0 = "Left-hand side of assignment must be a variable"
-    var_0 = module_0.read_file_contents(str_0)
-    repl_0.runsource(var_0)
 
+    # passes none as a file text
+    def test_case_35(self):
+        repl_0 = module_0.Repl()
+        str_0 = "Left-hand side of assignment must be a variable"
+        var_0 = module_0.read_file_contents(str_0)
+        repl_0.runsource(var_0)
 
-# tries reading a file that does not exist
-def test_case_36():
-    repl_0 = module_0.Repl()
-    str_0 = '"'
-    module_0.read_file_contents(str_0)
-    repl_0.runsource(repl_0)
 
+    # tries reading a file that does not exist
+    def test_case_36(self):
+        repl_0 = module_0.Repl()
+        str_0 = '"'
+        module_0.read_file_contents(str_0)
+        repl_0.runsource(repl_0)
 
-def test_case_37():
-    str_0 = "l`]q\x0b7]kkH&wf/U\\m1"
-    module_0.read_file_contents(str_0)
 
+    def test_case_37(self):
+        str_0 = "l`]q\x0b7]kkH&wf/U\\m1"
+        module_0.read_file_contents(str_0)
 
-# tries passing none as file text to lexer
-def test_case_38():
-    repl_0 = module_0.Repl()
-    str_0 = "l`]q\x0b7]kkH&wf/U\\m1"
-    var_0 = module_0.read_file_contents(str_0)
-    repl_0.runsource(var_0)
 
+    # tries passing none as file text to lexer
+    def test_case_38(self):
+        repl_0 = module_0.Repl()
+        str_0 = "l`]q\x0b7]kkH&wf/U\\m1"
+        var_0 = module_0.read_file_contents(str_0)
+        repl_0.runsource(var_0)
 
-# tries running str_1, which reads non existent identifier
-def test_case_39():
-    repl_0 = module_0.Repl()
-    repl_1 = module_0.Repl()
-    str_0 = '"'
-    module_0.read_file_contents(str_0)
-    str_1 = "Left-hand side of assignment must be a variable"
-    repl_2 = module_0.Repl()
-    repl_1.runsource(str_1, repl_2, repl_0)
 
+    # tries running str_1, which reads non existent identifier
+    def test_case_39(self):
+        repl_0 = module_0.Repl()
+        repl_1 = module_0.Repl()
+        str_0 = '"'
+        module_0.read_file_contents(str_0)
+        str_1 = "Left-hand side of assignment must be a variable"
+        repl_2 = module_0.Repl()
+        repl_1.runsource(str_1, repl_2, repl_0)
 
-# tries reading variable i which has not been defined yet
-def test_case_40():
-    str_0 = '"'
-    module_0.read_file_contents(str_0)
-    repl_0 = module_0.Repl()
-    str_1 = "i\n,AodT"
-    repl_0.runsource(str_1)
+
+    # tries reading variable i which has not been defined yet
+    def test_case_40(self):
+        str_0 = '"'
+        module_0.read_file_contents(str_0)
+        repl_0 = module_0.Repl()
+        str_1 = "i\n,AodT"
+        repl_0.runsource(str_1)
