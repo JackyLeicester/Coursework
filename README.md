@@ -6,7 +6,39 @@ Team Members:
 - [Jacky Liang Xu](https://github.com/JackyLeicester)
 - [Syed Fasiuddin](https://github.com/sf403)
 
-## EBNF of Language to be developed
+## Getting Started
+
+To get started with the project, install the dependencies using:
+```bash
+pip install -r requirements.txt
+```
+
+The project can then be ran in two ways:
+1. Make a new file with test program in it and pass the name of the file to the
+   interpreter as follows:
+   ```bash
+   ./main.py name-of-file
+   ```
+   Checkout the `examples/` folder or refer to [this](#ebnf-of-language-that-is-developed)
+   section for the grammar of the language.
+2. Run the interpreter in interactive mode as follows:
+   ```bash
+   ./main.py
+   ```
+
+For running the test cases and generating a coverage report run:
+```bash
+python -m coverage run --branch --source=src -a -m unittest discover -s 249039503/test -t . -p "*.py"
+python -m coverage run --branch --source=src -a -m unittest discover -s 249053812/test -t . -p "*.py"
+python -m coverage run --branch --source=src -a -m unittest discover -s 259045253/test -t . -p "*.py"
+python -m coverage run --branch --source=src -a -m unittest discover -s 259046521/test -t . -p "*.py"
+
+python -m coverage report -m
+python -m coverage html
+open htmlcov/index.html
+```
+
+## EBNF of Language that is developed
 
 ```
 program         = { statement } ;
@@ -67,5 +99,5 @@ char            = "'" ? any character ? "'" ;
 string          = '"' { ? any character ? } '"' ;
 letter          = ? a-z | A-Z ? ;
 digit           = ? 0..9 ? ;
+null            = "null" ;
 ```
-null            = "null"
