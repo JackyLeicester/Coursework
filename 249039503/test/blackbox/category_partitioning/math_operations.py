@@ -57,7 +57,7 @@ class MathOperationsTest(unittest.TestCase):
         self.assertEqual(self._eval("sqrt(900);"), 30.0)
 
     def test_pow(self):
-        self.assertEqual(self._eval("pow(20,3);"), 800.0)
+        self.assertEqual(self._eval("pow(20,3);"), 8000.0)
 
     def test_ceil(self):
         self.assertEqual(self._eval("ceil(2.3);"), 3)
