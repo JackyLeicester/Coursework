@@ -5,29 +5,24 @@ import unittest
 
 
 class TestEvaluator(unittest.TestCase):
-
     def test_case_0(self):
         str_0 = "Wrong declaration of float"
         module_0.Lexer(str_0)
-
 
     def test_case_1(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
 
-
     def test_case_2(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
 
-
     def test_case_3(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.next_token()
-
 
     def test_case_4(self):
         str_0 = "Wrong declaration of float"
@@ -37,7 +32,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
 
-
     def test_case_5(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -45,7 +39,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
-
 
     def test_case_6(self):
         str_0 = "Wrong declaration of float"
@@ -55,12 +48,10 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.read_number()
 
-
     def test_case_7(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
-
 
     def test_case_8(self):
         str_0 = "Wrong declaration of float"
@@ -69,7 +60,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
-
 
     def test_case_9(self):
         str_0 = "Wrong declaration of float"
@@ -80,7 +70,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.read_number()
         lexer_1.skip_singleline_comment()
 
-
     def test_case_10(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -88,7 +77,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.read_number()
-
 
     def test_case_11(self):
         str_0 = "Wrong declaration of float"
@@ -101,7 +89,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_1.skip_singleline_comment()
 
-
     def test_case_12(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -109,7 +96,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
-
 
     def test_case_13(self):
         str_0 = "Wrong declaration of float"
@@ -122,20 +108,17 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.read_number()
         lexer_1.__repr__()
 
-
     def test_case_14(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
         lexer_0.next_token()
 
-
     def test_case_15(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
         lexer_0.__repr__()
-
 
     def test_case_16(self):
         str_0 = "Wrong declaration of float"
@@ -149,7 +132,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.__repr__()
         lexer_1.skip_whitespace()
 
-
     def test_case_17(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -159,14 +141,12 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.next_token()
 
-
     def test_case_18(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
         lexer_0.__repr__()
         lexer_0.peek()
-
 
     def test_case_19(self):
         str_0 = "Wrong declaration of float"
@@ -177,17 +157,14 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
 
-
     def test_case_20(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
-
 
     def test_case_21(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
-
 
     def test_case_22(self):
         str_0 = "Wrong declaration of float"
@@ -196,7 +173,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
-
 
     def test_case_23(self):
         str_0 = "Wrong declaration of float"
@@ -211,7 +187,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
 
-
     def test_case_24(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -221,7 +196,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.read_number()
         lexer_0.next_token()
 
-
     def test_case_25(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -230,14 +204,12 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
 
-
     def test_case_26(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         tuple_0 = lexer_0.read_number()
         lexer_1 = module_0.Lexer(tuple_0)
         lexer_1.__repr__()
-
 
     def test_case_27(self):
         tuple_0 = ()
@@ -248,13 +220,11 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.next_token()
         lexer_0.skip_non_tokens()
 
-
     def test_case_28(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
         lexer_0.__repr__()
-
 
     def test_case_29(self):
         str_0 = "Wrong declaration of float"
@@ -268,14 +238,12 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_30(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         tuple_0 = lexer_0.read_number()
         lexer_1 = module_0.Lexer(tuple_0)
         lexer_1.__repr__()
-
 
     def test_case_31(self):
         tuple_0 = ()
@@ -291,7 +259,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.__repr__()
         lexer_0.next_token()
 
-
     def test_case_32(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -306,7 +273,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_33(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -315,7 +281,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
 
-
     def test_case_34(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -323,7 +288,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.__repr__()
         tuple_0 = ()
         module_0.Lexer(tuple_0)
-
 
     def test_case_35(self):
         str_0 = "Wrong declaration of float"
@@ -335,7 +299,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
-
 
     def test_case_36(self):
         str_0 = "Wrong declaration of float"
@@ -349,7 +312,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
 
-
     def test_case_37(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -360,7 +322,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = lexer_1.read_number()
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.__repr__()
-
 
     def test_case_38(self):
         str_0 = "Wrong declaration of float"
@@ -373,7 +334,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_1 = ()
         module_0.Lexer(tuple_1)
         lexer_0.peek()
-
 
     def test_case_39(self):
         str_0 = "Wrong declaration of float"
@@ -388,7 +348,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_1 = ()
         module_0.Lexer(tuple_1)
 
-
     def test_case_40(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -399,7 +358,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = lexer_1.read_number()
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.__repr__()
-
 
     def test_case_41(self):
         str_0 = "Wrong declaration of float"
@@ -414,7 +372,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_42(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -426,14 +383,12 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_1.skip_singleline_comment()
 
-
     def test_case_43(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
         lexer_0.next_token()
         lexer_0.__repr__()
-
 
     def test_case_44(self):
         str_0 = "Wrong declaration of float"
@@ -448,7 +403,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_45(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -461,7 +415,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
 
-
     def test_case_46(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -471,7 +424,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.read_number()
         lexer_0.next_token()
         lexer_1.__repr__()
-
 
     def test_case_47(self):
         str_0 = "Wrong declaration of float"
@@ -487,7 +439,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_0)
         lexer_3.skip_singleline_comment()
 
-
     def test_case_48(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -501,14 +452,12 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_49(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
         lexer_0.next_token()
         lexer_0.__repr__()
-
 
     def test_case_50(self):
         str_0 = "Wrong declaration of float"
@@ -517,7 +466,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(tuple_0)
         lexer_1.__repr__()
         lexer_0.next_token()
-
 
     def test_case_51(self):
         str_0 = "Wrong declaration of float"
@@ -531,7 +479,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
 
-
     def test_case_52(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -543,7 +490,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_53(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -553,7 +499,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = lexer_1.read_number()
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.__repr__()
-
 
     def test_case_54(self):
         str_0 = "Wrong declaration of float"
@@ -568,7 +513,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_55(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -580,7 +524,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
-
 
     def test_case_56(self):
         str_0 = "Wrong declaration of float"
@@ -596,7 +539,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
 
-
     def test_case_57(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -610,7 +552,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_1)
         lexer_2.__repr__()
 
-
     def test_case_58(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -623,14 +564,12 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
 
-
     def test_case_59(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
         lexer_0.__repr__()
         lexer_0.peek()
-
 
     def test_case_60(self):
         str_0 = "Wrong declaration of float"
@@ -641,7 +580,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
 
-
     def test_case_61(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -650,7 +588,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
-
 
     def test_case_62(self):
         str_0 = "Wrong declaration of float"
@@ -663,7 +600,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
-
 
     def test_case_63(self):
         str_0 = "Wrong declaration of float"
@@ -678,7 +614,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_64(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -690,7 +625,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
-
 
     def test_case_65(self):
         str_0 = "Wrong declaration of float"
@@ -704,7 +638,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
 
-
     def test_case_66(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -714,7 +647,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.next_token()
         lexer_0.skip_non_tokens()
 
-
     def test_case_67(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -723,7 +655,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.read_number()
         lexer_0.next_token()
         lexer_0.skip_non_tokens()
-
 
     def test_case_68(self):
         str_0 = "Wrong declaration of float"
@@ -739,7 +670,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_3.skip_singleline_comment()
 
-
     def test_case_69(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -753,7 +683,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_70(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -765,7 +694,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
-
 
     def test_case_71(self):
         tuple_0 = ()
@@ -779,7 +707,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
 
-
     def test_case_72(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -791,7 +718,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
-
 
     def test_case_73(self):
         str_0 = "Wrong declaration of float"
@@ -806,7 +732,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_1 = ()
         module_0.Lexer(tuple_1)
 
-
     def test_case_74(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -814,7 +739,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
-
 
     def test_case_75(self):
         str_0 = "Wrong declaration of float"
@@ -826,7 +750,6 @@ class TestEvaluator(unittest.TestCase):
         str_2 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.next_token()
-
 
     def test_case_76(self):
         str_0 = "Wrong declaration of float"
@@ -842,7 +765,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_77(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -856,13 +778,11 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_78(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
         lexer_0.skip_singleline_comment()
-
 
     def test_case_79(self):
         str_0 = "Wrong declaration of float"
@@ -876,14 +796,12 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_80(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
         tuple_0 = ()
         module_0.Lexer(tuple_0)
-
 
     def test_case_81(self):
         tuple_0 = ()
@@ -893,7 +811,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.read_number()
         lexer_0.next_token()
         lexer_0.skip_non_tokens()
-
 
     def test_case_82(self):
         str_0 = "Wrong declaration of float"
@@ -909,7 +826,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_83(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -923,7 +839,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_84(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -936,13 +851,11 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
 
-
     def test_case_85(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
         lexer_0.skip_whitespace()
-
 
     def test_case_86(self):
         str_0 = "Wrong declaration of float"
@@ -953,7 +866,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
-
 
     def test_case_87(self):
         str_0 = "Wrong declaration of float"
@@ -967,7 +879,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
-
 
     def test_case_88(self):
         str_0 = "Wrong declaration of float"
@@ -983,7 +894,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_2)
         lexer_3.skip_singleline_comment()
 
-
     def test_case_89(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -997,12 +907,10 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_1)
         lexer_2.__repr__()
 
-
     def test_case_90(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
         lexer_0.peek()
-
 
     def test_case_91(self):
         str_0 = "Wrong declaration of float"
@@ -1018,7 +926,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_92(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -1030,7 +937,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         tuple_1 = ()
         module_0.Lexer(tuple_1)
-
 
     def test_case_93(self):
         str_0 = "Wrong declaration of float"
@@ -1044,7 +950,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_1 = ()
         lexer_3 = module_0.Lexer(tuple_1)
         lexer_3.peek()
-
 
     def test_case_94(self):
         str_0 = "Wrong declaration of float"
@@ -1061,14 +966,12 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_2)
         lexer_3.__repr__()
 
-
     def test_case_95(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
         lexer_0.next_token()
         lexer_0.__repr__()
-
 
     def test_case_96(self):
         tuple_0 = ()
@@ -1082,7 +985,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
 
-
     def test_case_97(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -1095,7 +997,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_98(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -1103,14 +1004,12 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(tuple_0)
         lexer_1.__repr__()
 
-
     def test_case_99(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
         lexer_0.next_token()
         lexer_0.__repr__()
-
 
     def test_case_100(self):
         str_0 = "Wrong declaration of float"
@@ -1124,7 +1023,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
-
 
     def test_case_101(self):
         str_0 = "Wrong declaration of float"
@@ -1141,7 +1039,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_0)
         lexer_3.peek()
 
-
     def test_case_102(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -1154,7 +1051,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
-
 
     def test_case_103(self):
         str_0 = "Wrong declaration of float"
@@ -1171,7 +1067,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_2)
         lexer_3.__repr__()
 
-
     def test_case_104(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -1183,7 +1078,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
-
 
     def test_case_105(self):
         str_0 = "Wrong declaration of float"
@@ -1198,7 +1092,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.skip_singleline_comment()
 
-
     def test_case_106(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -1210,7 +1103,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.next_token()
-
 
     def test_case_107(self):
         tuple_0 = ()
@@ -1226,7 +1118,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_1)
         lexer_3.__repr__()
 
-
     def test_case_108(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -1238,7 +1129,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
-
 
     def test_case_109(self):
         str_0 = "Wrong declaration of float"
@@ -1253,7 +1143,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
 
-
     def test_case_110(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -1267,7 +1156,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_111(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -1279,7 +1167,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
-
 
     def test_case_112(self):
         tuple_0 = ()
@@ -1293,7 +1180,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
 
-
     def test_case_113(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -1304,7 +1190,6 @@ class TestEvaluator(unittest.TestCase):
         str_2 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
-
 
     def test_case_114(self):
         str_0 = "Wrong declaration of float"
@@ -1320,7 +1205,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_115(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -1331,7 +1215,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
-
 
     def test_case_116(self):
         tuple_0 = ()
@@ -1349,7 +1232,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.skip_non_tokens()
         lexer_2.skip_singleline_comment()
 
-
     def test_case_117(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -1363,7 +1245,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_118(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -1371,7 +1252,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.read_number()
-
 
     def test_case_119(self):
         str_0 = "Wrong declaration of float"
@@ -1386,7 +1266,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
 
-
     def test_case_120(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -1396,7 +1275,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = lexer_1.read_number()
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.__repr__()
-
 
     def test_case_121(self):
         tuple_0 = ()
@@ -1410,7 +1288,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_1 = lexer_1.read_number()
         lexer_2 = module_0.Lexer(tuple_1)
         lexer_2.__repr__()
-
 
     def test_case_122(self):
         str_0 = "Wrong declaration of float"
@@ -1426,12 +1303,10 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_123(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.skip_whitespace()
-
 
     def test_case_124(self):
         str_0 = "Wrong declaration of float"
@@ -1443,7 +1318,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
 
-
     def test_case_125(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -1452,7 +1326,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
-
 
     def test_case_126(self):
         str_0 = "Wrong declaration of float"
@@ -1467,7 +1340,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_127(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -1477,7 +1349,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.__repr__()
         lexer_0.next_token()
-
 
     def test_case_128(self):
         str_0 = "Wrong declaration of float"
@@ -1491,7 +1362,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
-
 
     def test_case_129(self):
         str_0 = "Wrong declaration of float"
@@ -1507,7 +1377,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_130(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -1520,7 +1389,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
-
 
     def test_case_131(self):
         tuple_0 = ()
@@ -1540,7 +1408,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_4 = module_0.Lexer(str_3)
         lexer_4.skip_singleline_comment()
 
-
     def test_case_132(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -1554,7 +1421,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_1 = ()
         module_0.Lexer(tuple_1)
 
-
     def test_case_133(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -1566,7 +1432,6 @@ class TestEvaluator(unittest.TestCase):
         str_2 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
-
 
     def test_case_134(self):
         str_0 = "Wrong declaration of float"
@@ -1581,7 +1446,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_0.skip_singleline_comment()
 
-
     def test_case_135(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -1594,7 +1458,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
-
 
     def test_case_136(self):
         tuple_0 = ()
@@ -1610,7 +1473,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_137(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -1624,7 +1486,6 @@ class TestEvaluator(unittest.TestCase):
         str_2 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
-
 
     def test_case_138(self):
         str_0 = "Wrong declaration of float"
@@ -1640,7 +1501,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_1)
         lexer_3.peek()
 
-
     def test_case_139(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -1649,7 +1509,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
-
 
     def test_case_140(self):
         str_0 = "Wrong declaration of float"
@@ -1662,7 +1521,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
-
 
     def test_case_141(self):
         str_0 = "Wrong declaration of float"
@@ -1682,7 +1540,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_4.next_token()
         lexer_0.skip_singleline_comment()
 
-
     def test_case_142(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -1693,7 +1550,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
-
 
     def test_case_143(self):
         tuple_0 = ()
@@ -1708,7 +1564,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_1)
         lexer_3.next_token()
         lexer_3.skip_non_tokens()
-
 
     def test_case_144(self):
         str_0 = "Wrong declaration of float"
@@ -1725,7 +1580,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_0)
         lexer_3.peek()
 
-
     def test_case_145(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -1739,7 +1593,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
-
 
     def test_case_146(self):
         str_0 = "Wrong declaration of float"
@@ -1755,7 +1608,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_1)
         lexer_3.peek()
 
-
     def test_case_147(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -1763,7 +1615,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
         lexer_0.skip_non_tokens()
-
 
     def test_case_148(self):
         tuple_0 = ()
@@ -1781,7 +1632,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.__repr__()
         lexer_2.skip_singleline_comment()
 
-
     def test_case_149(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -1790,7 +1640,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
-
 
     def test_case_150(self):
         str_0 = "Wrong declaration of float"
@@ -1802,7 +1651,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
-
 
     def test_case_151(self):
         str_0 = "Wrong declaration of float"
@@ -1818,7 +1666,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_152(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -1828,7 +1675,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
         lexer_0.next_token()
-
 
     def test_case_153(self):
         str_0 = "Wrong declaration of float"
@@ -1844,7 +1690,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.__repr__()
         lexer_1.skip_singleline_comment()
 
-
     def test_case_154(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -1854,7 +1699,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
         lexer_0.__repr__()
-
 
     def test_case_155(self):
         str_0 = "Wrong declaration of float"
@@ -1867,13 +1711,11 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
 
-
     def test_case_156(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.next_token()
         lexer_0.next_token()
-
 
     def test_case_157(self):
         str_0 = "Wrong declaration of float"
@@ -1889,7 +1731,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.peek()
         lexer_2.skip_singleline_comment()
 
-
     def test_case_158(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -1900,7 +1741,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
-
 
     def test_case_159(self):
         str_0 = "Wrong declaration of float"
@@ -1916,7 +1756,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_160(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -1931,7 +1770,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.__repr__()
         lexer_2.skip_whitespace()
 
-
     def test_case_161(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -1940,7 +1778,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.read_number()
         lexer_0.next_token()
-
 
     def test_case_162(self):
         str_0 = "Wrong declaration of float"
@@ -1955,7 +1792,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
 
-
     def test_case_163(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -1968,7 +1804,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
 
-
     def test_case_164(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -1978,7 +1813,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.next_token()
         lexer_0.skip_singleline_comment()
-
 
     def test_case_165(self):
         str_0 = "Wrong declaration of float"
@@ -1992,7 +1826,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.next_token()
 
-
     def test_case_166(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2003,7 +1836,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
-
 
     def test_case_167(self):
         str_0 = "Wrong declaration of float"
@@ -2016,7 +1848,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.skip_singleline_comment()
 
-
     def test_case_168(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2024,7 +1855,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.next_token()
         lexer_0.__repr__()
         lexer_0.skip_whitespace()
-
 
     def test_case_169(self):
         str_0 = "Wrong declaration of float"
@@ -2040,7 +1870,6 @@ class TestEvaluator(unittest.TestCase):
         module_0.Lexer(tuple_0)
         lexer_2.__repr__()
 
-
     def test_case_170(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2048,7 +1877,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
         lexer_0.__repr__()
-
 
     def test_case_171(self):
         str_0 = "Wrong declaration of float"
@@ -2058,7 +1886,6 @@ class TestEvaluator(unittest.TestCase):
         module_0.Lexer(tuple_0)
         lexer_0.skip_non_tokens()
         lexer_0.peek()
-
 
     def test_case_172(self):
         str_0 = "Wrong declaration of float"
@@ -2073,7 +1900,6 @@ class TestEvaluator(unittest.TestCase):
         module_0.Lexer(tuple_0)
         lexer_2.__repr__()
 
-
     def test_case_173(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2086,14 +1912,12 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.next_token()
 
-
     def test_case_174(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
         lexer_0.next_token()
         lexer_0.__repr__()
-
 
     def test_case_175(self):
         str_0 = "Wrong declaration of float"
@@ -2107,7 +1931,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
 
-
     def test_case_176(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2119,7 +1942,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
 
-
     def test_case_177(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2127,7 +1949,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
         lexer_0.skip_non_tokens()
-
 
     def test_case_178(self):
         tuple_0 = ()
@@ -2137,7 +1958,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_0)
         lexer_1.read_number()
         lexer_0.__repr__()
-
 
     def test_case_179(self):
         str_0 = "Wrong declaration of float"
@@ -2152,7 +1972,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
 
-
     def test_case_180(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2165,7 +1984,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
         lexer_2.__repr__()
-
 
     def test_case_181(self):
         str_0 = "Wrong declaration of float"
@@ -2181,7 +1999,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_182(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2195,7 +2012,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.peek()
         lexer_2.__repr__()
 
-
     def test_case_183(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2206,7 +2022,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.next_token()
-
 
     def test_case_184(self):
         str_0 = "Wrong declaration of float"
@@ -2221,7 +2036,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
 
-
     def test_case_185(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2231,7 +2045,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
-
 
     def test_case_186(self):
         str_0 = "Wrong declaration of float"
@@ -2247,7 +2060,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_187(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2260,7 +2072,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
         lexer_2.next_token()
-
 
     def test_case_188(self):
         str_0 = "Wrong declaration of float"
@@ -2275,7 +2086,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.peek()
         lexer_2.__repr__()
 
-
     def test_case_189(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2286,7 +2096,6 @@ class TestEvaluator(unittest.TestCase):
         str_2 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
-
 
     def test_case_190(self):
         tuple_0 = ()
@@ -2300,7 +2109,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
 
-
     def test_case_191(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2311,7 +2119,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.next_token()
         tuple_0 = ()
         module_0.Lexer(tuple_0)
-
 
     def test_case_192(self):
         tuple_0 = ()
@@ -2327,7 +2134,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_193(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2340,7 +2146,6 @@ class TestEvaluator(unittest.TestCase):
         module_0.Lexer(tuple_1)
         lexer_0.next_token()
 
-
     def test_case_194(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2349,7 +2154,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.__repr__()
         tuple_0 = ()
         module_0.Lexer(tuple_0)
-
 
     def test_case_195(self):
         str_0 = "Wrong declaration of float"
@@ -2362,7 +2166,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         tuple_0 = ()
         module_0.Lexer(tuple_0)
-
 
     def test_case_196(self):
         str_0 = "Wrong declaration of float"
@@ -2378,7 +2181,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.skip_singleline_comment()
 
-
     def test_case_197(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2392,7 +2194,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_1.skip_singleline_comment()
 
-
     def test_case_198(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -2404,7 +2205,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
-
 
     def test_case_199(self):
         tuple_0 = ()
@@ -2418,7 +2218,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
 
-
     def test_case_200(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2431,7 +2230,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
 
-
     def test_case_201(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2439,7 +2237,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
         lexer_0.__repr__()
-
 
     def test_case_202(self):
         str_0 = "Wrong declaration of float"
@@ -2451,7 +2248,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(tuple_0)
         lexer_1.peek()
         lexer_1.__repr__()
-
 
     def test_case_203(self):
         str_0 = "Wrong declaration of float"
@@ -2466,7 +2262,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_1.skip_singleline_comment()
 
-
     def test_case_204(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2475,7 +2270,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.read_number()
         lexer_1.skip_singleline_comment()
-
 
     def test_case_205(self):
         str_0 = "Wrong declaration of float"
@@ -2489,7 +2283,6 @@ class TestEvaluator(unittest.TestCase):
         module_0.Lexer(tuple_0)
         lexer_1.__repr__()
 
-
     def test_case_206(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2497,7 +2290,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
         lexer_0.next_token()
-
 
     def test_case_207(self):
         str_0 = "Wrong declaration of float"
@@ -2510,7 +2302,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         tuple_0 = ()
         module_0.Lexer(tuple_0)
-
 
     def test_case_208(self):
         tuple_0 = ()
@@ -2525,7 +2316,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.next_token()
 
-
     def test_case_209(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2537,7 +2327,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.peek()
         lexer_1.__repr__()
 
-
     def test_case_210(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2547,7 +2336,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.read_number()
         lexer_0.next_token()
 
-
     def test_case_211(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2556,7 +2344,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
-
 
     def test_case_212(self):
         str_0 = "Wrong declaration of float"
@@ -2569,7 +2356,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.skip_singleline_comment()
-
 
     def test_case_213(self):
         str_0 = "Wrong declaration of float"
@@ -2585,7 +2371,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_1)
         lexer_3.peek()
 
-
     def test_case_214(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -2596,7 +2381,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.skip_non_tokens()
         lexer_0.skip_singleline_comment()
 
-
     def test_case_215(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2605,13 +2389,11 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.read_number()
         lexer_0.skip_singleline_comment()
 
-
     def test_case_216(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
         lexer_0.next_token()
-
 
     def test_case_217(self):
         str_0 = "Wrong declaration of float"
@@ -2626,7 +2408,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.next_token()
 
-
     def test_case_218(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2639,7 +2420,6 @@ class TestEvaluator(unittest.TestCase):
         str_2 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
-
 
     def test_case_219(self):
         str_0 = "Wrong declaration of float"
@@ -2655,7 +2435,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_2)
         lexer_3.skip_singleline_comment()
 
-
     def test_case_220(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2670,7 +2449,6 @@ class TestEvaluator(unittest.TestCase):
         module_0.Lexer(tuple_0)
         lexer_1.__repr__()
 
-
     def test_case_221(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2681,7 +2459,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         tuple_0 = ()
         module_0.Lexer(tuple_0)
-
 
     def test_case_222(self):
         str_0 = "Wrong declaration of float"
@@ -2695,7 +2472,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.read_number()
 
-
     def test_case_223(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2708,7 +2484,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
-
 
     def test_case_224(self):
         str_0 = "Wrong declaration of float"
@@ -2725,7 +2500,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_0)
         lexer_3.peek()
 
-
     def test_case_225(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2736,7 +2510,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.peek()
         lexer_0.next_token()
 
-
     def test_case_226(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2746,7 +2519,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
         lexer_0.skip_singleline_comment()
-
 
     def test_case_227(self):
         tuple_0 = ()
@@ -2760,7 +2532,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
 
-
     def test_case_228(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2772,7 +2543,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
-
 
     def test_case_229(self):
         tuple_0 = ()
@@ -2788,7 +2558,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_230(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2801,7 +2570,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
 
-
     def test_case_231(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2812,7 +2580,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
-
 
     def test_case_232(self):
         str_0 = "Wrong declaration of float"
@@ -2826,7 +2593,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
 
-
     def test_case_233(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2834,7 +2600,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
-
 
     def test_case_234(self):
         tuple_0 = ()
@@ -2847,7 +2612,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
-
 
     def test_case_235(self):
         str_0 = "Wrong declaration of float"
@@ -2862,7 +2626,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.next_token()
 
-
     def test_case_236(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2874,7 +2637,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.__repr__()
         tuple_1 = ()
         module_0.Lexer(tuple_1)
-
 
     def test_case_237(self):
         tuple_0 = ()
@@ -2889,7 +2651,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.next_token()
 
-
     def test_case_238(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -2902,7 +2663,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
 
-
     def test_case_239(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2914,7 +2674,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.peek()
         lexer_0.skip_whitespace()
 
-
     def test_case_240(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2924,7 +2683,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.next_token()
-
 
     def test_case_241(self):
         str_0 = "Wrong declaration of float"
@@ -2941,7 +2699,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_3)
         lexer_3.skip_singleline_comment()
 
-
     def test_case_242(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2957,7 +2714,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_0)
         lexer_3.peek()
 
-
     def test_case_243(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2965,7 +2721,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
-
 
     def test_case_244(self):
         str_0 = "Wrong declaration of float"
@@ -2980,7 +2735,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
 
-
     def test_case_245(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -2993,7 +2747,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_1)
         lexer_2.__repr__()
 
-
     def test_case_246(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -3003,7 +2756,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.next_token()
-
 
     def test_case_247(self):
         tuple_0 = ()
@@ -3020,7 +2772,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_2)
         lexer_3.__repr__()
 
-
     def test_case_248(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -3034,14 +2785,12 @@ class TestEvaluator(unittest.TestCase):
         tuple_1 = ()
         module_0.Lexer(tuple_1)
 
-
     def test_case_249(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
         lexer_0.next_token()
         lexer_0.__repr__()
-
 
     def test_case_250(self):
         str_0 = "Wrong declaration of float"
@@ -3055,7 +2804,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
 
-
     def test_case_251(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -3068,7 +2816,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
         lexer_2.next_token()
-
 
     def test_case_252(self):
         str_0 = "Wrong declaration of float"
@@ -3085,7 +2832,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_3)
         lexer_3.__repr__()
 
-
     def test_case_253(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -3095,11 +2841,9 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.read_number()
         lexer_0.__repr__()
 
-
     def test_case_254(self):
         str_0 = "ahj)"
         module_0.Lexer(str_0)
-
 
     def test_case_255(self):
         str_0 = "Wrong declaration of float"
@@ -3113,7 +2857,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         tuple_1 = ()
         module_0.Lexer(tuple_1)
-
 
     def test_case_256(self):
         tuple_0 = ()
@@ -3131,7 +2874,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_2)
         lexer_3.skip_singleline_comment()
 
-
     def test_case_257(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -3141,13 +2883,11 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.next_token()
 
-
     def test_case_258(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
         lexer_0.skip_whitespace()
-
 
     def test_case_259(self):
         str_0 = "Wrong declaration of float"
@@ -3160,7 +2900,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.peek()
         lexer_1.__repr__()
 
-
     def test_case_260(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -3169,7 +2908,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.read_number()
         lexer_0.next_token()
         lexer_0.skip_non_tokens()
-
 
     def test_case_261(self):
         str_0 = "Wrong declaration of float"
@@ -3185,7 +2923,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_1)
         lexer_3.peek()
 
-
     def test_case_262(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -3199,7 +2936,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_2)
         lexer_3.next_token()
         lexer_3.next_token()
-
 
     def test_case_263(self):
         str_0 = "Wrong declaration of float"
@@ -3215,7 +2951,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_264(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -3229,7 +2964,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.skip_singleline_comment()
 
-
     def test_case_265(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -3241,7 +2975,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.__repr__()
         lexer_2.peek()
         lexer_0.skip_whitespace()
-
 
     def test_case_266(self):
         tuple_0 = ()
@@ -3256,7 +2989,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_267(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -3270,7 +3002,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.next_token()
 
-
     def test_case_268(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -3282,7 +3013,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
         lexer_2.__repr__()
-
 
     def test_case_269(self):
         str_0 = "Wrong declaration of float"
@@ -3297,7 +3027,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
-
 
     def test_case_270(self):
         str_0 = "Wrong declaration of float"
@@ -3314,7 +3043,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_0)
         lexer_3.peek()
 
-
     def test_case_271(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -3327,7 +3055,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
         lexer_0.skip_singleline_comment()
-
 
     def test_case_272(self):
         str_0 = "Wrong declaration of float"
@@ -3342,7 +3069,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.next_token()
 
-
     def test_case_273(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -3355,7 +3081,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
         lexer_2.__repr__()
-
 
     def test_case_274(self):
         str_0 = "Wrong declaration of float"
@@ -3371,7 +3096,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
 
-
     def test_case_275(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -3386,7 +3110,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_2)
         lexer_3.skip_singleline_comment()
 
-
     def test_case_276(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -3396,7 +3119,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
         lexer_0.skip_singleline_comment()
-
 
     def test_case_277(self):
         str_0 = "Wrong declaration of float"
@@ -3414,7 +3136,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.peek()
         lexer_3.next_token()
 
-
     def test_case_278(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -3424,7 +3145,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.__repr__()
         lexer_1.peek()
         lexer_1.skip_non_tokens()
-
 
     def test_case_279(self):
         str_0 = "Wrong declaration of float"
@@ -3440,7 +3160,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_2)
         lexer_3.next_token()
         lexer_3.next_token()
-
 
     def test_case_280(self):
         str_0 = "Wrong declaration of float"
@@ -3459,7 +3178,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.skip_singleline_comment()
         lexer_4.__repr__()
 
-
     def test_case_281(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -3474,7 +3192,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_1)
         lexer_3.__repr__()
 
-
     def test_case_282(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -3483,7 +3200,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.read_number()
         lexer_0.next_token()
         lexer_0.skip_non_tokens()
-
 
     def test_case_283(self):
         str_0 = "Wrong declaration of float"
@@ -3497,7 +3213,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
         lexer_2.__repr__()
-
 
     def test_case_284(self):
         str_0 = "Wrong declaration of float"
@@ -3515,7 +3230,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.peek()
         lexer_3.__repr__()
 
-
     def test_case_285(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -3527,7 +3241,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
-
 
     def test_case_286(self):
         str_0 = "Wrong declaration of float"
@@ -3542,7 +3255,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_1 = ()
         module_0.Lexer(tuple_1)
 
-
     def test_case_287(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -3554,7 +3266,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
-
 
     def test_case_288(self):
         str_0 = "Wrong declaration of float"
@@ -3569,7 +3280,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.peek()
         lexer_2.__repr__()
 
-
     def test_case_289(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -3579,7 +3289,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.skip_singleline_comment()
-
 
     def test_case_290(self):
         str_0 = "Wrong declaration of float"
@@ -3595,12 +3304,10 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_291(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
         lexer_0.__repr__()
-
 
     def test_case_292(self):
         str_0 = "Wrong declaration of float"
@@ -3618,7 +3325,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_2)
         lexer_3.skip_singleline_comment()
 
-
     def test_case_293(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -3634,7 +3340,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_0)
         lexer_3.next_token()
 
-
     def test_case_294(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -3646,7 +3351,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         tuple_0 = ()
         module_0.Lexer(tuple_0)
-
 
     def test_case_295(self):
         str_0 = "Wrong declaration of float"
@@ -3662,7 +3366,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.peek()
 
-
     def test_case_296(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -3670,7 +3373,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.skip_singleline_comment()
-
 
     def test_case_297(self):
         str_0 = "Wrong declaration of float"
@@ -3681,7 +3383,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.peek()
         lexer_1.__repr__()
         lexer_1.skip_non_tokens()
-
 
     def test_case_298(self):
         str_0 = "Wrong declaration of float"
@@ -3694,7 +3395,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.peek()
         lexer_1.__repr__()
 
-
     def test_case_299(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -3705,7 +3405,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
-
 
     def test_case_300(self):
         str_0 = "Wrong declaration of float"
@@ -3718,7 +3417,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
-
 
     def test_case_301(self):
         str_0 = "Wrong declaration of float"
@@ -3738,7 +3436,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_4.skip_non_tokens()
         lexer_3.next_token()
 
-
     def test_case_302(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -3752,7 +3449,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.next_token()
 
-
     def test_case_303(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -3761,7 +3457,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.skip_singleline_comment()
-
 
     def test_case_304(self):
         tuple_0 = ()
@@ -3776,7 +3471,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_305(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -3786,7 +3480,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
         lexer_1.skip_non_tokens()
-
 
     def test_case_306(self):
         str_0 = "Wrong declaration of float"
@@ -3803,7 +3496,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_0)
         lexer_3.skip_singleline_comment()
 
-
     def test_case_307(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -3816,7 +3508,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
         lexer_2.next_token()
-
 
     def test_case_308(self):
         tuple_0 = ()
@@ -3831,7 +3522,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.next_token()
 
-
     def test_case_309(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -3843,7 +3533,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
-
 
     def test_case_310(self):
         str_0 = "Wrong declaration of float"
@@ -3860,7 +3549,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_0)
         lexer_3.next_token()
 
-
     def test_case_311(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -3876,7 +3564,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.__repr__()
         lexer_1.skip_singleline_comment()
 
-
     def test_case_312(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -3891,14 +3578,12 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_1)
         lexer_3.peek()
 
-
     def test_case_313(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
         lexer_0.skip_whitespace()
         lexer_0.__repr__()
-
 
     def test_case_314(self):
         str_0 = "Wrong declaration of float"
@@ -3912,7 +3597,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
 
-
     def test_case_315(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -3925,7 +3609,6 @@ class TestEvaluator(unittest.TestCase):
         module_0.Lexer(tuple_0)
         lexer_1.skip_non_tokens()
 
-
     def test_case_316(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -3937,7 +3620,6 @@ class TestEvaluator(unittest.TestCase):
         str_2 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
-
 
     def test_case_317(self):
         str_0 = "Wrong declaration of float"
@@ -3953,7 +3635,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_318(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -3966,7 +3647,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_319(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -3974,7 +3654,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.next_token()
         lexer_0.skip_non_tokens()
         lexer_0.skip_singleline_comment()
-
 
     def test_case_320(self):
         str_0 = "Wrong declaration of float"
@@ -3987,7 +3666,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
-
 
     def test_case_321(self):
         str_0 = "Wrong declaration of float"
@@ -4002,7 +3680,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.skip_whitespace()
 
-
     def test_case_322(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -4015,7 +3692,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
 
-
     def test_case_323(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -4027,7 +3703,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
-
 
     def test_case_324(self):
         str_0 = "Wrong declaration of float"
@@ -4043,7 +3718,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_0)
         lexer_3.peek()
 
-
     def test_case_325(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -4056,7 +3730,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_1 = lexer_1.read_number()
         lexer_2 = module_0.Lexer(tuple_1)
         lexer_2.__repr__()
-
 
     def test_case_326(self):
         str_0 = "Wrong declaration of float"
@@ -4071,7 +3744,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.peek()
         lexer_2.__repr__()
 
-
     def test_case_327(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -4079,7 +3751,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.skip_whitespace()
-
 
     def test_case_328(self):
         str_0 = "Wrong declaration of float"
@@ -4093,7 +3764,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_329(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -4106,7 +3776,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.skip_singleline_comment()
 
-
     def test_case_330(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -4116,7 +3785,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.skip_singleline_comment()
-
 
     def test_case_331(self):
         str_0 = "Wrong declaration of float"
@@ -4134,7 +3802,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.next_token()
         lexer_3.next_token()
 
-
     def test_case_332(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -4147,7 +3814,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.__repr__()
 
-
     def test_case_333(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -4159,7 +3825,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
-
 
     def test_case_334(self):
         str_0 = "Wrong declaration of float"
@@ -4174,7 +3839,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
 
-
     def test_case_335(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -4187,7 +3851,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.skip_non_tokens()
         lexer_1.__repr__()
 
-
     def test_case_336(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -4199,7 +3862,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.next_token()
-
 
     def test_case_337(self):
         str_0 = "Wrong declaration of float"
@@ -4217,7 +3879,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.peek()
         lexer_3.__repr__()
 
-
     def test_case_338(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -4231,7 +3892,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.__repr__()
 
-
     def test_case_339(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -4243,7 +3903,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.__repr__()
-
 
     def test_case_340(self):
         str_0 = "Wrong declaration of float"
@@ -4260,7 +3919,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.next_token()
         lexer_3.next_token()
 
-
     def test_case_341(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -4269,7 +3927,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.skip_whitespace()
-
 
     def test_case_342(self):
         str_0 = "Wrong declaration of float"
@@ -4285,7 +3942,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
 
-
     def test_case_343(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -4294,7 +3950,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.next_token()
-
 
     def test_case_344(self):
         str_0 = "Wrong declaration of float"
@@ -4307,7 +3962,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.next_token()
-
 
     def test_case_345(self):
         str_0 = "Wrong declaration of float"
@@ -4322,12 +3976,10 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.peek()
         lexer_2.__repr__()
 
-
     def test_case_346(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.next_token()
-
 
     def test_case_347(self):
         str_0 = "Wrong declaration of float"
@@ -4343,7 +3995,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.next_token()
 
-
     def test_case_348(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -4352,7 +4003,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.skip_singleline_comment()
-
 
     def test_case_349(self):
         str_0 = "Wrong declaration of float"
@@ -4369,14 +4019,12 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_0)
         lexer_3.peek()
 
-
     def test_case_350(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         tuple_0 = lexer_0.read_number()
         lexer_1 = module_0.Lexer(tuple_0)
         lexer_1.__repr__()
-
 
     def test_case_351(self):
         str_0 = "Wrong declaration of float"
@@ -4387,7 +4035,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.read_number()
         lexer_0.next_token()
         lexer_0.skip_singleline_comment()
-
 
     def test_case_352(self):
         str_0 = "Wrong declaration of float"
@@ -4402,7 +4049,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.skip_singleline_comment()
 
-
     def test_case_353(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -4416,7 +4062,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.next_token()
 
-
     def test_case_354(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -4428,7 +4073,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
 
-
     def test_case_355(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -4439,7 +4083,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = lexer_1.read_number()
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.__repr__()
-
 
     def test_case_356(self):
         str_0 = "Wrong declaration of float"
@@ -4455,7 +4098,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_1)
         lexer_3.__repr__()
 
-
     def test_case_357(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -4467,7 +4109,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.next_token()
         lexer_2.next_token()
-
 
     def test_case_358(self):
         str_0 = "Wrong declaration of float"
@@ -4481,7 +4122,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
 
-
     def test_case_359(self):
         str_0 = "ahj)"
         lexer_0 = module_0.Lexer(str_0)
@@ -4494,14 +4134,12 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_0.__repr__()
 
-
     def test_case_360(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
         lexer_0.next_token()
         lexer_0.__repr__()
-
 
     def test_case_361(self):
         tuple_0 = ()
@@ -4519,7 +4157,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.__repr__()
         lexer_0.skip_singleline_comment()
 
-
     def test_case_362(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -4534,7 +4171,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_2)
         lexer_3.skip_singleline_comment()
 
-
     def test_case_363(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -4546,7 +4182,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         tuple_0 = ()
         module_0.Lexer(tuple_0)
-
 
     def test_case_364(self):
         str_0 = "Wrong declaration of float"
@@ -4563,7 +4198,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_0)
         lexer_3.peek()
 
-
     def test_case_365(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -4578,7 +4212,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_1)
         lexer_3.__repr__()
 
-
     def test_case_366(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -4592,7 +4225,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_367(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -4601,7 +4233,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.next_token()
-
 
     def test_case_368(self):
         str_0 = "Wrong declaration of float"
@@ -4618,7 +4249,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_2)
         lexer_3.__repr__()
 
-
     def test_case_369(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -4632,7 +4262,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
 
-
     def test_case_370(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -4645,7 +4274,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_1 = ()
         lexer_2 = module_0.Lexer(tuple_1)
         lexer_2.__repr__()
-
 
     def test_case_371(self):
         str_0 = "Wrong declaration of float"
@@ -4661,7 +4289,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_372(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -4674,7 +4301,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_1 = lexer_1.read_number()
         lexer_2 = module_0.Lexer(tuple_1)
         lexer_2.__repr__()
-
 
     def test_case_373(self):
         str_0 = "Wrong declaration of float"
@@ -4692,7 +4318,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.skip_non_tokens()
         lexer_1.skip_singleline_comment()
 
-
     def test_case_374(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -4704,7 +4329,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
-
 
     def test_case_375(self):
         str_0 = "Wrong declaration of float"
@@ -4719,7 +4343,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_376(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -4727,7 +4350,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.skip_whitespace()
         lexer_0.__repr__()
         lexer_0.skip_singleline_comment()
-
 
     def test_case_377(self):
         str_0 = "Wrong declaration of float"
@@ -4743,7 +4365,6 @@ class TestEvaluator(unittest.TestCase):
         str_3 = "Wrong declaration of float"
         lexer_3 = module_0.Lexer(str_3)
         lexer_3.__repr__()
-
 
     def test_case_378(self):
         str_0 = "Wrong declaration of float"
@@ -4763,7 +4384,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_4 = module_0.Lexer(tuple_0)
         lexer_4.peek()
 
-
     def test_case_379(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -4775,7 +4395,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_1 = ()
         lexer_2 = module_0.Lexer(tuple_1)
         lexer_2.peek()
-
 
     def test_case_380(self):
         tuple_0 = ()
@@ -4792,7 +4411,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_1)
         lexer_3.peek()
 
-
     def test_case_381(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -4807,7 +4425,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_1)
         lexer_3.peek()
 
-
     def test_case_382(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -4819,7 +4436,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.next_token()
-
 
     def test_case_383(self):
         str_0 = "Wrong declaration of float"
@@ -4837,7 +4453,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_2)
         lexer_3.skip_singleline_comment()
 
-
     def test_case_384(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -4849,7 +4464,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         tuple_0 = ()
         module_0.Lexer(tuple_0)
-
 
     def test_case_385(self):
         str_0 = "Wrong declaration of float"
@@ -4866,7 +4480,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.next_token()
         lexer_0.__repr__()
 
-
     def test_case_386(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -4878,7 +4491,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
-
 
     def test_case_387(self):
         tuple_0 = ()
@@ -4894,7 +4506,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_1)
         lexer_3.__repr__()
 
-
     def test_case_388(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -4907,7 +4518,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
 
-
     def test_case_389(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -4915,7 +4525,6 @@ class TestEvaluator(unittest.TestCase):
         str_0 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_0)
         lexer_1.read_number()
-
 
     def test_case_390(self):
         tuple_0 = ()
@@ -4929,7 +4538,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
 
-
     def test_case_391(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -4939,7 +4547,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         lexer_1 = module_0.Lexer(tuple_0)
         lexer_1.__repr__()
-
 
     def test_case_392(self):
         str_0 = "Wrong declaration of float"
@@ -4955,7 +4562,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_0)
         lexer_3.peek()
 
-
     def test_case_393(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -4967,7 +4573,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.next_token()
-
 
     def test_case_394(self):
         tuple_0 = ()
@@ -4985,7 +4590,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.next_token()
         lexer_3.next_token()
 
-
     def test_case_395(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5000,7 +4604,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.skip_singleline_comment()
         lexer_2.skip_non_tokens()
 
-
     def test_case_396(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5014,7 +4617,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
 
-
     def test_case_397(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5027,7 +4629,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
 
-
     def test_case_398(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5036,7 +4637,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.read_number()
         lexer_0.next_token()
-
 
     def test_case_399(self):
         str_0 = "Wrong declaration of float"
@@ -5051,7 +4651,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.peek()
         lexer_2.__repr__()
 
-
     def test_case_400(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5061,7 +4660,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
-
 
     def test_case_401(self):
         str_0 = "Wrong declaration of float"
@@ -5075,7 +4673,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
 
-
     def test_case_402(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5087,7 +4684,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.next_token()
         lexer_2.next_token()
-
 
     def test_case_403(self):
         str_0 = "Wrong declaration of float"
@@ -5102,7 +4698,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_404(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5110,7 +4705,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.read_number()
         lexer_0.skip_singleline_comment()
-
 
     def test_case_405(self):
         str_0 = "Wrong declaration of float"
@@ -5126,7 +4720,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_406(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5135,7 +4728,6 @@ class TestEvaluator(unittest.TestCase):
         module_0.Lexer(tuple_0)
         lexer_0.skip_non_tokens()
         lexer_0.__repr__()
-
 
     def test_case_407(self):
         tuple_0 = ()
@@ -5149,7 +4741,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
         lexer_2.next_token()
-
 
     def test_case_408(self):
         str_0 = "Wrong declaration of float"
@@ -5165,7 +4756,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_409(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5180,7 +4770,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.__repr__()
         lexer_1.skip_singleline_comment()
 
-
     def test_case_410(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5193,7 +4782,6 @@ class TestEvaluator(unittest.TestCase):
         str_2 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
-
 
     def test_case_411(self):
         str_0 = "Wrong declaration of float"
@@ -5212,7 +4800,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_4 = module_0.Lexer(str_4)
         lexer_4.skip_non_tokens()
 
-
     def test_case_412(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5220,7 +4807,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
-
 
     def test_case_413(self):
         tuple_0 = ()
@@ -5235,7 +4821,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_1)
         lexer_3.next_token()
         lexer_3.next_token()
-
 
     def test_case_414(self):
         str_0 = "Wrong declaration of float"
@@ -5252,7 +4837,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.__repr__()
         lexer_1.peek()
 
-
     def test_case_415(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5268,7 +4852,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_3)
         lexer_3.skip_singleline_comment()
 
-
     def test_case_416(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5276,12 +4859,10 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(tuple_0)
         lexer_1.__repr__()
 
-
     def test_case_417(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
         lexer_0.__repr__()
-
 
     def test_case_418(self):
         str_0 = "Wrong declaration of float"
@@ -5289,7 +4870,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.read_number()
         lexer_0.next_token()
         lexer_0.__repr__()
-
 
     def test_case_419(self):
         tuple_0 = ()
@@ -5299,7 +4879,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.read_number()
         lexer_0.next_token()
         lexer_0.skip_non_tokens()
-
 
     def test_case_420(self):
         tuple_0 = ()
@@ -5317,7 +4896,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_2)
         lexer_3.skip_singleline_comment()
 
-
     def test_case_421(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -5329,7 +4907,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.read_number()
         lexer_1.next_token()
-
 
     def test_case_422(self):
         tuple_0 = ()
@@ -5344,7 +4921,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.next_token()
 
-
     def test_case_423(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5358,7 +4934,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_2)
         lexer_3.peek()
 
-
     def test_case_424(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5368,7 +4943,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.next_token()
-
 
     def test_case_425(self):
         str_0 = "Wrong declaration of float"
@@ -5382,7 +4956,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
         lexer_2.skip_whitespace()
-
 
     def test_case_426(self):
         str_0 = "Wrong declaration of float"
@@ -5398,13 +4971,11 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_1)
         lexer_3.peek()
 
-
     def test_case_427(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
         lexer_0.skip_non_tokens()
-
 
     def test_case_428(self):
         str_0 = "Wrong declaration of float"
@@ -5417,7 +4988,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_0.skip_singleline_comment()
 
-
     def test_case_429(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5429,7 +4999,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.peek()
         lexer_1.__repr__()
 
-
     def test_case_430(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -5439,7 +5008,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.next_token()
         lexer_0.skip_non_tokens()
         lexer_0.__repr__()
-
 
     def test_case_431(self):
         str_0 = "Wrong declaration of float"
@@ -5451,7 +5019,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
         lexer_2.next_token()
-
 
     def test_case_432(self):
         str_0 = "Wrong declaration of float"
@@ -5466,7 +5033,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_433(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5476,7 +5042,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
         lexer_1.peek()
-
 
     def test_case_434(self):
         str_0 = "Wrong declaration of float"
@@ -5489,7 +5054,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.next_token()
 
-
     def test_case_435(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5500,7 +5064,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(tuple_0)
         lexer_1.__repr__()
 
-
     def test_case_436(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5510,7 +5073,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         lexer_1 = module_0.Lexer(tuple_0)
         lexer_1.__repr__()
-
 
     def test_case_437(self):
         str_0 = "Wrong declaration of float"
@@ -5525,7 +5087,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.skip_singleline_comment()
 
-
     def test_case_438(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5533,7 +5094,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         lexer_1 = module_0.Lexer(tuple_0)
         lexer_1.skip_whitespace()
-
 
     def test_case_439(self):
         str_0 = "ahj)"
@@ -5546,7 +5106,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.read_number()
         lexer_0.skip_singleline_comment()
 
-
     def test_case_440(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5556,7 +5115,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.__repr__()
         tuple_0 = ()
         module_0.Lexer(tuple_0)
-
 
     def test_case_441(self):
         tuple_0 = ()
@@ -5572,7 +5130,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_442(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5581,13 +5138,11 @@ class TestEvaluator(unittest.TestCase):
         module_0.Lexer(tuple_0)
         lexer_0.__repr__()
 
-
     def test_case_443(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
         lexer_0.peek()
         lexer_0.__repr__()
-
 
     def test_case_444(self):
         str_0 = "Wrong declaration of float"
@@ -5595,7 +5150,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.read_number()
         lexer_0.__repr__()
         lexer_0.skip_non_tokens()
-
 
     def test_case_445(self):
         str_0 = "Wrong declaration of float"
@@ -5606,7 +5160,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.read_number()
         lexer_0.next_token()
 
-
     def test_case_446(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5614,7 +5167,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.next_token()
         lexer_0.skip_non_tokens()
         lexer_0.skip_singleline_comment()
-
 
     def test_case_447(self):
         str_0 = "Wrong declaration of float"
@@ -5626,7 +5178,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.next_token()
         tuple_0 = ()
         module_0.Lexer(tuple_0)
-
 
     def test_case_448(self):
         str_0 = "Wrong declaration of float"
@@ -5642,7 +5193,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_2)
         lexer_3.skip_singleline_comment()
 
-
     def test_case_449(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5654,7 +5204,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
-
 
     def test_case_450(self):
         str_0 = "Wrong declaration of float"
@@ -5669,7 +5218,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.read_number()
         lexer_1.__repr__()
 
-
     def test_case_451(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5681,7 +5229,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
-
 
     def test_case_452(self):
         str_0 = "Wrong declaration of float"
@@ -5697,7 +5244,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_453(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -5706,7 +5252,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_0)
         lexer_1.read_number()
         lexer_1.skip_whitespace()
-
 
     def test_case_454(self):
         tuple_0 = ()
@@ -5717,7 +5262,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.read_number()
         lexer_0.__repr__()
         lexer_1.skip_whitespace()
-
 
     def test_case_455(self):
         str_0 = "Wrong declaration of float"
@@ -5734,7 +5278,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_3)
         lexer_3.__repr__()
 
-
     def test_case_456(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5749,7 +5292,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_457(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -5762,7 +5304,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.read_number()
         lexer_1.next_token()
-
 
     def test_case_458(self):
         str_0 = "Wrong declaration of float"
@@ -5778,7 +5319,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_1)
         lexer_3.peek()
 
-
     def test_case_459(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5789,7 +5329,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.next_token()
         tuple_0 = ()
         module_0.Lexer(tuple_0)
-
 
     def test_case_460(self):
         str_0 = "Wrong declaration of float"
@@ -5806,7 +5345,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_3)
         lexer_3.skip_singleline_comment()
 
-
     def test_case_461(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5820,7 +5358,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_462(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5833,7 +5370,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.next_token()
 
-
     def test_case_463(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5842,7 +5378,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.next_token()
-
 
     def test_case_464(self):
         str_0 = "Wrong declaration of float"
@@ -5857,7 +5392,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.skip_non_tokens()
         lexer_2.skip_singleline_comment()
 
-
     def test_case_465(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5871,7 +5405,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_1 = ()
         module_0.Lexer(tuple_1)
 
-
     def test_case_466(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5880,7 +5413,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         lexer_1 = module_0.Lexer(tuple_0)
         lexer_1.peek()
-
 
     def test_case_467(self):
         str_0 = "Wrong declaration of float"
@@ -5895,7 +5427,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.__repr__()
 
-
     def test_case_468(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5907,7 +5438,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
-
 
     def test_case_469(self):
         str_0 = "Wrong declaration of float"
@@ -5924,13 +5454,11 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_2)
         lexer_3.skip_singleline_comment()
 
-
     def test_case_470(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.next_token()
         lexer_0.next_token()
-
 
     def test_case_471(self):
         str_0 = "Wrong declaration of float"
@@ -5946,7 +5474,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_472(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -5957,7 +5484,6 @@ class TestEvaluator(unittest.TestCase):
         str_2 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.next_token()
-
 
     def test_case_473(self):
         str_0 = "Wrong declaration of float"
@@ -5972,7 +5498,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.skip_singleline_comment()
 
-
     def test_case_474(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -5982,11 +5507,9 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.next_token()
         lexer_0.skip_non_tokens()
 
-
     def test_case_475(self):
         str_0 = "hoTi>5ql*|2q8j'"
         module_0.Lexer(str_0)
-
 
     def test_case_476(self):
         tuple_0 = ()
@@ -6001,7 +5524,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_477(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -6015,7 +5537,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_1 = lexer_2.read_number()
         lexer_3 = module_0.Lexer(tuple_1)
         lexer_3.__repr__()
-
 
     def test_case_478(self):
         str_0 = "Wrong declaration of float"
@@ -6032,7 +5553,6 @@ class TestEvaluator(unittest.TestCase):
         str_2 = "Wrong declaration of float"
         lexer_3 = module_0.Lexer(str_2)
         lexer_3.skip_singleline_comment()
-
 
     def test_case_479(self):
         str_0 = "Wrong declaration of float"
@@ -6051,7 +5571,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_4 = module_0.Lexer(tuple_2)
         lexer_4.next_token()
 
-
     def test_case_480(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -6063,7 +5582,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
         lexer_1.peek()
-
 
     def test_case_481(self):
         tuple_0 = ()
@@ -6077,7 +5595,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
 
-
     def test_case_482(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -6087,7 +5604,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.skip_singleline_comment()
-
 
     def test_case_483(self):
         str_0 = "Wrong declaration of float"
@@ -6105,7 +5621,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.next_token()
         lexer_3.next_token()
 
-
     def test_case_484(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -6118,7 +5633,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.__repr__()
         lexer_2.next_token()
 
-
     def test_case_485(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -6130,7 +5644,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
-
 
     def test_case_486(self):
         str_0 = "Wrong declaration of float"
@@ -6145,7 +5658,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
 
-
     def test_case_487(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -6158,7 +5670,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
-
 
     def test_case_488(self):
         tuple_0 = ()
@@ -6173,7 +5684,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.next_token()
 
-
     def test_case_489(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -6186,7 +5696,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
         lexer_2.next_token()
-
 
     def test_case_490(self):
         str_0 = "Wrong declaration of float"
@@ -6204,7 +5713,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_2)
         lexer_3.skip_singleline_comment()
 
-
     def test_case_491(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -6218,7 +5726,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_492(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -6231,7 +5738,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
 
-
     def test_case_493(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -6243,7 +5749,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
 
-
     def test_case_494(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -6253,7 +5758,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = lexer_1.read_number()
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.__repr__()
-
 
     def test_case_495(self):
         str_0 = "Wrong declaration of float"
@@ -6265,7 +5769,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.next_token()
         lexer_0.skip_singleline_comment()
-
 
     def test_case_496(self):
         str_0 = "Wrong declaration of float"
@@ -6279,7 +5782,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.next_token()
 
-
     def test_case_497(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -6290,7 +5792,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
-
 
     def test_case_498(self):
         tuple_0 = ()
@@ -6303,7 +5804,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.skip_singleline_comment()
-
 
     def test_case_499(self):
         str_0 = "Wrong declaration of float"
@@ -6319,13 +5819,11 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.next_token()
 
-
     def test_case_500(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.next_token()
         lexer_0.next_token()
-
 
     def test_case_501(self):
         str_0 = "Wrong declaration of float"
@@ -6340,13 +5838,11 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.next_token()
 
-
     def test_case_502(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
         lexer_0.peek()
         lexer_0.__repr__()
-
 
     def test_case_503(self):
         str_0 = "Wrong declaration of float"
@@ -6359,7 +5855,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         tuple_0 = ()
         module_0.Lexer(tuple_0)
-
 
     def test_case_504(self):
         tuple_0 = ()
@@ -6374,7 +5869,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_505(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -6382,7 +5876,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_1 = ()
         lexer_1 = module_0.Lexer(tuple_1)
         lexer_1.peek()
-
 
     def test_case_506(self):
         tuple_0 = ()
@@ -6395,12 +5888,10 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.skip_non_tokens()
         lexer_1.skip_singleline_comment()
 
-
     def test_case_507(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.next_token()
-
 
     def test_case_508(self):
         str_0 = "ahj)"
@@ -6409,7 +5900,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_0.__repr__()
-
 
     def test_case_509(self):
         str_0 = "Wrong declaration of float"
@@ -6423,7 +5913,6 @@ class TestEvaluator(unittest.TestCase):
         str_2 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
-
 
     def test_case_510(self):
         str_0 = "Wrong declaration of float"
@@ -6443,7 +5932,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_4 = module_0.Lexer(tuple_0)
         lexer_4.peek()
 
-
     def test_case_511(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -6459,7 +5947,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_1)
         lexer_3.__repr__()
 
-
     def test_case_512(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -6467,7 +5954,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
         lexer_0.next_token()
-
 
     def test_case_513(self):
         str_0 = "Wrong declaration of float"
@@ -6483,7 +5969,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_514(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -6496,7 +5981,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
         lexer_2.__repr__()
-
 
     def test_case_515(self):
         tuple_0 = ()
@@ -6512,7 +5996,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_1.skip_singleline_comment()
 
-
     def test_case_516(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -6520,7 +6003,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.read_number()
         lexer_0.skip_singleline_comment()
-
 
     def test_case_517(self):
         str_0 = "Wrong declaration of float"
@@ -6538,7 +6020,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_0)
         lexer_3.peek()
 
-
     def test_case_518(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -6551,7 +6032,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
-
 
     def test_case_519(self):
         tuple_0 = ()
@@ -6567,7 +6047,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_520(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -6581,7 +6060,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_0.next_token()
 
-
     def test_case_521(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -6593,7 +6071,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
         lexer_2.next_token()
-
 
     def test_case_522(self):
         tuple_0 = ()
@@ -6608,7 +6085,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.next_token()
 
-
     def test_case_523(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -6621,7 +6097,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
         lexer_2.next_token()
-
 
     def test_case_524(self):
         str_0 = "Wrong declaration of float"
@@ -6639,7 +6114,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_0)
         lexer_3.peek()
 
-
     def test_case_525(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -6653,7 +6127,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_1 = ()
         module_0.Lexer(tuple_1)
 
-
     def test_case_526(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -6665,7 +6138,6 @@ class TestEvaluator(unittest.TestCase):
         str_2 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.skip_singleline_comment()
-
 
     def test_case_527(self):
         str_0 = "Wrong declaration of float"
@@ -6685,7 +6157,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_4 = module_0.Lexer(str_3)
         lexer_4.skip_singleline_comment()
 
-
     def test_case_528(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -6699,7 +6170,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_0)
         lexer_3.next_token()
         lexer_2.next_token()
-
 
     def test_case_529(self):
         str_0 = "Wrong declaration of float"
@@ -6716,7 +6186,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.next_token()
         lexer_3.skip_non_tokens()
 
-
     def test_case_530(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -6727,7 +6196,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
         lexer_1.skip_singleline_comment()
-
 
     def test_case_531(self):
         str_0 = "ahj)"
@@ -6744,7 +6212,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.next_token()
         lexer_3.next_token()
 
-
     def test_case_532(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -6759,13 +6226,11 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_533(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
         lexer_0.next_token()
-
 
     def test_case_534(self):
         tuple_0 = ()
@@ -6776,7 +6241,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.read_number()
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
-
 
     def test_case_535(self):
         str_0 = "Wrong declaration of float"
@@ -6790,7 +6254,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_1 = ()
         module_0.Lexer(tuple_1)
 
-
     def test_case_536(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -6803,7 +6266,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.next_token()
 
-
     def test_case_537(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -6813,7 +6275,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.next_token()
         lexer_0.skip_non_tokens()
         lexer_0.__repr__()
-
 
     def test_case_538(self):
         tuple_0 = ()
@@ -6828,7 +6289,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.read_number()
 
-
     def test_case_539(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -6841,7 +6301,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
 
-
     def test_case_540(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -6850,7 +6309,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.read_number()
         lexer_0.next_token()
-
 
     def test_case_541(self):
         str_0 = "Wrong declaration of float"
@@ -6865,7 +6323,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
 
-
     def test_case_542(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -6875,7 +6332,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.peek()
-
 
     def test_case_543(self):
         str_0 = "Wrong declaration of float"
@@ -6888,7 +6344,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.__repr__()
         lexer_0.skip_non_tokens()
 
-
     def test_case_544(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -6896,7 +6351,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
-
 
     def test_case_545(self):
         str_0 = "Wrong declaration of float"
@@ -6911,14 +6365,12 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
 
-
     def test_case_546(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
         lexer_0.next_token()
         lexer_0.__repr__()
-
 
     def test_case_547(self):
         tuple_0 = ()
@@ -6935,12 +6387,10 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.next_token()
         lexer_3.skip_non_tokens()
 
-
     def test_case_548(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.next_token()
-
 
     def test_case_549(self):
         str_0 = "Wrong declaration of float"
@@ -6950,7 +6400,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.skip_non_tokens()
         lexer_0.skip_singleline_comment()
         lexer_0.__repr__()
-
 
     def test_case_550(self):
         str_0 = "Wrong declaration of float"
@@ -6971,7 +6420,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_4.peek()
         lexer_2.next_token()
 
-
     def test_case_551(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -6987,7 +6435,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_3)
         lexer_3.__repr__()
 
-
     def test_case_552(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -7002,7 +6449,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_1)
         lexer_3.peek()
 
-
     def test_case_553(self):
         str_0 = "ahj)"
         lexer_0 = module_0.Lexer(str_0)
@@ -7016,7 +6462,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
 
-
     def test_case_554(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -7029,7 +6474,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.next_token()
 
-
     def test_case_555(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -7040,7 +6484,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.skip_non_tokens()
         lexer_1.peek()
-
 
     def test_case_556(self):
         str_0 = "Wrong declaration of float"
@@ -7055,7 +6498,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_1)
         lexer_2.peek()
 
-
     def test_case_557(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -7068,19 +6510,16 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.read_number()
 
-
     def test_case_558(self):
         str_0 = "ahj)"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.__repr__()
-
 
     def test_case_559(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
         lexer_0.next_token()
-
 
     def test_case_560(self):
         str_0 = "Wrong declaration of float"
@@ -7091,7 +6530,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(tuple_0)
         lexer_1.peek()
         lexer_1.__repr__()
-
 
     def test_case_561(self):
         tuple_0 = ()
@@ -7104,7 +6542,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
-
 
     def test_case_562(self):
         tuple_0 = ()
@@ -7120,7 +6557,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_1)
         lexer_3.__repr__()
 
-
     def test_case_563(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -7135,12 +6571,10 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.peek()
         lexer_2.skip_singleline_comment()
 
-
     def test_case_564(self):
         str_0 = "ahj)"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
-
 
     def test_case_565(self):
         tuple_0 = ()
@@ -7153,7 +6587,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
-
 
     def test_case_566(self):
         tuple_0 = ()
@@ -7168,7 +6601,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_1)
         lexer_2.__repr__()
 
-
     def test_case_567(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -7179,13 +6611,11 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.peek()
         lexer_1.__repr__()
 
-
     def test_case_568(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
         lexer_0.next_token()
-
 
     def test_case_569(self):
         str_0 = "Wrong declaration of float"
@@ -7202,7 +6632,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.peek()
         lexer_1.next_token()
 
-
     def test_case_570(self):
         str_0 = "ahj)"
         lexer_0 = module_0.Lexer(str_0)
@@ -7217,7 +6646,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_3)
         lexer_3.skip_singleline_comment()
 
-
     def test_case_571(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -7229,12 +6657,10 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
 
-
     def test_case_572(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.next_token()
-
 
     def test_case_573(self):
         str_0 = "Wrong declaration of float"
@@ -7243,7 +6669,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
-
 
     def test_case_574(self):
         str_0 = "Wrong declaration of float"
@@ -7254,7 +6679,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
 
-
     def test_case_575(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -7264,13 +6688,11 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
 
-
     def test_case_576(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
         lexer_0.__repr__()
-
 
     def test_case_577(self):
         str_0 = "Wrong declaration of float"
@@ -7280,7 +6702,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
-
 
     def test_case_578(self):
         str_0 = "Wrong declaration of float"
@@ -7292,7 +6713,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.__repr__()
         tuple_0 = ()
         module_0.Lexer(tuple_0)
-
 
     def test_case_579(self):
         str_0 = "Wrong declaration of float"
@@ -7307,11 +6727,9 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
 
-
     def test_case_580(self):
         bool_0 = False
         module_0.Lexer(bool_0)
-
 
     def test_case_581(self):
         str_0 = "Wrong declaration of float"
@@ -7324,7 +6742,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
 
-
     def test_case_582(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -7332,7 +6749,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
-
 
     def test_case_583(self):
         str_0 = "Wrong declaration of float"
@@ -7346,7 +6762,6 @@ class TestEvaluator(unittest.TestCase):
         str_2 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
-
 
     def test_case_584(self):
         str_0 = "Wrong declaration of float"
@@ -7362,7 +6777,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_585(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -7376,7 +6790,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.__repr__()
         tuple_0 = ()
         module_0.Lexer(tuple_0)
-
 
     def test_case_586(self):
         str_0 = "Wrong declaration of float"
@@ -7392,7 +6805,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_587(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -7404,7 +6816,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.__repr__()
 
-
     def test_case_588(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -7413,7 +6824,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.read_number()
         lexer_0.next_token()
         lexer_0.skip_non_tokens()
-
 
     def test_case_589(self):
         str_0 = "Wrong declaration of float"
@@ -7425,7 +6835,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.__repr__()
         tuple_0 = ()
         module_0.Lexer(tuple_0)
-
 
     def test_case_590(self):
         str_0 = "Wrong declaration of float"
@@ -7439,7 +6848,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
 
-
     def test_case_591(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -7450,7 +6858,6 @@ class TestEvaluator(unittest.TestCase):
         str_2 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.next_token()
-
 
     def test_case_592(self):
         str_0 = "Wrong declaration of float"
@@ -7464,7 +6871,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.next_token()
 
-
     def test_case_593(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -7473,7 +6879,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
         lexer_1.peek()
-
 
     def test_case_594(self):
         str_0 = "Wrong declaration of float"
@@ -7489,7 +6894,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_595(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -7500,7 +6904,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
-
 
     def test_case_596(self):
         tuple_0 = ()
@@ -7513,7 +6916,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
-
 
     def test_case_597(self):
         str_0 = "Wrong declaration of float"
@@ -7528,7 +6930,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_1 = ()
         module_0.Lexer(tuple_1)
 
-
     def test_case_598(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -7539,7 +6940,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
         lexer_2.next_token()
-
 
     def test_case_599(self):
         str_0 = "Wrong declaration of float"
@@ -7555,7 +6955,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_600(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -7568,7 +6967,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
 
-
     def test_case_601(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -7576,7 +6974,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
-
 
     def test_case_602(self):
         str_0 = "Wrong declaration of float"
@@ -7589,7 +6986,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
 
-
     def test_case_603(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -7597,7 +6993,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
-
 
     def test_case_604(self):
         str_0 = "Wrong declaration of float"
@@ -7611,7 +7006,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.next_token()
 
-
     def test_case_605(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -7620,7 +7014,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.read_number()
         lexer_0.next_token()
         lexer_0.skip_non_tokens()
-
 
     def test_case_606(self):
         tuple_0 = ()
@@ -7631,7 +7024,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.next_token()
         lexer_0.skip_non_tokens()
 
-
     def test_case_607(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -7640,7 +7032,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.__repr__()
         tuple_1 = ()
         module_0.Lexer(tuple_1)
-
 
     def test_case_608(self):
         tuple_0 = ()
@@ -7653,7 +7044,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
-
 
     def test_case_609(self):
         str_0 = "Wrong declaration of float"
@@ -7669,7 +7059,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_610(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -7678,7 +7067,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.read_number()
         lexer_0.next_token()
         lexer_0.skip_non_tokens()
-
 
     def test_case_611(self):
         str_0 = "Wrong declaration of float"
@@ -7692,7 +7080,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
-
 
     def test_case_612(self):
         str_0 = "Wrong declaration of float"
@@ -7708,11 +7095,9 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_613(self):
         none_type_0 = None
         module_0.Lexer(none_type_0)
-
 
     def test_case_614(self):
         str_0 = "Wrong declaration of float"
@@ -7726,7 +7111,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
-
 
     def test_case_615(self):
         str_0 = "Wrong declaration of float"
@@ -7742,7 +7126,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_616(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -7753,7 +7136,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.__repr__()
         lexer_1.peek()
 
-
     def test_case_617(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -7762,7 +7144,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.read_number()
         lexer_0.next_token()
         lexer_0.skip_non_tokens()
-
 
     def test_case_618(self):
         str_0 = "Wrong declaration of float"
@@ -7776,7 +7157,6 @@ class TestEvaluator(unittest.TestCase):
         str_2 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
-
 
     def test_case_619(self):
         str_0 = "Wrong declaration of float"
@@ -7792,7 +7172,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
 
-
     def test_case_620(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -7804,7 +7183,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
-
 
     def test_case_621(self):
         str_0 = "Wrong declaration of float"
@@ -7819,7 +7197,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_622(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -7833,7 +7210,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
 
-
     def test_case_623(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -7846,7 +7222,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_624(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -7858,7 +7233,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
-
 
     def test_case_625(self):
         str_0 = "Wrong declaration of float"
@@ -7875,7 +7249,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_2)
         lexer_3.__repr__()
 
-
     def test_case_626(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -7889,7 +7262,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_627(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -7902,7 +7274,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.__repr__()
-
 
     def test_case_628(self):
         str_0 = "Wrong declaration of float"
@@ -7918,7 +7289,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
 
-
     def test_case_629(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -7930,7 +7300,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
-
 
     def test_case_630(self):
         str_0 = "Wrong declaration of float"
@@ -7946,7 +7315,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_631(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -7961,7 +7329,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
 
-
     def test_case_632(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -7971,7 +7338,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.__repr__()
         lexer_1.peek()
 
-
     def test_case_633(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -7979,7 +7345,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         lexer_1 = module_0.Lexer(tuple_0)
         lexer_1.peek()
-
 
     def test_case_634(self):
         str_0 = "Wrong declaration of float"
@@ -7996,7 +7361,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.next_token()
         lexer_3.next_token()
 
-
     def test_case_635(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -8011,7 +7375,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_1)
         lexer_3.peek()
 
-
     def test_case_636(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -8023,7 +7386,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
 
-
     def test_case_637(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -8032,7 +7394,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.read_number()
         lexer_0.next_token()
         lexer_0.skip_non_tokens()
-
 
     def test_case_638(self):
         str_0 = "Wrong declaration of float"
@@ -8044,7 +7405,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
-
 
     def test_case_639(self):
         str_0 = "Wrong declaration of float"
@@ -8059,7 +7419,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
 
-
     def test_case_640(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -8070,7 +7429,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
-
 
     def test_case_641(self):
         str_0 = "Wrong declaration of float"
@@ -8085,7 +7443,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_1 = ()
         module_0.Lexer(tuple_1)
 
-
     def test_case_642(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -8098,7 +7455,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
 
-
     def test_case_643(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -8109,7 +7465,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(tuple_0)
         lexer_1.peek()
 
-
     def test_case_644(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -8118,7 +7473,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.read_number()
         lexer_0.next_token()
         lexer_0.skip_non_tokens()
-
 
     def test_case_645(self):
         str_0 = "Wrong declaration of float"
@@ -8131,7 +7485,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
 
-
     def test_case_646(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -8143,7 +7496,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
-
 
     def test_case_647(self):
         str_0 = "Wrong declaration of float"
@@ -8159,7 +7511,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_648(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -8173,7 +7524,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.peek()
         lexer_2.__repr__()
 
-
     def test_case_649(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -8183,14 +7533,12 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(tuple_0)
         lexer_1.peek()
 
-
     def test_case_650(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
         lexer_0.__repr__()
         lexer_0.peek()
-
 
     def test_case_651(self):
         str_0 = "Wrong declaration of float"
@@ -8203,7 +7551,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.peek()
-
 
     def test_case_652(self):
         str_0 = "Wrong declaration of float"
@@ -8218,7 +7565,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_653(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -8231,7 +7577,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
         lexer_2.__repr__()
-
 
     def test_case_654(self):
         tuple_0 = ()
@@ -8246,7 +7591,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_1)
         lexer_2.__repr__()
 
-
     def test_case_655(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -8256,7 +7600,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.peek()
-
 
     def test_case_656(self):
         str_0 = "Wrong declaration of float"
@@ -8272,11 +7615,9 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_657(self):
         int_0 = -2579
         module_0.Lexer(int_0)
-
 
     def test_case_658(self):
         str_0 = "Wrong declaration of float"
@@ -8293,7 +7634,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_0)
         lexer_3.peek()
 
-
     def test_case_659(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -8308,7 +7648,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_660(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -8321,7 +7660,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
 
-
     def test_case_661(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -8331,7 +7669,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
         lexer_1.skip_non_tokens()
-
 
     def test_case_662(self):
         tuple_0 = ()
@@ -8344,7 +7681,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
-
 
     def test_case_663(self):
         str_0 = "Wrong declaration of float"
@@ -8361,7 +7697,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.next_token()
         lexer_3.skip_non_tokens()
 
-
     def test_case_664(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -8376,7 +7711,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_1)
         lexer_3.peek()
 
-
     def test_case_665(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -8385,7 +7719,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.read_number()
         lexer_0.next_token()
         lexer_0.skip_non_tokens()
-
 
     def test_case_666(self):
         str_0 = "Wrong declaration of float"
@@ -8399,7 +7732,6 @@ class TestEvaluator(unittest.TestCase):
         str_2 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.skip_singleline_comment()
-
 
     def test_case_667(self):
         str_0 = "Wrong declaration of float"
@@ -8416,7 +7748,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_2)
         lexer_3.__repr__()
 
-
     def test_case_668(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -8430,7 +7761,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.next_token()
 
-
     def test_case_669(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -8439,7 +7769,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.next_token()
-
 
     def test_case_670(self):
         tuple_0 = ()
@@ -8454,7 +7783,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_671(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -8467,7 +7795,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
 
-
     def test_case_672(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -8479,7 +7806,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         tuple_0 = ()
         module_0.Lexer(tuple_0)
-
 
     def test_case_673(self):
         str_0 = "Wrong declaration of float"
@@ -8495,7 +7821,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.next_token()
 
-
     def test_case_674(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -8507,7 +7832,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
-
 
     def test_case_675(self):
         str_0 = "Wrong declaration of float"
@@ -8524,7 +7848,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_0)
         lexer_3.peek()
 
-
     def test_case_676(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -8540,7 +7863,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.next_token()
         lexer_3.next_token()
 
-
     def test_case_677(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -8552,7 +7874,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.read_number()
-
 
     def test_case_678(self):
         str_0 = "Wrong declaration of float"
@@ -8569,7 +7890,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_3)
         lexer_3.skip_singleline_comment()
 
-
     def test_case_679(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -8583,7 +7903,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.next_token()
 
-
     def test_case_680(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -8596,7 +7915,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
         lexer_2.__repr__()
-
 
     def test_case_681(self):
         str_0 = "Wrong declaration of float"
@@ -8614,7 +7932,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.peek()
         lexer_3.__repr__()
 
-
     def test_case_682(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -8627,7 +7944,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
 
-
     def test_case_683(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -8639,7 +7955,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
 
-
     def test_case_684(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -8648,7 +7963,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.read_number()
         lexer_0.next_token()
         lexer_0.skip_non_tokens()
-
 
     def test_case_685(self):
         str_0 = "Wrong declaration of float"
@@ -8660,7 +7974,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.next_token()
-
 
     def test_case_686(self):
         str_0 = "Wrong declaration of float"
@@ -8678,7 +7991,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.next_token()
         lexer_3.next_token()
 
-
     def test_case_687(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -8693,7 +8005,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_1)
         lexer_3.__repr__()
 
-
     def test_case_688(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -8702,7 +8013,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.read_number()
         lexer_0.next_token()
-
 
     def test_case_689(self):
         str_0 = "Wrong declaration of float"
@@ -8717,7 +8027,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.peek()
         lexer_2.__repr__()
 
-
     def test_case_690(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -8727,7 +8036,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(tuple_0)
         lexer_1.peek()
         lexer_1.__repr__()
-
 
     def test_case_691(self):
         str_0 = "Wrong declaration of float"
@@ -8740,7 +8048,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.next_token()
 
-
     def test_case_692(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -8750,7 +8057,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.read_number()
         lexer_1.__repr__()
         lexer_1.peek()
-
 
     def test_case_693(self):
         str_0 = "Wrong declaration of float"
@@ -8763,7 +8069,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.next_token()
         lexer_2.__repr__()
-
 
     def test_case_694(self):
         str_0 = "Wrong declaration of float"
@@ -8781,7 +8086,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.next_token()
         lexer_3.skip_non_tokens()
 
-
     def test_case_695(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -8797,7 +8101,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_3)
         lexer_3.skip_singleline_comment()
 
-
     def test_case_696(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -8810,7 +8113,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
-
 
     def test_case_697(self):
         tuple_0 = ()
@@ -8825,7 +8127,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_1)
         lexer_2.__repr__()
 
-
     def test_case_698(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -8838,7 +8139,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
         lexer_2.next_token()
-
 
     def test_case_699(self):
         str_0 = "Wrong declaration of float"
@@ -8856,12 +8156,10 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_2)
         lexer_3.skip_singleline_comment()
 
-
     def test_case_700(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
-
 
     def test_case_701(self):
         str_0 = "Wrong declaration of float"
@@ -8872,7 +8170,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.next_token()
-
 
     def test_case_702(self):
         tuple_0 = ()
@@ -8885,7 +8182,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
-
 
     def test_case_703(self):
         str_0 = "Wrong declaration of float"
@@ -8903,7 +8199,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_4 = module_0.Lexer(str_2)
         lexer_4.skip_singleline_comment()
 
-
     def test_case_704(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -8916,7 +8211,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
         lexer_2.next_token()
-
 
     def test_case_705(self):
         str_0 = "Wrong declaration of float"
@@ -8931,7 +8225,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
 
-
     def test_case_706(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -8943,7 +8236,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.next_token()
-
 
     def test_case_707(self):
         str_0 = "Wrong declaration of float"
@@ -8958,7 +8250,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
 
-
     def test_case_708(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -8971,7 +8262,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.__repr__()
 
-
     def test_case_709(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -8980,7 +8270,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.skip_singleline_comment()
-
 
     def test_case_710(self):
         str_0 = "Wrong declaration of float"
@@ -8997,7 +8286,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.peek()
         lexer_3.__repr__()
 
-
     def test_case_711(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -9012,7 +8300,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_3)
         lexer_3.next_token()
         lexer_3.skip_non_tokens()
-
 
     def test_case_712(self):
         str_0 = "Wrong declaration of float"
@@ -9029,7 +8316,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_3)
         lexer_3.__repr__()
 
-
     def test_case_713(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -9039,14 +8325,12 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.read_number()
         lexer_0.next_token()
 
-
     def test_case_714(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
         lexer_0.skip_whitespace()
         lexer_0.__repr__()
-
 
     def test_case_715(self):
         str_0 = "Wrong declaration of float"
@@ -9056,7 +8340,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.next_token()
-
 
     def test_case_716(self):
         tuple_0 = ()
@@ -9069,7 +8352,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_1)
         lexer_2.peek()
 
-
     def test_case_717(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -9079,7 +8361,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         lexer_1 = module_0.Lexer(tuple_0)
         lexer_1.peek()
-
 
     def test_case_718(self):
         str_0 = "Wrong declaration of float"
@@ -9092,7 +8373,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
 
-
     def test_case_719(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -9102,7 +8382,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = lexer_1.read_number()
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.__repr__()
-
 
     def test_case_720(self):
         str_0 = "Wrong declaration of float"
@@ -9117,7 +8396,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_721(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -9128,7 +8406,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
-
 
     def test_case_722(self):
         tuple_0 = ()
@@ -9142,7 +8419,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.__repr__()
 
-
     def test_case_723(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -9152,7 +8428,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         lexer_1 = module_0.Lexer(tuple_0)
         lexer_1.peek()
-
 
     def test_case_724(self):
         str_0 = "Wrong declaration of float"
@@ -9168,7 +8443,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.next_token()
 
-
     def test_case_725(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -9181,14 +8455,12 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_726(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
         lexer_0.skip_whitespace()
         lexer_0.__repr__()
-
 
     def test_case_727(self):
         str_0 = "Wrong declaration of float"
@@ -9200,7 +8472,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.next_token()
-
 
     def test_case_728(self):
         str_0 = "Wrong declaration of float"
@@ -9217,7 +8488,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.next_token()
         lexer_3.next_token()
 
-
     def test_case_729(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -9225,19 +8495,16 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(tuple_0)
         lexer_1.__repr__()
 
-
     def test_case_730(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.read_number()
         lexer_0.__repr__()
 
-
     def test_case_731(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
         lexer_0.__repr__()
-
 
     def test_case_732(self):
         str_0 = "Wrong declaration of float"
@@ -9256,7 +8523,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_4 = module_0.Lexer(tuple_0)
         lexer_4.peek()
 
-
     def test_case_733(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -9269,7 +8535,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
         lexer_2.__repr__()
-
 
     def test_case_734(self):
         tuple_0 = ()
@@ -9284,7 +8549,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.next_token()
 
-
     def test_case_735(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -9298,7 +8562,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_736(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -9309,7 +8572,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.read_number()
         tuple_0 = ()
         module_0.Lexer(tuple_0)
-
 
     def test_case_737(self):
         tuple_0 = ()
@@ -9326,7 +8588,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_2)
         lexer_3.__repr__()
 
-
     def test_case_738(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -9335,7 +8596,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.read_number()
         lexer_0.next_token()
         lexer_0.skip_non_tokens()
-
 
     def test_case_739(self):
         str_0 = "Wrong declaration of float"
@@ -9349,7 +8609,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
         lexer_2.__repr__()
-
 
     def test_case_740(self):
         str_0 = "Wrong declaration of float"
@@ -9365,7 +8624,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_1)
         lexer_3.__repr__()
 
-
     def test_case_741(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -9380,7 +8638,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
 
-
     def test_case_742(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -9392,7 +8649,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
         lexer_2.next_token()
-
 
     def test_case_743(self):
         str_0 = "Wrong declaration of float"
@@ -9409,7 +8665,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.next_token()
         lexer_3.next_token()
 
-
     def test_case_744(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -9424,7 +8679,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.next_token()
 
-
     def test_case_745(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -9435,7 +8689,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
-
 
     def test_case_746(self):
         str_0 = "Wrong declaration of float"
@@ -9450,7 +8703,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
 
-
     def test_case_747(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -9462,7 +8714,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.next_token()
 
-
     def test_case_748(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -9473,7 +8724,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.skip_non_tokens()
         lexer_0.__repr__()
 
-
     def test_case_749(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -9483,7 +8733,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
-
 
     def test_case_750(self):
         tuple_0 = ()
@@ -9500,7 +8749,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.next_token()
         lexer_3.skip_non_tokens()
 
-
     def test_case_751(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -9514,7 +8762,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_752(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -9522,7 +8769,6 @@ class TestEvaluator(unittest.TestCase):
         str_0 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_0)
         lexer_1.read_number()
-
 
     def test_case_753(self):
         str_0 = "Wrong declaration of float"
@@ -9540,7 +8786,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.peek()
         lexer_2.skip_singleline_comment()
 
-
     def test_case_754(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -9556,7 +8801,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.next_token()
         lexer_3.skip_non_tokens()
 
-
     def test_case_755(self):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
@@ -9570,12 +8814,10 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_1)
         lexer_2.__repr__()
 
-
     def test_case_756(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.skip_whitespace()
-
 
     def test_case_757(self):
         str_0 = "Wrong declaration of float"
@@ -9589,7 +8831,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
         lexer_2.__repr__()
-
 
     def test_case_758(self):
         str_0 = "Wrong declaration of float"
@@ -9605,7 +8846,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
 
-
     def test_case_759(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -9619,7 +8859,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_1)
         lexer_3.next_token()
         lexer_3.skip_non_tokens()
-
 
     def test_case_760(self):
         str_0 = "Wrong declaration of float"
@@ -9636,7 +8875,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.skip_non_tokens()
         lexer_3.skip_singleline_comment()
 
-
     def test_case_761(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -9649,7 +8887,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.__repr__()
         tuple_0 = ()
         module_0.Lexer(tuple_0)
-
 
     def test_case_762(self):
         str_0 = "Wrong declaration of float"
@@ -9664,7 +8901,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.peek()
         lexer_2.__repr__()
 
-
     def test_case_763(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -9677,7 +8913,6 @@ class TestEvaluator(unittest.TestCase):
         str_2 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
-
 
     def test_case_764(self):
         tuple_0 = ()
@@ -9692,14 +8927,12 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.next_token()
 
-
     def test_case_765(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         tuple_0 = lexer_0.read_number()
         lexer_1 = module_0.Lexer(tuple_0)
         lexer_1.__repr__()
-
 
     def test_case_766(self):
         tuple_0 = ()
@@ -9714,7 +8947,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_767(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -9727,7 +8959,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
-
 
     def test_case_768(self):
         str_0 = "Wrong declaration of float"
@@ -9742,7 +8973,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_1)
         lexer_2.__repr__()
 
-
     def test_case_769(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -9756,7 +8986,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_770(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -9766,7 +8995,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.read_number()
         lexer_0.__repr__()
         lexer_1.skip_whitespace()
-
 
     def test_case_771(self):
         tuple_0 = ()
@@ -9780,7 +9008,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_1)
         lexer_2.peek()
 
-
     def test_case_772(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -9791,7 +9018,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.next_token()
-
 
     def test_case_773(self):
         str_0 = "Wrong declaration of float"
@@ -9804,7 +9030,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.read_number()
-
 
     def test_case_774(self):
         str_0 = "Wrong declaration of float"
@@ -9821,7 +9046,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_0)
         lexer_3.peek()
 
-
     def test_case_775(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -9829,13 +9053,11 @@ class TestEvaluator(unittest.TestCase):
         lexer_0.__repr__()
         lexer_0.skip_non_tokens()
 
-
     def test_case_776(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.next_token()
         lexer_0.next_token()
-
 
     def test_case_777(self):
         str_0 = "Wrong declaration of float"
@@ -9850,7 +9072,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_778(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -9864,7 +9085,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_1)
         lexer_3.skip_whitespace()
 
-
     def test_case_779(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -9876,7 +9096,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
-
 
     def test_case_780(self):
         str_0 = "Wrong declaration of float"
@@ -9893,7 +9112,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_1)
         lexer_3.peek()
 
-
     def test_case_781(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -9903,7 +9121,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.read_number()
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
-
 
     def test_case_782(self):
         str_0 = "Wrong declaration of float"
@@ -9922,7 +9139,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_4 = module_0.Lexer(tuple_1)
         lexer_4.peek()
 
-
     def test_case_783(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -9939,13 +9155,11 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_0)
         lexer_3.peek()
 
-
     def test_case_784(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.next_token()
         lexer_0.next_token()
-
 
     def test_case_785(self):
         str_0 = "Wrong declaration of float"
@@ -9958,7 +9172,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(tuple_0)
         lexer_1.peek()
         lexer_1.__repr__()
-
 
     def test_case_786(self):
         tuple_0 = ()
@@ -9974,7 +9187,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.skip_non_tokens()
         lexer_2.skip_singleline_comment()
 
-
     def test_case_787(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -9984,7 +9196,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         lexer_1 = module_0.Lexer(tuple_0)
         lexer_1.__repr__()
-
 
     def test_case_788(self):
         str_0 = "Wrong declaration of float"
@@ -9999,7 +9210,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.skip_non_tokens()
         lexer_2.skip_singleline_comment()
 
-
     def test_case_789(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -10011,14 +9221,12 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(tuple_0)
         lexer_1.peek()
 
-
     def test_case_790(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         tuple_0 = lexer_0.read_number()
         lexer_1 = module_0.Lexer(tuple_0)
         lexer_1.__repr__()
-
 
     def test_case_791(self):
         str_0 = "Wrong declaration of float"
@@ -10032,7 +9240,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
         lexer_2.__repr__()
-
 
     def test_case_792(self):
         str_0 = "Wrong declaration of float"
@@ -10050,7 +9257,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.peek()
         lexer_3.__repr__()
 
-
     def test_case_793(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -10064,7 +9270,6 @@ class TestEvaluator(unittest.TestCase):
         str_2 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
-
 
     def test_case_794(self):
         tuple_0 = ()
@@ -10082,7 +9287,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_2)
         lexer_3.skip_singleline_comment()
 
-
     def test_case_795(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -10096,7 +9300,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_1)
         lexer_3.next_token()
 
-
     def test_case_796(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -10106,7 +9309,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.skip_whitespace()
-
 
     def test_case_797(self):
         tuple_0 = ()
@@ -10120,7 +9322,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.read_number()
         lexer_2.skip_whitespace()
 
-
     def test_case_798(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -10132,7 +9333,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
-
 
     def test_case_799(self):
         str_0 = "Wrong declaration of float"
@@ -10148,7 +9348,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.skip_non_tokens()
         lexer_2.skip_singleline_comment()
 
-
     def test_case_800(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -10163,11 +9362,9 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.next_token()
         lexer_3.skip_non_tokens()
 
-
     def test_case_801(self):
         int_0 = 20
         module_0.Lexer(int_0)
-
 
     def test_case_802(self):
         str_0 = "Wrong declaration of float"
@@ -10179,7 +9376,6 @@ class TestEvaluator(unittest.TestCase):
         str_2 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.__repr__()
-
 
     def test_case_803(self):
         str_0 = "Wrong declaration of float"
@@ -10196,12 +9392,10 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_1)
         lexer_3.__repr__()
 
-
     def test_case_804(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.next_token()
-
 
     def test_case_805(self):
         str_0 = "Wrong declaration of float"
@@ -10218,7 +9412,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_0)
         lexer_3.peek()
 
-
     def test_case_806(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -10233,7 +9426,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_1)
         lexer_3.read_number()
 
-
     def test_case_807(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -10246,7 +9438,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
-
 
     def test_case_808(self):
         str_0 = "Wrong declaration of float"
@@ -10265,13 +9456,11 @@ class TestEvaluator(unittest.TestCase):
         lexer_4 = module_0.Lexer(tuple_1)
         lexer_4.peek()
 
-
     def test_case_809(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.next_token()
         lexer_0.next_token()
-
 
     def test_case_810(self):
         str_0 = "Wrong declaration of float"
@@ -10289,7 +9478,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.peek()
         lexer_3.__repr__()
 
-
     def test_case_811(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -10301,7 +9489,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.next_token()
         lexer_2.next_token()
-
 
     def test_case_812(self):
         tuple_0 = ()
@@ -10315,7 +9502,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
 
-
     def test_case_813(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -10326,7 +9512,6 @@ class TestEvaluator(unittest.TestCase):
         str_2 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_2)
         lexer_2.skip_whitespace()
-
 
     def test_case_814(self):
         str_0 = "Wrong declaration of float"
@@ -10342,7 +9527,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_815(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -10355,7 +9539,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_1 = ()
         lexer_3 = module_0.Lexer(tuple_1)
         lexer_3.peek()
-
 
     def test_case_816(self):
         tuple_0 = ()
@@ -10370,7 +9553,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_817(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -10382,7 +9564,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_0)
         lexer_2.peek()
         lexer_2.__repr__()
-
 
     def test_case_818(self):
         str_0 = "Wrong declaration of float"
@@ -10399,13 +9580,11 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(tuple_0)
         lexer_3.peek()
 
-
     def test_case_819(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
         lexer_0.peek()
         lexer_0.__repr__()
-
 
     def test_case_820(self):
         str_0 = "Wrong declaration of float"
@@ -10419,13 +9598,11 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.peek()
         lexer_2.__repr__()
 
-
     def test_case_821(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.next_token()
         lexer_0.next_token()
-
 
     def test_case_822(self):
         str_0 = "Wrong declaration of float"
@@ -10443,7 +9620,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_2)
         lexer_3.skip_singleline_comment()
 
-
     def test_case_823(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -10455,7 +9631,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.next_token()
-
 
     def test_case_824(self):
         str_0 = "Wrong declaration of float"
@@ -10472,7 +9647,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_3)
         lexer_3.skip_singleline_comment()
 
-
     def test_case_825(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -10488,7 +9662,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3.next_token()
         lexer_3.skip_non_tokens()
 
-
     def test_case_826(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -10502,7 +9675,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.next_token()
 
-
     def test_case_827(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -10513,7 +9685,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.read_number()
-
 
     def test_case_828(self):
         str_0 = "Wrong declaration of float"
@@ -10526,7 +9697,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.__repr__()
         tuple_0 = ()
         module_0.Lexer(tuple_0)
-
 
     def test_case_829(self):
         str_0 = "Wrong declaration of float"
@@ -10542,7 +9712,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_1)
         lexer_2.peek()
 
-
     def test_case_830(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -10554,7 +9723,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.skip_whitespace()
-
 
     def test_case_831(self):
         str_0 = "Wrong declaration of float"
@@ -10569,7 +9737,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(tuple_1)
         lexer_2.__repr__()
 
-
     def test_case_832(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -10579,7 +9746,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         lexer_1 = module_0.Lexer(tuple_0)
         lexer_1.peek()
-
 
     def test_case_833(self):
         tuple_0 = ()
@@ -10595,7 +9761,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.skip_non_tokens()
         lexer_2.skip_singleline_comment()
 
-
     def test_case_834(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -10607,7 +9772,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
         lexer_2.skip_singleline_comment()
-
 
     def test_case_835(self):
         str_0 = "ahj)"
@@ -10624,7 +9788,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_3)
         lexer_3.skip_singleline_comment()
 
-
     def test_case_836(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -10636,7 +9799,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.skip_non_tokens()
-
 
     def test_case_837(self):
         str_0 = "Wrong declaration of float"
@@ -10650,7 +9812,6 @@ class TestEvaluator(unittest.TestCase):
         tuple_0 = ()
         module_0.Lexer(tuple_0)
 
-
     def test_case_838(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -10660,7 +9821,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1.next_token()
         lexer_1.next_token()
 
-
     def test_case_839(self):
         tuple_0 = ()
         lexer_0 = module_0.Lexer(tuple_0)
@@ -10669,7 +9829,6 @@ class TestEvaluator(unittest.TestCase):
         str_0 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_0)
         lexer_1.read_number()
-
 
     def test_case_840(self):
         str_0 = "Wrong declaration of float"
@@ -10686,12 +9845,10 @@ class TestEvaluator(unittest.TestCase):
         lexer_3 = module_0.Lexer(str_3)
         lexer_3.__repr__()
 
-
     def test_case_841(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
         lexer_0.next_token()
-
 
     def test_case_842(self):
         str_0 = "Wrong declaration of float"
@@ -10704,7 +9861,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(tuple_0)
         lexer_1.peek()
 
-
     def test_case_843(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -10713,7 +9869,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
         lexer_1.next_token()
-
 
     def test_case_844(self):
         str_0 = "Wrong declaration of float"
@@ -10728,7 +9883,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.read_number()
 
-
     def test_case_845(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -10741,7 +9895,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.next_token()
 
-
     def test_case_846(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -10750,7 +9903,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.next_token()
-
 
     def test_case_847(self):
         str_0 = "Wrong declaration of float"
@@ -10763,7 +9915,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Wrong declaration of float"
         lexer_2 = module_0.Lexer(str_1)
         lexer_2.skip_whitespace()
-
 
     def test_case_848(self):
         tuple_0 = ()
@@ -10778,7 +9929,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_2.next_token()
         lexer_2.skip_non_tokens()
 
-
     def test_case_849(self):
         str_0 = "Wrong declaration of float"
         lexer_0 = module_0.Lexer(str_0)
@@ -10787,7 +9937,6 @@ class TestEvaluator(unittest.TestCase):
         lexer_1 = module_0.Lexer(str_1)
         lexer_1.read_number()
         lexer_0.next_token()
-
 
     def test_case_850(self):
         str_0 = "Wrong declaration of float"

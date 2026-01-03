@@ -6,73 +6,58 @@ import unittest
 
 
 class TestEvaluator(unittest.TestCase):
-
     def test_case_0(self):
         module_0.Repl()
-
 
     def test_case_1(self):
         module_0.Repl()
 
-
     def test_case_2(self):
         module_0.Repl()
-
 
     def test_case_3(self):
         str_0 = "l`]q\x0b7]kkH&wf/U\\m1"
         module_0.read_file_contents(str_0)
 
-
     def test_case_4(self):
         str_0 = "l`]q\x0b7]kkH&wf/U\\m1"
         module_0.read_file_contents(str_0)
-
 
     def test_case_5(self):
         str_0 = '"'
         module_0.read_file_contents(str_0)
 
-
     def test_case_6(self):
         str_0 = '"'
         module_0.read_file_contents(str_0)
-
 
     def test_case_7(self):
         str_0 = "Left-hand side of assignment must be a variable"
         module_0.read_file_contents(str_0)
 
-
     def test_case_8(self):
         str_0 = '"'
         module_0.read_file_contents(str_0)
-
 
     def test_case_9(self):
         str_0 = '"'
         module_0.read_file_contents(str_0)
 
-
     def test_case_10(self):
         str_0 = '"'
         module_0.read_file_contents(str_0)
-
 
     def test_case_11(self):
         str_0 = '"'
         module_0.read_file_contents(str_0)
 
-
     def test_case_12(self):
         str_0 = "l`]q\x0b7]kkH&wf/U\\m1"
         module_0.read_file_contents(str_0)
 
-
     def test_case_13(self):
         str_0 = "Left-hand side of assignment must be a variable"
         module_0.read_file_contents(str_0)
-
 
     def test_case_14(self):
         str_0 = "Left-hand side of assignment must be a variable"
@@ -82,41 +67,33 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "\x0c#`&R#DeiS+SadR8cR\x0cj"
         repl_0.runsource(str_1, repl_1)
 
-
     def test_case_15(self):
         str_0 = "l`]q\x0b7]kkH&wf/U\\m1"
         module_0.read_file_contents(str_0)
-
 
     def test_case_16(self):
         str_0 = "Left-hand side of assignment must be a variable"
         module_0.read_file_contents(str_0)
 
-
     def test_case_17(self):
         str_0 = '"'
         module_0.read_file_contents(str_0)
-
 
     def test_case_18(self):
         str_0 = "i\n,AodT"
         module_0.read_file_contents(str_0)
 
-
     def test_case_19(self):
         str_0 = '"'
         module_0.read_file_contents(str_0)
-
 
     def test_case_20(self):
         str_0 = "Left-hand side of assignment must be a variable"
         module_0.read_file_contents(str_0)
 
-
     def test_case_21(self):
         str_0 = "N?y"
         module_0.read_file_contents(str_0)
-
 
     # creates an expected error, this function should throw an error whenever a read on a non existent variable is attempted
     def test_case_22(self):
@@ -125,18 +102,15 @@ class TestEvaluator(unittest.TestCase):
         str_0 = "aF;e!.=Gov2"
         repl_1.runsource(str_0, repl_0)
 
-
     # expected error, an error should be thrown if the interpreter is executed without a target file
     def test_case_23(self):
         none_type_0 = None
         module_0.read_file_contents(none_type_0)
 
-
     # this error is not possible as the command line would not allow us to pass in an object
     def test_case_24(self):
         repl_0 = module_0.Repl()
         module_0.read_file_contents(repl_0)
-
 
     # lexer will never be initialized with source as an object, as it only ever takes a string from reading a file
     def test_case_25(self):
@@ -146,31 +120,25 @@ class TestEvaluator(unittest.TestCase):
         repl_1 = module_0.Repl()
         repl_1.runsource(repl_0, var_0)
 
-
     # again, the command line would never read an argument as Repl object
     def test_case_26(self):
         repl_0 = module_0.Repl()
         module_0.read_file_contents(repl_0)
 
-
     def test_case_27(self):
         str_0 = "f:@pCz"
-
 
     # I cant explain this one
     def test_case_28(self):
         module_1.global_flag_repr()
 
-
     def test_case_29(self):
         str_0 = "Left-hand side of assignment must be a variable"
         module_0.read_file_contents(str_0)
 
-
     def test_case_30(self):
         str_0 = "l`]q\x0b7]kkH&wf/U\\m1"
         module_0.read_file_contents(str_0)
-
 
     # this test has 2 errors, first it tries to read a file, which doesnt exist
     # then it passes str_1 in as a program, which is not intelligible as a program and therefore throws an error
@@ -182,7 +150,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "l`]q\x0b7]kkH&wf/U\\m1"
         repl_1.runsource(str_1, symbol=repl_0)
 
-
     # None is passed to initialise lexer, which would never happen under normal circumstances as an empty file would read out an empty string rather than None
     def test_case_32(self):
         str_0 = "Left-hand side of assignment must be a variable"
@@ -190,11 +157,9 @@ class TestEvaluator(unittest.TestCase):
         repl_0 = module_0.Repl()
         repl_0.runsource(var_0)
 
-
     def test_case_33(self):
         str_0 = '"'
         module_0.read_file_contents(str_0)
-
 
     # Repl object passed as a string, which would never happen as the value is acquried through a command line
     def test_case_34(self):
@@ -203,14 +168,12 @@ class TestEvaluator(unittest.TestCase):
         module_0.read_file_contents(str_0)
         module_0.read_file_contents(repl_0)
 
-
     # lexer's read file contents return None, and None is passed as a program file, which could never happen as empty files return empty strings rather than none
     def test_case_35(self):
         repl_0 = module_0.Repl()
         str_0 = "Left-hand side of assignment must be a variable"
         var_0 = module_0.read_file_contents(str_0)
         repl_0.runsource(var_0)
-
 
     # REPL object is being passed as a string again
     def test_case_36(self):
@@ -219,11 +182,9 @@ class TestEvaluator(unittest.TestCase):
         module_0.read_file_contents(str_0)
         repl_0.runsource(repl_0)
 
-
     def test_case_37(self):
         str_0 = "l`]q\x0b7]kkH&wf/U\\m1"
         module_0.read_file_contents(str_0)
-
 
     # None is being passed as the text of a file again
     def test_case_38(self):
@@ -231,7 +192,6 @@ class TestEvaluator(unittest.TestCase):
         str_0 = "l`]q\x0b7]kkH&wf/U\\m1"
         var_0 = module_0.read_file_contents(str_0)
         repl_0.runsource(var_0)
-
 
     # tries to read from a file, which does not exist and tries to run str_1 as a program, which is immediately detected as a read on an identifier and because it has been defined before it throws an error
     def test_case_39(self):
@@ -242,7 +202,6 @@ class TestEvaluator(unittest.TestCase):
         str_1 = "Left-hand side of assignment must be a variable"
         repl_2 = module_0.Repl()
         repl_1.runsource(str_1, repl_2, repl_0)
-
 
     # tries to run str_1 as a program, which detects "i" as an identifier and therefore tries a read on an identifier that does not yet exist
     def test_case_40(self):
