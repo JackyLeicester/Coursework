@@ -12,17 +12,17 @@ from fuzzingbook.Grammars import extend_grammar
 
 LANGUAGE_GRAMMAR = extend_grammar(
     {
-        "<program>": list("<statement>"),
-        "<statement>": ["<literal>", "<if_statement>", "<for_stmt>"],
-        "<literal>": ["<string>", "<char>"],
-        "<char>": ["'<char_inner>'"],
+        "<start>": ["<statement>"],
+        "<statement>": ["<literal>", "<if_statement>", "<for_stmt>", ""],
+        "<literal>": ["<string>", "<char>", "<null>"],
+        "<char>": ["'<char_inner>'", ""],
         "<char_inner>": list(string.printable),
-        "<string>": ['"<string_inner>"'],
+        "<string>": ['"<string_inner>"', ""],
         "<string_inner>": list(string.printable),
-        "<if_statement>": ["if <expression> <block> { else <block> }"],
+        "<if_statement>": ["if <expression> <block> { else <block> }", "if <expression> <block>"],
         "<block>": ["{ <block_inner> }"],
-        "<block_inner>": list("<statement>"),
-        "<expression>": list("<literal>"),
+        "<block_inner>": ["<statement>"],
+        "<expression>": ["<literal>"],
         "<for_stmt>": ["for ( <initialization> ; <condition> ; <update> ) <block>"],
         "<initialization>": ["let x = 1"],  # tested by someone else
         "<condition>": ["<expression>", ""],
