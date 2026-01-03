@@ -1,6 +1,7 @@
 import unittest
 from bmi_calculator import BMICalculator
 
+
 class TestBMICalculator(unittest.TestCase):
     def testObesity(self):
         self.assertIn("obesity", BMICalculator().bmi_calculator(85.3, 1.56))

@@ -1,0 +1,93 @@
+Test Case 1        (Key = 1.1.1.1.)
+   FEATURE              :  DIVISION
+   OPERAND_TYPE_LEFT    :  INT
+   OPERAND_TYPE_RIGHT   :  INT
+   SPECIAL_CASES        :  NORMAL
+
+
+Test Case 2        (Key = 1.1.1.2.)
+   FEATURE              :  DIVISION
+   OPERAND_TYPE_LEFT    :  INT
+   OPERAND_TYPE_RIGHT   :  FLOAT
+   RESULT_TYPE          :  FLOAT
+   NESTING              :  NONE
+   ENV_STATE            :  EMPTY
+   EXPECTED_BEHAVIOUR   :  NORMAL_EVALUATION
+   SPECIAL_CASES        :  NORMAL
+
+
+Test Case 3        (Key = 1.1.2.1.)
+   FEATURE              :  DIVISION
+   OPERAND_TYPE_LEFT    :  INT
+   OPERAND_TYPE_RIGHT   :  EXPRESSION(INT + INT)
+   NESTING              :  PRESENT (PARENTHESES)
+   ENV_STATE            :  EMPTY
+   EXPECTED_BEHAVIOUR   :  NORMAL_EVALUATION
+   SPECIAL_CASES        :  NORMAL
+
+
+Test Case 4        (Key = 2.1.1.1.)
+   FEATURE              :  DIVISION
+   OPERAND_TYPE_LEFT    :  INT
+   OPERAND_TYPE_RIGHT   :  INT
+   RIGHT_OPERAND_VALUE  :  ZERO
+   SPECIAL_CASES        :  DIVIDE_BY_ZERO
+
+
+Test Case 5        (Key = 2.1.2.1.)
+   FEATURE              :  DIVISION
+   OPERAND_TYPE_LEFT    :  INT
+   OPERAND_TYPE_RIGHT   :  EXPRESSION(INT - INT)
+   RIGHT_OPERAND_VALUE  :  EVALUATES_TO_ZERO
+   NESTING              :  PRESENT (PARENTHESES)
+   ENV_STATE            :  EMPTY
+   EXPECTED_BEHAVIOUR   :  RUNTIME_ERROR
+   SPECIAL_CASES        :  DIVIDE_BY_ZERO (NESTED)
+
+
+Test Case 6        (Key = 2.1.1.2.)
+   FEATURE              :  DIVISION
+   OPERAND_TYPE_LEFT    :  INT
+   OPERAND_TYPE_RIGHT   :  INT
+   RIGHT_OPERAND_VALUE  :  ZERO
+   SPECIAL_CASES        :  DIVIDE_BY_ZERO
+
+
+Test Case 7        (Key = 3.1.1.1.)
+   FEATURE              :  IDENTIFIER_USAGE
+   IDENTIFIER_STATE     :  UNDEFINED
+   OPERATOR             :  PLUS
+   EXPRESSION_FORM      :  x + INT
+   SPECIAL_CASES        :  UNDEFINED_VARIABLE (READ)
+
+
+Test Case 8        (Key = 3.2.1.1.)
+   FEATURE              :  LET_DECLARATION
+   IDENTIFIER_STATE     :  DEFINED
+   DECLARATION_KIND     :  LET
+   FOLLOWUP_OPERATION   :  PLUS
+   SPECIAL_CASES        :  NORMAL
+
+
+Test Case 9        (Key = 3.2.2.1.)
+   FEATURE              :  CONST_DECLARATION
+   IDENTIFIER_STATE     :  DEFINED
+   DECLARATION_KIND     :  CONST
+   FOLLOWUP_OPERATION   :  PLUS
+   SPECIAL_CASES        :  NORMAL
+
+
+Test Case 10       (Key = 3.1.2.1.)
+   FEATURE              :  ASSIGNMENT
+   IDENTIFIER_STATE     :  UNDEFINED
+   EXPRESSION_FORM      :  x = INT
+   EXPECTED_BEHAVIOUR   :  RUNTIME_ERROR
+   SPECIAL_CASES        :  UNDEFINED_VARIABLE (ASSIGN)
+
+
+Test Case 11       (Key = 3.3.1.1.)
+   FEATURE              :  ASSIGNMENT
+   IDENTIFIER_STATE     :  DEFINED
+   DECLARATION_KIND     :  LET
+   ASSIGNMENT_COUNT     :  ONE
+   SPECIAL_CASES        :  NORMAL

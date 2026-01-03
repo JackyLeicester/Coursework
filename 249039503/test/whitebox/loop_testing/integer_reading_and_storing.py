@@ -11,7 +11,7 @@ def evaluate_expr(program: str):
 
 
 class TestIntegerReadingAndStoringLoopTesting(unittest.TestCase):
-    # Case 1: Zero conversions/stores
+    # Zero conversions/stores
     def test_zero_conversions_store_direct_int(self):
         program = """
         let x = 5;
@@ -19,7 +19,7 @@ class TestIntegerReadingAndStoringLoopTesting(unittest.TestCase):
         """
         self.assertEqual(evaluate_expr(program), 5)
 
-    # Case 2: One conversion/store
+    # One conversion/store
     def test_one_conversion_and_store(self):
         program = """
         let x = toInt("10");
@@ -27,7 +27,7 @@ class TestIntegerReadingAndStoringLoopTesting(unittest.TestCase):
         """
         self.assertEqual(evaluate_expr(program), 10)
 
-    # Case 3: Multiple conversions/stores
+    # Multiple conversions/stores
     def test_multiple_conversions_and_stores(self):
         program = """
         let a = toInt("1");

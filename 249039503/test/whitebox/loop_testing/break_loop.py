@@ -11,7 +11,7 @@ def evaluate_expr(program: str):
 
 
 class TestBreakLoopTesting(unittest.TestCase):
-    # Case 1: Zero iterations
+    # Zero iterations
     def test_break_zero_iterations(self):
         program = """
         for(let i = 0; i < 0; i = i + 1) {
@@ -21,7 +21,7 @@ class TestBreakLoopTesting(unittest.TestCase):
         """
         self.assertEqual(evaluate_expr(program), 0)
 
-    # Case 2: One iteration
+    # 1 iteration
     def test_break_one_iteration(self):
         program = """
         for(let i = 0; i < 5; i = i + 1) {
@@ -31,7 +31,7 @@ class TestBreakLoopTesting(unittest.TestCase):
         """
         self.assertEqual(evaluate_expr(program), 0)
 
-    # Case 3: Multiple iterations
+    #  Multiple iterations
     def test_break_multiple_iterations(self):
         program = """
         for(let i = 0; i < 10; i = i + 1) {

@@ -2,54 +2,34 @@
 Test Case 1  		<single>
    COMMENT_MARKER :  HASH
 
-
 Test Case 2  		<single>
-   COMMENT_MARKER :  SLASHSLASH
-
-
-Test Case 3  		<single>
-   TERMINATION :  NEWLINE
-
-
-Test Case 4  		<single>
    TERMINATION :  EOF
 
-
-Test Case 5  		<single>
-   CONTENT :  EMPTY
-
-
-Test Case 6  		<single>
+Test Case 3  		<single>
    CONTENT :  NON_EMPTY
 
-
-Test Case 7  		<single>
+Test Case 4  		<single>
    WHITESPACE_BEFORE :  NONE
 
-
-Test Case 8  		<single>
-   WHITESPACE_BEFORE :  SPACES
-
-
-Test Case 9  		(Key = 0.1.0.0.0.)
-   COMMENT_MARKER    :  <n/a>
-   POSITION          :  ONLY_COMMENT_LINE
-   TERMINATION       :  <n/a>
-   CONTENT           :  <n/a>
-   WHITESPACE_BEFORE :  <n/a>
-
-
-Test Case 10 		(Key = 0.2.0.0.0.)
-   COMMENT_MARKER    :  <n/a>
-   POSITION          :  LEADING_COMMENT_LINES
-   TERMINATION       :  <n/a>
-   CONTENT           :  <n/a>
-   WHITESPACE_BEFORE :  <n/a>
-
-
-Test Case 11 		(Key = 0.3.0.0.0.)
+Test Case 5  		(Key = 0.1.0.0.0.)
    COMMENT_MARKER    :  <n/a>
    POSITION          :  TRAILING_COMMENT
+   TERMINATION       :  <n/a>
+   CONTENT           :  <n/a>
+   WHITESPACE_BEFORE :  <n/a>
+
+
+Test Case 6 		(Key = 0.2.0.0.0.)
+   COMMENT_MARKER    :  <n/a>
+   POSITION          :  -
+   TERMINATION       :  <n/a>
+   CONTENT           :  <n/a>
+   WHITESPACE_BEFORE :  <n/a>
+
+
+Test Case 7 		(Key = 0.3.0.0.0.)
+   COMMENT_MARKER    :  <n/a>
+   POSITION          :  SPACES_COMMENT
    TERMINATION       :  <n/a>
    CONTENT           :  <n/a>
    WHITESPACE_BEFORE :  <n/a>

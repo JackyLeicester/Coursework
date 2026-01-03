@@ -12,7 +12,7 @@ def evaluate_expr(program: str):
 
 
 class BreakStatementCategoryPartitioningTests(unittest.TestCase):
-    def test_break_never_triggers(self):
+    def test_break_1(self):
         program = """
         let i = 0;
 
@@ -24,7 +24,7 @@ class BreakStatementCategoryPartitioningTests(unittest.TestCase):
         """
         self.assertEqual(evaluate_expr(program), 5)
 
-    def test_break_first_iteration(self):
+    def test_break_first_iteration_2(self):
         program = """
         let i = 0;
 
@@ -36,7 +36,7 @@ class BreakStatementCategoryPartitioningTests(unittest.TestCase):
         """
         self.assertEqual(evaluate_expr(program), 0)
 
-    def test_break_middle_iteration(self):
+    def test_break_middle_iteration_3(self):
         program = """
         let i = 0;
 
@@ -50,7 +50,7 @@ class BreakStatementCategoryPartitioningTests(unittest.TestCase):
         """
         self.assertEqual(evaluate_expr(program), 3)
 
-    def test_break_last_useful_iteration(self):
+    def test_break_last_iteration_4(self):
         program = """
         let i = 0;
 
@@ -64,7 +64,7 @@ class BreakStatementCategoryPartitioningTests(unittest.TestCase):
         """
         self.assertEqual(evaluate_expr(program), 4)
 
-    def test_break_only_exits_inner_loop(self):
+    def test_break_inner_loop_5(self):
         program = """
         let i = 0;
 
@@ -81,12 +81,12 @@ class BreakStatementCategoryPartitioningTests(unittest.TestCase):
         """
         self.assertEqual(evaluate_expr(program), 3)
 
-    def test_break_outside_loop_raises(self):
+    def test_break_outside_loop_6(self):
         program = "break;"
         with self.assertRaises(Exception):
             evaluate_expr(program)
 
-    def test_assignment_works(self):
+    def test_assignment_works_7(self):
         program = """
         let x = 1;
         x = x + 1;

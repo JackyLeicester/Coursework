@@ -11,16 +11,16 @@ def run(code: str):
 
 
 class ExitStatementBranchTest(unittest.TestCase):
-    def test_exit_with_code_int_returns_code(self):
+    def test_exit_with_int_1(self):
         self.assertEqual(run("exit(7);"), 7)
 
-    def test_exit_zero_returns_zero(self):
+    def test_exit_zero_returns_zero_2(self):
         self.assertEqual(run("exit(0);"), 0)
 
-    def test_exit_negative_returns_negative(self):
+    def test_exit_negative_3(self):
         self.assertEqual(run("exit(-1);"), -1)
 
-    def test_exit_inside_if_returns_code(self):
+    def test_exit_inside_if_returns_code_3(self):
         code = """
         if (1 < 2) {
             exit(3);
@@ -28,7 +28,7 @@ class ExitStatementBranchTest(unittest.TestCase):
         """
         self.assertEqual(run(code), 3)
 
-    def test_exit_inside_loop_returns_code(self):
+    def test_exit_inside_loop_4(self):
         code = """
         for (let i = 0; i < 3; i = i + 1) {
             exit(5);
@@ -36,10 +36,10 @@ class ExitStatementBranchTest(unittest.TestCase):
         """
         self.assertEqual(run(code), 5)
 
-    def test_exit_missing_argument_raises(self):
+    def test_exit_no_argument_5(self):
         with self.assertRaises(Exception):
             run("exit();")
 
-    def test_exit_non_int_argument_raises(self):
+    def test_exit_non_int_arg_6(self):
         with self.assertRaises(Exception):
             run('exit("1");')

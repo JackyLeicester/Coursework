@@ -11,7 +11,7 @@ def evaluate_expr(program: str):
 
 
 class TestTypeFunctionLoopTesting(unittest.TestCase):
-    # Case 1: Zero type() calls
+    # Zero type() calls
     def test_zero_type_calls(self):
         program = """
         let x = 5;
@@ -19,12 +19,12 @@ class TestTypeFunctionLoopTesting(unittest.TestCase):
         """
         self.assertEqual(evaluate_expr(program), 5)
 
-    # Case 2: One type() call
+    # One type() call
     def test_one_type_call(self):
         program = "type(10);"
         self.assertEqual(evaluate_expr(program), "integer")
 
-    # Case 3: Multiple type() calls
+    # Multiple type() calls
     def test_multiple_type_calls(self):
         program = """
         let a = type(1);

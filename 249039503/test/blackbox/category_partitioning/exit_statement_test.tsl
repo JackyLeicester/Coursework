@@ -1,0 +1,53 @@
+Test Case 1        (Key = 1.1.1.1.)
+   FEATURE              :  EXIT
+   CONTEXT              :  TOP_LEVEL
+   ARG_TYPE             :  INT
+   ARG_EXPRESSION       :  LITERAL
+   SPECIAL_CASES        :  NORMAL
+
+
+Test Case 2        (Key = 1.1.1.2.)
+   FEATURE              :  EXIT
+   CONTEXT              :  INSIDE_IF
+   IF_CONDITION         :  TRUE
+   ARG_COUNT            :  ONE
+   ARG_TYPE             :  INT
+   SPECIAL_CASES        :  NORMAL
+
+
+Test Case 3        (Key = 1.1.2.1.)
+   FEATURE              :  EXIT
+   CONTEXT              :  INSIDE_LOOP
+   ARG_COUNT            :  ONE
+   ARG_TYPE             :  INT
+   SPECIAL_CASES        :  NORMAL
+
+
+Test Case 4        (Key = 2.1.1.1.)
+   FEATURE              :  EXIT
+   CONTEXT              :  TOP_LEVEL
+   ARG_COUNT            :  ONE
+   ARG_TYPE             :  FLOAT
+   SPECIAL_CASES        :  INVALID_EXIT_CODE_TYPE
+
+
+Test Case 5        (Key = 2.1.1.2.)
+   FEATURE              :  EXIT
+   CONTEXT              :  TOP_LEVEL
+   ARG_COUNT            :  ONE
+   ARG_TYPE             :  BOOL
+   SPECIAL_CASES        :  INVALID_EXIT_CODE_TYPE
+
+
+Test Case 6        (Key = 2.2.1.1.)
+   FEATURE              :  EXIT
+   CONTEXT              :  TOP_LEVEL
+   ARG_COUNT            :  ZERO
+   SPECIAL_CASES        :  MISSING_ARGUMENT
+
+
+Test Case 7        (Key = 2.2.1.2.)
+   FEATURE              :  EXIT
+   CONTEXT              :  TOP_LEVEL
+   ARG_COUNT            :  MULTIPLE
+   SPECIAL_CASES        :  TOO_MANY_ARGUMENTS

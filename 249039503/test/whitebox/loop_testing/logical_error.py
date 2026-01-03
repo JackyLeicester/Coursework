@@ -11,7 +11,7 @@ def evaluate_expr(program: str):
 
 
 class TestLogicalErrorLoopTesting(unittest.TestCase):
-    # Case 1: Zero logical errors
+    # Zero logical errors
     def test_zero_errors(self):
         program = """
         let x = 1;
@@ -20,27 +20,24 @@ class TestLogicalErrorLoopTesting(unittest.TestCase):
         """
         self.assertEqual(evaluate_expr(program), 2)
 
-    # Case 2: One logical error
+    # One logical error
     def test_one_error_undefined_variable(self):
         program = "x;"
         with self.assertRaises(RuntimeEvaluationError) as ctx:
             evaluate_expr(program)
         self.assertIn("Undefined variable 'x'", str(ctx.exception))
 
-    # Case 3: Multiple logical errors
+    #  Multiple logical errors
     def test_multiple_errors_across_programs(self):
-        # Error 1: undefined variable read
         with self.assertRaises(RuntimeEvaluationError):
             evaluate_expr("y;")
 
-        # Error 2: assign to const
         with self.assertRaises(RuntimeEvaluationError):
             evaluate_expr("""
             const a = 1;
             a = 2;
             """)
 
-        # Error 3: break outside loop
         with self.assertRaises(RuntimeEvaluationError):
             evaluate_expr("break;")
 
