@@ -1,0 +1,32 @@
+Name                                                                 Stmts   Miss  Cover   Missing
+--------------------------------------------------------------------------------------------------
+259045253/test/__init__.py                                               0      0   100%
+259045253/test/whitebox/__init__.py                                      0      0   100%
+259045253/test/whitebox/condition_testing/__init__.py                    0      0   100%
+259045253/test/whitebox/condition_testing/char_and_strings_test.py      52      1    98%   90
+259045253/test/whitebox/condition_testing/cli_arg_test.py               46      1    98%   71
+259045253/test/whitebox/condition_testing/continue_stmt_test.py         29      1    97%   59
+259045253/test/whitebox/condition_testing/for_loop_test.py              29      1    97%   76
+259045253/test/whitebox/condition_testing/if_stmt_test.py               51      1    98%   89
+259045253/test/whitebox/condition_testing/null_type_test.py             34      1    97%   59
+259045253/test/whitebox/condition_testing/pass_filename_test.py         22      1    95%   40
+259045253/test/whitebox/condition_testing/print_function_test.py        52      1    98%   90
+259045253/test/whitebox/loop_testing/__init__.py                         0      0   100%
+259045253/test/whitebox/loop_testing/char_and_strings_test.py           20      1    95%   45
+259045253/test/whitebox/loop_testing/cli_arg_test.py                     5      1    80%   21
+259045253/test/whitebox/loop_testing/continue_stmt_test.py               5      1    80%   26
+259045253/test/whitebox/loop_testing/for_loop_test.py                    5      1    80%   26
+259045253/test/whitebox/loop_testing/if_stmt_test.py                     5      1    80%   26
+259045253/test/whitebox/loop_testing/null_type_test.py                   5      1    80%   26
+259045253/test/whitebox/loop_testing/pass_filename_test.py               5      1    80%   21
+259045253/test/whitebox/loop_testing/print_function_test.py             24      1    96%   47
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py        7223      0   100%
+259045253/test/whitebox/symbolic_testing/for_loop_test.py               38      2    95%   28-29
+259045253/test/whitebox/symbolic_testing/if_stmt_test.py                71      0   100%
+src/__init__.py                                                         49     10    80%   57-59, 63, 69-74
+src/evaluator.py                                                       338    186    45%   76-77, 83, 92, 102, 106-110, 142-144, 146-148, 150-152, 154-156, 158-160, 175-292, 296-303, 314, 316, 318-320, 324-325, 327-328, 330-331, 337, 340-353, 360-361, 365, 373, 409-417, 420-421, 424-425, 442, 444, 448
+src/lexer.py                                                           197     49    75%   44-49, 58, 68, 76-88, 104-105, 107, 109-113, 115-119, 121, 127-131, 134-135, 154-157, 159, 161, 170-171, 216, 224, 234, 236, 243
+src/parser.py                                                          354     71    80%   91-92, 118-120, 125, 151-153, 156, 247, 275, 278, 283-298, 301-304, 315-317, 320-327, 347, 351, 358, 361, 374, 381, 387-391, 473-485, 498-508, 525
+src/tokens.py                                                           48      0   100%
+--------------------------------------------------------------------------------------------------
+TOTAL                                                                 8707    334    96%

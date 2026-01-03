@@ -1,0 +1,2296 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.3, pytest-8.4.2, pluggy-1.6.0
+rootdir: /Users/syedfasiuddin/Developer/uni-leic/smqa-coursework
+configfile: pyproject.toml
+collected 948 items
+
+259045253/test/whitebox/condition_testing/char_and_strings_test.py ..... [  0%]
+....                                                                     [  0%]
+259045253/test/whitebox/condition_testing/cli_arg_test.py .....          [  1%]
+259045253/test/whitebox/condition_testing/continue_stmt_test.py ....     [  1%]
+259045253/test/whitebox/condition_testing/for_loop_test.py ....          [  2%]
+259045253/test/whitebox/condition_testing/if_stmt_test.py ......         [  2%]
+259045253/test/whitebox/condition_testing/null_type_test.py ...          [  3%]
+259045253/test/whitebox/condition_testing/pass_filename_test.py ....     [  3%]
+259045253/test/whitebox/condition_testing/print_function_test.py ......  [  4%]
+259045253/test/whitebox/loop_testing/char_and_strings_test.py ...        [  4%]
+259045253/test/whitebox/loop_testing/print_function_test.py ..           [  4%]
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py ......... [  5%]
+........................................................................ [ 13%]
+........................................................................ [ 20%]
+........................................................................ [ 28%]
+........................................................................ [ 36%]
+........................................................................ [ 43%]
+........................................................................ [ 51%]
+........................................................................ [ 58%]
+........................................................................ [ 66%]
+........................................................................ [ 74%]
+..............F.F.F....FFF....FF.FF....F.....F.............FFF...FF....F [ 81%]
+...F....F..FFFF....F........F.....FFF.....F..F.F.F.....F.FFF.Fx.....F.F. [ 89%]
+.F.FFF.F....FFF....F..FF.FFF...FF...FFFF.....F..F..F.F...F.F............ [ 96%]
+FFF.F....F.F....F.F.F..F.                                                [ 99%]
+259045253/test/whitebox/symbolic_testing/for_loop_test.py .              [ 99%]
+259045253/test/whitebox/symbolic_testing/if_stmt_test.py ...             [100%]
+
+=================================== FAILURES ===================================
+________________________________ test_case_671 _________________________________
+
+    def test_case_671():
+        none_type_0 = None
+>       module_0.evaluate(none_type_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:6999: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = None, env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'NoneType' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_673 _________________________________
+
+    def test_case_673():
+        str_0 = '"Ow'
+        module_0.setup_runtime(str_0)
+        list_0 = []
+        module_0.evaluate(list_0)
+        break_signal_0 = module_0._BreakSignal()
+>       module_0.evaluate(break_signal_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:7015: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = _BreakSignal(), env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: '_BreakSignal' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_675 _________________________________
+
+    def test_case_675():
+        str_0 = "JTE"
+        module_0.setup_runtime(str_0)
+        bool_0 = False
+        list_0 = []
+        module_0.evaluate(list_0)
+>       module_0.evaluate(bool_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:7031: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = False, env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'bool' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_680 _________________________________
+
+    def test_case_680():
+        str_0 = '"Ow'
+        module_0.setup_runtime(str_0)
+        bool_0 = False
+        list_0 = []
+        var_0 = module_0.evaluate(list_0)
+>       module_0.evaluate(var_0, bool_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:7077: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = None, env = False
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'NoneType' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_681 _________________________________
+
+    def test_case_681():
+        str_0 = "Number of parameters passed is not equal to number of function parameters"
+        module_0.setup_runtime(str_0)
+        list_0 = []
+        var_0 = module_0.evaluate(list_0)
+        bool_0 = True
+        return_signal_0 = module_0._ReturnSignal(bool_0)
+        assert return_signal_0.value is True
+>       module_0.evaluate(var_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:7088: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = None, env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'NoneType' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_682 _________________________________
+
+    def test_case_682():
+        str_0 = "Number of parameters passed is not equal to number of function parameters"
+        list_0 = module_0.setup_runtime(str_0)
+        break_signal_0 = module_0._BreakSignal()
+>       module_0.evaluate(break_signal_0, list_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:7095: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = _BreakSignal()
+env = [{'arg': ('Number of parameters passed is not equal to number of function parameters', True)}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: '_BreakSignal' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_687 _________________________________
+
+    def test_case_687():
+        str_0 = "JTE"
+        module_0.setup_runtime(str_0)
+        none_type_0 = None
+>       module_0.evaluate(none_type_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:7137: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = None, env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'NoneType' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_688 _________________________________
+
+    def test_case_688():
+        str_0 = "Number of parameters passed is not equal to number of function parameters"
+        module_0.setup_runtime(str_0)
+        str_1 = '"Ow'
+        return_signal_0 = module_0._ReturnSignal(str_1)
+        assert return_signal_0.value == '"Ow'
+        bool_0 = False
+>       module_0.evaluate(bool_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:7147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = False, env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'bool' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_690 _________________________________
+
+    def test_case_690():
+        break_signal_0 = module_0._BreakSignal()
+>       module_0.evaluate(break_signal_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:7165: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = _BreakSignal(), env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: '_BreakSignal' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_691 _________________________________
+
+    def test_case_691():
+        str_0 = "JTE"
+        module_0.setup_runtime(str_0)
+        bool_0 = False
+        exit_signal_0 = module_0._ExitSignal(bool_0)
+        assert exit_signal_0.code is False
+        str_1 = '"Ow'
+        return_signal_0 = module_0._ReturnSignal(str_1)
+        assert return_signal_0.value == '"Ow'
+>       module_0.evaluate(exit_signal_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:7177: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = _ExitSignal(False), env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: '_ExitSignal' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_696 _________________________________
+
+    def test_case_696():
+        str_0 = '"Ow'
+        break_signal_0 = module_0._BreakSignal()
+        return_signal_0 = module_0._ReturnSignal(break_signal_0)
+        assert (
+            f"{type(return_signal_0.value).__module__}.{type(return_signal_0.value).__qualname__}"
+            == "src.evaluator._BreakSignal"
+        )
+        list_0 = module_0.setup_runtime(str_0)
+        list_1 = []
+        var_0 = module_0.evaluate(list_1)
+        var_1 = var_0.__eq__(list_0)
+        var_2 = var_0.__eq__(var_1)
+>       module_0.evaluate(var_2)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:7235: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = NotImplemented, env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'NotImplementedType' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_702 _________________________________
+
+    def test_case_702():
+        str_0 = "Number of parameters passed is not equal to number of function parameters"
+        module_0.setup_runtime(str_0)
+        list_0 = []
+        var_0 = module_0.evaluate(list_0)
+>       module_0.evaluate(var_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:7295: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = None, env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'NoneType' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_716 _________________________________
+
+    def test_case_716():
+        str_0 = "Number of parameters passed is not equal to number of function parameters"
+        module_0.setup_runtime(str_0)
+        list_0 = []
+        list_1 = []
+        var_0 = module_0.evaluate(list_1)
+        break_signal_0 = module_0._BreakSignal()
+        return_signal_0 = module_0._ReturnSignal(break_signal_0)
+        assert (
+            f"{type(return_signal_0.value).__module__}.{type(return_signal_0.value).__qualname__}"
+            == "src.evaluator._BreakSignal"
+        )
+>       module_0.evaluate(var_0, list_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:7442: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = None, env = []
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'NoneType' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_717 _________________________________
+
+    def test_case_717():
+        bool_0 = True
+        exit_signal_0 = module_0._ExitSignal(bool_0)
+        assert exit_signal_0.code is True
+        return_signal_0 = module_0._ReturnSignal(bool_0)
+        assert return_signal_0.value is True
+>       module_0.evaluate(bool_0, exit_signal_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:7451: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = True, env = _ExitSignal(True)
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'bool' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_718 _________________________________
+
+    def test_case_718():
+        str_0 = "JTE"
+        module_0.setup_runtime(str_0)
+        bool_0 = True
+        exit_signal_0 = module_0._ExitSignal(bool_0)
+        assert exit_signal_0.code is True
+        bool_1 = True
+        return_signal_0 = module_0._ReturnSignal(bool_1)
+        assert return_signal_0.value is True
+>       module_0.evaluate(return_signal_0, exit_signal_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:7463: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = _ReturnSignal(True), env = _ExitSignal(True)
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: '_ReturnSignal' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_722 _________________________________
+
+    def test_case_722():
+        str_0 = "Number of parameters passed is not equal to number of function parameters"
+        module_0.setup_runtime(str_0)
+        list_0 = []
+        var_0 = module_0.evaluate(list_0)
+        set_0 = set()
+        return_signal_0 = module_0._ReturnSignal(set_0)
+        assert return_signal_0.value == {*()}
+>       module_0.evaluate(var_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:7509: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = None, env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'NoneType' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_723 _________________________________
+
+    def test_case_723():
+        bool_0 = True
+        boolean_literal_0 = module_1.BooleanLiteral(bool_0)
+        list_0 = [boolean_literal_0, boolean_literal_0]
+        var_0 = module_0.evaluate(list_0)
+        assert var_0 is True
+        str_0 = '"Ow'
+        module_0.setup_runtime(str_0)
+        break_signal_0 = module_0._BreakSignal()
+>       module_0.evaluate(break_signal_0, var_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:7521: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = _BreakSignal(), env = True
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: '_BreakSignal' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_728 _________________________________
+
+    def test_case_728():
+        str_0 = "JTE"
+        module_0.setup_runtime(str_0)
+        set_0 = set()
+        return_signal_0 = module_0._ReturnSignal(set_0)
+        assert return_signal_0.value == {*()}
+>       module_0.evaluate(return_signal_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:7570: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = _ReturnSignal(set()), env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: '_ReturnSignal' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_732 _________________________________
+
+    def test_case_732():
+        str_0 = "JTE"
+        module_0.setup_runtime(str_0)
+        list_0 = []
+        module_0.evaluate(list_0)
+        bool_0 = True
+        return_signal_0 = module_0._ReturnSignal(bool_0)
+        assert return_signal_0.value is True
+        none_type_0 = None
+>       module_0.evaluate(none_type_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:7613: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = None, env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'NoneType' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_737 _________________________________
+
+    def test_case_737():
+        str_0 = '"Ow'
+        module_0.setup_runtime(str_0)
+        list_0 = []
+        module_0.evaluate(list_0)
+        str_1 = '"Ow'
+        return_signal_0 = module_0._ReturnSignal(str_1)
+        assert return_signal_0.value == '"Ow'
+>       module_0.evaluate(return_signal_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:7662: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = _ReturnSignal('"Ow'), env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: '_ReturnSignal' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_740 _________________________________
+
+    def test_case_740():
+        str_0 = "<X0rCe\x0b=C(:jS{"
+        module_0.setup_runtime(str_0)
+        set_0 = set()
+        return_signal_0 = module_0._ReturnSignal(set_0)
+        assert return_signal_0.value == {*()}
+        bool_0 = True
+        boolean_literal_0 = module_1.BooleanLiteral(bool_0)
+        list_0 = [boolean_literal_0, boolean_literal_0]
+        var_0 = module_0.evaluate(list_0, bool_0)
+        assert var_0 is True
+>       module_0.evaluate(var_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:7697: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = True, env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'bool' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_741 _________________________________
+
+    def test_case_741():
+        bool_0 = True
+        boolean_literal_0 = module_1.BooleanLiteral(bool_0)
+        list_0 = [boolean_literal_0, boolean_literal_0]
+        var_0 = module_0.evaluate(list_0, bool_0)
+        assert var_0 is True
+        bool_1 = True
+        boolean_literal_1 = module_1.BooleanLiteral(bool_1)
+        list_1 = [boolean_literal_1, boolean_literal_1]
+        var_1 = module_0.evaluate(list_1)
+        assert var_1 is True
+        return_signal_0 = module_0._ReturnSignal(boolean_literal_1)
+        assert (
+            f"{type(return_signal_0.value).__module__}.{type(return_signal_0.value).__qualname__}"
+            == "src.parser.BooleanLiteral"
+        )
+        str_0 = "JTE"
+        module_0.setup_runtime(str_0)
+>       module_0.evaluate(var_1)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:7718: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = True, env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'bool' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_742 _________________________________
+
+    def test_case_742():
+        bool_0 = False
+        exit_signal_0 = module_0._ExitSignal(bool_0)
+        assert exit_signal_0.code is False
+        str_0 = "JTE"
+        module_0.setup_runtime(str_0)
+        list_0 = []
+        module_0.evaluate(list_0)
+        break_signal_0 = module_0._BreakSignal()
+        return_signal_0 = module_0._ReturnSignal(break_signal_0)
+        assert (
+            f"{type(return_signal_0.value).__module__}.{type(return_signal_0.value).__qualname__}"
+            == "src.evaluator._BreakSignal"
+        )
+>       module_0.evaluate(exit_signal_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:7735: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = _ExitSignal(False), env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: '_ExitSignal' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_743 _________________________________
+
+    def test_case_743():
+        str_0 = "JTE"
+        module_0.setup_runtime(str_0)
+        set_0 = set()
+        return_signal_0 = module_0._ReturnSignal(set_0)
+        assert return_signal_0.value == {*()}
+        bool_0 = True
+        boolean_literal_0 = module_1.BooleanLiteral(bool_0)
+        list_0 = [boolean_literal_0, boolean_literal_0]
+        var_0 = module_0.evaluate(list_0, bool_0)
+        assert var_0 is True
+>       module_0.evaluate(return_signal_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:7749: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = _ReturnSignal(set()), env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: '_ReturnSignal' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_748 _________________________________
+
+    def test_case_748():
+        str_0 = "JTE"
+        module_0.setup_runtime(str_0)
+        bool_0 = False
+        exit_signal_0 = module_0._ExitSignal(bool_0)
+        assert exit_signal_0.code is False
+        list_0 = []
+        module_0.evaluate(list_0)
+>       module_0.evaluate(exit_signal_0, list_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:7810: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = _ExitSignal(False), env = []
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: '_ExitSignal' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_757 _________________________________
+
+    def test_case_757():
+        str_0 = "JTE"
+        module_0.setup_runtime(str_0)
+        bool_0 = False
+        exit_signal_0 = module_0._ExitSignal(bool_0)
+        assert exit_signal_0.code is False
+        bool_1 = True
+        boolean_literal_0 = module_1.BooleanLiteral(bool_1)
+        list_0 = [boolean_literal_0, boolean_literal_0]
+        var_0 = module_0.evaluate(list_0, bool_1)
+        assert var_0 is True
+        break_signal_0 = module_0._BreakSignal()
+        return_signal_0 = module_0._ReturnSignal(break_signal_0)
+        assert (
+            f"{type(return_signal_0.value).__module__}.{type(return_signal_0.value).__qualname__}"
+            == "src.evaluator._BreakSignal"
+        )
+        list_1 = []
+        var_1 = module_0.evaluate(list_1)
+>       module_0.evaluate(exit_signal_0, var_1)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:7922: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = _ExitSignal(False), env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: '_ExitSignal' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_763 _________________________________
+
+    def test_case_763():
+        bool_0 = True
+        boolean_literal_0 = module_1.BooleanLiteral(bool_0)
+        list_0 = [boolean_literal_0, boolean_literal_0]
+        var_0 = module_0.evaluate(list_0)
+        assert var_0 is True
+        str_0 = "."
+        module_0.setup_runtime(str_0)
+        bool_1 = True
+        boolean_literal_1 = module_1.BooleanLiteral(bool_1)
+        list_1 = [boolean_literal_1, boolean_literal_1]
+        var_1 = module_0.evaluate(list_1)
+        assert var_1 is True
+>       module_0.evaluate(var_0, var_1)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8006: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = True, env = True
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'bool' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_764 _________________________________
+
+    def test_case_764():
+        bool_0 = True
+        boolean_literal_0 = module_1.BooleanLiteral(bool_0)
+        list_0 = [boolean_literal_0, boolean_literal_0]
+        var_0 = module_0.evaluate(list_0)
+        assert var_0 is True
+        return_signal_0 = module_0._ReturnSignal(boolean_literal_0)
+        assert (
+            f"{type(return_signal_0.value).__module__}.{type(return_signal_0.value).__qualname__}"
+            == "src.parser.BooleanLiteral"
+        )
+        str_0 = "JTE"
+        module_0.setup_runtime(str_0)
+        list_1 = []
+        var_1 = module_0.evaluate(list_1)
+>       module_0.evaluate(var_1)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8024: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = None, env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'NoneType' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_765 _________________________________
+
+    def test_case_765():
+        str_0 = "Number of parameters passed is not equal to number of function parameters"
+        module_0.setup_runtime(str_0)
+        str_1 = '"Ow'
+        return_signal_0 = module_0._ReturnSignal(str_1)
+        assert return_signal_0.value == '"Ow'
+        bool_0 = True
+        boolean_literal_0 = module_1.BooleanLiteral(bool_0)
+        list_0 = [boolean_literal_0, boolean_literal_0]
+        var_0 = module_0.evaluate(list_0, bool_0)
+        assert var_0 is True
+>       module_0.evaluate(var_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8038: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = True, env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'bool' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_771 _________________________________
+
+    def test_case_771():
+        list_0 = []
+        var_0 = module_0.evaluate(list_0)
+        str_0 = '"Ow'
+        return_signal_0 = module_0._ReturnSignal(str_0)
+        assert return_signal_0.value == '"Ow'
+        str_1 = '"Ow'
+        list_1 = module_0.setup_runtime(str_1)
+>       module_0.evaluate(var_0, list_1)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8105: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = None, env = [{'arg': ('"Ow', True)}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'NoneType' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_774 _________________________________
+
+    def test_case_774():
+        str_0 = "JTE"
+        module_0.setup_runtime(str_0)
+        bool_0 = True
+        return_signal_0 = module_0._ReturnSignal(bool_0)
+        assert return_signal_0.value is True
+        break_signal_0 = module_0._BreakSignal()
+>       module_0.evaluate(break_signal_0, bool_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8130: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = _BreakSignal(), env = True
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: '_BreakSignal' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_776 _________________________________
+
+    def test_case_776():
+        set_0 = set()
+        return_signal_0 = module_0._ReturnSignal(set_0)
+        assert return_signal_0.value == {*()}
+>       module_0.evaluate(return_signal_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8152: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = _ReturnSignal(set()), env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: '_ReturnSignal' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_778 _________________________________
+
+    def test_case_778():
+        str_0 = "Number of parameters passed is not equal to number of function parameters"
+        module_0.setup_runtime(str_0)
+        bool_0 = True
+        return_signal_0 = module_0._ReturnSignal(bool_0)
+        assert return_signal_0.value is True
+        str_1 = "JTE"
+        bool_1 = True
+        boolean_literal_0 = module_1.BooleanLiteral(bool_1)
+        list_0 = [boolean_literal_0, boolean_literal_0]
+        var_0 = module_0.evaluate(list_0)
+        assert var_0 is True
+>       module_0.evaluate(bool_0, str_1)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8172: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = True, env = 'JTE'
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'bool' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_784 _________________________________
+
+    def test_case_784():
+        continue_signal_0 = module_0._ContinueSignal()
+        str_0 = "Number of parameters passed is not equal to number of function parameters"
+        module_0.setup_runtime(str_0)
+        str_1 = '"Ow'
+        return_signal_0 = module_0._ReturnSignal(str_1)
+        assert return_signal_0.value == '"Ow'
+>       module_0.evaluate(continue_signal_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8232: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = _ContinueSignal(), env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: '_ContinueSignal' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_786 _________________________________
+
+    def test_case_786():
+        bool_0 = True
+        return_signal_0 = module_0._ReturnSignal(bool_0)
+        assert return_signal_0.value is True
+        str_0 = "JTE"
+        module_0.setup_runtime(str_0)
+        bool_1 = True
+>       module_0.evaluate(bool_1, bool_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8257: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = True, env = True
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'bool' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_787 _________________________________
+
+    def test_case_787():
+        str_0 = "JTE"
+        list_0 = module_0.setup_runtime(str_0)
+        list_1 = []
+        var_0 = module_0.evaluate(list_1)
+>       module_0.evaluate(var_0, list_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8265: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = None, env = [{'arg': ('JTE', True)}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'NoneType' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_788 _________________________________
+
+    def test_case_788():
+        bool_0 = True
+        boolean_literal_0 = module_1.BooleanLiteral(bool_0)
+        list_0 = [boolean_literal_0, boolean_literal_0]
+        var_0 = module_0.evaluate(list_0)
+        assert var_0 is True
+        var_1 = module_0.evaluate(list_0, bool_0)
+        assert var_1 is True
+        str_0 = "."
+        list_1 = module_0.setup_runtime(str_0)
+>       module_0.evaluate(var_1, list_1)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8278: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = True, env = [{'arg': ('.', True)}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'bool' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_790 _________________________________
+
+    def test_case_790():
+        str_0 = "Number of parameters passed is not equal to number of function parameters"
+        module_0.setup_runtime(str_0)
+        break_signal_0 = module_0._BreakSignal()
+        return_signal_0 = module_0._ReturnSignal(break_signal_0)
+        assert (
+            f"{type(return_signal_0.value).__module__}.{type(return_signal_0.value).__qualname__}"
+            == "src.evaluator._BreakSignal"
+        )
+        list_0 = []
+        var_0 = module_0.evaluate(list_0)
+>       module_0.evaluate(var_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8299: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = None, env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'NoneType' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_797 _________________________________
+
+    def test_case_797():
+        bool_0 = True
+        boolean_literal_0 = module_1.BooleanLiteral(bool_0)
+        list_0 = [boolean_literal_0, boolean_literal_0]
+        var_0 = module_0.evaluate(list_0)
+        assert var_0 is True
+        var_1 = module_0.evaluate(list_0, bool_0)
+        assert var_1 is True
+        str_0 = "JTE"
+        module_0.setup_runtime(str_0)
+        break_signal_0 = module_0._BreakSignal()
+        return_signal_0 = module_0._ReturnSignal(break_signal_0)
+        assert (
+            f"{type(return_signal_0.value).__module__}.{type(return_signal_0.value).__qualname__}"
+            == "src.evaluator._BreakSignal"
+        )
+>       module_0.evaluate(var_1, return_signal_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8399: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = True, env = _ReturnSignal(_BreakSignal())
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'bool' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_799 _________________________________
+
+    def test_case_799():
+        str_0 = "Number of parameters passed is not equal to number of function parameters"
+        module_0.setup_runtime(str_0)
+        bool_0 = True
+        boolean_literal_0 = module_1.BooleanLiteral(bool_0)
+        list_0 = [boolean_literal_0, boolean_literal_0]
+        var_0 = module_0.evaluate(list_0)
+        assert var_0 is True
+        set_0 = set()
+        return_signal_0 = module_0._ReturnSignal(set_0)
+        assert return_signal_0.value == {*()}
+        str_1 = "JTE"
+>       module_0.evaluate(return_signal_0, str_1)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8426: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = _ReturnSignal(set()), env = 'JTE'
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: '_ReturnSignal' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_802 _________________________________
+
+    def test_case_802():
+        str_0 = "JTE"
+        module_0.setup_runtime(str_0)
+        str_1 = '"Ow'
+        return_signal_0 = module_0._ReturnSignal(str_1)
+        assert return_signal_0.value == '"Ow'
+        none_type_0 = None
+>       module_0.evaluate(none_type_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8462: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = None, env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'NoneType' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_804 _________________________________
+
+    def test_case_804():
+        str_0 = "JTE"
+        module_0.setup_runtime(str_0)
+        list_0 = []
+        var_0 = module_0.evaluate(list_0)
+>       module_0.evaluate(var_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8478: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = None, env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'NoneType' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_805 _________________________________
+
+    def test_case_805():
+        str_0 = "JTE"
+        module_0.setup_runtime(str_0)
+        list_0 = []
+        var_0 = module_0.evaluate(list_0)
+>       module_0.evaluate(var_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8486: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = None, env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'NoneType' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_806 _________________________________
+
+    def test_case_806():
+        bool_0 = True
+        continue_signal_0 = module_0._ContinueSignal()
+        return_signal_0 = module_0._ReturnSignal(continue_signal_0)
+        assert (
+            f"{type(return_signal_0.value).__module__}.{type(return_signal_0.value).__qualname__}"
+            == "src.evaluator._ContinueSignal"
+        )
+        none_type_0 = None
+>       module_0.evaluate(bool_0, none_type_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8498: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = True, env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'bool' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_808 _________________________________
+
+    def test_case_808():
+        set_0 = set()
+        return_signal_0 = module_0._ReturnSignal(set_0)
+        assert return_signal_0.value == {*()}
+        none_type_0 = None
+        module_0.setup_runtime(none_type_0)
+        list_0 = []
+        var_0 = module_0.evaluate(list_0)
+        list_1 = []
+        var_1 = module_0.evaluate(list_1)
+>       module_0.evaluate(var_1, var_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8521: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = None, env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'NoneType' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_813 _________________________________
+
+    def test_case_813():
+        base_exception_0 = module_2.BaseException()
+>       module_0.evaluate(base_exception_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8562: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = BaseException(), env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'BaseException' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_814 _________________________________
+
+    def test_case_814():
+        str_0 = "Number of parameters passed is not equal to number of function parameters"
+        module_0.setup_runtime(str_0)
+        break_signal_0 = module_0._BreakSignal()
+        return_signal_0 = module_0._ReturnSignal(break_signal_0)
+        assert (
+            f"{type(return_signal_0.value).__module__}.{type(return_signal_0.value).__qualname__}"
+            == "src.evaluator._BreakSignal"
+        )
+        runtime_evaluation_error_0 = module_0.RuntimeEvaluationError()
+>       module_0.evaluate(runtime_evaluation_error_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8575: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = RuntimeEvaluationError(), env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'RuntimeEvaluationError' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_815 _________________________________
+
+    def test_case_815():
+        bool_0 = True
+        boolean_literal_0 = module_1.BooleanLiteral(bool_0)
+        list_0 = [boolean_literal_0, boolean_literal_0]
+        continue_signal_0 = module_0._ContinueSignal()
+        var_0 = module_0.evaluate(list_0, bool_0)
+        assert var_0 is True
+        str_0 = "<X0rCe\x0b=C(:jS{"
+        module_0.setup_runtime(str_0)
+        set_0 = set()
+        return_signal_0 = module_0._ReturnSignal(set_0)
+        assert return_signal_0.value == {*()}
+>       module_0.evaluate(continue_signal_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8590: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = _ContinueSignal(), env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: '_ContinueSignal' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_820 _________________________________
+
+    def test_case_820():
+        str_0 = "Number of parameters passed is not equal to number of function parameters"
+        module_0.setup_runtime(str_0)
+        str_1 = '"Ow'
+        return_signal_0 = module_0._ReturnSignal(str_1)
+        assert return_signal_0.value == '"Ow'
+        bool_0 = True
+        boolean_literal_0 = module_1.BooleanLiteral(bool_0)
+        list_0 = [boolean_literal_0, boolean_literal_0]
+        var_0 = module_0.evaluate(list_0, bool_0)
+        assert var_0 is True
+        none_type_0 = None
+>       module_0.evaluate(none_type_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8652: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = None, env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'NoneType' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_823 _________________________________
+
+    def test_case_823():
+        str_0 = '"Ow'
+        module_0.setup_runtime(str_0)
+        break_signal_0 = module_0._BreakSignal()
+        return_signal_0 = module_0._ReturnSignal(break_signal_0)
+        assert (
+            f"{type(return_signal_0.value).__module__}.{type(return_signal_0.value).__qualname__}"
+            == "src.evaluator._BreakSignal"
+        )
+        list_0 = []
+        var_0 = module_0.evaluate(list_0)
+>       module_0.evaluate(var_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8680: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = None, env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'NoneType' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_824 _________________________________
+
+    def test_case_824():
+        str_0 = '"Ow'
+        module_0.setup_runtime(str_0)
+        str_1 = '"Ow'
+        return_signal_0 = module_0._ReturnSignal(str_1)
+        assert return_signal_0.value == '"Ow'
+        continue_signal_0 = module_0._ContinueSignal()
+        bool_0 = True
+        boolean_literal_0 = module_1.BooleanLiteral(bool_0)
+        list_0 = [boolean_literal_0, boolean_literal_0]
+        var_0 = module_0.evaluate(list_0, bool_0)
+        assert var_0 is True
+>       module_0.evaluate(continue_signal_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8695: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = _ContinueSignal(), env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: '_ContinueSignal' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_826 _________________________________
+
+    def test_case_826():
+        str_0 = "Number of parameters passed is not equal to number of function parameters"
+        module_0.setup_runtime(str_0)
+        bool_0 = True
+        return_signal_0 = module_0._ReturnSignal(bool_0)
+        assert return_signal_0.value is True
+        list_0 = []
+        module_0.evaluate(list_0)
+        none_type_0 = None
+        exit_signal_0 = module_0._ExitSignal(none_type_0)
+        assert exit_signal_0.code is None
+>       module_0.evaluate(exit_signal_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8718: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = _ExitSignal(None), env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: '_ExitSignal' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_827 _________________________________
+
+    def test_case_827():
+        list_0 = []
+        module_0.evaluate(list_0)
+        str_0 = '"Ow'
+        return_signal_0 = module_0._ReturnSignal(str_0)
+        assert return_signal_0.value == '"Ow'
+        str_1 = "Number of parameters passed is not equal to number of function parameters"
+        list_1 = module_0.setup_runtime(str_1)
+        break_signal_0 = module_0._BreakSignal()
+>       module_0.evaluate(break_signal_0, list_1)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8730: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = _BreakSignal()
+env = [{'arg': ('Number of parameters passed is not equal to number of function parameters', True)}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: '_BreakSignal' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_828 _________________________________
+
+    def test_case_828():
+        str_0 = '"Ow'
+        return_signal_0 = module_0._ReturnSignal(str_0)
+        assert return_signal_0.value == '"Ow'
+        str_1 = "Number of parameters passed is not equal to number of function parameters"
+        list_0 = module_0.setup_runtime(str_1)
+        continue_signal_0 = module_0._ContinueSignal(*list_0)
+>       module_0.evaluate(continue_signal_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8740: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = _ContinueSignal({'arg': ('Number of parameters passed is not equal to number of function parameters', True)})
+env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: '_ContinueSignal' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_832 _________________________________
+
+    def test_case_832():
+        dict_0 = {}
+        break_signal_0 = module_0._BreakSignal(**dict_0)
+        str_0 = "Number of parameters passed is not equal to number of function parameters"
+        module_0.setup_runtime(str_0)
+        break_signal_1 = module_0._BreakSignal()
+        return_signal_0 = module_0._ReturnSignal(break_signal_1)
+        assert (
+            f"{type(return_signal_0.value).__module__}.{type(return_signal_0.value).__qualname__}"
+            == "src.evaluator._BreakSignal"
+        )
+>       module_0.evaluate(break_signal_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8777: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = _BreakSignal(), env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: '_BreakSignal' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_833 _________________________________
+
+    def test_case_833():
+        break_signal_0 = module_0._BreakSignal()
+        bool_0 = True
+        return_signal_0 = module_0._ReturnSignal(bool_0)
+        assert return_signal_0.value is True
+        str_0 = "Ft;(9VZZ),|=+U+,X"
+        module_0.setup_runtime(str_0)
+        bool_1 = True
+        boolean_literal_0 = module_1.BooleanLiteral(bool_1)
+        list_0 = [boolean_literal_0, boolean_literal_0]
+        var_0 = module_0.evaluate(list_0)
+        assert var_0 is True
+>       module_0.evaluate(break_signal_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8792: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = _BreakSignal(), env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: '_BreakSignal' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_837 _________________________________
+
+    def test_case_837():
+        set_0 = set()
+        return_signal_0 = module_0._ReturnSignal(set_0)
+        assert return_signal_0.value == {*()}
+        str_0 = "JTE"
+        module_0.setup_runtime(str_0)
+        list_0 = []
+        var_0 = module_0.evaluate(list_0)
+        bool_0 = True
+        boolean_literal_0 = module_1.BooleanLiteral(bool_0)
+        list_1 = [boolean_literal_0, boolean_literal_0]
+        var_1 = module_0.evaluate(list_1, bool_0)
+        assert var_1 is True
+>       module_0.evaluate(var_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8845: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = None, env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'NoneType' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_838 _________________________________
+
+    def test_case_838():
+        bytes_0 = b"\x98\x12\xb7\x85RQ\xea\x80\xb6\xf2\xa8[W\xd0"
+        return_signal_0 = module_0._ReturnSignal(bytes_0)
+        assert return_signal_0.value == b"\x98\x12\xb7\x85RQ\xea\x80\xb6\xf2\xa8[W\xd0"
+        str_0 = '"Ow'
+        module_0.setup_runtime(str_0)
+        list_0 = []
+        var_0 = module_0.evaluate(list_0)
+>       module_0.evaluate(var_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8856: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = None, env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'NoneType' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_839 _________________________________
+
+    def test_case_839():
+        str_0 = "JTE"
+        module_0.setup_runtime(str_0)
+        break_signal_0 = module_0._BreakSignal()
+        return_signal_0 = module_0._ReturnSignal(break_signal_0)
+        assert (
+            f"{type(return_signal_0.value).__module__}.{type(return_signal_0.value).__qualname__}"
+            == "src.evaluator._BreakSignal"
+        )
+        bool_0 = True
+        boolean_literal_0 = module_1.BooleanLiteral(bool_0)
+        list_0 = [boolean_literal_0, boolean_literal_0]
+        var_0 = module_0.evaluate(list_0)
+        assert var_0 is True
+        var_1 = module_0.evaluate(list_0, bool_0)
+        assert var_1 is True
+>       module_0.evaluate(var_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8875: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = True, env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'bool' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_840 _________________________________
+
+    def test_case_840():
+        none_type_0 = None
+        identifier_0 = module_1.Identifier(none_type_0)
+>       module_0.evaluate(identifier_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8881: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = Identifier(name=None), env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'Identifier' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_846 _________________________________
+
+    def test_case_846():
+        bool_0 = True
+        exit_signal_0 = module_0._ExitSignal(bool_0)
+        assert exit_signal_0.code is True
+>       module_0.evaluate(exit_signal_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8937: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = _ExitSignal(True), env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: '_ExitSignal' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_849 _________________________________
+
+    def test_case_849():
+        break_signal_0 = module_0._BreakSignal()
+        str_0 = "<X0rCe\x0b=C(:jS{"
+        module_0.setup_runtime(str_0)
+        str_1 = '"Ow'
+        return_signal_0 = module_0._ReturnSignal(str_1)
+        assert return_signal_0.value == '"Ow'
+        list_0 = []
+        var_0 = module_0.evaluate(list_0)
+>       module_0.evaluate(var_0, break_signal_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:8974: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = None, env = _BreakSignal()
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'NoneType' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_852 _________________________________
+
+    def test_case_852():
+        bool_0 = True
+        return_signal_0 = module_0._ReturnSignal(bool_0)
+        assert return_signal_0.value is True
+        str_0 = "JTE"
+        module_0.setup_runtime(str_0)
+        bool_1 = True
+        boolean_literal_0 = module_1.BooleanLiteral(bool_1)
+        list_0 = [boolean_literal_0, boolean_literal_0]
+        var_0 = module_0.evaluate(list_0)
+        assert var_0 is True
+>       module_0.evaluate(var_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:9003: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = True, env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'bool' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_854 _________________________________
+
+    def test_case_854():
+        str_0 = "9~>,V\tk_"
+        module_0.setup_runtime(str_0)
+        none_type_0 = None
+        exit_signal_0 = module_0._ExitSignal(none_type_0)
+        assert exit_signal_0.code is None
+        bool_0 = True
+        boolean_literal_0 = module_1.BooleanLiteral(bool_0)
+        list_0 = [boolean_literal_0, boolean_literal_0]
+        var_0 = module_0.evaluate(list_0)
+        assert var_0 is True
+        return_signal_0 = module_0._ReturnSignal(boolean_literal_0)
+        assert (
+            f"{type(return_signal_0.value).__module__}.{type(return_signal_0.value).__qualname__}"
+            == "src.parser.BooleanLiteral"
+        )
+>       module_0.evaluate(exit_signal_0, boolean_literal_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:9037: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = _ExitSignal(None), env = BooleanLiteral(literal=True)
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: '_ExitSignal' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_858 _________________________________
+
+    def test_case_858():
+        bool_0 = True
+        boolean_literal_0 = module_1.BooleanLiteral(bool_0)
+        list_0 = [boolean_literal_0, boolean_literal_0]
+        var_0 = module_0.evaluate(list_0)
+        assert var_0 is True
+        return_signal_0 = module_0._ReturnSignal(boolean_literal_0)
+        assert (
+            f"{type(return_signal_0.value).__module__}.{type(return_signal_0.value).__qualname__}"
+            == "src.parser.BooleanLiteral"
+        )
+        str_0 = '"Ow'
+        module_0.setup_runtime(str_0)
+        str_1 = "$rq)>ng,]BiiA ;7or{"
+        null_literal_0 = module_1.NullLiteral(str_1)
+        list_1 = [null_literal_0, null_literal_0, null_literal_0]
+        module_0.evaluate(list_1)
+        int_0 = 14
+        exit_signal_0 = module_0._ExitSignal(int_0)
+        assert exit_signal_0.code == 14
+>       module_0.evaluate(exit_signal_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:9096: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = _ExitSignal(14), env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: '_ExitSignal' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_860 _________________________________
+
+    def test_case_860():
+        str_0 = "JTE"
+        module_0.setup_runtime(str_0)
+        dict_0 = {}
+        break_signal_0 = module_0._BreakSignal(**dict_0)
+        return_signal_0 = module_0._ReturnSignal(break_signal_0)
+        assert (
+            f"{type(return_signal_0.value).__module__}.{type(return_signal_0.value).__qualname__}"
+            == "src.evaluator._BreakSignal"
+        )
+        bool_0 = True
+        boolean_literal_0 = module_1.BooleanLiteral(bool_0)
+        list_0 = [boolean_literal_0, boolean_literal_0]
+        var_0 = module_0.evaluate(list_0)
+        assert var_0 is True
+        list_1 = []
+        var_1 = module_0.evaluate(list_1)
+>       module_0.evaluate(var_1)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:9126: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = None, env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'NoneType' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_873 _________________________________
+
+    def test_case_873():
+        str_0 = "JTE"
+        module_0.setup_runtime(str_0)
+        list_0 = []
+        module_0.evaluate(list_0)
+        set_0 = set()
+        return_signal_0 = module_0._ReturnSignal(set_0)
+        assert return_signal_0.value == {*()}
+        none_type_0 = None
+>       module_0.evaluate(none_type_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:9262: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = None, env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'NoneType' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_874 _________________________________
+
+    def test_case_874():
+        str_0 = "Number of parameters passed is not equal to number of function parameters"
+        module_0.setup_runtime(str_0)
+        str_1 = '"Ow'
+        return_signal_0 = module_0._ReturnSignal(str_1)
+        assert return_signal_0.value == '"Ow'
+        continue_signal_0 = module_0._ContinueSignal()
+        list_0 = []
+        module_0.evaluate(list_0)
+>       module_0.evaluate(continue_signal_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:9274: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = _ContinueSignal(), env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: '_ContinueSignal' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_875 _________________________________
+
+    def test_case_875():
+        str_0 = "9~>,V\tk_"
+        module_0.setup_runtime(str_0)
+        break_signal_0 = module_0._BreakSignal()
+>       module_0.evaluate(break_signal_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:9281: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = _BreakSignal(), env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: '_BreakSignal' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_877 _________________________________
+
+    def test_case_877():
+        bool_0 = True
+        boolean_literal_0 = module_1.BooleanLiteral(bool_0)
+        list_0 = [boolean_literal_0, boolean_literal_0]
+        var_0 = module_0.evaluate(list_0)
+        assert var_0 is True
+        var_1 = module_0.evaluate(list_0, bool_0)
+        assert var_1 is True
+        str_0 = "JTE"
+        module_0.setup_runtime(str_0)
+        break_signal_0 = module_0._BreakSignal()
+        return_signal_0 = module_0._ReturnSignal(break_signal_0)
+        assert (
+            f"{type(return_signal_0.value).__module__}.{type(return_signal_0.value).__qualname__}"
+            == "src.evaluator._BreakSignal"
+        )
+>       module_0.evaluate(var_0, var_1)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:9311: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = True, env = True
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'bool' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_882 _________________________________
+
+    def test_case_882():
+        list_0 = []
+        var_0 = module_0.evaluate(list_0)
+        runtime_evaluation_error_0 = module_0.RuntimeEvaluationError()
+        var_1 = var_0.__eq__(runtime_evaluation_error_0)
+        return_signal_0 = module_0._ReturnSignal(var_1)
+        assert (
+            f"{type(return_signal_0.value).__module__}.{type(return_signal_0.value).__qualname__}"
+            == "builtins.NotImplementedType"
+        )
+        str_0 = "9~>,V\tk_"
+        module_0.setup_runtime(str_0)
+>       module_0.evaluate(var_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:9364: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = None, env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'NoneType' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_884 _________________________________
+
+    def test_case_884():
+        str_0 = "JTE"
+        module_0.setup_runtime(str_0)
+        list_0 = []
+        var_0 = module_0.evaluate(list_0)
+        var_1 = module_0.evaluate(list_0)
+>       module_0.evaluate(var_1, var_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:9386: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = None, env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'NoneType' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_889 _________________________________
+
+    def test_case_889():
+        list_0 = []
+        var_0 = module_0.evaluate(list_0)
+        str_0 = "q7LO)MceS\\bti*"
+        module_0.setup_runtime(str_0)
+        bool_0 = True
+        boolean_literal_0 = module_1.BooleanLiteral(bool_0)
+        list_1 = [boolean_literal_0, boolean_literal_0]
+        var_1 = module_0.evaluate(list_1, bool_0)
+        assert var_1 is True
+        dict_0 = {}
+        continue_signal_0 = module_0._ContinueSignal(**dict_0)
+        return_signal_0 = module_0._ReturnSignal(continue_signal_0)
+        assert (
+            f"{type(return_signal_0.value).__module__}.{type(return_signal_0.value).__qualname__}"
+            == "src.evaluator._ContinueSignal"
+        )
+>       module_0.evaluate(var_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:9448: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = None, env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'NoneType' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_891 _________________________________
+
+    def test_case_891():
+        str_0 = "JTE"
+        module_0.setup_runtime(str_0)
+        bool_0 = True
+        boolean_literal_0 = module_1.BooleanLiteral(bool_0)
+        list_0 = [boolean_literal_0, boolean_literal_0]
+        var_0 = module_0.evaluate(list_0, bool_0)
+        assert var_0 is True
+        list_1 = []
+        var_1 = module_0.evaluate(list_1)
+>       module_0.evaluate(var_1)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:9482: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = None, env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'NoneType' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_893 _________________________________
+
+    def test_case_893():
+        bool_0 = True
+        boolean_literal_0 = module_1.BooleanLiteral(bool_0)
+        list_0 = [boolean_literal_0, boolean_literal_0]
+        var_0 = module_0.evaluate(list_0)
+        assert var_0 is True
+        return_signal_0 = module_0._ReturnSignal(boolean_literal_0)
+        assert (
+            f"{type(return_signal_0.value).__module__}.{type(return_signal_0.value).__qualname__}"
+            == "src.parser.BooleanLiteral"
+        )
+        list_1 = []
+        module_0.evaluate(list_1, var_0)
+        str_0 = "JTE"
+        module_0.setup_runtime(str_0)
+        break_signal_0 = module_0._BreakSignal()
+>       module_0.evaluate(break_signal_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:9514: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = _BreakSignal(), env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: '_BreakSignal' object is not iterable
+
+src/evaluator.py:438: TypeError
+________________________________ test_case_896 _________________________________
+
+    def test_case_896():
+        continue_signal_0 = module_0._ContinueSignal()
+        return_signal_0 = module_0._ReturnSignal(continue_signal_0)
+        assert (
+            f"{type(return_signal_0.value).__module__}.{type(return_signal_0.value).__qualname__}"
+            == "src.evaluator._ContinueSignal"
+        )
+        bool_0 = True
+        boolean_literal_0 = module_1.BooleanLiteral(bool_0)
+        list_0 = [boolean_literal_0, boolean_literal_0]
+        var_0 = module_0.evaluate(list_0)
+        assert var_0 is True
+        list_1 = []
+        module_0.evaluate(list_1, var_0)
+        str_0 = "Ft;(9VZZ),|=+U+,X"
+        module_0.setup_runtime(str_0)
+        float_0 = -4124.58542
+>       module_0.evaluate(float_0)
+
+259045253/test/whitebox/mutation_testing/test_src_evaluator.py:9562: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+expressions = -4124.58542, env = [{}]
+
+    def evaluate(expressions: list[Expression], env: Env | None = None) -> Any:
+        if env is None:
+            env = [{}]
+    
+        try:
+            result = None
+>           for expression in expressions:
+E           TypeError: 'float' object is not iterable
+
+src/evaluator.py:438: TypeError
+=========================== short test summary info ============================
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_671
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_673
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_675
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_680
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_681
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_682
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_687
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_688
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_690
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_691
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_696
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_702
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_716
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_717
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_718
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_722
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_723
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_728
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_732
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_737
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_740
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_741
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_742
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_743
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_748
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_757
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_763
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_764
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_765
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_771
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_774
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_776
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_778
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_784
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_786
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_787
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_788
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_790
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_797
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_799
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_802
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_804
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_805
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_806
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_808
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_813
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_814
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_815
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_820
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_823
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_824
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_826
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_827
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_828
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_832
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_833
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_837
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_838
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_839
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_840
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_846
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_849
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_852
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_854
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_858
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_860
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_873
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_874
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_875
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_877
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_882
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_884
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_889
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_891
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_893
+FAILED 259045253/test/whitebox/mutation_testing/test_src_evaluator.py::test_case_896
+================== 76 failed, 871 passed, 1 xfailed in 11.03s ==================
