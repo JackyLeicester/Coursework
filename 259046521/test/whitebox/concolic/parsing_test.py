@@ -10,6 +10,9 @@ from src.parser import Parser
 from src.lexer import Lexer
 from fuzzingbook.Grammars import extend_grammar
 
+# concolic testing was done by creating a grammar that the concolic fuzzer could follow
+# afterwards the fuzzer generates valid sequences of tokens that follow the grammar set out by the grammar
+# this creates a more complete grammar as it will not try to read varaibles that dont exist and therefore the grammar is mroe feature complet
 LANGUAGE_GRAMMAR = extend_grammar(
     {
         "<start>": ["<statement>"],
