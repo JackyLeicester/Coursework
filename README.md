@@ -8,6 +8,9 @@ Team Members:
 
 ## Getting Started
 
+The `smqa.zip` file can be uncompressed on Linux file systems using the default
+file manager on Percy Gee Linux labs.
+
 To get started with the project, install the dependencies using:
 ```bash
 pip install -r requirements.txt
@@ -43,7 +46,8 @@ open htmlcov/index.html
 ```
 
 In order to generate individual test reports for blackbox and whitebox tests for
-each team member run the following commands:
+each team member run the following commands by changing the `student_id` and
+`test_type`:
 ```bash
 coverage erase
 python -m coverage run --branch --source=src -a -m unittest discover -s <student_id>/test/<test_type> -t . -p "*.py"
