@@ -13,6 +13,8 @@ file manager on Percy Gee Linux labs.
 
 The github repository for this project is located at: <https://github.com/JackyLeicester/Coursework>
 
+The video demonstration of this project is upload on YouTube as well: <https://youtu.be/Q0FbzMhAotE>
+
 To get started with the project, install the dependencies using:
 ```bash
 pip install -r requirements.txt
