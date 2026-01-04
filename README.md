@@ -26,12 +26,27 @@ The project can then be ran in two ways:
    ./main.py
    ```
 
-For running the test cases and generating a coverage report run:
+## Testing and coverage
+
+For running the test cases and generating a coverage report for overall project
+and all the test cases written by all team members run:
 ```bash
+coverage erase
 python -m coverage run --branch --source=src -a -m unittest discover -s 249039503/test -t . -p "*.py"
 python -m coverage run --branch --source=src -a -m unittest discover -s 249053812/test -t . -p "*.py"
 python -m coverage run --branch --source=src -a -m unittest discover -s 259045253/test -t . -p "*.py"
 python -m coverage run --branch --source=src -a -m unittest discover -s 259046521/test -t . -p "*.py"
+
+python -m coverage report -m
+python -m coverage html
+open htmlcov/index.html
+```
+
+In order to generate individual test reports for blackbox and whitebox tests for
+each team member run the following commands:
+```bash
+coverage erase
+python -m coverage run --branch --source=src -a -m unittest discover -s <student_id>/test/<test_type> -t . -p "*.py"
 
 python -m coverage report -m
 python -m coverage html
