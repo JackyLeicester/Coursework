@@ -11,6 +11,8 @@ Team Members:
 The `smqa.zip` file can be uncompressed on Linux file systems using the default
 file manager on Percy Gee Linux labs.
 
+The github repository for this project is located at: <https://github.com/JackyLeicester/Coursework>
+
 To get started with the project, install the dependencies using:
 ```bash
 pip install -r requirements.txt
